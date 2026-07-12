@@ -979,3 +979,399 @@ button {
     padding-right: 90px;
   }
 }
+
+/* ==========================================================
+   PÁGINAS INTERNAS — LEITURA MOBILE
+   ========================================================== */
+
+.internal-page {
+  padding-top:
+    calc(58px + env(safe-area-inset-top));
+}
+
+.internal-hero {
+  position: relative;
+
+  min-height: 72svh;
+
+  display: flex;
+  align-items: flex-end;
+
+  padding:
+    80px
+    0
+    42px;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 7, 11, 0.12) 0%,
+      rgba(8, 7, 11, 0.35) 38%,
+      rgba(8, 7, 11, 0.94) 82%,
+      var(--background) 100%
+    ),
+    var(
+      --internal-image,
+      radial-gradient(
+        circle at 50% 24%,
+        #4d395f,
+        #17121e 55%,
+        #08070b 100%
+      )
+    );
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.internal-hero::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.2),
+      transparent 35%,
+      transparent 65%,
+      rgba(0, 0, 0, 0.2)
+    );
+}
+
+.internal-kicker {
+  margin: 0 0 10px;
+
+  color: var(--gold);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2.8px;
+
+  text-transform: uppercase;
+}
+
+.internal-title {
+  max-width: 520px;
+  margin: 0;
+
+  color: var(--gold-light);
+
+  font-size: clamp(42px, 13vw, 68px);
+  font-weight: normal;
+  line-height: 0.96;
+  letter-spacing: -1px;
+
+  text-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.72);
+}
+
+.internal-summary {
+  max-width: 500px;
+  margin: 20px 0 0;
+
+  color: var(--text-soft);
+
+  font-size: 16px;
+  line-height: 1.6;
+
+  text-shadow:
+    0 3px 16px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================
+   CORPO DO ARTIGO
+   ========================================================== */
+
+.mobile-article {
+  padding:
+    42px
+    0
+    76px;
+}
+
+.article-lead {
+  margin: 0 0 30px;
+
+  color: var(--text);
+
+  font-size: 20px;
+  line-height: 1.65;
+}
+
+.mobile-article p {
+  margin:
+    0
+    0
+    24px;
+
+  color: var(--text-soft);
+
+  font-size: 17px;
+  line-height: 1.78;
+}
+
+.mobile-article h2 {
+  margin:
+    54px
+    0
+    20px;
+
+  color: var(--gold-light);
+
+  font-size: clamp(29px, 9vw, 42px);
+  font-weight: normal;
+  line-height: 1.08;
+}
+
+.mobile-article h3 {
+  margin:
+    38px
+    0
+    14px;
+
+  color: var(--gold);
+
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.mobile-article strong {
+  color: var(--text);
+}
+
+/* ==========================================================
+   DIVISORES
+   ========================================================== */
+
+.article-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin:
+    42px
+    0;
+
+  color: var(--gold);
+}
+
+.article-divider::before,
+.article-divider::after {
+  content: "";
+
+  height: 1px;
+  flex: 1;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--border-strong)
+    );
+}
+
+.article-divider::after {
+  background:
+    linear-gradient(
+      90deg,
+      var(--border-strong),
+      transparent
+    );
+}
+
+.article-divider span {
+  font-size: 14px;
+  letter-spacing: 6px;
+}
+
+/* ==========================================================
+   FRASES E CONCEITOS IMPORTANTES
+   ========================================================== */
+
+.lore-quote {
+  position: relative;
+
+  margin:
+    38px
+    0;
+
+  padding:
+    28px
+    22px
+    26px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(215, 182, 110, 0.09),
+      rgba(23, 20, 29, 0.92)
+    );
+
+  box-shadow:
+    0 14px 36px rgba(0, 0, 0, 0.26);
+}
+
+.lore-quote::before {
+  content: "“";
+
+  position: absolute;
+  top: 5px;
+  left: 16px;
+
+  color:
+    rgba(215, 182, 110, 0.24);
+
+  font-size: 72px;
+  line-height: 1;
+}
+
+.lore-quote p {
+  position: relative;
+
+  margin: 0;
+
+  color: var(--gold-light);
+
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.lore-box {
+  margin:
+    38px
+    0;
+
+  padding:
+    24px
+    21px;
+
+  border-left:
+    3px solid var(--gold);
+
+  border-radius:
+    0
+    var(--radius)
+    var(--radius)
+    0;
+
+  background:
+    rgba(215, 182, 110, 0.07);
+}
+
+.lore-box h2,
+.lore-box h3 {
+  margin-top: 0;
+}
+
+.lore-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================
+   NAVEGAÇÃO DA PÁGINA
+   ========================================================== */
+
+.article-navigation {
+  display: grid;
+  gap: 12px;
+
+  margin-top: 56px;
+}
+
+.article-navigation a {
+  min-height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    12px
+    20px;
+
+  border:
+    1px solid var(--border-strong);
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(215, 182, 110, 0.07);
+
+  color: var(--gold-light);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* ==========================================================
+   PROGRESSO DE LEITURA
+   ========================================================== */
+
+.reading-progress {
+  position: fixed;
+  top:
+    calc(58px + env(safe-area-inset-top));
+  left: 0;
+  z-index: 150;
+
+  width: 0;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--gold),
+      var(--gold-light)
+    );
+
+  box-shadow:
+    0 0 12px rgba(215, 182, 110, 0.5);
+}
+
+/* ==========================================================
+   TELAS MAIORES
+   ========================================================== */
+
+@media (min-width: 700px) {
+  .internal-hero {
+    min-height: 82svh;
+  }
+
+  .mobile-article {
+    padding-top: 58px;
+  }
+
+  .article-navigation {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
