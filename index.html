@@ -5,85 +5,101 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#08070b"
   >
 
   <meta
     name="description"
-    content="Site oficial de Harmonia Caótica, um RPG ambientado no mundo de Vaelora."
+    content="Harmonia Caótica, um RPG ambientado no mundo de Vaelora."
   >
 
   <title>Harmonia Caótica — Vaelora</title>
 
-  <link rel="stylesheet" href="css/style.css">
+  <link
+    rel="preload"
+    href="imagens/hero-harmonia.webp"
+    as="image"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/mobile.css"
+  >
 </head>
 
 <body>
-  <header class="site-header">
-    <nav class="navigation container">
-      <a class="logo" href="index.html">
+  <header class="mobile-header">
+    <div class="mobile-header-inner mobile-container">
+      <a
+        class="mobile-logo"
+        href="#inicio"
+        aria-label="Voltar ao início"
+      >
         Harmonia Caótica
       </a>
 
-      <ul class="navigation-links">
-        <li>
-          <a href="#mundo">O Mundo</a>
-        </li>
-
-        <li>
-          <a href="#divindades">Divindades</a>
-        </li>
-
-        <li>
-          <a href="#territorios">Territórios</a>
-        </li>
-
-        <li>
-          <a href="#mapas">Mapas</a>
-        </li>
-      </ul>
-    </nav>
+      <a
+        class="header-action"
+        href="#explorar"
+        aria-label="Explorar Vaelora"
+      >
+        ◆
+      </a>
+    </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <p class="eyebrow">
-            Um mundo moldado por conceitos divinos
-          </p>
+    <section
+      id="inicio"
+      class="mobile-hero"
+      style="--hero-image: url('imagens/hero-harmonia.webp');"
+    >
+      <div class="hero-content mobile-container">
+        <p class="hero-label">
+          Um RPG ambientado no mundo de Vaelora
+        </p>
 
-          <h1 class="hero-title">
-            Harmonia<br>Caótica
-          </h1>
+        <h1 class="hero-title">
+          Harmonia<br>
+          Caótica
+        </h1>
 
-          <div class="ornament">
-            ◆ ◆ ◆
-          </div>
+        <p class="hero-subtitle">
+          Deuses governam conceitos, religiões moldam
+          territórios e mortais podem ascender para
+          ocupar um lugar entre as Divindades.
+        </p>
 
-          <p class="hero-subtitle">
-            Deuses governam conceitos, religiões moldam
-            territórios e mortais percorrem caminhos que
-            podem conduzi-los à própria divindade.
-          </p>
+        <div class="hero-actions">
+          <a
+            class="primary-button"
+            href="#mundo"
+          >
+            Entrar em Vaelora
+          </a>
 
-          <div class="button-group">
-            <a class="button" href="#mundo">
-              Conhecer Vaelora
-            </a>
-
-            <a class="button" href="#divindades">
-              Explorar Divindades
-            </a>
-          </div>
+          <a
+            class="secondary-button"
+            href="#divindades"
+          >
+            Conhecer os Deuses
+          </a>
         </div>
       </div>
     </section>
 
-    <section id="mundo">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-label">
+    <section
+      id="mundo"
+      class="mobile-section"
+    >
+      <div class="mobile-container">
+        <div class="section-intro">
+          <p class="section-kicker">
             O mundo
           </p>
 
@@ -91,209 +107,481 @@
             Vaelora
           </h2>
 
-          <p class="section-description">
-            Um mundo dividido entre domínios divinos,
-            povos de diferentes crenças e territórios
-            transformados pela influência dos Deuses.
+          <p class="section-text">
+            Um mundo organizado por conceitos divinos,
+            marcado pela Guerra Divina e sustentado por
+            um equilíbrio instável conhecido como
+            Harmonia Caótica.
           </p>
         </div>
 
-        <div class="card-grid">
-          <article class="card">
-            <h3>A Origem</h3>
+        <article class="feature-card">
+          <div class="feature-card-content">
+            <p class="feature-card-label">
+              História fundamental
+            </p>
 
-            <p>
+            <h3 class="feature-card-title">
+              A Origem dos Deuses
+            </h3>
+
+            <p class="feature-card-description">
               Antes dos Deuses, existiam apenas conceitos
-              sem consciência, forma ou propósito.
+              sem consciência, forma ou propósito. Quando
+              essas forças adquiriram vontade, a realidade
+              começou a receber suas primeiras leis.
             </p>
-          </article>
 
-          <article class="card">
-            <h3>Guerra Divina</h3>
-
-            <p>
-              As fronteiras entre os conceitos são
-              disputadas continuamente pelas Divindades.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Ascensão</h3>
-
-            <p>
-              Quando um domínio perde seu Deus, mortais
-              poderosos podem tentar reivindicá-lo.
-            </p>
-          </article>
-        </div>
+            <span class="feature-card-link">
+              Página em preparação
+            </span>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="divindades">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-label">
-            Religiões e domínios
+    <section
+      id="divindades"
+      class="mobile-section"
+    >
+      <div class="mobile-container">
+        <div class="section-intro">
+          <p class="section-kicker">
+            Fé e poder
           </p>
 
           <h2 class="section-title">
-            As Divindades
+            Divindades
           </h2>
 
-          <p class="section-description">
+          <p class="section-text">
             Cada Divindade governa conceitos próprios,
-            concede bênçãos e transforma a cultura de
-            seus seguidores.
+            concede bênçãos e transforma profundamente
+            a cultura de seus seguidores.
           </p>
         </div>
 
-        <div class="card-grid">
-          <article class="card">
-            <h3>Senhor das Chagas</h3>
+        <div class="horizontal-scroll">
+          <article
+            class="deity-card"
+            style="
+              --deity-image:
+                linear-gradient(
+                  160deg,
+                  #605c28 0%,
+                  #22200f 45%,
+                  #090806 100%
+                );
+            "
+          >
+            <div class="deity-content">
+              <p class="deity-domains">
+                Doenças e Parasitas
+              </p>
 
-            <p>
-              Deus das Doenças e dos Parasitas.
-            </p>
+              <h3 class="deity-name">
+                Senhor das Chagas
+              </h3>
+
+              <p class="deity-description">
+                Senhor das enfermidades, infecções,
+                parasitas e relações entre hospedeiros.
+              </p>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Senhor do Crepúsculo</h3>
+          <article
+            class="deity-card"
+            style="
+              --deity-image:
+                linear-gradient(
+                  160deg,
+                  #4f3c70 0%,
+                  #1c172a 50%,
+                  #08070b 100%
+                );
+            "
+          >
+            <div class="deity-content">
+              <p class="deity-domains">
+                Morte e Trevas
+              </p>
 
-            <p>
-              Deus da Morte e das Trevas.
-            </p>
+              <h3 class="deity-name">
+                Senhor do Crepúsculo
+              </h3>
+
+              <p class="deity-description">
+                Guardião do fim, do silêncio, das sombras
+                e do descanso destinado aos mortos.
+              </p>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Senhora da Aurora</h3>
+          <article
+            class="deity-card"
+            style="
+              --deity-image:
+                linear-gradient(
+                  160deg,
+                  #d09a50 0%,
+                  #6f4025 48%,
+                  #17100b 100%
+                );
+            "
+          >
+            <div class="deity-content">
+              <p class="deity-domains">
+                Luz e Vida
+              </p>
 
-            <p>
-              Deusa da Luz e da Vida.
-            </p>
+              <h3 class="deity-name">
+                Senhora da Aurora
+              </h3>
+
+              <p class="deity-description">
+                Portadora da luz, da cura, da vitalidade
+                e da renovação da existência.
+              </p>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Soberana do Céu</h3>
+          <article
+            class="deity-card"
+            style="
+              --deity-image:
+                linear-gradient(
+                  160deg,
+                  #759bb4 0%,
+                  #314b66 48%,
+                  #0b1018 100%
+                );
+            "
+          >
+            <div class="deity-content">
+              <p class="deity-domains">
+                Sol e Céu
+              </p>
 
-            <p>
-              Deusa do Sol e do Céu.
-            </p>
+              <h3 class="deity-name">
+                Soberana do Céu
+              </h3>
+
+              <p class="deity-description">
+                Senhora do firmamento, dos ventos,
+                das alturas e do curso solar.
+              </p>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Senhor dos Véus</h3>
+          <article
+            class="deity-card"
+            style="
+              --deity-image:
+                linear-gradient(
+                  160deg,
+                  #706ba5 0%,
+                  #292640 48%,
+                  #090810 100%
+                );
+            "
+          >
+            <div class="deity-content">
+              <p class="deity-domains">
+                Sonhos e Pesadelos
+              </p>
 
-            <p>
-              Deus dos Sonhos e dos Pesadelos.
-            </p>
+              <h3 class="deity-name">
+                Senhor dos Véus
+              </h3>
+
+              <p class="deity-description">
+                Guardião do sono, dos desejos, dos medos
+                e dos caminhos da mente adormecida.
+              </p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="territorios">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-label">
-            Nações de Vaelora
+    <section
+      id="territorios"
+      class="mobile-section"
+    >
+      <div class="mobile-container">
+        <div class="section-intro">
+          <p class="section-kicker">
+            Terras divinas
           </p>
 
           <h2 class="section-title">
-            Os Territórios
+            Territórios
           </h2>
 
-          <p class="section-description">
-            Cada território possui geografia, cultura,
-            criaturas e instituições moldadas pela
-            Divindade que o governa.
+          <p class="section-text">
+            Cada território de Vaelora possui geografia,
+            cultura, criaturas e instituições moldadas
+            por sua Divindade regente.
           </p>
         </div>
 
-        <div class="card-grid">
-          <article class="card">
-            <h3>Rúvia</h3>
+        <div class="territory-list">
+          <article class="territory-card">
+            <div
+              class="territory-image"
+              style="
+                --territory-image:
+                  linear-gradient(
+                    145deg,
+                    #6f742d,
+                    #27321e 50%,
+                    #11150d
+                  );
+              "
+            ></div>
 
-            <p>
-              Pântanos, grandes rios e planícies
-              alagáveis sob o Senhor das Chagas.
-            </p>
+            <div class="territory-content">
+              <p class="territory-region">
+                Senhor das Chagas
+              </p>
+
+              <h3 class="territory-name">
+                Rúvia
+              </h3>
+
+              <p class="territory-description">
+                Pântanos, grandes rios e planícies
+                alagáveis marcados por uma vida
+                abundante e microscópica.
+              </p>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Umbra</h3>
+          <article class="territory-card">
+            <div
+              class="territory-image"
+              style="
+                --territory-image:
+                  linear-gradient(
+                    145deg,
+                    #55446d,
+                    #252232 50%,
+                    #111015
+                  );
+              "
+            ></div>
 
-            <p>
-              Bosques escuros, memoriais e lagos
-              silenciosos sob o Senhor do Crepúsculo.
-            </p>
+            <div class="territory-content">
+              <p class="territory-region">
+                Senhor do Crepúsculo
+              </p>
+
+              <h3 class="territory-name">
+                Umbra
+              </h3>
+
+              <p class="territory-description">
+                Bosques escuros, jardins funerários,
+                memoriais e lagos silenciosos envolvidos
+                por névoa.
+              </p>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Alba</h3>
+          <article class="territory-card">
+            <div
+              class="territory-image"
+              style="
+                --territory-image:
+                  linear-gradient(
+                    145deg,
+                    #c89354,
+                    #6f6537 50%,
+                    #213423
+                  );
+              "
+            ></div>
 
-            <p>
-              Campos floridos, jardins e bosques claros
-              sob a Senhora da Aurora.
-            </p>
+            <div class="territory-content">
+              <p class="territory-region">
+                Senhora da Aurora
+              </p>
+
+              <h3 class="territory-name">
+                Alba
+              </h3>
+
+              <p class="territory-description">
+                Campos floridos, jardins, bosques claros
+                e vales cultivados.
+              </p>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Tirena</h3>
+          <article class="territory-card">
+            <div
+              class="territory-image"
+              style="
+                --territory-image:
+                  linear-gradient(
+                    145deg,
+                    #a8c9dc,
+                    #55778c 50%,
+                    #202b36
+                  );
+              "
+            ></div>
 
-            <p>
-              Montanhas, planaltos e ilhas flutuantes
-              sob a Soberana do Céu.
-            </p>
+            <div class="territory-content">
+              <p class="territory-region">
+                Soberana do Céu
+              </p>
+
+              <h3 class="territory-name">
+                Tirena
+              </h3>
+
+              <p class="territory-description">
+                Montanhas elevadas, planaltos, rotas
+                nômades e ilhas flutuantes.
+              </p>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Névia</h3>
+          <article class="territory-card">
+            <div
+              class="territory-image"
+              style="
+                --territory-image:
+                  linear-gradient(
+                    145deg,
+                    #7772a0,
+                    #3d405c 50%,
+                    #1b2029
+                  );
+              "
+            ></div>
 
-            <p>
-              Florestas enevoadas, lagos e vales úmidos
-              sob o Senhor dos Véus.
-            </p>
+            <div class="territory-content">
+              <p class="territory-region">
+                Senhor dos Véus
+              </p>
+
+              <h3 class="territory-name">
+                Névia
+              </h3>
+
+              <p class="territory-description">
+                Florestas enevoadas, lagos tranquilos
+                e vales úmidos marcados pelos sonhos.
+              </p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="mapas">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-label">
-            Cartografia
+    <section
+      id="explorar"
+      class="mobile-section"
+    >
+      <div class="mobile-container">
+        <div class="section-intro">
+          <p class="section-kicker">
+            Arquivo de Vaelora
           </p>
 
           <h2 class="section-title">
-            Mapas de Vaelora
+            Explore o mundo
           </h2>
 
-          <p class="section-description">
-            Os mapas regionais e o mapa-múndi serão
-            incorporados conforme as páginas dos
-            territórios forem concluídas.
+          <p class="section-text">
+            As páginas completas das Divindades,
+            territórios, mapas e regras serão adicionadas
+            progressivamente.
           </p>
         </div>
 
-        <div class="info-box">
-          <h3>Arquivo cartográfico em construção</h3>
+        <div class="feature-card">
+          <div class="feature-card-content">
+            <p class="feature-card-label">
+              Próximos registros
+            </p>
 
-          <p>
-            Rúvia e Umbra serão os primeiros territórios
-            apresentados em detalhes.
-          </p>
+            <h3 class="feature-card-title">
+              Rúvia e Umbra
+            </h3>
+
+            <p class="feature-card-description">
+              Os dois primeiros territórios a receber
+              páginas completas, mapas regionais e
+              descrições detalhadas.
+            </p>
+
+            <span class="feature-card-link">
+              Em construção
+            </span>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>
-        Harmonia Caótica · Mundo de Vaelora
-      </p>
+  <footer class="mobile-footer">
+    <div class="mobile-container">
+      Harmonia Caótica · Mundo de Vaelora
     </div>
   </footer>
+
+  <nav
+    class="bottom-navigation"
+    aria-label="Navegação principal"
+  >
+    <ul class="bottom-navigation-list">
+      <li>
+        <a
+          class="active"
+          href="#inicio"
+        >
+          <span class="bottom-navigation-icon">
+            ◆
+          </span>
+
+          Início
+        </a>
+      </li>
+
+      <li>
+        <a href="#mundo">
+          <span class="bottom-navigation-icon">
+            ◉
+          </span>
+
+          Mundo
+        </a>
+      </li>
+
+      <li>
+        <a href="#divindades">
+          <span class="bottom-navigation-icon">
+            ✦
+          </span>
+
+          Deuses
+        </a>
+      </li>
+
+      <li>
+        <a href="#territorios">
+          <span class="bottom-navigation-icon">
+            ◇
+          </span>
+
+          Terras
+        </a>
+      </li>
+    </ul>
+  </nav>
 </body>
 </html>
