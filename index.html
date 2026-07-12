@@ -8,106 +8,292 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Harmonia Caótica</title>
+  <meta
+    name="description"
+    content="Site oficial de Harmonia Caótica, um RPG ambientado no mundo de Vaelora."
+  >
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+  <title>Harmonia Caótica — Vaelora</title>
 
-    body {
-      min-height: 100vh;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-
-      background:
-        radial-gradient(circle at top, #30253c 0%, #15121b 45%, #09080c 100%);
-
-      color: #eee8df;
-      font-family: Georgia, "Times New Roman", serif;
-      text-align: center;
-    }
-
-    main {
-      width: 100%;
-      max-width: 720px;
-      padding: 54px 28px;
-
-      border: 1px solid rgba(211, 177, 105, 0.55);
-      border-radius: 16px;
-
-      background: rgba(10, 9, 14, 0.78);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
-    }
-
-    .ornamento {
-      color: #d3b169;
-      font-size: 22px;
-      letter-spacing: 12px;
-    }
-
-    h1 {
-      margin: 24px 0 10px;
-
-      color: #e6c780;
-      font-size: clamp(38px, 10vw, 72px);
-      font-weight: normal;
-      line-height: 0.95;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      margin: 0 0 32px;
-
-      color: #bcb3c7;
-      font-size: clamp(16px, 4vw, 22px);
-      font-weight: normal;
-      letter-spacing: 2px;
-    }
-
-    p {
-      max-width: 560px;
-      margin: 0 auto;
-
-      color: #d7d0c8;
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    .mundo {
-      color: #e6c780;
-    }
-
-    footer {
-      margin-top: 42px;
-      color: #918899;
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+  <header class="site-header">
+    <nav class="navigation container">
+      <a class="logo" href="index.html">
+        Harmonia Caótica
+      </a>
+
+      <ul class="navigation-links">
+        <li>
+          <a href="#mundo">O Mundo</a>
+        </li>
+
+        <li>
+          <a href="#divindades">Divindades</a>
+        </li>
+
+        <li>
+          <a href="#territorios">Territórios</a>
+        </li>
+
+        <li>
+          <a href="#mapas">Mapas</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
   <main>
-    <div class="ornamento">◆ ◆ ◆</div>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <p class="eyebrow">
+            Um mundo moldado por conceitos divinos
+          </p>
 
-    <h1>Harmonia<br>Caótica</h1>
+          <h1 class="hero-title">
+            Harmonia<br>Caótica
+          </h1>
 
-    <h2>Um RPG ambientado no mundo de Vaelora</h2>
+          <div class="ornament">
+            ◆ ◆ ◆
+          </div>
 
-    <p>
-      Deuses governam conceitos, religiões moldam territórios
-      e mortais caminham em direção à ascensão.
-      Este será o arquivo oficial de
-      <span class="mundo">Vaelora</span>.
-    </p>
+          <p class="hero-subtitle">
+            Deuses governam conceitos, religiões moldam
+            territórios e mortais percorrem caminhos que
+            podem conduzi-los à própria divindade.
+          </p>
 
-    <footer>Site em construção</footer>
+          <div class="button-group">
+            <a class="button" href="#mundo">
+              Conhecer Vaelora
+            </a>
+
+            <a class="button" href="#divindades">
+              Explorar Divindades
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mundo">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">
+            O mundo
+          </p>
+
+          <h2 class="section-title">
+            Vaelora
+          </h2>
+
+          <p class="section-description">
+            Um mundo dividido entre domínios divinos,
+            povos de diferentes crenças e territórios
+            transformados pela influência dos Deuses.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <h3>A Origem</h3>
+
+            <p>
+              Antes dos Deuses, existiam apenas conceitos
+              sem consciência, forma ou propósito.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Guerra Divina</h3>
+
+            <p>
+              As fronteiras entre os conceitos são
+              disputadas continuamente pelas Divindades.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Ascensão</h3>
+
+            <p>
+              Quando um domínio perde seu Deus, mortais
+              poderosos podem tentar reivindicá-lo.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="divindades">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">
+            Religiões e domínios
+          </p>
+
+          <h2 class="section-title">
+            As Divindades
+          </h2>
+
+          <p class="section-description">
+            Cada Divindade governa conceitos próprios,
+            concede bênçãos e transforma a cultura de
+            seus seguidores.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <h3>Senhor das Chagas</h3>
+
+            <p>
+              Deus das Doenças e dos Parasitas.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Senhor do Crepúsculo</h3>
+
+            <p>
+              Deus da Morte e das Trevas.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Senhora da Aurora</h3>
+
+            <p>
+              Deusa da Luz e da Vida.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Soberana do Céu</h3>
+
+            <p>
+              Deusa do Sol e do Céu.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Senhor dos Véus</h3>
+
+            <p>
+              Deus dos Sonhos e dos Pesadelos.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="territorios">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">
+            Nações de Vaelora
+          </p>
+
+          <h2 class="section-title">
+            Os Territórios
+          </h2>
+
+          <p class="section-description">
+            Cada território possui geografia, cultura,
+            criaturas e instituições moldadas pela
+            Divindade que o governa.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <h3>Rúvia</h3>
+
+            <p>
+              Pântanos, grandes rios e planícies
+              alagáveis sob o Senhor das Chagas.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Umbra</h3>
+
+            <p>
+              Bosques escuros, memoriais e lagos
+              silenciosos sob o Senhor do Crepúsculo.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Alba</h3>
+
+            <p>
+              Campos floridos, jardins e bosques claros
+              sob a Senhora da Aurora.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Tirena</h3>
+
+            <p>
+              Montanhas, planaltos e ilhas flutuantes
+              sob a Soberana do Céu.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Névia</h3>
+
+            <p>
+              Florestas enevoadas, lagos e vales úmidos
+              sob o Senhor dos Véus.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="mapas">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">
+            Cartografia
+          </p>
+
+          <h2 class="section-title">
+            Mapas de Vaelora
+          </h2>
+
+          <p class="section-description">
+            Os mapas regionais e o mapa-múndi serão
+            incorporados conforme as páginas dos
+            territórios forem concluídas.
+          </p>
+        </div>
+
+        <div class="info-box">
+          <h3>Arquivo cartográfico em construção</h3>
+
+          <p>
+            Rúvia e Umbra serão os primeiros territórios
+            apresentados em detalhes.
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Harmonia Caótica · Mundo de Vaelora
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
