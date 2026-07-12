@@ -957,19 +957,25 @@ button {
 }
 
 /* ==========================================================
-   CARROSSEL NO COMPUTADOR
+   CARROSSEL — COMPUTADOR
    ========================================================== */
 
-@media (hover: hover) and (pointer: fine) {
-  .horizontal-scroll {
-    cursor: grab;
-    user-select: none;
-    -webkit-user-select: none;
-    scroll-behavior: smooth;
-  }
+.horizontal-scroll {
+  cursor: grab;
+}
 
-  .horizontal-scroll.is-dragging {
-    cursor: grabbing;
-    scroll-snap-type: none;
+.horizontal-scroll.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@media (min-width: 900px) {
+  .horizontal-scroll {
+    grid-auto-columns: minmax(360px, 46%);
+    padding-right: 90px;
   }
 }
