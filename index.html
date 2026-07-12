@@ -33,78 +33,6 @@
   >
 </head>
 
-<script>
-  document
-    .querySelectorAll(".horizontal-scroll")
-    .forEach((carousel) => {
-      let dragging = false;
-      let initialX = 0;
-      let initialScroll = 0;
-
-      carousel.tabIndex = 0;
-
-      carousel.addEventListener("pointerdown", (event) => {
-        if (event.pointerType !== "mouse") {
-          return;
-        }
-
-        dragging = true;
-        initialX = event.clientX;
-        initialScroll = carousel.scrollLeft;
-
-        carousel.classList.add("is-dragging");
-        carousel.setPointerCapture(event.pointerId);
-      });
-
-      carousel.addEventListener("pointermove", (event) => {
-        if (!dragging) {
-          return;
-        }
-
-        const movement = event.clientX - initialX;
-        carousel.scrollLeft = initialScroll - movement;
-      });
-
-      function stopDragging(event) {
-        if (!dragging) {
-          return;
-        }
-
-        dragging = false;
-        carousel.classList.remove("is-dragging");
-
-        if (carousel.hasPointerCapture(event.pointerId)) {
-          carousel.releasePointerCapture(event.pointerId);
-        }
-      }
-
-      carousel.addEventListener("pointerup", stopDragging);
-      carousel.addEventListener("pointercancel", stopDragging);
-
-      carousel.addEventListener("keydown", (event) => {
-        const distance = carousel.clientWidth * 0.85;
-
-        if (event.key === "ArrowRight") {
-          event.preventDefault();
-
-          carousel.scrollBy({
-            left: distance,
-            behavior: "smooth"
-          });
-        }
-
-        if (event.key === "ArrowLeft") {
-          event.preventDefault();
-
-          carousel.scrollBy({
-            left: -distance,
-            behavior: "smooth"
-          });
-        }
-      });
-    });
-</script>
-  
 <body>
   <header class="mobile-header">
     <div class="mobile-header-inner mobile-container">
@@ -130,7 +58,10 @@
     <section
       id="inicio"
       class="mobile-hero"
-      style="--hero-image: url('/harmonia-caotica/imagens/hero-harmonia-mobile.jpg');"
+      style="
+        --hero-image:
+          url('/harmonia-caotica/imagens/hero-harmonia-mobile.jpg');
+      "
     >
       <div class="hero-content mobile-container">
         <p class="hero-label">
@@ -234,7 +165,10 @@
           </p>
         </div>
 
-        <div class="horizontal-scroll">
+        <div
+          class="horizontal-scroll"
+          aria-label="Divindades de Vaelora"
+        >
           <article
             class="deity-card"
             style="
@@ -656,5 +590,156 @@
       </li>
     </ul>
   </nav>
+
+  <script>
+    document
+      .querySelectorAll(".horizontal-scroll")
+      .forEach((carousel) => {
+        let dragging = false;
+        let initialX = 0;
+        let initialScroll = 0;
+        let moved = false;
+
+        carousel.tabIndex = 0;
+
+        carousel.setAttribute(
+          "aria-label",
+          "Lista horizontal. Arraste com o mouse ou use as setas."
+        );
+
+        carousel.addEventListener(
+          "pointerdown",
+          (event) => {
+            if (event.pointerType !== "mouse") {
+              return;
+            }
+
+            dragging = true;
+            moved = false;
+
+            initialX = event.clientX;
+            initialScroll = carousel.scrollLeft;
+
+            carousel.classList.add("is-dragging");
+            carousel.setPointerCapture(event.pointerId);
+          }
+        );
+
+        carousel.addEventListener(
+          "pointermove",
+          (event) => {
+            if (!dragging) {
+              return;
+            }
+
+            const movement =
+              event.clientX - initialX;
+
+            if (Math.abs(movement) > 4) {
+              moved = true;
+            }
+
+            carousel.scrollLeft =
+              initialScroll - movement;
+          }
+        );
+
+        function stopDragging(event) {
+          if (!dragging) {
+            return;
+          }
+
+          dragging = false;
+
+          carousel.classList.remove(
+            "is-dragging"
+          );
+
+          if (
+            typeof event.pointerId !== "undefined" &&
+            carousel.hasPointerCapture(event.pointerId)
+          ) {
+            carousel.releasePointerCapture(
+              event.pointerId
+            );
+          }
+        }
+
+        carousel.addEventListener(
+          "pointerup",
+          stopDragging
+        );
+
+        carousel.addEventListener(
+          "pointercancel",
+          stopDragging
+        );
+
+        carousel.addEventListener(
+          "wheel",
+          (event) => {
+            const verticalMovement =
+              Math.abs(event.deltaY);
+
+            const horizontalMovement =
+              Math.abs(event.deltaX);
+
+            if (
+              verticalMovement <= horizontalMovement
+            ) {
+              return;
+            }
+
+            event.preventDefault();
+
+            carousel.scrollLeft += event.deltaY;
+          },
+          {
+            passive: false
+          }
+        );
+
+        carousel.addEventListener(
+          "keydown",
+          (event) => {
+            const distance =
+              carousel.clientWidth * 0.75;
+
+            if (event.key === "ArrowRight") {
+              event.preventDefault();
+
+              carousel.scrollBy({
+                left: distance,
+                behavior: "smooth"
+              });
+            }
+
+            if (event.key === "ArrowLeft") {
+              event.preventDefault();
+
+              carousel.scrollBy({
+                left: -distance,
+                behavior: "smooth"
+              });
+            }
+          }
+        );
+
+        carousel.addEventListener(
+          "click",
+          (event) => {
+            if (!moved) {
+              return;
+            }
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            moved = false;
+          },
+          true
+        );
+      });
+  </script>
 </body>
 </html>
