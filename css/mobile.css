@@ -955,3 +955,21 @@ button {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* ==========================================================
+   CARROSSEL NO COMPUTADOR
+   ========================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+  .horizontal-scroll {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    scroll-behavior: smooth;
+  }
+
+  .horizontal-scroll.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+  }
+}
