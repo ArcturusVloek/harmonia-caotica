@@ -33,6 +33,78 @@
   >
 </head>
 
+<script>
+  document
+    .querySelectorAll(".horizontal-scroll")
+    .forEach((carousel) => {
+      let dragging = false;
+      let initialX = 0;
+      let initialScroll = 0;
+
+      carousel.tabIndex = 0;
+
+      carousel.addEventListener("pointerdown", (event) => {
+        if (event.pointerType !== "mouse") {
+          return;
+        }
+
+        dragging = true;
+        initialX = event.clientX;
+        initialScroll = carousel.scrollLeft;
+
+        carousel.classList.add("is-dragging");
+        carousel.setPointerCapture(event.pointerId);
+      });
+
+      carousel.addEventListener("pointermove", (event) => {
+        if (!dragging) {
+          return;
+        }
+
+        const movement = event.clientX - initialX;
+        carousel.scrollLeft = initialScroll - movement;
+      });
+
+      function stopDragging(event) {
+        if (!dragging) {
+          return;
+        }
+
+        dragging = false;
+        carousel.classList.remove("is-dragging");
+
+        if (carousel.hasPointerCapture(event.pointerId)) {
+          carousel.releasePointerCapture(event.pointerId);
+        }
+      }
+
+      carousel.addEventListener("pointerup", stopDragging);
+      carousel.addEventListener("pointercancel", stopDragging);
+
+      carousel.addEventListener("keydown", (event) => {
+        const distance = carousel.clientWidth * 0.85;
+
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+
+          carousel.scrollBy({
+            left: distance,
+            behavior: "smooth"
+          });
+        }
+
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+
+          carousel.scrollBy({
+            left: -distance,
+            behavior: "smooth"
+          });
+        }
+      });
+    });
+</script>
+  
 <body>
   <header class="mobile-header">
     <div class="mobile-header-inner mobile-container">
