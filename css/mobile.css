@@ -276,7 +276,7 @@ button {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
 
   background:
@@ -299,6 +299,7 @@ button {
 .hero-content {
   width: 100%;
   position: relative;
+  z-index: 1;
 }
 
 .hero-content::before {
@@ -969,7 +970,7 @@ button {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 1;
   pointer-events: none;
   background:
     radial-gradient(circle at 50% 28%, transparent 0 22%, rgba(0,0,0,0.38) 88%),
@@ -989,7 +990,7 @@ button {
 .internal-hero-image {
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1074,6 +1075,7 @@ button {
 
 .mobile-article.mobile-container {
   position: relative;
+  isolation: isolate;
   width: 100%;
   max-width: 780px;
   margin-inline: auto;
