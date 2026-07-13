@@ -1833,3 +1833,341 @@ button {
     transform: scale(1.05);
   }
 }
+
+/* ==========================================================
+   PÁGINAS DAS DIVINDADES
+   ========================================================== */
+
+.deity-page {
+  --deity-accent: #b4bd62;
+  --deity-accent-soft: rgba(180, 189, 98, 0.15);
+  --deity-accent-border: rgba(180, 189, 98, 0.34);
+}
+
+.deity-hero {
+  background: #090b07;
+}
+
+.deity-hero .internal-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center top;
+}
+
+.deity-hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 7, 4, 0.08) 0%,
+      rgba(5, 7, 4, 0.18) 30%,
+      rgba(5, 7, 4, 0.78) 72%,
+      var(--background) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.28),
+      transparent 55%,
+      rgba(0, 0, 0, 0.12)
+    );
+}
+
+.deity-hero::after {
+  z-index: 1;
+}
+
+.internal-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.deity-domain-badge {
+  width: fit-content;
+
+  margin-top: 18px;
+  padding: 9px 14px;
+
+  border: 1px solid var(--deity-accent-border);
+  border-radius: 999px;
+
+  background: rgba(7, 9, 5, 0.62);
+
+  color: var(--deity-accent);
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.6px;
+
+  text-transform: uppercase;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ==========================================================
+   BÊNÇÃO
+   ========================================================== */
+
+.blessing-section {
+  margin-top: 54px;
+}
+
+.blessing-card {
+  position: relative;
+
+  margin-top: 24px;
+  padding: 31px 23px 27px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--deity-accent-border);
+  border-radius: var(--radius);
+
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      var(--deity-accent-soft),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(180, 189, 98, 0.1),
+      rgba(15, 17, 12, 0.96)
+    );
+
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.36);
+}
+
+.blessing-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 9px;
+
+  border: 1px solid rgba(180, 189, 98, 0.09);
+  border-radius: calc(var(--radius) - 6px);
+
+  pointer-events: none;
+}
+
+.blessing-symbol {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 22px;
+
+  border: 1px solid var(--deity-accent-border);
+  border-radius: 50%;
+
+  background: rgba(180, 189, 98, 0.08);
+
+  color: var(--deity-accent);
+
+  font-size: 18px;
+
+  box-shadow:
+    0 0 24px rgba(180, 189, 98, 0.12);
+}
+
+.blessing-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.blessing-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================
+   CONCEITOS E CRIATURAS SAGRADAS
+   ========================================================== */
+
+.sacred-section {
+  margin-top: 62px;
+}
+
+.sacred-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 10px;
+
+  margin-top: 25px;
+}
+
+.sacred-item {
+  min-height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 13px 10px;
+
+  border: 1px solid var(--deity-accent-border);
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(180, 189, 98, 0.1),
+      rgba(17, 19, 14, 0.88)
+    );
+
+  color: var(--text);
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.7px;
+
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.sacred-item--creature {
+  justify-content: flex-start;
+  gap: 9px;
+
+  text-align: left;
+}
+
+.sacred-item--creature span {
+  color: var(--deity-accent);
+
+  font-size: 8px;
+}
+
+/* ==========================================================
+   TERRITÓRIO RELACIONADO
+   ========================================================== */
+
+.related-territory {
+  position: relative;
+
+  min-height: 350px;
+
+  display: flex;
+  align-items: flex-end;
+
+  margin-top: 68px;
+  padding: 28px 23px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--deity-accent-border);
+  border-radius: calc(var(--radius) + 4px);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(7, 9, 5, 0.1),
+      rgba(7, 9, 5, 0.64) 44%,
+      rgba(7, 9, 5, 0.98) 100%
+    ),
+    url("/harmonia-caotica/imagens/territorios/ruvia.jpg");
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.42);
+}
+
+.related-territory::after {
+  content: "";
+
+  position: absolute;
+  inset: 9px;
+
+  border: 1px solid rgba(180, 189, 98, 0.11);
+  border-radius: var(--radius);
+
+  pointer-events: none;
+}
+
+.related-territory-content {
+  position: relative;
+  z-index: 1;
+}
+
+.related-territory h2 {
+  margin:
+    9px
+    0
+    14px;
+}
+
+.related-territory p {
+  color: rgba(245, 240, 229, 0.86);
+
+  text-shadow:
+    0 3px 14px rgba(0, 0, 0, 0.96);
+}
+
+.related-territory-link {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 42px;
+
+  margin-top: 5px;
+  padding: 0 17px;
+
+  border: 1px solid var(--deity-accent-border);
+  border-radius: 999px;
+
+  background: rgba(7, 9, 5, 0.68);
+
+  color: var(--gold-light);
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (min-width: 700px) {
+  .sacred-grid {
+    grid-template-columns:
+      repeat(5, minmax(0, 1fr));
+  }
+
+  .sacred-item {
+    min-height: 68px;
+  }
+
+  .related-territory {
+    min-height: 430px;
+    padding: 38px 34px;
+  }
+
+  .related-territory-content {
+    max-width: 500px;
+  }
+}
