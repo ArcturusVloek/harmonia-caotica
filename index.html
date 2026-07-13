@@ -42,8 +42,8 @@
           </h1>
 
           <p class="home-hero__lead">
-            Deuses governam conceitos, religiões moldam territórios e mortais
-            podem ascender para ocupar um lugar entre as Divindades.
+            Deuses governam conceitos, religiões moldam territórios e
+            mortais podem ascender para ocupar um lugar entre as Divindades.
           </p>
 
           <div class="home-hero__actions">
@@ -72,15 +72,12 @@
           </div>
 
           <p class="cosmology-panel__text">
-            Vida, morte, céu, sonho e doença sustentam um equilíbrio que nunca
-            permanece imóvel.
+            Vida, morte, céu, sonho e doença sustentam um equilíbrio que nunca permanece imóvel.
           </p>
         </aside>
       </div>
 
-      <a class="scroll-mark" href="#mundo" aria-label="Ir para a próxima seção">
-        <span></span>
-      </a>
+      <a class="scroll-mark" href="#mundo" aria-label="Ir para a próxima seção"><span></span></a>
     </section>
 
     <section id="mundo" class="world-prologue">
@@ -97,15 +94,13 @@
           <div class="world-prologue__copy" data-reveal>
             <p class="world-prologue__opening">
               Antes de possuir reis, fronteiras ou cidades, Vaelora foi moldada
-              por conceitos que aprenderam a desejar, temer e disputar espaço
-              na criação.
+              por conceitos que aprenderam a desejar, temer e disputar espaço na criação.
             </p>
 
             <p>
-              A Guerra Divina alterou continentes, crenças e espécies. O mundo
-              que restou não é estável: ele se mantém por uma tensão permanente
-              entre forças que precisam umas das outras e, ainda assim,
-              recusam-se a permanecer em paz.
+              A Guerra Divina alterou continentes, crenças e espécies. O mundo que
+              restou não é estável: ele se mantém por uma tensão permanente entre
+              forças que precisam umas das outras e, ainda assim, recusam-se a permanecer em paz.
             </p>
 
             <blockquote>
@@ -199,7 +194,7 @@
             </div>
           </article>
 
-          <article class="deity-entry deity-entry--veus" data-reveal>
+          <a class="deity-entry deity-entry--veus" href="divindades/senhor-dos-veus.html" data-reveal>
             <figure class="deity-entry__portrait">
               <img src="/harmonia-caotica/imagens/divindades/senhor-dos-veus.jpg" alt="Representação do Senhor dos Véus" loading="lazy" decoding="async">
               <span class="deity-entry__roman">V</span>
@@ -209,9 +204,9 @@
               <p class="deity-entry__domain">Sonhos e Pesadelos</p>
               <h3>Senhor dos Véus</h3>
               <p>Guardião do sono, dos sonhos, dos pesadelos e dos caminhos da mente adormecida.</p>
-              <span class="deity-entry__status">Registro em preparação</span>
+              <span class="deity-entry__link">Conhecer a Divindade →</span>
             </div>
-          </article>
+          </a>
         </div>
       </div>
     </section>
@@ -302,21 +297,13 @@
 
         <div class="archive-routes">
           <a href="mundo/origem.html" data-reveal>
-            <span>01</span>
-            <div><p>Fundamentos</p><h3>A Origem</h3></div>
-            <strong>→</strong>
+            <span>01</span><div><p>Fundamentos</p><h3>A Origem</h3></div><strong>→</strong>
           </a>
-
           <a href="#divindades" data-reveal>
-            <span>02</span>
-            <div><p>Religiões</p><h3>Divindades</h3></div>
-            <strong>→</strong>
+            <span>02</span><div><p>Religiões</p><h3>Divindades</h3></div><strong>→</strong>
           </a>
-
           <a href="#territorios" data-reveal>
-            <span>03</span>
-            <div><p>Geografia</p><h3>Territórios</h3></div>
-            <strong>→</strong>
+            <span>03</span><div><p>Geografia</p><h3>Territórios</h3></div><strong>→</strong>
           </a>
         </div>
       </div>
@@ -340,50 +327,36 @@
   </nav>
 
   <script>
-    const revealElements = document.querySelectorAll("[data-reveal]");
-
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.14, rootMargin: "0px 0px -8% 0px" }
-    );
+    const revealElements = document.querySelectorAll('[data-reveal]');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
 
     revealElements.forEach((element) => revealObserver.observe(element));
 
-    const navigationLinks = Array.from(
-      document.querySelectorAll('.bottom-navigation a[href^="#"]')
-    );
-
+    const navigationLinks = Array.from(document.querySelectorAll('.bottom-navigation a[href^="#"]'));
     const observedSections = navigationLinks
-      .map((link) => document.querySelector(link.getAttribute("href")))
+      .map((link) => document.querySelector(link.getAttribute('href')))
       .filter(Boolean);
 
-    const navigationObserver = new IntersectionObserver(
-      (entries) => {
-        const currentEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+    const navigationObserver = new IntersectionObserver((entries) => {
+      const currentEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
 
-        if (!currentEntry) return;
+      if (!currentEntry) return;
 
-        navigationLinks.forEach((link) => {
-          const isCurrent = link.getAttribute("href") === `#${currentEntry.target.id}`;
-          link.classList.toggle("active", isCurrent);
-
-          if (isCurrent) {
-            link.setAttribute("aria-current", "page");
-          } else {
-            link.removeAttribute("aria-current");
-          }
-        });
-      },
-      { rootMargin: "-36% 0px -52% 0px", threshold: [0, 0.1, 0.35, 0.6] }
-    );
+      navigationLinks.forEach((link) => {
+        const isCurrent = link.getAttribute('href') === `#${currentEntry.target.id}`;
+        link.classList.toggle('active', isCurrent);
+        if (isCurrent) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-36% 0px -52% 0px', threshold: [0, 0.1, 0.35, 0.6] });
 
     observedSections.forEach((section) => navigationObserver.observe(section));
   </script>
