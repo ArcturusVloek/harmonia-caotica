@@ -107,7 +107,7 @@
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(180deg, transparent 58%, rgba(5,5,8,.78) 100%),
+        linear-gradient(180deg, transparent 58%, rgba(5,5,8,.82) 100%),
         radial-gradient(circle at 50% 50%, transparent 36%, rgba(0,0,0,.25) 100%);
       pointer-events: none;
     }
@@ -143,6 +143,22 @@
       font-weight: 700;
       letter-spacing: 1.4px;
       text-transform: uppercase;
+    }
+
+    .origin-plate--awakening {
+      border-color: rgba(143, 111, 191, .42);
+      box-shadow:
+        0 28px 70px rgba(0,0,0,.62),
+        0 0 50px rgba(114,79,164,.12),
+        0 0 28px rgba(199,164,92,.06);
+    }
+
+    .origin-plate--awakening::before {
+      border-color: rgba(216,194,255,.14);
+    }
+
+    .origin-plate--awakening figcaption span {
+      color: #d8c2ff;
     }
 
     .origin-principle {
@@ -255,6 +271,19 @@
       <p>
         O que se sabe é que os primeiros Deuses não criaram os conceitos que passaram a governar. Eles os reivindicaram.
       </p>
+
+      <figure class="origin-plate origin-plate--awakening">
+        <img
+          src="/harmonia-caotica/imagens/origem/despertar-dos-cinco-deuses.webp"
+          alt="Os cinco Deuses de Vaelora no instante em que os conceitos adquiriram vontade e foram reivindicados"
+          loading="lazy"
+          decoding="async"
+        >
+        <figcaption>
+          <span>Registro II · Quando os conceitos adquiriram vontade</span>
+          Os cinco Deuses no instante em que reivindicaram os domínios que passariam a definir suas existências.
+        </figcaption>
+      </figure>
 
       <p>
         Reivindicar um domínio não era o mesmo que possuir uma terra ou um objeto. A Divindade tornava-se o centro consciente de uma força que antes se manifestava sem direção. Ela estabelecia regras, definia limites e determinava como aquele conceito se relacionaria com o restante da realidade.
