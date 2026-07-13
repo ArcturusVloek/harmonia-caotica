@@ -1,479 +1,1804 @@
-:root{
-  --background:#08070b;--background-soft:#111017;--surface:#17141d;--surface-light:#211c29;
-  --text:#f3eee7;--text-soft:#cbc2bb;--text-muted:#938995;
-  --gold:#d7b66e;--gold-light:#f2d99d;--gold-dark:#765b2e;
-  --border:rgba(215,182,110,.24);--border-strong:rgba(215,182,110,.52);
-  --shadow:0 22px 60px rgba(0,0,0,.48);--radius:18px;--radius-large:26px;
-  --page-padding:20px;--header-height:58px;--bottom-navigation-height:78px;
-}
-*{box-sizing:border-box}
-html{min-width:320px;scroll-behavior:smooth;scroll-padding-top:72px;background:var(--background)}
-body{
-  min-width:320px;min-height:100vh;margin:0;
-  padding-bottom:calc(var(--bottom-navigation-height) + env(safe-area-inset-bottom));
-  overflow-x:hidden;
-  background:radial-gradient(circle at 50% -8%,rgba(97,66,120,.18),transparent 28rem),var(--background);
-  color:var(--text);font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.65
-}
-img{display:block;width:100%;max-width:100%}
-a{color:inherit}
-a,button{-webkit-tap-highlight-color:transparent}
-button{font:inherit}
-::selection{background:var(--gold);color:var(--background)}
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
 
-.mobile-container{
-  width:100%;max-width:1120px;margin-inline:auto;
-  padding-left:max(var(--page-padding),env(safe-area-inset-left));
-  padding-right:max(var(--page-padding),env(safe-area-inset-right))
-}
-.mobile-section{padding-block:46px}
-.mobile-section+.mobile-section{border-top:1px solid var(--border)}
+/* ==========================================================
+   HARMONIA CAÓTICA
+   Direção visual: códice divino, fantasia sombria e luxo ritual
+   ========================================================== */
 
-.mobile-header{
-  position:fixed;inset:0 0 auto;z-index:100;width:100%;
-  padding-top:env(safe-area-inset-top);
-  border-bottom:1px solid rgba(255,255,255,.06);
-  background:linear-gradient(180deg,rgba(8,7,11,.97),rgba(8,7,11,.82));
-  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)
-}
-.mobile-header-inner{
-  min-height:var(--header-height);display:flex;align-items:center;justify-content:space-between;gap:16px
-}
-.mobile-logo{
-  min-width:0;overflow:hidden;color:var(--gold-light);font-size:13px;font-weight:700;letter-spacing:1.8px;
-  text-decoration:none;text-overflow:ellipsis;text-transform:uppercase;white-space:nowrap
-}
-.header-action{
-  width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;
-  border:1px solid var(--border);border-radius:50%;background:rgba(255,255,255,.035);
-  color:var(--gold-light);text-decoration:none
+:root {
+  --background: #07070a;
+  --background-deep: #040406;
+  --background-soft: #0e0d13;
+  --surface: #15131b;
+  --surface-light: #1d1924;
+  --surface-elevated: #24202c;
+
+  --text: #f7f1e7;
+  --text-soft: #d2c8bc;
+  --text-muted: #978e98;
+
+  --gold: #caa75f;
+  --gold-light: #f0d690;
+  --gold-pale: #fff0bd;
+  --gold-dark: #6f5227;
+
+  --border: rgba(202, 167, 95, 0.22);
+  --border-strong: rgba(202, 167, 95, 0.48);
+  --border-soft: rgba(255, 255, 255, 0.07);
+
+  --shadow-soft: 0 14px 34px rgba(0, 0, 0, 0.34);
+  --shadow: 0 26px 70px rgba(0, 0, 0, 0.56);
+  --shadow-gold: 0 0 38px rgba(202, 167, 95, 0.12);
+
+  --radius-small: 12px;
+  --radius: 20px;
+  --radius-large: 30px;
+
+  --page-padding: 20px;
+  --header-height: 62px;
+  --bottom-navigation-height: 86px;
+
+  --display: "Cinzel", Georgia, serif;
+  --body: "Libre Baskerville", Georgia, serif;
+  --ui: "Inter", Arial, sans-serif;
+
+  --transition: 220ms cubic-bezier(.2, .7, .2, 1);
 }
 
-.mobile-hero{
-  position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;
-  padding:calc(86px + env(safe-area-inset-top)) 0 42px;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 20px);
+  background: var(--background);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  padding-bottom: calc(var(--bottom-navigation-height) + env(safe-area-inset-bottom) + 16px);
+  overflow-x: hidden;
+
   background:
-    linear-gradient(180deg,rgba(8,7,11,.08) 0%,rgba(8,7,11,.18) 34%,rgba(8,7,11,.82) 74%,var(--background) 100%),
-    var(--hero-image,radial-gradient(circle at 50% 25%,#59436b,#14101a 62%,#08070b));
-  background-position:center;background-repeat:no-repeat;background-size:cover
-}
-.mobile-hero::before{
-  content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(90deg,rgba(0,0,0,.2),transparent 38%,transparent 62%,rgba(0,0,0,.2));
-  pointer-events:none
-}
-.hero-content{width:100%}
-.hero-label,.section-kicker,.internal-kicker,.feature-card-label,.deity-domains,.territory-region{
-  font-family:Arial,Helvetica,sans-serif;font-weight:700;text-transform:uppercase
-}
-.hero-label{margin:0 0 12px;color:var(--gold);font-size:10px;letter-spacing:2.7px}
-.hero-title{
-  max-width:390px;margin:0;color:var(--gold-light);font-size:clamp(48px,15vw,76px);font-weight:400;
-  line-height:.9;letter-spacing:-1.4px;text-transform:uppercase;text-shadow:0 8px 28px rgba(0,0,0,.75)
-}
-.hero-subtitle{
-  max-width:480px;margin:22px 0 0;color:var(--text-soft);font-size:16px;line-height:1.62;
-  text-shadow:0 3px 18px rgba(0,0,0,.82)
-}
-.hero-actions{max-width:500px;display:grid;grid-template-columns:1fr;gap:11px;margin-top:26px}
-.primary-button,.secondary-button{
-  min-height:52px;display:flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;
-  font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;letter-spacing:.9px;
-  text-align:center;text-decoration:none;text-transform:uppercase
-}
-.primary-button{
-  border:1px solid var(--gold-light);background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#17110a;
-  box-shadow:0 12px 32px rgba(215,182,110,.2)
-}
-.secondary-button{
-  border:1px solid var(--border-strong);background:rgba(8,7,11,.62);color:var(--gold-light);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)
-}
-.primary-button:active,.secondary-button:active{transform:scale(.98)}
+    radial-gradient(circle at 50% -12%, rgba(118, 82, 145, 0.17), transparent 32rem),
+    radial-gradient(circle at 0% 38%, rgba(202, 167, 95, 0.06), transparent 26rem),
+    linear-gradient(180deg, var(--background-deep), var(--background) 34%, #09080c 100%);
 
-.section-intro{max-width:700px;margin-bottom:24px}
-.section-kicker{margin:0 0 7px;color:var(--gold);font-size:10px;letter-spacing:2.3px}
-.section-title{margin:0;color:var(--gold-light);font-size:clamp(34px,10vw,50px);font-weight:400;line-height:1.02}
-.section-text{
-  max-width:660px;margin:14px 0 0;color:var(--text-soft);font-size:15px;line-height:1.62;text-align:left
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.72;
 }
 
-.feature-card{
-  position:relative;min-height:320px;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;
-  border:1px solid var(--border);border-radius:var(--radius-large);
-  background:linear-gradient(145deg,var(--surface-light),var(--surface));box-shadow:var(--shadow);
-  color:inherit;text-decoration:none
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.075;
+  mix-blend-mode: soft-light;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
 }
-.feature-card-content{position:relative;z-index:2;width:100%;padding:24px 21px}
-.feature-card-label{margin:0 0 8px;color:var(--gold);font-size:9px;letter-spacing:2px}
-.feature-card-title{
-  margin:0;color:var(--gold-light);font-size:clamp(29px,8vw,40px);font-weight:400;line-height:1.06
-}
-.feature-card-description{
-  max-width:560px;margin:12px 0 0;color:var(--text-soft);font-size:14px;line-height:1.58;text-align:left
-}
-.feature-card-link,.deity-card-action,.territory-card-action,.related-territory-link{
-  width:fit-content;min-height:39px;display:inline-flex;align-items:center;justify-content:center;
-  margin-top:16px;padding:0 15px;border:1px solid var(--border-strong);border-radius:999px;
-  background:rgba(8,7,11,.62);color:var(--gold-light);
-  font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;
-  text-decoration:none;text-transform:uppercase;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)
-}
-.origin-card{min-height:390px;background:#0b0910}
-.origin-card-image{
-  position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;
-  transform:scale(1.01)
-}
-.origin-card::before{
-  content:"";position:absolute;inset:0;z-index:1;
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
   background:
-    linear-gradient(180deg,rgba(8,7,11,.02) 0%,rgba(8,7,11,.16) 34%,rgba(8,7,11,.79) 72%,rgba(8,7,11,.98) 100%),
-    linear-gradient(90deg,rgba(0,0,0,.2),transparent 48%,rgba(0,0,0,.15));
-  pointer-events:none
-}
-.origin-card::after,.deity-card--illustrated::after,.territory-card--illustrated::after{
-  content:"";position:absolute;inset:9px;z-index:3;border:1px solid rgba(224,195,130,.11);
-  border-radius:calc(var(--radius-large) - 7px);pointer-events:none
-}
-.origin-card .feature-card-title,.origin-card .feature-card-description,.origin-card .feature-card-label{
-  text-shadow:0 3px 14px rgba(0,0,0,.96)
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
 }
 
-.horizontal-scroll{
-  display:grid;grid-auto-flow:column;grid-auto-columns:76%;gap:13px;overflow-x:auto;
-  overscroll-behavior-inline:contain;margin-inline:calc(var(--page-padding)*-1);
-  padding:4px var(--page-padding) 14px;scroll-padding-inline:var(--page-padding);
-  scroll-snap-type:inline mandatory;scrollbar-width:none;cursor:grab
-}
-.horizontal-scroll::-webkit-scrollbar{display:none}
-.horizontal-scroll>*{scroll-snap-align:start}
-.horizontal-scroll.is-dragging{
-  cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto;user-select:none;-webkit-user-select:none
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
 }
 
-.deity-card{
-  position:relative;min-height:365px;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;
-  border:1px solid var(--border);border-radius:22px;background:var(--surface);
-  box-shadow:0 18px 44px rgba(0,0,0,.4);text-decoration:none
+a {
+  color: inherit;
 }
-.deity-card-image{
-  position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center top;
-  transform:scale(1.01)
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
 }
-.deity-card--illustrated::before{
-  content:"";position:absolute;inset:0;z-index:1;
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--background-deep);
+}
+
+.mobile-container {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-left: max(var(--page-padding), env(safe-area-inset-left));
+  padding-right: max(var(--page-padding), env(safe-area-inset-right));
+}
+
+.mobile-section {
+  position: relative;
+  padding-block: 58px;
+}
+
+.mobile-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 85% 10%, rgba(202, 167, 95, 0.045), transparent 22rem);
+}
+
+.mobile-section + .mobile-section {
+  border-top: 1px solid transparent;
+  border-image: linear-gradient(90deg, transparent, var(--border), transparent) 1;
+}
+
+#mundo {
+  background: linear-gradient(180deg, rgba(255,255,255,0.012), transparent);
+}
+
+#divindades {
   background:
-    linear-gradient(180deg,rgba(8,7,11,.02) 0%,rgba(8,7,11,.12) 38%,rgba(8,7,11,.78) 72%,rgba(8,7,11,.98) 100%),
-    linear-gradient(90deg,rgba(0,0,0,.14),transparent 55%,rgba(0,0,0,.1));
-  pointer-events:none
+    radial-gradient(circle at 10% 18%, rgba(115, 85, 145, 0.09), transparent 24rem),
+    linear-gradient(180deg, transparent, rgba(255,255,255,0.012), transparent);
 }
-.deity-content{position:relative;z-index:2;width:100%;padding:22px 18px 20px}
-.deity-card--illustrated .deity-content{
-  min-height:365px;display:flex;flex-direction:column;justify-content:flex-end
-}
-.deity-domains{
-  margin:0 0 6px;color:var(--gold);font-size:9px;letter-spacing:1.7px;
-  text-shadow:0 3px 12px rgba(0,0,0,.95)
-}
-.deity-name{
-  margin:0;color:var(--gold-light);font-size:27px;font-weight:400;line-height:1.06;
-  text-shadow:0 3px 14px rgba(0,0,0,.96)
-}
-.deity-description{
-  margin:9px 0 0;color:var(--text-soft);font-size:14px;line-height:1.48;text-align:left;
-  text-shadow:0 3px 13px rgba(0,0,0,.96)
-}
-.deity-card-action{min-height:34px;margin-top:10px;padding-inline:12px}
 
-.territory-list{display:grid;gap:16px}
-.territory-card{
-  position:relative;min-height:180px;display:grid;grid-template-columns:118px 1fr;overflow:hidden;
-  border:1px solid var(--border);border-radius:var(--radius);
-  background:linear-gradient(145deg,var(--surface-light),var(--surface));
-  box-shadow:0 12px 30px rgba(0,0,0,.28);text-decoration:none
-}
-.territory-image{
-  min-height:100%;background:var(--territory-image,linear-gradient(145deg,#30293a,#141118));
-  background-position:center;background-repeat:no-repeat;background-size:cover
-}
-.territory-content{display:flex;flex-direction:column;justify-content:center;padding:20px 17px}
-.territory-region{margin:0 0 5px;color:var(--gold);font-size:8px;letter-spacing:1.6px}
-.territory-name{margin:0;color:var(--gold-light);font-size:25px;font-weight:400;line-height:1.05}
-.territory-description{
-  margin:8px 0 0;color:var(--text-soft);font-size:13px;line-height:1.47;text-align:left
-}
-.territory-card--illustrated{
-  min-height:310px;display:flex;align-items:flex-end;isolation:isolate;
-  border-radius:var(--radius-large);background:#0b0a08
-}
-.territory-card-image{
-  position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center;
-  transform:scale(1.01)
-}
-.territory-card--illustrated::before{
-  content:"";position:absolute;inset:0;z-index:1;
+#territorios {
   background:
-    linear-gradient(180deg,rgba(8,7,11,.03) 0%,rgba(8,7,11,.12) 37%,rgba(8,7,11,.78) 72%,rgba(8,7,11,.98) 100%),
-    linear-gradient(90deg,rgba(0,0,0,.16),transparent 60%,rgba(0,0,0,.12));
-  pointer-events:none
+    radial-gradient(circle at 92% 12%, rgba(94, 126, 82, 0.07), transparent 26rem),
+    linear-gradient(180deg, transparent, rgba(255,255,255,0.01));
 }
-.territory-card--illustrated .territory-content{
-  position:relative;z-index:2;width:100%;padding:24px 20px 22px
+
+#explorar {
+  background: linear-gradient(180deg, rgba(202,167,95,0.03), transparent 72%);
 }
-.territory-card--illustrated .territory-region,
+
+.mobile-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  width: 100%;
+  padding-top: env(safe-area-inset-top);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  background:
+    linear-gradient(180deg, rgba(6, 6, 9, 0.96), rgba(8, 7, 11, 0.78));
+
+  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(22px) saturate(130%);
+  -webkit-backdrop-filter: blur(22px) saturate(130%);
+}
+
+.mobile-header::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 8%, rgba(240,214,144,0.34), transparent 92%);
+}
+
+.mobile-header-inner {
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.mobile-logo {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+
+  color: var(--gold-light);
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.9px;
+
+  text-decoration: none;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.mobile-logo::before {
+  content: "✦";
+  color: var(--gold);
+  font-size: 11px;
+  text-shadow: 0 0 14px rgba(240,214,144,0.5);
+}
+
+.header-action {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 25%, rgba(255,255,255,0.08), transparent 45%),
+    rgba(255, 255, 255, 0.03);
+
+  color: var(--gold-light);
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.025), 0 8px 18px rgba(0,0,0,0.24);
+}
+
+.mobile-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+
+  padding: calc(96px + env(safe-area-inset-top)) 0 52px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 4, 6, 0.05) 0%,
+      rgba(5, 5, 8, 0.12) 26%,
+      rgba(6, 6, 9, 0.76) 72%,
+      var(--background) 100%
+    ),
+    var(--hero-image, radial-gradient(circle at 50% 25%, #59436b, #14101a 62%, #08070b));
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mobile-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.34), transparent 45%, rgba(0,0,0,0.16)),
+    radial-gradient(circle at 50% 26%, transparent 0 20%, rgba(0,0,0,0.34) 82%);
+}
+
+.mobile-hero::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  width: 1px;
+  height: 42px;
+  z-index: 1;
+  background: linear-gradient(var(--gold-light), transparent);
+  opacity: 0.52;
+}
+
+.hero-content {
+  width: 100%;
+  position: relative;
+}
+
+.hero-content::before {
+  content: "";
+  position: absolute;
+  left: var(--page-padding);
+  top: -24px;
+  width: 64px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.hero-label,
+.section-kicker,
+.internal-kicker,
+.feature-card-label,
+.deity-domains,
+.territory-region {
+  font-family: var(--ui);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hero-label {
+  width: fit-content;
+  margin: 0 0 14px;
+  padding: 7px 10px 6px;
+
+  border: 1px solid rgba(240,214,144,0.2);
+  border-radius: 999px;
+  background: rgba(6, 6, 9, 0.44);
+
+  color: var(--gold-light);
+  font-size: 9px;
+  letter-spacing: 2.15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hero-title {
+  max-width: 430px;
+  margin: 0;
+
+  background: linear-gradient(180deg, #fff7d8 0%, var(--gold-light) 52%, #a77a35 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  font-family: var(--display);
+  font-size: clamp(44px, 14vw, 74px);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -1.7px;
+  text-transform: uppercase;
+
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.72));
+}
+
+.hero-subtitle {
+  max-width: 520px;
+  margin: 22px 0 0;
+
+  color: rgba(245, 237, 226, 0.88);
+  font-size: 15px;
+  line-height: 1.72;
+  text-shadow: 0 3px 18px rgba(0,0,0,0.86);
+}
+
+.hero-actions {
+  max-width: 520px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 11px;
+  margin-top: 28px;
+}
+
+.primary-button,
+.secondary-button {
+  position: relative;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  font-family: var(--ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.05px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.primary-button {
+  border: 1px solid #f4d990;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.3), transparent 45%),
+    linear-gradient(135deg, #f2d991, #b8893e);
+
+  color: #181008;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.22),
+    0 12px 34px rgba(202,167,95,0.22);
+}
+
+.secondary-button {
+  border: 1px solid var(--border-strong);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015)),
+    rgba(8,7,11,0.62);
+
+  color: var(--gold-light);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.primary-button:active,
+.secondary-button:active {
+  transform: scale(0.98);
+}
+
+.section-intro {
+  position: relative;
+  max-width: 730px;
+  margin-bottom: 30px;
+  padding-left: 18px;
+}
+
+.section-intro::before {
+  content: "";
+  position: absolute;
+  inset: 4px auto 4px 0;
+  width: 1px;
+  background: linear-gradient(var(--gold-light), rgba(202,167,95,0.05));
+}
+
+.section-kicker {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 2.5px;
+}
+
+.section-title {
+  margin: 0;
+  color: var(--gold-pale);
+  font-family: var(--display);
+  font-size: clamp(34px, 10vw, 52px);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.6px;
+}
+
+.section-text {
+  max-width: 680px;
+  margin: 15px 0 0;
+
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.72;
+  text-align: left;
+}
+
+.feature-card {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background:
+    radial-gradient(circle at 82% 18%, rgba(202,167,95,0.13), transparent 22rem),
+    linear-gradient(145deg, var(--surface-light), var(--surface));
+
+  box-shadow: var(--shadow), var(--shadow-gold);
+  color: inherit;
+  text-decoration: none;
+}
+
+.feature-card-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 28px 23px;
+}
+
+.feature-card-label {
+  width: fit-content;
+  margin: 0 0 9px;
+  padding-bottom: 6px;
+
+  border-bottom: 1px solid rgba(202,167,95,0.42);
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.feature-card-title {
+  margin: 0;
+  color: var(--gold-pale);
+  font-family: var(--display);
+  font-size: clamp(28px, 8vw, 42px);
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+.feature-card-description {
+  max-width: 580px;
+  margin: 12px 0 0;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.62;
+  text-align: left;
+}
+
+.feature-card-link,
+.deity-card-action,
+.territory-card-action,
+.related-territory-link {
+  width: fit-content;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  padding: 0 14px;
+
+  border: 1px solid rgba(240,214,144,0.3);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.055), transparent),
+    rgba(6,6,9,0.68);
+
+  color: var(--gold-light);
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.origin-card {
+  min-height: 420px;
+  background: #09080d;
+}
+
+.origin-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transform: scale(1.02);
+}
+
+.origin-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(180deg, rgba(6,6,9,0.01) 0%, rgba(6,6,9,0.14) 32%, rgba(6,6,9,0.72) 68%, rgba(6,6,9,0.98) 100%),
+    linear-gradient(90deg, rgba(0,0,0,0.26), transparent 56%, rgba(0,0,0,0.18));
+}
+
+.origin-card::after,
+.deity-card--illustrated::after,
+.territory-card--illustrated::after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  z-index: 3;
+  border: 1px solid rgba(240,214,144,0.13);
+  border-radius: calc(var(--radius-large) - 8px);
+  pointer-events: none;
+}
+
+.origin-card .feature-card-title,
+.origin-card .feature-card-description,
+.origin-card .feature-card-label {
+  text-shadow: 0 4px 18px rgba(0,0,0,0.98);
+}
+
+#explorar .feature-card {
+  min-height: 270px;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(202,167,95,0.16), transparent 14rem),
+    radial-gradient(circle at 12% 110%, rgba(118,82,145,0.18), transparent 20rem),
+    linear-gradient(145deg, #18151e, #0c0b10);
+}
+
+#explorar .feature-card::before {
+  content: "✦";
+  position: absolute;
+  right: 22px;
+  top: 8px;
+  z-index: 0;
+
+  color: rgba(240,214,144,0.07);
+  font-family: var(--display);
+  font-size: 150px;
+  line-height: 1;
+  transform: rotate(12deg);
+}
+
+.horizontal-scroll {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 78%;
+  gap: 14px;
+
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  margin-inline: calc(var(--page-padding) * -1);
+  padding: 5px var(--page-padding) 20px;
+
+  scroll-padding-inline: var(--page-padding);
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-scroll > * {
+  scroll-snap-align: start;
+}
+
+.horizontal-scroll.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.deity-card {
+  --card-accent: 202, 167, 95;
+
+  position: relative;
+  min-height: 390px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+
+  border: 1px solid rgba(var(--card-accent), 0.32);
+  border-radius: 26px;
+  background: var(--surface);
+  box-shadow:
+    0 20px 48px rgba(0,0,0,0.46),
+    0 0 34px rgba(var(--card-accent), 0.055);
+
+  text-decoration: none;
+}
+
+.deity-card:nth-child(1) { --card-accent: 171, 184, 83; }
+.deity-card:nth-child(2) { --card-accent: 123, 111, 175; }
+.deity-card:nth-child(3) { --card-accent: 239, 199, 118; }
+.deity-card:nth-child(4) { --card-accent: 231, 170, 74; }
+.deity-card:nth-child(5) { --card-accent: 150, 116, 188; }
+
+.deity-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transform: scale(1.015);
+}
+
+.deity-card--illustrated::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(180deg, rgba(4,4,6,0.01) 0%, rgba(5,5,7,0.1) 34%, rgba(5,5,7,0.72) 68%, rgba(5,5,7,0.98) 100%),
+    radial-gradient(circle at 50% 105%, rgba(var(--card-accent),0.18), transparent 42%),
+    linear-gradient(90deg, rgba(0,0,0,0.18), transparent 60%, rgba(0,0,0,0.12));
+}
+
+.deity-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 25px 20px 22px;
+}
+
+.deity-card--illustrated .deity-content {
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.deity-domains {
+  width: fit-content;
+  margin: 0 0 7px;
+  padding: 5px 8px;
+
+  border: 1px solid rgba(var(--card-accent), 0.28);
+  border-radius: 999px;
+  background: rgba(5,5,7,0.5);
+
+  color: rgb(var(--card-accent));
+  font-size: 8px;
+  letter-spacing: 1.55px;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.95);
+}
+
+.deity-name {
+  margin: 0;
+  color: var(--gold-pale);
+  font-family: var(--display);
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.08;
+  text-shadow: 0 4px 16px rgba(0,0,0,0.98);
+}
+
+.deity-description {
+  margin: 10px 0 0;
+  color: rgba(245,237,226,0.82);
+  font-size: 13px;
+  line-height: 1.54;
+  text-align: left;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.98);
+}
+
+.deity-card-action {
+  min-height: 34px;
+  margin-top: 11px;
+  padding-inline: 12px;
+  border-color: rgba(var(--card-accent), 0.38);
+  color: rgb(var(--card-accent));
+}
+
+.territory-list {
+  display: grid;
+  gap: 18px;
+}
+
+.territory-card {
+  position: relative;
+  min-height: 180px;
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, var(--surface-light), var(--surface));
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+}
+
+.territory-image {
+  min-height: 100%;
+  background: var(--territory-image, linear-gradient(145deg, #30293a, #141118));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.territory-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 17px;
+}
+
+.territory-region {
+  margin: 0 0 5px;
+  color: var(--gold);
+  font-size: 8px;
+  letter-spacing: 1.55px;
+}
+
+.territory-name {
+  margin: 0;
+  color: var(--gold-pale);
+  font-family: var(--display);
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.territory-description {
+  margin: 8px 0 0;
+  color: var(--text-soft);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.territory-card--illustrated {
+  --land-accent: 202, 167, 95;
+
+  min-height: 330px;
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+
+  border-color: rgba(var(--land-accent),0.28);
+  border-radius: var(--radius-large);
+  background: #0a090d;
+  box-shadow:
+    0 22px 56px rgba(0,0,0,0.46),
+    0 0 32px rgba(var(--land-accent),0.04);
+}
+
+.territory-card--illustrated:nth-child(1) { --land-accent: 151, 171, 87; }
+.territory-card--illustrated:nth-child(2) { --land-accent: 119, 101, 157; }
+.territory-card--illustrated:nth-child(3) { --land-accent: 216, 184, 101; }
+.territory-card--illustrated:nth-child(4) { --land-accent: 199, 150, 67; }
+.territory-card--illustrated:nth-child(5) { --land-accent: 131, 113, 170; }
+
+.territory-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.015);
+}
+
+.territory-card--illustrated::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(180deg, rgba(5,5,7,0.01) 0%, rgba(5,5,7,0.12) 34%, rgba(5,5,7,0.72) 68%, rgba(5,5,7,0.98) 100%),
+    radial-gradient(circle at 50% 105%, rgba(var(--land-accent),0.16), transparent 45%),
+    linear-gradient(90deg, rgba(0,0,0,0.17), transparent 64%, rgba(0,0,0,0.14));
+}
+
+.territory-card--illustrated .territory-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 27px 21px 23px;
+}
+
+.territory-card--illustrated .territory-region {
+  width: fit-content;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(var(--land-accent),0.46);
+  color: rgb(var(--land-accent));
+}
+
 .territory-card--illustrated .territory-name,
-.territory-card--illustrated .territory-description{
-  text-shadow:0 3px 14px rgba(0,0,0,.96)
-}
-.territory-card--illustrated .territory-name{font-size:34px}
-.territory-card--illustrated .territory-description{
-  max-width:540px;color:rgba(245,240,229,.88);font-size:14px;line-height:1.52
-}
-.territory-card-action{min-height:36px;margin-top:12px;padding-inline:13px}
-
-.map-preview{
-  position:relative;overflow:hidden;border:1px solid var(--border-strong);
-  border-radius:var(--radius-large);background:var(--surface);box-shadow:var(--shadow)
-}
-.map-preview img{aspect-ratio:4/5;object-fit:cover}
-.map-overlay{
-  position:absolute;inset:auto 0 0;padding:52px 22px 24px;
-  background:linear-gradient(transparent,rgba(8,7,11,.96))
-}
-.map-overlay h3{margin:0;color:var(--gold-light);font-size:28px;font-weight:400}
-.map-overlay p{margin:9px 0 0;color:var(--text-soft);font-size:14px}
-
-.internal-page{padding-top:calc(var(--header-height) + env(safe-area-inset-top))}
-.internal-hero{
-  position:relative;min-height:66svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;
-  padding:78px 0 38px;
-  background:
-    linear-gradient(180deg,rgba(8,7,11,.1) 0%,rgba(8,7,11,.34) 40%,rgba(8,7,11,.9) 82%,var(--background) 100%),
-    var(--internal-image,radial-gradient(circle at 50% 24%,#4d395f,#17121e 55%,#08070b));
-  background-position:center;background-repeat:no-repeat;background-size:cover
-}
-.internal-hero::after{
-  content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(90deg,rgba(0,0,0,.22),transparent 38%,transparent 62%,rgba(0,0,0,.18));
-  pointer-events:none
-}
-.internal-hero-image{
-  position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center top
-}
-.internal-hero-content{position:relative;z-index:2}
-.internal-kicker{margin:0 0 10px;color:var(--gold);font-size:9px;letter-spacing:2.4px}
-.internal-title{
-  max-width:620px;margin:0;color:var(--gold-light);font-size:clamp(42px,13vw,70px);font-weight:400;
-  line-height:.98;letter-spacing:-.8px;text-shadow:0 6px 24px rgba(0,0,0,.76)
-}
-.internal-summary{
-  max-width:540px;margin:18px 0 0;color:var(--text-soft);font-size:15px;line-height:1.62;
-  text-shadow:0 3px 16px rgba(0,0,0,.85)
-}
-.deity-hero{background:#090b07}
-.deity-hero::before{
-  content:"";position:absolute;inset:0;z-index:1;
-  background:
-    linear-gradient(180deg,rgba(5,7,4,.06) 0%,rgba(5,7,4,.18) 32%,rgba(5,7,4,.78) 72%,var(--background) 100%),
-    linear-gradient(90deg,rgba(0,0,0,.26),transparent 56%,rgba(0,0,0,.12));
-  pointer-events:none
-}
-.deity-hero::after{z-index:1}
-.deity-page{
-  --deity-accent:#b4bd62;--deity-accent-soft:rgba(180,189,98,.15);
-  --deity-accent-border:rgba(180,189,98,.34)
-}
-.deity-domain-badge{
-  width:fit-content;margin-top:16px;padding:8px 13px;border:1px solid var(--deity-accent-border);
-  border-radius:999px;background:rgba(7,9,5,.64);color:var(--deity-accent);
-  font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:700;letter-spacing:1.4px;
-  text-transform:uppercase;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)
+.territory-card--illustrated .territory-description {
+  text-shadow: 0 4px 16px rgba(0,0,0,0.98);
 }
 
-.mobile-article.mobile-container{
-  width:100%;max-width:760px;margin-inline:auto;padding:46px 24px 102px
-}
-.mobile-article>p,.lore-box p,.blessing-card p,.related-territory p{
-  margin:0 0 22px;color:var(--text-soft);font-size:16px;line-height:1.78;
-  text-align:justify;text-align-last:left;text-justify:inter-word;
-  hyphens:auto;-webkit-hyphens:auto
-}
-.article-lead{
-  margin:0 0 34px!important;padding:3px 0 3px 18px;border-left:2px solid var(--gold);
-  color:var(--text)!important;font-size:18px!important;line-height:1.66!important;
-  text-align:left!important;text-align-last:auto!important
-}
-.mobile-article>h2,.blessing-section>h2,.sacred-section>h2,.related-territory h2{
-  position:relative;margin:52px 0 22px;padding-bottom:13px;color:var(--gold-light);
-  font-size:clamp(28px,8vw,40px);font-weight:400;line-height:1.12
-}
-.mobile-article>h2::after,.blessing-section>h2::after,.sacred-section>h2::after{
-  content:"";position:absolute;bottom:0;left:0;width:64px;height:1px;
-  background:linear-gradient(90deg,var(--gold),transparent)
-}
-.mobile-article>h3{
-  margin:38px 0 16px;color:var(--gold);font-size:23px;font-weight:400;line-height:1.22
-}
-.mobile-article strong{color:var(--text)}
-.article-divider{
-  display:flex;align-items:center;gap:13px;margin:38px 0;color:var(--gold)
-}
-.article-divider::before,.article-divider::after{
-  content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--border-strong))
-}
-.article-divider::after{background:linear-gradient(90deg,var(--border-strong),transparent)}
-.article-divider span{font-size:11px;letter-spacing:4px}
-.lore-quote{
-  position:relative;margin:36px 0;padding:28px 22px 25px;border:1px solid var(--border);
-  border-radius:var(--radius);
-  background:linear-gradient(145deg,rgba(215,182,110,.09),rgba(23,20,29,.94));
-  box-shadow:0 14px 36px rgba(0,0,0,.26)
-}
-.lore-quote::before{
-  content:"“";position:absolute;top:4px;left:15px;color:rgba(215,182,110,.22);font-size:68px;line-height:1
-}
-.lore-quote p{
-  position:relative;margin:0;color:var(--gold-light);font-size:18px;line-height:1.58;text-align:left
-}
-.lore-box{
-  margin:36px 0;padding:23px 21px;border-left:3px solid var(--gold);
-  border-radius:0 var(--radius) var(--radius) 0;background:rgba(215,182,110,.07)
-}
-.lore-box p:last-child,.blessing-card p:last-child,.related-territory p:last-child{margin-bottom:0}
-.article-navigation{display:grid;gap:11px;margin-top:52px}
-.article-navigation a{
-  min-height:52px;display:flex;align-items:center;justify-content:center;padding:11px 18px;
-  border:1px solid var(--border-strong);border-radius:999px;background:rgba(215,182,110,.06);
-  color:var(--gold-light);font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;
-  letter-spacing:.9px;text-align:center;text-decoration:none;text-transform:uppercase
-}
-.reading-progress{
-  position:fixed;top:calc(var(--header-height) + env(safe-area-inset-top));left:0;z-index:150;
-  width:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));
-  box-shadow:0 0 12px rgba(215,182,110,.48)
+.territory-card--illustrated .territory-name {
+  font-size: 33px;
 }
 
-.blessing-section,.sacred-section{margin-top:58px}
-.blessing-section>.section-kicker,.sacred-section>.section-kicker{margin-bottom:8px}
-.blessing-section>h2,.sacred-section>h2{margin-top:0}
-.blessing-card{
-  position:relative;margin-top:24px;padding:28px 22px 25px;overflow:hidden;
-  border:1px solid var(--deity-accent-border,var(--border-strong));border-radius:var(--radius);
+.territory-card--illustrated .territory-description {
+  max-width: 560px;
+  color: rgba(245,240,229,0.86);
+  font-size: 13px;
+  line-height: 1.56;
+}
+
+.territory-card-action {
+  min-height: 35px;
+  margin-top: 13px;
+  padding-inline: 13px;
+  border-color: rgba(var(--land-accent),0.4);
+  color: rgb(var(--land-accent));
+}
+
+.map-preview {
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-large);
+  background: var(--surface);
+  box-shadow: var(--shadow), var(--shadow-gold);
+}
+
+.map-preview img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.map-overlay {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 58px 23px 25px;
+  background: linear-gradient(transparent, rgba(6,6,9,0.97));
+}
+
+.map-overlay h3 {
+  margin: 0;
+  color: var(--gold-pale);
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.map-overlay p {
+  margin: 9px 0 0;
+  color: var(--text-soft);
+  font-size: 13px;
+}
+
+.internal-page {
+  padding-top: calc(var(--header-height) + env(safe-area-inset-top));
+}
+
+.internal-hero {
+  position: relative;
+  min-height: 68svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 82px 0 44px;
+
   background:
-    radial-gradient(circle at 90% 0%,var(--deity-accent-soft,rgba(215,182,110,.12)),transparent 42%),
-    linear-gradient(145deg,rgba(180,189,98,.08),rgba(15,17,12,.96));
-  box-shadow:0 18px 46px rgba(0,0,0,.36)
+    linear-gradient(180deg, rgba(6,6,9,0.06) 0%, rgba(6,6,9,0.28) 38%, rgba(6,6,9,0.86) 78%, var(--background) 100%),
+    var(--internal-image, radial-gradient(circle at 50% 24%, #4d395f, #17121e 55%, #08070b 100%));
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.blessing-symbol{
-  width:46px;height:46px;display:grid;place-items:center;margin-bottom:20px;
-  border:1px solid var(--deity-accent-border,var(--border-strong));border-radius:50%;
-  background:rgba(180,189,98,.08);color:var(--deity-accent,var(--gold));font-size:17px
-}
-.sacred-grid{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:23px
-}
-.sacred-item{
-  min-height:52px;display:flex;align-items:center;justify-content:center;padding:12px 9px;
-  border:1px solid var(--deity-accent-border,var(--border));border-radius:12px;
-  background:linear-gradient(145deg,rgba(180,189,98,.09),rgba(17,19,14,.88));
-  color:var(--text);font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;
-  letter-spacing:.55px;text-align:center;text-transform:uppercase
-}
-.sacred-item--creature{justify-content:flex-start;gap:8px;text-align:left}
-.sacred-item--creature span{color:var(--deity-accent,var(--gold));font-size:7px}
-.related-territory{
-  position:relative;min-height:330px;display:flex;align-items:flex-end;margin-top:62px;
-  padding:26px 21px;overflow:hidden;border:1px solid var(--deity-accent-border,var(--border-strong));
-  border-radius:var(--radius-large);
+
+.internal-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background:
-    linear-gradient(180deg,rgba(7,9,5,.08),rgba(7,9,5,.64) 46%,rgba(7,9,5,.98) 100%),
+    radial-gradient(circle at 50% 28%, transparent 0 22%, rgba(0,0,0,0.38) 88%),
+    linear-gradient(90deg, rgba(0,0,0,0.32), transparent 55%, rgba(0,0,0,0.14));
+}
+
+.internal-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  height: 96px;
+  background: linear-gradient(transparent, var(--background));
+  pointer-events: none;
+}
+
+.internal-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.internal-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.internal-kicker {
+  width: fit-content;
+  margin: 0 0 11px;
+  padding-bottom: 6px;
+
+  border-bottom: 1px solid rgba(202,167,95,0.48);
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 2.4px;
+}
+
+.internal-title {
+  max-width: 700px;
+  margin: 0;
+
+  background: linear-gradient(180deg, #fff5cf, #d5ad5f 88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  font-family: var(--display);
+  font-size: clamp(40px, 12vw, 68px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.8px;
+
+  filter: drop-shadow(0 7px 22px rgba(0,0,0,0.82));
+}
+
+.internal-summary {
+  max-width: 560px;
+  margin: 18px 0 0;
+  color: rgba(245,237,226,0.88);
+  font-size: 14px;
+  line-height: 1.7;
+  text-shadow: 0 3px 16px rgba(0,0,0,0.9);
+}
+
+.deity-page {
+  --deity-accent: #b6c06a;
+  --deity-accent-soft: rgba(182,192,106,0.14);
+  --deity-accent-border: rgba(182,192,106,0.34);
+}
+
+.deity-hero {
+  background: #090b07;
+}
+
+.deity-domain-badge {
+  width: fit-content;
+  margin-top: 16px;
+  padding: 8px 13px;
+
+  border: 1px solid var(--deity-accent-border);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04), transparent),
+    rgba(7,9,5,0.64);
+
+  color: var(--deity-accent);
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.35px;
+  text-transform: uppercase;
+
+  box-shadow: 0 8px 22px rgba(0,0,0,0.28);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+.mobile-article.mobile-container {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  margin-inline: auto;
+  padding: 52px 24px 112px;
+}
+
+.mobile-article.mobile-container::before {
+  content: "";
+  position: absolute;
+  inset: 18px 10px 52px;
+  z-index: -1;
+
+  border: 1px solid rgba(202,167,95,0.09);
+  border-radius: 34px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.018), transparent 20%),
+    rgba(17,15,21,0.34);
+
+  box-shadow: 0 22px 70px rgba(0,0,0,0.22);
+}
+
+.mobile-article > p,
+.lore-box p,
+.blessing-card p,
+.related-territory p {
+  margin: 0 0 23px;
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1.86;
+
+  text-align: justify;
+  text-align-last: left;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.article-lead {
+  margin: 0 0 38px !important;
+  padding: 4px 0 4px 20px;
+
+  border-left: 2px solid var(--gold);
+  color: var(--text) !important;
+  font-size: 18px !important;
+  line-height: 1.72 !important;
+  text-align: left !important;
+  text-align-last: auto !important;
+}
+
+.article-lead::first-letter {
+  float: left;
+  margin: 6px 8px 0 0;
+
+  color: var(--gold-light);
+  font-family: var(--display);
+  font-size: 48px;
+  line-height: 0.8;
+}
+
+.mobile-article > h2,
+.blessing-section > h2,
+.sacred-section > h2,
+.related-territory h2 {
+  position: relative;
+  margin: 58px 0 24px;
+  padding: 0 0 15px;
+
+  color: var(--gold-pale);
+  font-family: var(--display);
+  font-size: clamp(27px, 7.7vw, 40px);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.35px;
+}
+
+.mobile-article > h2::before,
+.blessing-section > h2::before,
+.sacred-section > h2::before {
+  content: "✦";
+  display: inline-block;
+  margin-right: 9px;
+  color: rgba(202,167,95,0.72);
+  font-size: 11px;
+  vertical-align: middle;
+}
+
+.mobile-article > h2::after,
+.blessing-section > h2::after,
+.sacred-section > h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 94px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-light), rgba(202,167,95,0.08));
+}
+
+.mobile-article > h3 {
+  margin: 42px 0 17px;
+  color: var(--gold-light);
+  font-family: var(--display);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.28;
+}
+
+.mobile-article strong {
+  color: var(--text);
+}
+
+.article-divider {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 44px 0;
+  color: var(--gold);
+}
+
+.article-divider::before,
+.article-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--border-strong));
+}
+
+.article-divider::after {
+  background: linear-gradient(90deg, var(--border-strong), transparent);
+}
+
+.article-divider span {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-shadow: 0 0 12px rgba(240,214,144,0.36);
+}
+
+.lore-quote {
+  position: relative;
+  margin: 40px 0;
+  padding: 32px 24px 27px;
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 90% 0%, rgba(202,167,95,0.12), transparent 44%),
+    linear-gradient(145deg, rgba(202,167,95,0.075), rgba(20,18,25,0.96));
+
+  box-shadow: var(--shadow-soft);
+}
+
+.lore-quote::before {
+  content: "“";
+  position: absolute;
+  top: -3px;
+  left: 13px;
+  color: rgba(240,214,144,0.18);
+  font-family: var(--display);
+  font-size: 84px;
+  line-height: 1;
+}
+
+.lore-quote::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(240,214,144,0.06);
+  border-radius: 13px;
+  pointer-events: none;
+}
+
+.lore-quote p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--gold-pale);
+  font-size: 17px;
+  line-height: 1.66;
+  text-align: left;
+}
+
+.lore-box {
+  position: relative;
+  margin: 38px 0;
+  padding: 24px 22px;
+
+  border: 1px solid rgba(202,167,95,0.18);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background:
+    linear-gradient(90deg, rgba(202,167,95,0.09), transparent 42%),
+    rgba(255,255,255,0.012);
+}
+
+.mobile-article > .lore-box:first-child {
+  display: grid;
+  gap: 0;
+  padding: 8px 20px;
+  border-left-width: 1px;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(182,192,106,0.09), transparent 48%),
+    linear-gradient(145deg, rgba(202,167,95,0.065), rgba(18,16,22,0.82));
+}
+
+.mobile-article > .lore-box:first-child p {
+  margin: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(202,167,95,0.11);
+  font-family: var(--ui);
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.mobile-article > .lore-box:first-child p:last-child {
+  border-bottom: 0;
+}
+
+.lore-box p:last-child,
+.blessing-card p:last-child,
+.related-territory p:last-child {
+  margin-bottom: 0;
+}
+
+.article-navigation {
+  display: grid;
+  gap: 11px;
+  margin-top: 58px;
+}
+
+.article-navigation a {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 18px;
+
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04), transparent),
+    rgba(202,167,95,0.055);
+
+  color: var(--gold-light);
+  font-family: var(--ui);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.95px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  box-shadow: 0 10px 26px rgba(0,0,0,0.2);
+}
+
+.reading-progress {
+  position: fixed;
+  top: calc(var(--header-height) + env(safe-area-inset-top));
+  left: 0;
+  z-index: 150;
+  width: 0;
+  height: 2px;
+
+  background: linear-gradient(90deg, #8e6a2f, var(--gold-light), #fff1b9);
+  box-shadow: 0 0 14px rgba(240,214,144,0.55);
+}
+
+.blessing-section,
+.sacred-section {
+  margin-top: 64px;
+}
+
+.blessing-section > .section-kicker,
+.sacred-section > .section-kicker {
+  margin-bottom: 8px;
+}
+
+.blessing-section > h2,
+.sacred-section > h2 {
+  margin-top: 0;
+}
+
+.blessing-card {
+  position: relative;
+  margin-top: 25px;
+  padding: 30px 23px 27px;
+  overflow: hidden;
+
+  border: 1px solid var(--deity-accent-border, var(--border-strong));
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 92% 0%, var(--deity-accent-soft, rgba(202,167,95,0.12)), transparent 46%),
+    linear-gradient(145deg, rgba(182,192,106,0.075), rgba(14,16,11,0.96));
+
+  box-shadow:
+    0 20px 52px rgba(0,0,0,0.38),
+    0 0 32px rgba(182,192,106,0.06);
+}
+
+.blessing-card::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(255,255,255,0.035);
+  border-radius: 13px;
+  pointer-events: none;
+}
+
+.blessing-symbol {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 21px;
+
+  border: 1px solid var(--deity-accent-border, var(--border-strong));
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.08), transparent 50%),
+    rgba(182,192,106,0.08);
+
+  color: var(--deity-accent, var(--gold));
+  font-size: 16px;
+  box-shadow: 0 0 20px rgba(182,192,106,0.08);
+}
+
+.sacred-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.sacred-item {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 9px;
+
+  border: 1px solid var(--deity-accent-border, var(--border));
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.035), transparent),
+    linear-gradient(145deg, rgba(182,192,106,0.08), rgba(15,17,12,0.88));
+
+  color: var(--text);
+  font-family: var(--ui);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.62px;
+  text-align: center;
+  text-transform: uppercase;
+
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.015);
+}
+
+.sacred-item--creature {
+  justify-content: flex-start;
+  gap: 8px;
+  text-align: left;
+}
+
+.sacred-item--creature span {
+  color: var(--deity-accent, var(--gold));
+  font-size: 7px;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.related-territory {
+  position: relative;
+  min-height: 350px;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 68px;
+  padding: 28px 23px;
+  overflow: hidden;
+
+  border: 1px solid var(--deity-accent-border, var(--border-strong));
+  border-radius: var(--radius-large);
+  background:
+    linear-gradient(180deg, rgba(7,9,5,0.04), rgba(7,9,5,0.56) 42%, rgba(7,9,5,0.98) 100%),
     url("/harmonia-caotica/imagens/territorios/ruvia.jpg");
-  background-position:center;background-repeat:no-repeat;background-size:cover;box-shadow:var(--shadow)
-}
-.related-territory::after{
-  content:"";position:absolute;inset:9px;border:1px solid rgba(180,189,98,.1);
-  border-radius:calc(var(--radius-large) - 7px);pointer-events:none
-}
-.related-territory-content{position:relative;z-index:1;max-width:540px}
-.related-territory h2{
-  margin:8px 0 15px;padding-bottom:0;text-shadow:0 3px 14px rgba(0,0,0,.96)
-}
-.related-territory p{
-  color:rgba(245,240,229,.9);text-shadow:0 3px 14px rgba(0,0,0,.96)
-}
-.related-territory-link{margin-top:2px}
 
-.bottom-navigation{
-  position:fixed;inset:auto 0 0;z-index:200;
-  min-height:calc(var(--bottom-navigation-height) + env(safe-area-inset-bottom));
-  padding:8px 10px calc(8px + env(safe-area-inset-bottom));
-  border-top:1px solid var(--border);background:rgba(10,9,14,.95);
-  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)
-}
-.bottom-navigation-list{
-  max-width:620px;min-height:58px;display:grid;grid-template-columns:repeat(4,1fr);
-  margin:0 auto;padding:0;list-style:none
-}
-.bottom-navigation a{
-  min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
-  border-radius:13px;color:var(--text-muted);font-family:Arial,Helvetica,sans-serif;
-  font-size:9px;font-weight:700;letter-spacing:.45px;text-decoration:none;text-transform:uppercase
-}
-.bottom-navigation a:active,.bottom-navigation a.active{
-  background:rgba(215,182,110,.09);color:var(--gold-light)
-}
-.bottom-navigation-icon{font-size:20px;font-weight:400;line-height:1}
-.mobile-footer{
-  padding:42px 0 30px;border-top:1px solid var(--border);color:var(--text-muted);
-  font-family:Arial,Helvetica,sans-serif;font-size:10px;letter-spacing:.9px;
-  text-align:center;text-transform:uppercase
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: var(--shadow);
 }
 
-@media(min-width:540px){
-  :root{--page-padding:26px}
-  .hero-actions{grid-template-columns:1fr 1fr}
-  .horizontal-scroll{grid-auto-columns:minmax(320px,64%)}
-  .territory-card--illustrated{min-height:360px}
-  .article-navigation{grid-template-columns:repeat(2,1fr)}
+.related-territory::after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid rgba(182,192,106,0.13);
+  border-radius: calc(var(--radius-large) - 8px);
+  pointer-events: none;
 }
-@media(min-width:900px){
-  :root{--page-padding:34px}
-  .mobile-section{padding-block:72px}
-  .mobile-hero{min-height:92vh;padding-bottom:68px}
-  .hero-title{font-size:78px}
-  .hero-subtitle{font-size:18px}
-  .horizontal-scroll{
-    grid-auto-columns:minmax(340px,32%);gap:18px;margin-inline:0;padding-inline:0;padding-right:70px
-  }
-  .deity-card,.deity-card--illustrated,.deity-card--illustrated .deity-content{min-height:440px}
-  .territory-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-  .territory-card--illustrated{min-height:390px}
-  .origin-card{min-height:480px}
-  .origin-card .feature-card-content{max-width:650px;padding:38px 34px}
-  .internal-hero{min-height:78vh;padding-bottom:64px}
-  .mobile-article.mobile-container{padding:66px 34px 120px}
-  .mobile-article>p,.lore-box p,.blessing-card p,.related-territory p{font-size:17px;line-height:1.84}
-  .article-lead{font-size:21px!important}
-  .sacred-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
-  .related-territory{min-height:430px;padding:36px 32px}
+
+.related-territory-content {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
 }
-@media(hover:hover) and (pointer:fine){
-  .origin-card,.deity-card--illustrated,.territory-card--illustrated,
-  .origin-card-image,.deity-card-image,.territory-card-image{
-    transition:transform 220ms ease,border-color 220ms ease,box-shadow 220ms ease
+
+.related-territory h2 {
+  margin: 8px 0 15px;
+  padding-bottom: 0;
+  text-shadow: 0 4px 16px rgba(0,0,0,0.98);
+}
+
+.related-territory p {
+  color: rgba(245,240,229,0.9);
+  text-shadow: 0 3px 14px rgba(0,0,0,0.98);
+}
+
+.related-territory-link {
+  margin-top: 2px;
+}
+
+.bottom-navigation {
+  position: fixed;
+  inset: auto 10px 10px;
+  z-index: 200;
+  min-height: calc(68px + env(safe-area-inset-bottom));
+  padding: 7px 8px calc(7px + env(safe-area-inset-bottom));
+
+  border: 1px solid rgba(202,167,95,0.2);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.045), transparent),
+    rgba(10,9,14,0.88);
+
+  box-shadow:
+    0 18px 48px rgba(0,0,0,0.52),
+    inset 0 0 0 1px rgba(255,255,255,0.025);
+
+  backdrop-filter: blur(24px) saturate(130%);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+}
+
+.bottom-navigation::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 0%, rgba(240,214,144,0.08), transparent 50%);
+}
+
+.bottom-navigation-list {
+  position: relative;
+  max-width: 620px;
+  min-height: 54px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.bottom-navigation a {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 15px;
+
+  color: var(--text-muted);
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition: color var(--transition), background var(--transition), transform var(--transition);
+}
+
+.bottom-navigation a:active,
+.bottom-navigation a.active {
+  background:
+    linear-gradient(180deg, rgba(202,167,95,0.12), rgba(202,167,95,0.03));
+  color: var(--gold-light);
+  box-shadow: inset 0 0 0 1px rgba(202,167,95,0.08);
+}
+
+.bottom-navigation-icon {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  text-shadow: 0 0 12px currentColor;
+}
+
+.mobile-footer {
+  padding: 48px 0 38px;
+  border-top: 1px solid transparent;
+  border-image: linear-gradient(90deg, transparent, var(--border), transparent) 1;
+
+  color: var(--text-muted);
+  font-family: var(--ui);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (min-width: 540px) {
+  :root {
+    --page-padding: 28px;
   }
-  .origin-card:hover,.deity-card--illustrated:hover,.territory-card--illustrated:hover{
-    transform:translateY(-4px);border-color:rgba(224,195,130,.55);
-    box-shadow:0 27px 64px rgba(0,0,0,.52),0 0 28px rgba(215,182,110,.08)
+
+  .hero-actions {
+    grid-template-columns: 1fr 1fr;
   }
+
+  .horizontal-scroll {
+    grid-auto-columns: minmax(320px, 62%);
+  }
+
+  .territory-card--illustrated {
+    min-height: 370px;
+  }
+
+  .article-navigation {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mobile-article > .lore-box:first-child {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 22px;
+  }
+
+  .mobile-article > .lore-box:first-child p:nth-last-child(-n+2) {
+    border-bottom: 0;
+  }
+}
+
+@media (min-width: 900px) {
+  :root {
+    --page-padding: 38px;
+  }
+
+  body {
+    font-size: 17px;
+  }
+
+  .mobile-section {
+    padding-block: 86px;
+  }
+
+  .mobile-hero {
+    min-height: 94vh;
+    padding-bottom: 76px;
+  }
+
+  .hero-content::before {
+    left: var(--page-padding);
+    width: 92px;
+  }
+
+  .hero-title {
+    font-size: 82px;
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+  }
+
+  .horizontal-scroll {
+    grid-auto-columns: minmax(340px, 31%);
+    gap: 20px;
+    margin-inline: 0;
+    padding-inline: 0;
+    padding-right: 80px;
+  }
+
+  .deity-card,
+  .deity-card--illustrated,
+  .deity-card--illustrated .deity-content {
+    min-height: 470px;
+  }
+
+  .deity-name {
+    font-size: 28px;
+  }
+
+  .territory-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .territory-card--illustrated {
+    min-height: 410px;
+  }
+
+  .origin-card {
+    min-height: 520px;
+  }
+
+  .origin-card .feature-card-content {
+    max-width: 680px;
+    padding: 44px 38px;
+  }
+
+  .internal-hero {
+    min-height: 80vh;
+    padding-bottom: 72px;
+  }
+
+  .internal-title {
+    font-size: 72px;
+  }
+
+  .mobile-article.mobile-container {
+    padding: 72px 38px 132px;
+  }
+
+  .mobile-article.mobile-container::before {
+    inset: 28px 0 64px;
+  }
+
+  .mobile-article > p,
+  .lore-box p,
+  .blessing-card p,
+  .related-territory p {
+    font-size: 16px;
+    line-height: 1.95;
+  }
+
+  .article-lead {
+    font-size: 21px !important;
+  }
+
+  .sacred-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .related-territory {
+    min-height: 450px;
+    padding: 40px 34px;
+  }
+
+  .bottom-navigation {
+    inset: auto 50% 18px auto;
+    width: min(620px, calc(100% - 32px));
+    transform: translateX(50%);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primary-button:hover,
+  .secondary-button:hover,
+  .article-navigation a:hover {
+    transform: translateY(-2px);
+  }
+
+  .primary-button:hover {
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,0.28),
+      0 16px 42px rgba(202,167,95,0.3);
+  }
+
+  .secondary-button:hover,
+  .article-navigation a:hover {
+    border-color: rgba(240,214,144,0.56);
+    background: rgba(202,167,95,0.08);
+  }
+
+  .header-action:hover {
+    border-color: var(--border-strong);
+    background: rgba(202,167,95,0.08);
+  }
+
+  .origin-card,
+  .deity-card--illustrated,
+  .territory-card--illustrated,
+  .origin-card-image,
+  .deity-card-image,
+  .territory-card-image {
+    transition:
+      transform var(--transition),
+      border-color var(--transition),
+      box-shadow var(--transition),
+      filter var(--transition);
+  }
+
+  .origin-card:hover,
+  .deity-card--illustrated:hover,
+  .territory-card--illustrated:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 30px 76px rgba(0,0,0,0.58),
+      0 0 42px rgba(202,167,95,0.09);
+  }
+
   .origin-card:hover .origin-card-image,
   .deity-card--illustrated:hover .deity-card-image,
-  .territory-card--illustrated:hover .territory-card-image{transform:scale(1.045)}
+  .territory-card--illustrated:hover .territory-card-image {
+    transform: scale(1.055);
+    filter: saturate(1.06) contrast(1.03);
+  }
+
+  .bottom-navigation a:hover {
+    color: var(--gold-light);
+    transform: translateY(-1px);
+  }
 }
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{
-    scroll-behavior:auto!important;transition-duration:.01ms!important;
-    animation-duration:.01ms!important;animation-iteration-count:1!important
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
