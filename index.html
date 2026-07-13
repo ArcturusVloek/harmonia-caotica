@@ -14,6 +14,11 @@
   >
 
   <meta
+    name="color-scheme"
+    content="dark"
+  >
+
+  <meta
     name="description"
     content="Harmonia Caótica, um RPG ambientado no mundo de Vaelora."
   >
@@ -25,6 +30,7 @@
     href="/harmonia-caotica/imagens/hero-harmonia-mobile.jpg"
     as="image"
     type="image/jpeg"
+    fetchpriority="high"
   >
 
   <link
@@ -47,7 +53,7 @@
       <a
         class="header-action"
         href="#explorar"
-        aria-label="Explorar Vaelora"
+        aria-label="Explorar o arquivo de Vaelora"
       >
         ◆
       </a>
@@ -58,6 +64,7 @@
     <section
       id="inicio"
       class="mobile-hero"
+      aria-labelledby="titulo-principal"
       style="
         --hero-image:
           url('/harmonia-caotica/imagens/hero-harmonia-mobile.jpg');
@@ -68,7 +75,10 @@
           Um RPG ambientado no mundo de Vaelora
         </p>
 
-        <h1 class="hero-title">
+        <h1
+          id="titulo-principal"
+          class="hero-title"
+        >
           Harmonia<br>
           Caótica
         </h1>
@@ -98,67 +108,73 @@
     </section>
 
     <section
-  id="mundo"
-  class="mobile-section"
->
-  <div class="mobile-container">
-    <div class="section-intro">
-      <p class="section-kicker">
-        O mundo
-      </p>
-
-      <h2 class="section-title">
-        Vaelora
-      </h2>
-
-      <p class="section-text">
-        Um mundo organizado por conceitos divinos,
-        marcado pela Guerra Divina e sustentado por
-        um equilíbrio instável conhecido como
-        Harmonia Caótica.
-      </p>
-    </div>
-
-    <a
-      class="feature-card origin-card"
-      href="mundo/origem.html"
-      aria-label="Ler A Origem dos Deuses"
+      id="mundo"
+      class="mobile-section"
+      aria-labelledby="titulo-mundo"
     >
-      <img
-        class="origin-card-image"
-        src="/harmonia-caotica/imagens/hero-harmonia-mobile.jpg"
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-      >
+      <div class="mobile-container">
+        <div class="section-intro">
+          <p class="section-kicker">
+            O mundo
+          </p>
 
-      <div class="feature-card-content">
-        <p class="feature-card-label">
-          História fundamental
-        </p>
+          <h2
+            id="titulo-mundo"
+            class="section-title"
+          >
+            Vaelora
+          </h2>
 
-        <h3 class="feature-card-title">
-          A Origem dos Deuses
-        </h3>
+          <p class="section-text">
+            Um mundo organizado por conceitos divinos,
+            marcado pela Guerra Divina e sustentado por
+            um equilíbrio instável conhecido como
+            Harmonia Caótica.
+          </p>
+        </div>
 
-        <p class="feature-card-description">
-          Antes dos Deuses, existiam apenas conceitos
-          sem consciência, forma ou propósito. Quando
-          essas forças adquiriram vontade, a realidade
-          começou a receber suas primeiras leis.
-        </p>
+        <a
+          class="feature-card origin-card"
+          href="mundo/origem.html"
+          aria-label="Ler A Origem dos Deuses"
+        >
+          <img
+            class="origin-card-image"
+            src="/harmonia-caotica/imagens/hero-harmonia-mobile.jpg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+          >
 
-        <span class="feature-card-link">
-          Ler capítulo →
-        </span>
+          <div class="feature-card-content">
+            <p class="feature-card-label">
+              História fundamental
+            </p>
+
+            <h3 class="feature-card-title">
+              A Origem dos Deuses
+            </h3>
+
+            <p class="feature-card-description">
+              Antes dos Deuses, existiam apenas conceitos
+              sem consciência, forma ou propósito. Quando
+              essas forças adquiriram vontade, a realidade
+              começou a receber suas primeiras leis.
+            </p>
+
+            <span class="feature-card-link">
+              Ler capítulo →
+            </span>
+          </div>
+        </a>
       </div>
-    </a>
-  </div>
-</section>
-    
+    </section>
+
     <section
       id="divindades"
       class="mobile-section"
+      aria-labelledby="titulo-divindades"
     >
       <div class="mobile-container">
         <div class="section-intro">
@@ -166,7 +182,10 @@
             Fé e poder
           </p>
 
-          <h2 class="section-title">
+          <h2
+            id="titulo-divindades"
+            class="section-title"
+          >
             Divindades
           </h2>
 
@@ -179,148 +198,163 @@
 
         <div
           class="horizontal-scroll"
+          role="region"
+          aria-roledescription="carrossel"
           aria-label="Divindades de Vaelora"
         >
+          <a
+            class="deity-card deity-card--illustrated"
+            href="divindades/senhor-das-chagas.html"
+            aria-label="Conhecer o Senhor das Chagas"
+          >
+            <img
+              class="deity-card-image"
+              src="/harmonia-caotica/imagens/divindades/senhor-das-chagas.jpg"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            >
+
+            <div class="deity-content">
+              <p class="deity-domains">
+                Doenças e Parasitas
+              </p>
+
+              <h3 class="deity-name">
+                Senhor das Chagas
+              </h3>
+
+              <p class="deity-description">
+                Senhor das enfermidades, infecções,
+                parasitas e relações entre hospedeiros.
+              </p>
+
+              <span class="deity-card-action">
+                Conhecer a Divindade →
+              </span>
+            </div>
+          </a>
+
           <article class="deity-card deity-card--illustrated">
             <img
-    class="deity-card-image"
-    src="/harmonia-caotica/imagens/divindades/senhor-das-chagas.jpg"
-    alt="Senhor das Chagas"
-    loading="lazy"
-  >
+              class="deity-card-image"
+              src="/harmonia-caotica/imagens/divindades/senhor-do-crepusculo.jpg"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            >
 
-  <div class="deity-content">
-    <p class="deity-domains">
-      Doenças e Parasitas
-    </p>
+            <div class="deity-content">
+              <p class="deity-domains">
+                Morte e Trevas
+              </p>
 
-    <h3 class="deity-name">
-      Senhor das Chagas
-    </h3>
+              <h3 class="deity-name">
+                Senhor do Crepúsculo
+              </h3>
 
-    <p class="deity-description">
-      Senhor das enfermidades, infecções,
-      parasitas e relações entre hospedeiros.
-    </p>
+              <p class="deity-description">
+                Guardião da morte, das trevas, do descanso
+                e da preservação das memórias.
+              </p>
 
-    <span class="deity-card-action">
-      Conhecer a Divindade →
-    </span>
-  </div>
+              <span class="deity-card-action">
+                Registro em preparação
+              </span>
+            </div>
           </article>
-          
-          <article class="deity-card deity-card--illustrated">
-  <img
-    class="deity-card-image"
-    src="/harmonia-caotica/imagens/divindades/senhor-do-crepusculo.jpg"
-    alt="Senhor do Crepúsculo"
-    loading="lazy"
-  >
-
-  <div class="deity-content">
-    <p class="deity-domains">
-      Morte e Trevas
-    </p>
-
-    <h3 class="deity-name">
-      Senhor do Crepúsculo
-    </h3>
-
-    <p class="deity-description">
-      Guardião da morte, das trevas, do descanso
-      e da preservação das memórias.
-    </p>
-
-    <span class="deity-card-action">
-      Conhecer a Divindade →
-    </span>
-  </div>
-</article>
-          
-<article class="deity-card deity-card--illustrated">
-  <img
-    class="deity-card-image"
-    src="/harmonia-caotica/imagens/divindades/senhora-da-aurora.jpg"
-    alt="Senhora da Aurora"
-    loading="lazy"
-  >
-
-  <div class="deity-content">
-    <p class="deity-domains">
-      Luz e Vida
-    </p>
-
-    <h3 class="deity-name">
-      Senhora da Aurora
-    </h3>
-
-    <p class="deity-description">
-      Portadora da luz, da vida, da cura
-      e da renovação da existência.
-    </p>
-
-    <span class="deity-card-action">
-      Conhecer a Divindade →
-    </span>
-  </div>
-</article>
-          
-<article class="deity-card deity-card--illustrated">
-  <img
-    class="deity-card-image"
-    src="/harmonia-caotica/imagens/divindades/soberana-do-ceu.jpg"
-    alt="Soberana do Céu"
-    loading="lazy"
-  >
-
-  <div class="deity-content">
-    <p class="deity-domains">
-      Sol e Céu
-    </p>
-
-    <h3 class="deity-name">
-      Soberana do Céu
-    </h3>
-
-    <p class="deity-description">
-      Senhora do Sol, do firmamento, dos ventos
-      e das grandes alturas.
-    </p>
-
-    <span class="deity-card-action">
-      Conhecer a Divindade →
-    </span>
-  </div>
-</article>
 
           <article class="deity-card deity-card--illustrated">
-  <img
-    class="deity-card-image"
-    src="/harmonia-caotica/imagens/divindades/senhor-dos-veus.jpg"
-    alt="Senhor dos Véus"
-    loading="lazy"
-  >
+            <img
+              class="deity-card-image"
+              src="/harmonia-caotica/imagens/divindades/senhora-da-aurora.jpg"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            >
 
-  <div class="deity-content">
-    <p class="deity-domains">
-      Sonhos e Pesadelos
-    </p>
+            <div class="deity-content">
+              <p class="deity-domains">
+                Luz e Vida
+              </p>
 
-    <h3 class="deity-name">
-      Senhor dos Véus
-    </h3>
+              <h3 class="deity-name">
+                Senhora da Aurora
+              </h3>
 
-    <p class="deity-description">
-      Guardião do sono, dos sonhos, dos pesadelos
-      e dos caminhos da mente adormecida.
-    </p>
+              <p class="deity-description">
+                Portadora da luz, da vida, da cura
+                e da renovação da existência.
+              </p>
 
-    <span class="deity-card-action">
-      Conhecer a Divindade →
-    </span>
-  </div>
-</article>
+              <span class="deity-card-action">
+                Registro em preparação
+              </span>
+            </div>
+          </article>
 
+          <article class="deity-card deity-card--illustrated">
+            <img
+              class="deity-card-image"
+              src="/harmonia-caotica/imagens/divindades/soberana-do-ceu.jpg"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            >
+
+            <div class="deity-content">
+              <p class="deity-domains">
+                Sol e Céu
+              </p>
+
+              <h3 class="deity-name">
+                Soberana do Céu
+              </h3>
+
+              <p class="deity-description">
+                Senhora do Sol, do firmamento, dos ventos
+                e das grandes alturas.
+              </p>
+
+              <span class="deity-card-action">
+                Registro em preparação
+              </span>
+            </div>
+          </article>
+
+          <article class="deity-card deity-card--illustrated">
+            <img
+              class="deity-card-image"
+              src="/harmonia-caotica/imagens/divindades/senhor-dos-veus.jpg"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            >
+
+            <div class="deity-content">
+              <p class="deity-domains">
+                Sonhos e Pesadelos
+              </p>
+
+              <h3 class="deity-name">
+                Senhor dos Véus
+              </h3>
+
+              <p class="deity-description">
+                Guardião do sono, dos sonhos, dos pesadelos
+                e dos caminhos da mente adormecida.
+              </p>
+
+              <span class="deity-card-action">
+                Registro em preparação
+              </span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -328,6 +362,7 @@
     <section
       id="territorios"
       class="mobile-section"
+      aria-labelledby="titulo-territorios"
     >
       <div class="mobile-container">
         <div class="section-intro">
@@ -335,7 +370,10 @@
             Terras divinas
           </p>
 
-          <h2 class="section-title">
+          <h2
+            id="titulo-territorios"
+            class="section-title"
+          >
             Territórios
           </h2>
 
@@ -347,150 +385,159 @@
         </div>
 
         <div class="territory-list">
+          <article class="territory-card territory-card--illustrated">
+            <img
+              class="territory-card-image"
+              src="/harmonia-caotica/imagens/territorios/ruvia.jpg"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            >
 
-<article class="territory-card territory-card--illustrated">
-  <img
-    class="territory-card-image"
-    src="/harmonia-caotica/imagens/territorios/ruvia.jpg"
-    alt="Paisagem de Rúvia"
-    loading="lazy"
-  >
+            <div class="territory-content">
+              <p class="territory-region">
+                Território do Senhor das Chagas
+              </p>
 
-  <div class="territory-content">
-    <p class="territory-region">
-      Território do Senhor das Chagas
-    </p>
+              <h3 class="territory-name">
+                Rúvia
+              </h3>
 
-    <h3 class="territory-name">
-      Rúvia
-    </h3>
+              <p class="territory-description">
+                Uma grande bacia úmida cercada pela Serra de Orda,
+                atravessada pelo Rio Olen e marcada por florestas,
+                pântanos e cidades fluviais.
+              </p>
 
-    <p class="territory-description">
-      Uma grande bacia úmida cercada pela Serra de Orda,
-      atravessada pelo Rio Olen e marcada por florestas,
-      pântanos e cidades fluviais.
-    </p>
-
-    <span class="territory-card-action">
-      Conhecer o território →
-    </span>
-  </div>
-</article>
-
-  <article class="territory-card territory-card--illustrated">
-    <img
-    class="territory-card-image"
-    src="/harmonia-caotica/imagens/territorios/umbra.jpg"
-    alt="Paisagem de Umbra"
-    loading="lazy"
-  >
-
-    <div class="territory-content">
-    <p class="territory-region">
-      Território do Senhor do Crepúsculo
-    </p>
-
-    <h3 class="territory-name">
-      Umbra
-    </h3>
-
-    <p class="territory-description">
-      Bosques sombrios, lagos silenciosos, jardins
-      funerários e cidades envoltas por névoa fria,
-      onde a memória dos mortos permanece viva.
-    </p>
-
-    <span class="territory-card-action">
-      Conhecer o território →
-    </span>
-  </div>
-</article>
+              <span class="territory-card-action">
+                Registro em preparação
+              </span>
+            </div>
+          </article>
 
           <article class="territory-card territory-card--illustrated">
-  <img
-    class="territory-card-image"
-    src="/harmonia-caotica/imagens/territorios/alba.jpg"
-    alt="Paisagem de Alba"
-    loading="lazy"
-  >
+            <img
+              class="territory-card-image"
+              src="/harmonia-caotica/imagens/territorios/umbra.jpg"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            >
 
-  <div class="territory-content">
-    <p class="territory-region">
-      Território da Senhora da Aurora
-    </p>
+            <div class="territory-content">
+              <p class="territory-region">
+                Território do Senhor do Crepúsculo
+              </p>
 
-    <h3 class="territory-name">
-      Alba
-    </h3>
+              <h3 class="territory-name">
+                Umbra
+              </h3>
 
-    <p class="territory-description">
-      Florestas luminosas, jardins floridos, vales
-      férteis e rios serenos envolvem um reino de
-      renovação, beleza e vida abundante.
-    </p>
+              <p class="territory-description">
+                Bosques sombrios, lagos silenciosos, jardins
+                funerários e cidades envoltas por névoa fria,
+                onde a memória dos mortos permanece viva.
+              </p>
 
-    <span class="territory-card-action">
-      Conhecer o território →
-    </span>
-  </div>
-</article>
-          
+              <span class="territory-card-action">
+                Registro em preparação
+              </span>
+            </div>
+          </article>
+
           <article class="territory-card territory-card--illustrated">
-  <img
-    class="territory-card-image"
-    src="/harmonia-caotica/imagens/territorios/tirena.jpg"
-    alt="Paisagem de Tirena"
-    loading="lazy"
-  >
+            <img
+              class="territory-card-image"
+              src="/harmonia-caotica/imagens/territorios/alba.jpg"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            >
 
-  <div class="territory-content">
-    <p class="territory-region">
-      Território da Soberana do Céu
-    </p>
+            <div class="territory-content">
+              <p class="territory-region">
+                Território da Senhora da Aurora
+              </p>
 
-    <h3 class="territory-name">
-      Tirena
-    </h3>
+              <h3 class="territory-name">
+                Alba
+              </h3>
 
-    <p class="territory-description">
-      Montanhas elevadas, planaltos, rotas nômades
-      e ilhas flutuantes sob o domínio dos ventos
-      e do sol.
-    </p>
+              <p class="territory-description">
+                Florestas luminosas, jardins floridos, vales
+                férteis e rios serenos envolvem um reino de
+                renovação, beleza e vida abundante.
+              </p>
 
-    <span class="territory-card-action">
-      Conhecer o território →
-    </span>
-  </div>
-</article>
-          
-        <article class="territory-card territory-card--illustrated">
-  <img
-    class="territory-card-image"
-    src="/harmonia-caotica/imagens/territorios/nevia.jpg"
-    alt="Paisagem de Névia"
-    loading="lazy"
-  >
+              <span class="territory-card-action">
+                Registro em preparação
+              </span>
+            </div>
+          </article>
 
-  <div class="territory-content">
-    <p class="territory-region">
-      Território do Senhor dos Véus
-    </p>
+          <article class="territory-card territory-card--illustrated">
+            <img
+              class="territory-card-image"
+              src="/harmonia-caotica/imagens/territorios/tirena.jpg"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            >
 
-    <h3 class="territory-name">
-      Névia
-    </h3>
+            <div class="territory-content">
+              <p class="territory-region">
+                Território da Soberana do Céu
+              </p>
 
-    <p class="territory-description">
-      Florestas enevoadas, lagos tranquilos e vales úmidos
-      marcados pelos sonhos.
-    </p>
+              <h3 class="territory-name">
+                Tirena
+              </h3>
 
-    <span class="territory-card-action">
-      Conhecer o território →
-    </span>
-  </div>
-</article>  
+              <p class="territory-description">
+                Montanhas elevadas, planaltos, rotas nômades
+                e ilhas flutuantes sob o domínio dos ventos
+                e do sol.
+              </p>
+
+              <span class="territory-card-action">
+                Registro em preparação
+              </span>
+            </div>
+          </article>
+
+          <article class="territory-card territory-card--illustrated">
+            <img
+              class="territory-card-image"
+              src="/harmonia-caotica/imagens/territorios/nevia.jpg"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            >
+
+            <div class="territory-content">
+              <p class="territory-region">
+                Território do Senhor dos Véus
+              </p>
+
+              <h3 class="territory-name">
+                Névia
+              </h3>
+
+              <p class="territory-description">
+                Florestas enevoadas, lagos tranquilos e
+                vales úmidos marcados pelos sonhos.
+              </p>
+
+              <span class="territory-card-action">
+                Registro em preparação
+              </span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -498,6 +545,7 @@
     <section
       id="explorar"
       class="mobile-section"
+      aria-labelledby="titulo-explorar"
     >
       <div class="mobile-container">
         <div class="section-intro">
@@ -505,7 +553,10 @@
             Arquivo de Vaelora
           </p>
 
-          <h2 class="section-title">
+          <h2
+            id="titulo-explorar"
+            class="section-title"
+          >
             Explore o mundo
           </h2>
 
@@ -523,17 +574,16 @@
             </p>
 
             <h3 class="feature-card-title">
-              Rúvia e Umbra
+              Divindades e Territórios
             </h3>
 
             <p class="feature-card-description">
-              Os dois primeiros territórios a receber
-              páginas completas, mapas regionais e
-              descrições detalhadas.
+              Novas páginas serão conectadas à medida que
+              seus textos, artes e mapas forem finalizados.
             </p>
 
             <span class="feature-card-link">
-              Em construção
+              Arquivo em expansão
             </span>
           </div>
         </div>
@@ -556,6 +606,7 @@
         <a
           class="active"
           href="#inicio"
+          aria-current="page"
         >
           <span class="bottom-navigation-icon">
             ◆
@@ -608,47 +659,40 @@
 
         carousel.tabIndex = 0;
 
-        carousel.setAttribute(
-          "aria-label",
-          "Lista horizontal. Arraste com o mouse ou use as setas."
-        );
+        carousel.addEventListener("dragstart", (event) => {
+          event.preventDefault();
+        });
 
-        carousel.addEventListener(
-          "pointerdown",
-          (event) => {
-            if (event.pointerType !== "mouse") {
-              return;
-            }
-
-            dragging = true;
-            moved = false;
-
-            initialX = event.clientX;
-            initialScroll = carousel.scrollLeft;
-
-            carousel.classList.add("is-dragging");
-            carousel.setPointerCapture(event.pointerId);
+        carousel.addEventListener("pointerdown", (event) => {
+          if (
+            event.pointerType !== "mouse" ||
+            event.button !== 0
+          ) {
+            return;
           }
-        );
 
-        carousel.addEventListener(
-          "pointermove",
-          (event) => {
-            if (!dragging) {
-              return;
-            }
+          dragging = true;
+          moved = false;
+          initialX = event.clientX;
+          initialScroll = carousel.scrollLeft;
 
-            const movement =
-              event.clientX - initialX;
+          carousel.classList.add("is-dragging");
+          carousel.setPointerCapture(event.pointerId);
+        });
 
-            if (Math.abs(movement) > 4) {
-              moved = true;
-            }
-
-            carousel.scrollLeft =
-              initialScroll - movement;
+        carousel.addEventListener("pointermove", (event) => {
+          if (!dragging) {
+            return;
           }
-        );
+
+          const movement = event.clientX - initialX;
+
+          if (Math.abs(movement) > 4) {
+            moved = true;
+          }
+
+          carousel.scrollLeft = initialScroll - movement;
+        });
 
         function stopDragging(event) {
           if (!dragging) {
@@ -656,48 +700,47 @@
           }
 
           dragging = false;
-
-          carousel.classList.remove(
-            "is-dragging"
-          );
+          carousel.classList.remove("is-dragging");
 
           if (
             typeof event.pointerId !== "undefined" &&
             carousel.hasPointerCapture(event.pointerId)
           ) {
-            carousel.releasePointerCapture(
-              event.pointerId
-            );
+            carousel.releasePointerCapture(event.pointerId);
           }
         }
 
-        carousel.addEventListener(
-          "pointerup",
-          stopDragging
-        );
-
-        carousel.addEventListener(
-          "pointercancel",
-          stopDragging
-        );
+        carousel.addEventListener("pointerup", stopDragging);
+        carousel.addEventListener("pointercancel", stopDragging);
+        carousel.addEventListener("lostpointercapture", () => {
+          dragging = false;
+          carousel.classList.remove("is-dragging");
+        });
 
         carousel.addEventListener(
           "wheel",
           (event) => {
-            const verticalMovement =
-              Math.abs(event.deltaY);
-
-            const horizontalMovement =
-              Math.abs(event.deltaX);
-
             if (
-              verticalMovement <= horizontalMovement
+              carousel.scrollWidth <= carousel.clientWidth ||
+              Math.abs(event.deltaY) <= Math.abs(event.deltaX)
             ) {
               return;
             }
 
-            event.preventDefault();
+            const atStart =
+              carousel.scrollLeft <= 0 &&
+              event.deltaY < 0;
 
+            const atEnd =
+              carousel.scrollLeft + carousel.clientWidth >=
+                carousel.scrollWidth - 1 &&
+              event.deltaY > 0;
+
+            if (atStart || atEnd) {
+              return;
+            }
+
+            event.preventDefault();
             carousel.scrollLeft += event.deltaY;
           },
           {
@@ -705,31 +748,27 @@
           }
         );
 
-        carousel.addEventListener(
-          "keydown",
-          (event) => {
-            const distance =
-              carousel.clientWidth * 0.75;
+        carousel.addEventListener("keydown", (event) => {
+          const distance = carousel.clientWidth * 0.75;
 
-            if (event.key === "ArrowRight") {
-              event.preventDefault();
+          if (event.key === "ArrowRight") {
+            event.preventDefault();
 
-              carousel.scrollBy({
-                left: distance,
-                behavior: "smooth"
-              });
-            }
-
-            if (event.key === "ArrowLeft") {
-              event.preventDefault();
-
-              carousel.scrollBy({
-                left: -distance,
-                behavior: "smooth"
-              });
-            }
+            carousel.scrollBy({
+              left: distance,
+              behavior: "smooth"
+            });
           }
-        );
+
+          if (event.key === "ArrowLeft") {
+            event.preventDefault();
+
+            carousel.scrollBy({
+              left: -distance,
+              behavior: "smooth"
+            });
+          }
+        });
 
         carousel.addEventListener(
           "click",
@@ -740,12 +779,65 @@
 
             event.preventDefault();
             event.stopPropagation();
-
             moved = false;
           },
           true
         );
       });
+
+    const navigationLinks =
+      Array.from(
+        document.querySelectorAll(
+          '.bottom-navigation a[href^="#"]'
+        )
+      );
+
+    const observedSections =
+      navigationLinks
+        .map((link) =>
+          document.querySelector(link.getAttribute("href"))
+        )
+        .filter(Boolean);
+
+    const navigationObserver =
+      new IntersectionObserver(
+        (entries) => {
+          const visibleEntry =
+            entries
+              .filter((entry) => entry.isIntersecting)
+              .sort(
+                (first, second) =>
+                  second.intersectionRatio -
+                  first.intersectionRatio
+              )[0];
+
+          if (!visibleEntry) {
+            return;
+          }
+
+          navigationLinks.forEach((link) => {
+            const isCurrent =
+              link.getAttribute("href") ===
+              `#${visibleEntry.target.id}`;
+
+            link.classList.toggle("active", isCurrent);
+
+            if (isCurrent) {
+              link.setAttribute("aria-current", "page");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          });
+        },
+        {
+          rootMargin: "-38% 0px -52% 0px",
+          threshold: [0, 0.1, 0.35, 0.6]
+        }
+      );
+
+    observedSections.forEach((section) => {
+      navigationObserver.observe(section);
+    });
   </script>
 </body>
 </html>
