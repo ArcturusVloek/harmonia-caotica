@@ -1673,3 +1673,163 @@ button {
     transform: scale(1.05);
   }
 }
+
+/* ==========================================================
+   CARTÕES ILUSTRADOS DOS TERRITÓRIOS
+   ========================================================== */
+
+.territory-card--illustrated {
+  position: relative;
+
+  min-height: 360px;
+
+  display: flex;
+  align-items: flex-end;
+
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+
+  border: 1px solid rgba(224, 195, 130, 0.28);
+  border-radius: calc(var(--radius) + 4px);
+
+  background: #0b0a08;
+
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.42);
+}
+
+.territory-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.01);
+}
+
+.territory-card--illustrated::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 7, 11, 0.03) 0%,
+      rgba(8, 7, 11, 0.12) 35%,
+      rgba(8, 7, 11, 0.78) 72%,
+      rgba(8, 7, 11, 0.98) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.18),
+      transparent 60%,
+      rgba(0, 0, 0, 0.14)
+    );
+
+  pointer-events: none;
+}
+
+.territory-card--illustrated::after {
+  content: "";
+
+  position: absolute;
+  inset: 9px;
+  z-index: 3;
+
+  border: 1px solid rgba(224, 195, 130, 0.11);
+  border-radius: calc(var(--radius) - 2px);
+
+  pointer-events: none;
+}
+
+.territory-card--illustrated .territory-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+
+  padding: 30px 23px 26px;
+
+  background: transparent;
+}
+
+.territory-card--illustrated .territory-region,
+.territory-card--illustrated .territory-name,
+.territory-card--illustrated .territory-description {
+  text-shadow:
+    0 3px 15px rgba(0, 0, 0, 0.96);
+}
+
+.territory-card--illustrated .territory-name {
+  color: var(--gold-light);
+
+  font-size: clamp(34px, 10vw, 48px);
+  line-height: 1;
+}
+
+.territory-card--illustrated .territory-description {
+  max-width: 470px;
+
+  color: rgba(245, 240, 229, 0.86);
+}
+
+.territory-card-action {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 40px;
+
+  margin-top: 8px;
+  padding: 0 16px;
+
+  border: 1px solid rgba(224, 195, 130, 0.4);
+  border-radius: 999px;
+
+  background: rgba(8, 7, 11, 0.62);
+
+  color: var(--gold-light);
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .territory-card--illustrated,
+  .territory-card-image {
+    transition:
+      transform 220ms ease,
+      border-color 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .territory-card--illustrated:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(224, 195, 130, 0.56);
+
+    box-shadow:
+      0 26px 60px rgba(0, 0, 0, 0.52),
+      0 0 28px rgba(127, 143, 72, 0.1);
+  }
+
+  .territory-card--illustrated:hover .territory-card-image {
+    transform: scale(1.05);
+  }
+}
