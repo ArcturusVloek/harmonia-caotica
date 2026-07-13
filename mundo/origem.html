@@ -2,654 +2,510 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#08070b">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="A origem dos Deuses e da Harmonia Caótica no mundo de Vaelora.">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  >
+  <title>A Origem dos Deuses — Harmonia Caótica</title>
 
-  <meta
-    name="theme-color"
-    content="#08070b"
-  >
+  <link rel="preload" href="/harmonia-caotica/imagens/hero-harmonia-mobile.jpg" as="image" type="image/jpeg">
+  <link rel="preload" href="/harmonia-caotica/imagens/origem/vazio-primordial.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="../css/mobile.css">
 
-  <meta
-    name="description"
-    content="A origem dos Deuses e da Harmonia Caótica no mundo de Vaelora."
-  >
+  <style>
+    .origin-page {
+      --origin-accent: #b99355;
+      --origin-accent-light: #efd598;
+    }
 
-  <title>
-    A Origem dos Deuses — Harmonia Caótica
-  </title>
+    .origin-page .internal-hero-content {
+      position: relative;
+      z-index: 2;
+    }
 
-  <link
-    rel="preload"
-    href="/harmonia-caotica/imagens/hero-harmonia-mobile.jpg"
-    as="image"
-    type="image/jpeg"
-  >
+    .origin-chapter {
+      position: relative;
+      margin: 68px 0 24px;
+      padding: 0 0 18px 56px;
+    }
 
-  <link
-    rel="stylesheet"
-    href="../css/mobile.css"
-  >
+    .origin-chapter::before {
+      content: attr(data-chapter);
+      position: absolute;
+      left: 0;
+      top: -4px;
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(199, 164, 92, .42);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(199,164,92,.12), rgba(7,7,10,.92));
+      color: var(--origin-accent-light);
+      font-family: var(--display);
+      font-size: 14px;
+      box-shadow: 0 0 24px rgba(199,164,92,.08);
+    }
+
+    .origin-chapter::after {
+      content: "";
+      position: absolute;
+      left: 56px;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(239,213,152,.62), transparent);
+    }
+
+    .origin-chapter h2 {
+      margin: 0;
+      padding: 0;
+      color: var(--paper);
+      font-family: var(--display);
+      font-size: clamp(34px, 9vw, 48px);
+      font-weight: 600;
+      line-height: 1.03;
+      letter-spacing: -.5px;
+      text-wrap: balance;
+    }
+
+    .origin-chapter p {
+      margin: 7px 0 0;
+      color: var(--gold);
+      font-family: var(--ui);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .origin-plate {
+      position: relative;
+      width: calc(100% + 28px);
+      margin: 44px -14px 56px;
+      overflow: hidden;
+      border: 1px solid rgba(199,164,92,.34);
+      border-radius: 28px;
+      background: #08070a;
+      box-shadow: 0 28px 70px rgba(0,0,0,.58), 0 0 44px rgba(135,92,158,.07);
+    }
+
+    .origin-plate::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      z-index: 2;
+      border: 1px solid rgba(239,213,152,.12);
+      border-radius: 20px;
+      pointer-events: none;
+    }
+
+    .origin-plate::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, transparent 58%, rgba(5,5,8,.78) 100%),
+        radial-gradient(circle at 50% 50%, transparent 36%, rgba(0,0,0,.25) 100%);
+      pointer-events: none;
+    }
+
+    .origin-plate img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      filter: saturate(.92) contrast(1.05);
+    }
+
+    .origin-plate figcaption {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 19px;
+      z-index: 3;
+      color: rgba(245,239,229,.84);
+      font-family: var(--display);
+      font-size: 15px;
+      font-style: italic;
+      line-height: 1.45;
+      text-shadow: 0 3px 15px rgba(0,0,0,.95);
+    }
+
+    .origin-plate figcaption span {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--origin-accent-light);
+      font-family: var(--ui);
+      font-size: 7px;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .origin-principle {
+      margin: 44px 0;
+      padding: 28px 23px;
+      border: 1px solid rgba(199,164,92,.18);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(115,80,144,.11), transparent 48%),
+        linear-gradient(145deg, rgba(199,164,92,.065), rgba(16,14,20,.92));
+    }
+
+    .origin-principle h3 {
+      margin: 0 0 11px;
+      color: var(--gold-light);
+      font-family: var(--display);
+      font-size: 25px;
+      font-weight: 600;
+    }
+
+    .origin-principle p {
+      margin-bottom: 0;
+    }
+
+    @media (min-width: 720px) {
+      .origin-plate {
+        width: calc(100% + 120px);
+        margin-left: -60px;
+        margin-right: -60px;
+      }
+
+      .origin-plate figcaption {
+        left: 32px;
+        right: 32px;
+        bottom: 26px;
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 
-<body id="topo">
-  <div
-    class="reading-progress"
-    aria-hidden="true"
-  ></div>
+<body id="topo" class="origin-page">
+  <div class="reading-progress" aria-hidden="true"></div>
 
   <header class="mobile-header">
     <div class="mobile-header-inner mobile-container">
-      <a
-        class="mobile-logo"
-        href="../index.html"
-        aria-label="Voltar à página inicial"
-      >
+      <a class="mobile-logo" href="../index.html" aria-label="Voltar à página inicial">
         Harmonia Caótica
       </a>
 
-      <a
-        class="header-action"
-        href="../index.html#mundo"
-        aria-label="Voltar para Vaelora"
-      >
-        ‹
-      </a>
+      <a class="header-action" href="../index.html#mundo" aria-label="Voltar para Vaelora">‹</a>
     </div>
   </header>
 
   <main class="internal-page">
     <section
       class="internal-hero"
-      style="
-        --internal-image:
-          url('/harmonia-caotica/imagens/hero-harmonia-mobile.jpg');
-      "
+      style="--internal-image: url('/harmonia-caotica/imagens/hero-harmonia-mobile.jpg');"
+      aria-labelledby="titulo-origem"
     >
-      <div class="mobile-container">
-        <p class="internal-kicker">
-          História fundamental de Vaelora
-        </p>
-
-        <h1 class="internal-title">
-          A Origem<br>
-          dos Deuses
-        </h1>
-
+      <div class="mobile-container internal-hero-content">
+        <p class="internal-kicker">História fundamental de Vaelora</p>
+        <h1 id="titulo-origem" class="internal-title">A Origem dos Deuses</h1>
         <p class="internal-summary">
-          O despertar dos conceitos, a criação do primeiro
-          ciclo e o nascimento do equilíbrio conhecido como
-          Harmonia Caótica.
+          O despertar dos conceitos, a criação do primeiro ciclo e o nascimento do equilíbrio conhecido como Harmonia Caótica.
         </p>
       </div>
     </section>
 
     <article class="mobile-article mobile-container">
       <p class="article-lead">
-        Houve um tempo em que os Deuses não existiam.
-        Antes deles, não havia reinos, povos ou mundos
-        como os mortais conhecem.
+        Houve um tempo em que os Deuses não existiam. Antes deles, não havia reinos, povos ou mundos como os mortais conhecem.
       </p>
 
       <p>
-        Existiam apenas conceitos dispersos pela vastidão
-        da não existência, forças sem consciência que
-        carregavam todas as possibilidades da realidade.
-        A Luz podia iluminar, embora nada existisse para
-        ser visto. A Morte representava o fim, mesmo que
-        nenhuma vida tivesse começado. O Sono permanecia
-        como uma forma possível de repouso, ainda que
-        nenhuma mente pudesse adormecer. A Doença continha
-        a capacidade de invadir, transformar e consumir,
-        mas não havia corpos que pudessem ser contaminados.
+        Existiam apenas conceitos dispersos pela vastidão da não existência, forças sem consciência que carregavam todas as possibilidades da realidade. A Luz podia iluminar, embora nada existisse para ser visto. A Morte representava o fim, mesmo que nenhuma vida tivesse começado. O Sono permanecia como uma forma possível de repouso, ainda que nenhuma mente pudesse adormecer. A Doença continha a capacidade de invadir, transformar e consumir, mas não havia corpos que pudessem ser contaminados.
       </p>
 
       <p>
-        Esses conceitos não obedeciam a leis e não
-        possuíam limites claros. Misturavam-se,
-        afastavam-se e colidiam sem produzir uma ordem
-        duradoura. Vida e Morte tocavam-se sem que
-        existisse nascimento. Luz e Trevas ocupavam o
-        mesmo vazio sem formar dia ou noite. Sonho e
-        realidade eram possibilidades indistintas,
-        pois nenhuma consciência havia despertado para
-        separá-los.
+        Esses conceitos não obedeciam a leis e não possuíam limites claros. Misturavam-se, afastavam-se e colidiam sem produzir uma ordem duradoura. Vida e Morte tocavam-se sem que existisse nascimento. Luz e Trevas ocupavam o mesmo vazio sem formar dia ou noite. Sonho e realidade eram possibilidades indistintas, pois nenhuma consciência havia despertado para separá-los.
       </p>
 
       <p>
-        Nada possuía significado, porque não existia
-        alguém capaz de observar, sofrer ou compreender.
+        Nada possuía significado, porque não existia alguém capaz de observar, sofrer ou compreender.
       </p>
 
-      <div class="article-divider">
-        <span>◆ ◆ ◆</span>
-      </div>
+      <figure class="origin-plate">
+        <img
+          src="/harmonia-caotica/imagens/origem/vazio-primordial.webp"
+          alt="Representação do Vazio Primordial, onde conceitos sem consciência colidem antes do nascimento dos Deuses"
+          width="512"
+          height="341"
+          fetchpriority="high"
+        >
+        <figcaption>
+          <span>Registro I · Antes da consciência</span>
+          O Vazio Primordial e os conceitos que existiam sem forma, vontade ou limites.
+        </figcaption>
+      </figure>
 
-      <h2>O despertar dos conceitos</h2>
-
-      <p>
-        Os primeiros Deuses surgiram quando alguns desses
-        conceitos adquiriram vontade. Não se sabe se as
-        próprias forças despertaram ou se alguma forma de
-        consciência nasceu no instante em que elas se
-        encontraram. Nem mesmo os registros divinos
-        oferecem uma resposta definitiva.
-      </p>
-
-      <p>
-        O que se sabe é que os primeiros Deuses não
-        criaram os conceitos que passaram a governar.
-        Eles os reivindicaram.
-      </p>
+      <header class="origin-chapter" data-chapter="I">
+        <h2>O despertar dos conceitos</h2>
+        <p>O nascimento da vontade divina</p>
+      </header>
 
       <p>
-        Reivindicar um domínio não era o mesmo que possuir
-        uma terra ou um objeto. A Divindade tornava-se o
-        centro consciente de uma força que antes se
-        manifestava sem direção. Ela estabelecia regras,
-        definia limites e determinava como aquele conceito
-        se relacionaria com o restante da realidade.
+        Os primeiros Deuses surgiram quando alguns desses conceitos adquiriram vontade. Não se sabe se as próprias forças despertaram ou se alguma forma de consciência nasceu no instante em que elas se encontraram. Nem mesmo os registros divinos oferecem uma resposta definitiva.
       </p>
 
       <p>
-        Ao mesmo tempo, o domínio também passava a moldar
-        aquele que o havia reclamado. Um Deus podia
-        interpretar e expandir seu conceito, mas não podia
-        negar sua natureza fundamental sem enfraquecer a
-        própria existência.
+        O que se sabe é que os primeiros Deuses não criaram os conceitos que passaram a governar. Eles os reivindicaram.
       </p>
 
       <p>
-        O Senhor do Crepúsculo poderia alterar os caminhos
-        da morte, dos espíritos e das trevas, mas não
-        poderia abolir completamente o fim. A Senhora da
-        Aurora poderia fortalecer a vida e conduzir a cura,
-        mas não poderia transformar toda existência em
-        crescimento eterno sem deformar a própria criação.
+        Reivindicar um domínio não era o mesmo que possuir uma terra ou um objeto. A Divindade tornava-se o centro consciente de uma força que antes se manifestava sem direção. Ela estabelecia regras, definia limites e determinava como aquele conceito se relacionaria com o restante da realidade.
+      </p>
+
+      <p>
+        Ao mesmo tempo, o domínio também passava a moldar aquele que o havia reclamado. Um Deus podia interpretar e expandir seu conceito, mas não podia negar sua natureza fundamental sem enfraquecer a própria existência.
+      </p>
+
+      <p>
+        O Senhor do Crepúsculo poderia alterar os caminhos da morte, dos espíritos e das trevas, mas não poderia abolir completamente o fim. A Senhora da Aurora poderia fortalecer a vida e conduzir a cura, mas não poderia transformar toda existência em crescimento eterno sem deformar a própria criação.
       </p>
 
       <div class="lore-quote">
-        <p>
-          Os Deuses governavam os conceitos, mas também
-          eram governados por eles.
-        </p>
+        <p>Os Deuses governavam os conceitos, mas também eram governados por eles.</p>
       </div>
 
       <p>
-        Quando a realidade começou a adquirir forma, o
-        mundo ainda não possuía Sol, Lua ou estrelas.
-        Não existiam dias e noites, pois não havia ciclo
-        que os diferenciasse. Tudo permanecia envolto por
-        uma escuridão absoluta, sem direção e sem horizonte.
+        Quando a realidade começou a adquirir forma, o mundo ainda não possuía Sol, Lua ou estrelas. Não existiam dias e noites, pois não havia ciclo que os diferenciasse. Tudo permanecia envolto por uma escuridão absoluta, sem direção e sem horizonte.
       </p>
 
       <p>
-        Foi o Senhor do Crepúsculo quem primeiro
-        estabeleceu ordem naquela escuridão. Ele não a
-        criou, pois as Trevas eram anteriores até mesmo à
-        sua consciência. Ao reivindicá-las, porém,
-        concedeu-lhes limites e propósito.
+        Foi o Senhor do Crepúsculo quem primeiro estabeleceu ordem naquela escuridão. Ele não a criou, pois as Trevas eram anteriores até mesmo à sua consciência. Ao reivindicá-las, porém, concedeu-lhes limites e propósito.
       </p>
 
       <p>
-        A escuridão deixou de ser apenas ausência e passou
-        a representar silêncio, repouso, ocultação e
-        encerramento. Ainda não existiam criaturas capazes
-        de morrer, mas toda existência futura já carregava
-        a possibilidade de um fim.
+        A escuridão deixou de ser apenas ausência e passou a representar silêncio, repouso, ocultação e encerramento. Ainda não existiam criaturas capazes de morrer, mas toda existência futura já carregava a possibilidade de um fim.
       </p>
 
       <p>
-        Então a Senhora da Aurora reivindicou a Luz e a
-        Vida. Sua presença permitiu que a matéria começasse
-        a reagir, que formas simples se organizassem e que
-        aquilo que estava imóvel adquirisse a capacidade
-        de crescer.
+        Então a Senhora da Aurora reivindicou a Luz e a Vida. Sua presença permitiu que a matéria começasse a reagir, que formas simples se organizassem e que aquilo que estava imóvel adquirisse a capacidade de crescer.
       </p>
 
       <p>
-        A Soberana do Céu ergueu-se diante daquela luz e
-        reivindicou o firmamento vazio. Reuniu os ventos,
-        as alturas e o calor que permanecia disperso.
-        A Senhora da Aurora compartilhou parte de sua
-        claridade, não como quem entrega um domínio, mas
-        como quem reconhece que nenhuma força poderia
-        organizar sozinha toda a criação.
+        A Soberana do Céu ergueu-se diante daquela luz e reivindicou o firmamento vazio. Reuniu os ventos, as alturas e o calor que permanecia disperso. A Senhora da Aurora compartilhou parte de sua claridade, não como quem entrega um domínio, mas como quem reconhece que nenhuma força poderia organizar sozinha toda a criação.
       </p>
 
       <p>
-        A Soberana concentrou aquela luz, acrescentou-lhe
-        seu próprio calor e formou o primeiro Sol.
+        A Soberana concentrou aquela luz, acrescentou-lhe seu próprio calor e formou o primeiro Sol.
       </p>
 
       <p>
-        A Luz permaneceu sob o domínio da Senhora da
-        Aurora. O Sol, o Céu e o movimento do astro pelo
-        firmamento passaram a pertencer à Soberana.
-        Quando o primeiro Sol se ergueu, a vida encontrou
-        condições para nascer.
+        A Luz permaneceu sob o domínio da Senhora da Aurora. O Sol, o Céu e o movimento do astro pelo firmamento passaram a pertencer à Soberana. Quando o primeiro Sol se ergueu, a vida encontrou condições para nascer.
       </p>
 
-      <div class="article-divider">
-        <span>◆ ◆ ◆</span>
-      </div>
-
-      <h2>O primeiro dia e a primeira noite</h2>
+      <header class="origin-chapter" data-chapter="II">
+        <h2>O primeiro dia e a primeira noite</h2>
+        <p>O pacto que criou o ciclo</p>
+      </header>
 
       <p>
-        A Soberana manteve o Sol sobre a criação. Temia
-        que, ao permitir que sua luz desaparecesse, a
-        antiga escuridão retomasse tudo aquilo que acabara
-        de nascer. O primeiro dia, por isso, não teve fim.
+        A Soberana manteve o Sol sobre a criação. Temia que, ao permitir que sua luz desaparecesse, a antiga escuridão retomasse tudo aquilo que acabara de nascer. O primeiro dia, por isso, não teve fim.
       </p>
 
       <p>
-        Sob a claridade constante, as plantas cresceram
-        sem repouso, as águas se aqueceram e os animais
-        permaneceram despertos até que seus corpos
-        começaram a enfraquecer. A Luz havia permitido o
-        surgimento da vida, mas, sem um intervalo,
-        ameaçava consumi-la.
+        Sob a claridade constante, as plantas cresceram sem repouso, as águas se aqueceram e os animais permaneceram despertos até que seus corpos começaram a enfraquecer. A Luz havia permitido o surgimento da vida, mas, sem um intervalo, ameaçava consumi-la.
       </p>
 
       <p>
-        O Senhor dos Véus percebeu que nenhuma mente
-        poderia permanecer desperta para sempre. Sem o
-        Sono, as criaturas não poderiam recuperar suas
-        forças, organizar suas memórias ou afastar-se por
-        algumas horas do peso do mundo desperto.
+        O Senhor dos Véus percebeu que nenhuma mente poderia permanecer desperta para sempre. Sem o Sono, as criaturas não poderiam recuperar suas forças, organizar suas memórias ou afastar-se por algumas horas do peso do mundo desperto.
       </p>
 
       <p>
-        A Senhora da Lua e da Noite também se apresentou.
-        A Noite não era o mesmo que as Trevas. As Trevas
-        pertenciam ao silêncio, às sombras e àquilo que
-        permanecia oculto. A Noite seria uma parte do ciclo
-        do céu, um período durante o qual o Sol se
-        afastaria sem que o mundo retornasse ao vazio
-        primordial.
+        A Senhora da Lua e da Noite também se apresentou. A Noite não era o mesmo que as Trevas. As Trevas pertenciam ao silêncio, às sombras e àquilo que permanecia oculto. A Noite seria uma parte do ciclo do céu, um período durante o qual o Sol se afastaria sem que o mundo retornasse ao vazio primordial.
       </p>
 
       <p>
-        A Senhora da Lua prometeu ocupar o firmamento
-        durante o descanso da Soberana. O Senhor dos Véus
-        ofereceu o Sono e os caminhos dos Sonhos. O Senhor
-        do Crepúsculo ofereceu a transição entre a
-        claridade e a escuridão.
+        A Senhora da Lua prometeu ocupar o firmamento durante o descanso da Soberana. O Senhor dos Véus ofereceu o Sono e os caminhos dos Sonhos. O Senhor do Crepúsculo ofereceu a transição entre a claridade e a escuridão.
       </p>
 
       <p>
-        A Soberana compreendeu que nenhum Deus poderia
-        sustentar sozinho toda a existência e aceitou o
-        acordo.
+        A Soberana compreendeu que nenhum Deus poderia sustentar sozinho toda a existência e aceitou o acordo.
       </p>
 
       <p>
-        Quando fechou os olhos pela primeira vez, o Sol
-        desceu no horizonte. O Senhor do Crepúsculo alongou
-        as sombras e criou o primeiro entardecer. Depois,
-        a Senhora da Lua ergueu seu astro, e o Senhor dos
-        Véus alcançou as criaturas cansadas.
+        Quando fechou os olhos pela primeira vez, o Sol desceu no horizonte. O Senhor do Crepúsculo alongou as sombras e criou o primeiro entardecer. Depois, a Senhora da Lua ergueu seu astro, e o Senhor dos Véus alcançou as criaturas cansadas.
       </p>
 
       <p>
-        Quando a Soberana despertou, o Sol voltou a subir,
-        e a vida ergueu-se renovada.
+        Quando a Soberana despertou, o Sol voltou a subir, e a vida ergueu-se renovada.
       </p>
 
       <div class="lore-quote">
-        <p>
-          Assim nasceram o dia e a noite.
-        </p>
+        <p>Assim nasceram o dia e a noite.</p>
       </div>
 
       <p>
-        O ciclo não surgiu de uma derrota ou de uma
-        maldição lançada contra a Soberana do Céu. Nasceu
-        de um pacto entre Divindades que reconheceram os
-        limites de seus próprios domínios.
+        O ciclo não surgiu de uma derrota ou de uma maldição lançada contra a Soberana do Céu. Nasceu de um pacto entre Divindades que reconheceram os limites de seus próprios domínios.
       </p>
 
-      <div class="article-divider">
-        <span>◆ ◆ ◆</span>
-      </div>
-
-      <h2>As Chagas e os limites da Vida</h2>
+      <header class="origin-chapter" data-chapter="III">
+        <h2>As Chagas e os limites da Vida</h2>
+        <p>Adaptação, resistência e transformação</p>
+      </header>
 
       <p>
-        Com o estabelecimento do ciclo, a Vida continuou
-        a se expandir. Plantas ocupavam novos espaços,
-        criaturas multiplicavam-se e corpos recuperavam-se
-        de quase todos os danos. A criação crescia, mas
-        ainda não conhecia limites suficientes.
+        Com o estabelecimento do ciclo, a Vida continuou a se expandir. Plantas ocupavam novos espaços, criaturas multiplicavam-se e corpos recuperavam-se de quase todos os danos. A criação crescia, mas ainda não conhecia limites suficientes.
       </p>
 
       <p>
-        Foi então que o Senhor das Chagas reivindicou as
-        Doenças, os Parasitas, as Infecções e o Contágio.
+        Foi então que o Senhor das Chagas reivindicou as Doenças, os Parasitas, as Infecções e o Contágio.
       </p>
 
       <p>
-        As primeiras criaturas conheceram sua presença
-        por meio da febre, da dor e da perda. Muitos
-        passaram a vê-lo como inimigo da Vida, mas o
-        Senhor das Chagas não havia surgido para exterminar
-        a criação.
+        As primeiras criaturas conheceram sua presença por meio da febre, da dor e da perda. Muitos passaram a vê-lo como inimigo da Vida, mas o Senhor das Chagas não havia surgido para exterminar a criação.
       </p>
 
       <p>
-        Seu domínio estabeleceu relações que a Vida,
-        sozinha, ainda não tinha organizado. Organismos
-        passaram a disputar corpos, alimento e espaço.
-        Hospedeiros desenvolveram resistência. Espécies
-        precisaram mudar para sobreviver, e sistemas de
-        defesa começaram a surgir.
+        Seu domínio estabeleceu relações que a Vida, sozinha, ainda não tinha organizado. Organismos passaram a disputar corpos, alimento e espaço. Hospedeiros desenvolveram resistência. Espécies precisaram mudar para sobreviver, e sistemas de defesa começaram a surgir.
       </p>
 
       <p>
-        As Chagas trouxeram sofrimento, mas também
-        transformação, adaptação e novos limites.
+        As Chagas trouxeram sofrimento, mas também transformação, adaptação e novos limites.
       </p>
 
       <p>
-        A Senhora da Aurora enfrentou as enfermidades que
-        ameaçavam consumir a vida por completo. Fortaleceu
-        corpos, fechou feridas e desenvolveu novas formas
-        de recuperação. O Senhor das Chagas respondeu com
-        mutações, contágios e parasitas mais resistentes.
+        A Senhora da Aurora enfrentou as enfermidades que ameaçavam consumir a vida por completo. Fortaleceu corpos, fechou feridas e desenvolveu novas formas de recuperação. O Senhor das Chagas respondeu com mutações, contágios e parasitas mais resistentes.
       </p>
 
       <p>
-        Nenhum deles poderia alcançar uma vitória absoluta
-        sem destruir também aquilo que sustentava o próprio
-        domínio.
+        Nenhum deles poderia alcançar uma vitória absoluta sem destruir também aquilo que sustentava o próprio domínio.
       </p>
 
-      <div class="article-divider">
-        <span>◆ ◆ ◆</span>
-      </div>
-
-      <h2>A Harmonia Caótica</h2>
+      <header class="origin-chapter" data-chapter="IV">
+        <h2>A Harmonia Caótica</h2>
+        <p>O equilíbrio produzido pelo conflito</p>
+      </header>
 
       <p>
-        Os conceitos jamais permaneceram isolados. A Vida
-        encontrava a Morte em toda criatura que nascia.
-        A Luz produzia sombras. O Sol estabelecia o dia,
-        mas precisava ceder espaço à Noite. O Sono
-        aproximava a mente das lembranças, dos desejos e,
-        em alguns casos, dos mortos.
+        Os conceitos jamais permaneceram isolados. A Vida encontrava a Morte em toda criatura que nascia. A Luz produzia sombras. O Sol estabelecia o dia, mas precisava ceder espaço à Noite. O Sono aproximava a mente das lembranças, dos desejos e, em alguns casos, dos mortos.
       </p>
 
       <p>
-        As fronteiras entre os domínios passaram a ser
-        continuamente disputadas. Algumas dessas disputas
-        produziram guerras. Outras deram origem a pactos,
-        alianças e responsabilidades compartilhadas.
+        As fronteiras entre os domínios passaram a ser continuamente disputadas. Algumas dessas disputas produziram guerras. Outras deram origem a pactos, alianças e responsabilidades compartilhadas.
       </p>
 
       <p>
-        Esse estado permanente de atrito tornou-se
-        conhecido como Guerra Divina. Ela não era uma
-        batalha única, com começo e fim definidos, mas a
-        disputa contínua pelas fronteiras que separavam e
-        uniam os conceitos.
+        Esse estado permanente de atrito tornou-se conhecido como Guerra Divina. Ela não era uma batalha única, com começo e fim definidos, mas a disputa contínua pelas fronteiras que separavam e uniam os conceitos.
       </p>
 
-      <div class="lore-box">
+      <div class="origin-principle">
         <h3>A Guerra Divina</h3>
-
         <p>
-          Uma Divindade não precisa destruir outra para
-          conquistar uma vitória. Adquirir novos fiéis,
-          alterar uma tradição, estabelecer uma lei ou
-          ampliar uma manifestação de seu domínio também
-          são formas de vencer.
+          Uma Divindade não precisa destruir outra para conquistar uma vitória. Adquirir novos fiéis, alterar uma tradição, estabelecer uma lei ou ampliar uma manifestação de seu domínio também são formas de vencer.
         </p>
       </div>
 
       <p>
-        Dessa guerra emergiu a Harmonia Caótica. Ela não
-        representa paz entre os Deuses, mas o equilíbrio
-        instável produzido por forças que se limitam
-        mutuamente.
+        Dessa guerra emergiu a Harmonia Caótica. Ela não representa paz entre os Deuses, mas o equilíbrio instável produzido por forças que se limitam mutuamente.
       </p>
 
       <p>
-        Sem a Morte, a Vida cresceria até consumir todo o
-        espaço disponível. Sem a Vida, a Morte não teria
-        nada para concluir. Sem as Trevas, não existiriam
-        repouso, privacidade ou transição. Sem a Luz, nada
-        poderia ser visto ou conduzido ao crescimento.
+        Sem a Morte, a Vida cresceria até consumir todo o espaço disponível. Sem a Vida, a Morte não teria nada para concluir. Sem as Trevas, não existiriam repouso, privacidade ou transição. Sem a Luz, nada poderia ser visto ou conduzido ao crescimento.
       </p>
 
       <p>
-        Sem o Sono, as mentes seriam destruídas pela
-        vigília constante. Sem o despertar, todos
-        permaneceriam presos aos sonhos. Sem a Doença,
-        os organismos perderiam parte de sua capacidade
-        de resistência. Sem a Cura, as Chagas consumiriam
-        seus próprios hospedeiros.
+        Sem o Sono, as mentes seriam destruídas pela vigília constante. Sem o despertar, todos permaneceriam presos aos sonhos. Sem a Doença, os organismos perderiam parte de sua capacidade de resistência. Sem a Cura, as Chagas consumiriam seus próprios hospedeiros.
       </p>
 
       <div class="lore-quote">
-        <p>
-          A Harmonia Caótica persiste não apesar do
-          conflito, mas por causa dele.
-        </p>
+        <p>A Harmonia Caótica persiste não apesar do conflito, mas por causa dele.</p>
       </div>
 
-      <div class="article-divider">
-        <span>◆ ◆ ◆</span>
-      </div>
-
-      <h2>Vacância e Ascensão</h2>
+      <header class="origin-chapter" data-chapter="V">
+        <h2>Vacância e Ascensão</h2>
+        <p>Quando um lugar entre os Deuses permanece vazio</p>
+      </header>
 
       <p>
-        Os Deuses são imortais diante do tempo, das
-        doenças e das limitações comuns aos mortais, mas
-        não são indestrutíveis. Uma Divindade pode cair
-        pelas mãos de outra, ser dividida entre rivais,
-        permanecer aprisionada ou perder gradualmente a
-        força necessária para sustentar seu domínio.
+        Os Deuses são imortais diante do tempo, das doenças e das limitações comuns aos mortais, mas não são indestrutíveis. Uma Divindade pode cair pelas mãos de outra, ser dividida entre rivais, permanecer aprisionada ou perder gradualmente a força necessária para sustentar seu domínio.
       </p>
 
       <p>
-        Quando um Deus cai, o conceito que governava não
-        desaparece. Ele continua existindo, mas perde seu
-        centro de organização. As regras estabelecidas
-        pela antiga Divindade começam a falhar, e
-        diferentes manifestações do domínio surgem sem
-        limite comum.
+        Quando um Deus cai, o conceito que governava não desaparece. Ele continua existindo, mas perde seu centro de organização. As regras estabelecidas pela antiga Divindade começam a falhar, e diferentes manifestações do domínio surgem sem limite comum.
       </p>
 
       <p>
-        Esse período de instabilidade tornou-se conhecido
-        como Vacância Divina.
+        Esse período de instabilidade tornou-se conhecido como Vacância Divina.
       </p>
 
       <p>
-        Vacâncias raramente permanecem vazias por muito
-        tempo. Outras Divindades tentam absorver o domínio
-        abandonado, entidades menores disputam seus
-        fragmentos e mortais poderosos procuram alcançar
-        o lugar deixado pelo antigo Deus.
+        Vacâncias raramente permanecem vazias por muito tempo. Outras Divindades tentam absorver o domínio abandonado, entidades menores disputam seus fragmentos e mortais poderosos procuram alcançar o lugar deixado pelo antigo Deus.
       </p>
 
       <p>
-        Não existe um ritual único capaz de transformar
-        qualquer pessoa em Divindade. O candidato precisa
-        possuir uma ligação verdadeira com o conceito,
-        força suficiente para suportar seu poder e
-        reconhecimento bastante para impedir que outro o
-        reivindique primeiro.
+        Não existe um ritual único capaz de transformar qualquer pessoa em Divindade. O candidato precisa possuir uma ligação verdadeira com o conceito, força suficiente para suportar seu poder e reconhecimento bastante para impedir que outro o reivindique primeiro.
       </p>
 
       <p>
-        Reivindicar um conceito não significa apenas
-        receber novas habilidades. O mortal é reconstruído
-        por aquilo que tenta governar. Seu corpo deixa de
-        obedecer às leis comuns, sua consciência se expande
-        e sua identidade precisa suportar o peso de
-        incontáveis manifestações do domínio.
+        Reivindicar um conceito não significa apenas receber novas habilidades. O mortal é reconstruído por aquilo que tenta governar. Seu corpo deixa de obedecer às leis comuns, sua consciência se expande e sua identidade precisa suportar o peso de incontáveis manifestações do domínio.
       </p>
 
       <p>
-        Muitos candidatos são destruídos durante o
-        processo. Alguns perdem completamente a identidade
-        e tornam-se manifestações sem vontade própria.
-        Outros reivindicam apenas uma parte do domínio e
-        dão origem a entidades incompletas.
+        Muitos candidatos são destruídos durante o processo. Alguns perdem completamente a identidade e tornam-se manifestações sem vontade própria. Outros reivindicam apenas uma parte do domínio e dão origem a entidades incompletas.
       </p>
 
-      <p>
-        Os poucos que sobrevivem tornam-se novos Deuses.
-      </p>
+      <p>Os poucos que sobrevivem tornam-se novos Deuses.</p>
 
       <div class="lore-quote">
-        <p>
-          Ascender significa deixar de ser apenas uma
-          pessoa e tornar-se parte da própria estrutura
-          da existência.
-        </p>
+        <p>Ascender significa deixar de ser apenas uma pessoa e tornar-se parte da própria estrutura da existência.</p>
       </div>
 
       <p>
-        A maioria dos fiéis jamais alcançará a divindade.
-        Viverá e morrerá servindo ao Deus escolhido,
-        fortalecendo suas instituições e ampliando as
-        formas pelas quais seu conceito se manifesta no
-        mundo.
+        A maioria dos fiéis jamais alcançará a divindade. Viverá e morrerá servindo ao Deus escolhido, fortalecendo suas instituições e ampliando as formas pelas quais seu conceito se manifesta no mundo.
       </p>
 
       <p>
-        Alguns poucos, contudo, alcançarão poder suficiente
-        para serem reconhecidos como possíveis sucessores.
-        Para eles, a questão não será apenas descobrir se
-        conseguirão ascender, mas decidir se ainda
-        desejarão fazê-lo depois de compreender o preço.
+        Alguns poucos, contudo, alcançarão poder suficiente para serem reconhecidos como possíveis sucessores. Para eles, a questão não será apenas descobrir se conseguirão ascender, mas decidir se ainda desejarão fazê-lo depois de compreender o preço.
       </p>
 
       <p>
-        Ascender significa assumir uma posição na Guerra
-        Divina e passar a sustentar uma parte da Harmonia
-        Caótica.
+        Ascender significa assumir uma posição na Guerra Divina e passar a sustentar uma parte da Harmonia Caótica.
       </p>
 
-      <div class="lore-box">
+      <div class="origin-principle">
         <p>
-          <strong>
-            O conceito deixa de ser apenas uma fonte de
-            poder. Passa a ser aquilo que define a
-            existência da nova Divindade.
-          </strong>
+          <strong>O conceito deixa de ser apenas uma fonte de poder. Passa a ser aquilo que define a existência da nova Divindade.</strong>
         </p>
       </div>
 
-      <nav
-        class="article-navigation"
-        aria-label="Navegação do artigo"
-      >
-        <a href="../index.html">
-          Voltar ao início
-        </a>
-
-        <a href="../index.html#divindades">
-          Conhecer as Divindades
-        </a>
+      <nav class="article-navigation" aria-label="Navegação do artigo">
+        <a href="../index.html">Voltar ao início</a>
+        <a href="../index.html#divindades">Conhecer as Divindades</a>
       </nav>
     </article>
   </main>
 
   <footer class="mobile-footer">
-    <div class="mobile-container">
-      Harmonia Caótica · Mundo de Vaelora
-    </div>
+    <div class="mobile-container">Harmonia Caótica · Mundo de Vaelora</div>
   </footer>
 
-  <nav
-    class="bottom-navigation"
-    aria-label="Navegação principal"
-  >
+  <nav class="bottom-navigation" aria-label="Navegação principal">
     <ul class="bottom-navigation-list">
-      <li>
-        <a href="../index.html">
-          <span class="bottom-navigation-icon">
-            ◆
-          </span>
-
-          Início
-        </a>
-      </li>
-
-      <li>
-        <a
-          class="active"
-          href="#topo"
-        >
-          <span class="bottom-navigation-icon">
-            ◉
-          </span>
-
-          Origem
-        </a>
-      </li>
-
-      <li>
-        <a href="../index.html#divindades">
-          <span class="bottom-navigation-icon">
-            ✦
-          </span>
-
-          Deuses
-        </a>
-      </li>
-
-      <li>
-        <a href="../index.html#territorios">
-          <span class="bottom-navigation-icon">
-            ◇
-          </span>
-
-          Terras
-        </a>
-      </li>
+      <li><a href="../index.html"><span class="bottom-navigation-icon">◆</span>Início</a></li>
+      <li><a class="active" href="#topo" aria-current="page"><span class="bottom-navigation-icon">◉</span>Origem</a></li>
+      <li><a href="../index.html#divindades"><span class="bottom-navigation-icon">✦</span>Deuses</a></li>
+      <li><a href="../index.html#territorios"><span class="bottom-navigation-icon">◇</span>Terras</a></li>
     </ul>
   </nav>
 
   <script>
-    const progressBar =
-      document.querySelector(".reading-progress");
+    const progressBar = document.querySelector('.reading-progress');
 
     function updateReadingProgress() {
-      const documentHeight =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
-
-      const progress =
-        documentHeight > 0
-          ? window.scrollY / documentHeight
-          : 0;
-
-      progressBar.style.width =
-        `${Math.min(progress * 100, 100)}%`;
+      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = documentHeight > 0 ? window.scrollY / documentHeight : 0;
+      progressBar.style.width = `${Math.min(progress * 100, 100)}%`;
     }
 
-    window.addEventListener(
-      "scroll",
-      updateReadingProgress,
-      {
-        passive: true
-      }
-    );
-
-    window.addEventListener(
-      "resize",
-      updateReadingProgress
-    );
-
+    window.addEventListener('scroll', updateReadingProgress, { passive: true });
+    window.addEventListener('resize', updateReadingProgress);
     updateReadingProgress();
   </script>
 </body>
