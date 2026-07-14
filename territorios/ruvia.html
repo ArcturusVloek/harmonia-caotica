@@ -6,1149 +6,10 @@
   <meta name="theme-color" content="#0a0c08">
   <meta name="color-scheme" content="dark">
   <meta name="description" content="Conheça Rúvia, território do Senhor das Chagas no mundo de Vaelora.">
-
   <title>Rúvia — Harmonia Caótica</title>
-
-  <link
-    rel="preload"
-    href="/harmonia-caotica/imagens/territorios/ruvia.jpg"
-    as="image"
-    type="image/jpeg"
-    fetchpriority="high"
-  >
+  <link rel="preload" href="/harmonia-caotica/imagens/territorios/ruvia.jpg" as="image" type="image/jpeg" fetchpriority="high">
   <link rel="stylesheet" href="../css/mobile.css">
-
-  <style>
-    .ruvia-page {
-      --ruvia: #aebb66;
-      --ruvia-light: #d9df9a;
-      --ruvia-deep: #4d5929;
-      --ruvia-water: #6f9590;
-      --ruvia-amber: #c9a45d;
-      --ruvia-line: rgba(174, 187, 102, .24);
-      --ruvia-line-strong: rgba(174, 187, 102, .48);
-      background:
-        radial-gradient(circle at 4% 22%, rgba(93, 111, 54, .09), transparent 30rem),
-        radial-gradient(circle at 96% 54%, rgba(73, 112, 108, .07), transparent 32rem),
-        linear-gradient(180deg, #070907, #0a0b09 42%, #080907 100%);
-    }
-
-    .ruvia-page .mobile-header::after {
-      background: linear-gradient(90deg, transparent, rgba(174, 187, 102, .36), transparent);
-    }
-
-    .ruvia-hero {
-      position: relative;
-      min-height: 88svh;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      isolation: isolate;
-      padding: calc(96px + env(safe-area-inset-top)) 0 54px;
-      background: #090b07;
-    }
-
-    .ruvia-hero__image,
-    .ruvia-hero__veil {
-      position: absolute;
-      inset: 0;
-    }
-
-    .ruvia-hero__image {
-      z-index: -3;
-      background:
-        url('/harmonia-caotica/imagens/territorios/ruvia.jpg') center / cover no-repeat;
-      transform: scale(1.025);
-    }
-
-    .ruvia-hero__veil {
-      z-index: -2;
-      background:
-        radial-gradient(circle at 52% 26%, transparent 0 20%, rgba(0, 0, 0, .28) 82%),
-        linear-gradient(180deg, rgba(6, 8, 5, .06) 0%, rgba(6, 8, 5, .16) 32%, rgba(7, 9, 6, .73) 72%, #080907 100%),
-        linear-gradient(90deg, rgba(0, 0, 0, .44), transparent 65%, rgba(0, 0, 0, .12));
-    }
-
-    .ruvia-hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0;
-      height: 120px;
-      z-index: -1;
-      background: linear-gradient(transparent, #080907);
-    }
-
-    .ruvia-hero__layout {
-      display: grid;
-      gap: 27px;
-      align-items: end;
-    }
-
-    .ruvia-hero__content {
-      position: relative;
-      max-width: 720px;
-    }
-
-    .ruvia-hero__content::before {
-      content: "";
-      display: block;
-      width: 72px;
-      height: 1px;
-      margin-bottom: 18px;
-      background: linear-gradient(90deg, var(--ruvia-light), transparent);
-    }
-
-    .ruvia-hero__index {
-      margin: 0 0 10px;
-      color: var(--ruvia-light);
-      font-family: var(--ui);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 2.2px;
-      text-transform: uppercase;
-      text-shadow: 0 3px 15px rgba(0, 0, 0, .9);
-    }
-
-    .ruvia-hero__title {
-      margin: 0;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: clamp(66px, 21vw, 112px);
-      font-weight: 600;
-      line-height: .78;
-      letter-spacing: -2.4px;
-      text-shadow: 0 12px 36px rgba(0, 0, 0, .78);
-    }
-
-    .ruvia-hero__domain {
-      width: fit-content;
-      margin: 24px 0 0;
-      padding: 8px 12px;
-      border: 1px solid rgba(174, 187, 102, .38);
-      border-radius: 999px;
-      background: rgba(7, 9, 6, .55);
-      color: var(--ruvia-light);
-      font-family: var(--ui);
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .ruvia-hero__summary {
-      max-width: 610px;
-      margin: 19px 0 0;
-      color: rgba(245, 239, 229, .9);
-      font-size: 15px;
-      line-height: 1.72;
-      text-shadow: 0 4px 18px rgba(0, 0, 0, .92);
-    }
-
-    .ruvia-facts {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1px;
-      overflow: hidden;
-      border: 1px solid rgba(174, 187, 102, .22);
-      border-radius: 24px;
-      background: rgba(174, 187, 102, .18);
-      box-shadow: 0 22px 58px rgba(0, 0, 0, .42);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-
-    .ruvia-fact {
-      min-height: 91px;
-      padding: 17px 15px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, .035), transparent),
-        rgba(9, 11, 8, .79);
-    }
-
-    .ruvia-fact span,
-    .ruvia-fact strong {
-      display: block;
-    }
-
-    .ruvia-fact span {
-      color: var(--muted);
-      font-family: var(--ui);
-      font-size: 7px;
-      font-weight: 700;
-      letter-spacing: 1.25px;
-      text-transform: uppercase;
-    }
-
-    .ruvia-fact strong {
-      margin-top: 6px;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: 19px;
-      font-weight: 600;
-      line-height: 1.05;
-    }
-
-    .ruvia-index {
-      position: sticky;
-      top: calc(var(--header) + env(safe-area-inset-top));
-      z-index: 90;
-      border-top: 1px solid rgba(255, 255, 255, .035);
-      border-bottom: 1px solid var(--ruvia-line);
-      background: rgba(8, 9, 7, .9);
-      box-shadow: 0 14px 34px rgba(0, 0, 0, .26);
-      backdrop-filter: blur(20px) saturate(125%);
-      -webkit-backdrop-filter: blur(20px) saturate(125%);
-    }
-
-    .ruvia-index__list {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      margin: 0;
-      padding: 10px max(var(--page), env(safe-area-inset-left));
-      list-style: none;
-      scrollbar-width: none;
-      scroll-padding-inline: var(--page);
-    }
-
-    .ruvia-index__list::-webkit-scrollbar {
-      display: none;
-    }
-
-    .ruvia-index a {
-      min-height: 36px;
-      display: inline-flex;
-      align-items: center;
-      padding: 0 13px;
-      border: 1px solid rgba(174, 187, 102, .16);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .018);
-      color: var(--muted);
-      font-family: var(--ui);
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: .75px;
-      text-decoration: none;
-      text-transform: uppercase;
-      white-space: nowrap;
-      transition: color var(--ease), border-color var(--ease), background var(--ease);
-    }
-
-    .ruvia-index a.active,
-    .ruvia-index a:active {
-      border-color: var(--ruvia-line-strong);
-      background: rgba(174, 187, 102, .08);
-      color: var(--ruvia-light);
-    }
-
-    .ruvia-content {
-      max-width: 1180px;
-      padding-top: 24px;
-      padding-bottom: 118px;
-    }
-
-    .ruvia-content p {
-      color: var(--paper-soft);
-      font-size: 15px;
-      line-height: 1.86;
-    }
-
-    .ruvia-opening,
-    .ruvia-section {
-      scroll-margin-top: calc(var(--header) + 70px);
-    }
-
-    .ruvia-opening {
-      display: grid;
-      gap: 32px;
-      padding: 54px 0 72px;
-    }
-
-    .ruvia-opening__copy {
-      max-width: 720px;
-    }
-
-    .ruvia-opening__lead {
-      margin: 0 0 29px;
-      padding-left: 18px;
-      border-left: 2px solid var(--ruvia);
-      color: var(--paper) !important;
-      font-family: var(--display);
-      font-size: 25px !important;
-      line-height: 1.47 !important;
-    }
-
-    .ruvia-opening__copy > p:not(.ruvia-opening__lead) {
-      margin: 0 0 22px;
-    }
-
-    .ruvia-testimony {
-      position: relative;
-      margin: 36px 0 0;
-      padding: 29px 24px 26px;
-      overflow: hidden;
-      border: 1px solid var(--ruvia-line);
-      border-radius: 22px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(174, 187, 102, .12), transparent 48%),
-        linear-gradient(145deg, rgba(174, 187, 102, .06), rgba(16, 18, 13, .94));
-      box-shadow: var(--shadow-soft);
-    }
-
-    .ruvia-testimony::before {
-      content: "“";
-      position: absolute;
-      top: -8px;
-      left: 13px;
-      color: rgba(217, 223, 154, .18);
-      font-family: var(--display);
-      font-size: 88px;
-      line-height: 1;
-    }
-
-    .ruvia-testimony p {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      color: var(--ruvia-light);
-      font-family: var(--display);
-      font-size: 22px;
-      font-style: italic;
-      line-height: 1.48;
-    }
-
-    .atlas-schematic {
-      position: relative;
-      min-height: 570px;
-      overflow: hidden;
-      border: 1px solid var(--ruvia-line-strong);
-      border-radius: 32px;
-      background:
-        radial-gradient(circle at 25% 38%, rgba(84, 105, 52, .16), transparent 30%),
-        radial-gradient(circle at 70% 75%, rgba(86, 130, 124, .12), transparent 32%),
-        linear-gradient(145deg, #171a12, #0a0c09 68%);
-      box-shadow: var(--shadow), 0 0 46px rgba(174, 187, 102, .06);
-    }
-
-    .atlas-schematic::before {
-      content: "";
-      position: absolute;
-      inset: 9px;
-      z-index: 3;
-      border: 1px solid rgba(217, 223, 154, .09);
-      border-radius: 23px;
-      pointer-events: none;
-    }
-
-    .atlas-schematic__header {
-      position: absolute;
-      inset: 24px 24px auto;
-      z-index: 4;
-    }
-
-    .atlas-schematic__header span,
-    .atlas-schematic__header strong {
-      display: block;
-    }
-
-    .atlas-schematic__header span {
-      color: var(--ruvia);
-      font-family: var(--ui);
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-    }
-
-    .atlas-schematic__header strong {
-      margin-top: 4px;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: 27px;
-      font-weight: 600;
-    }
-
-    .atlas-schematic__river {
-      position: absolute;
-      inset: 96px 0 36px;
-      width: 100%;
-      height: calc(100% - 132px);
-      z-index: 1;
-      opacity: .88;
-      filter: drop-shadow(0 0 12px rgba(111, 149, 144, .18));
-    }
-
-    .atlas-label {
-      position: absolute;
-      z-index: 4;
-      max-width: 130px;
-      padding: 7px 9px;
-      border: 1px solid rgba(174, 187, 102, .2);
-      border-radius: 10px;
-      background: rgba(8, 10, 7, .74);
-      color: var(--paper-soft);
-      font-family: var(--ui);
-      font-size: 7px;
-      font-weight: 700;
-      letter-spacing: .75px;
-      line-height: 1.35;
-      text-align: center;
-      text-transform: uppercase;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, .22);
-      backdrop-filter: blur(7px);
-      -webkit-backdrop-filter: blur(7px);
-    }
-
-    .atlas-label::after {
-      content: "";
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      border: 1px solid var(--ruvia);
-      border-radius: 50%;
-      background: #0b0d09;
-      box-shadow: 0 0 12px rgba(174, 187, 102, .45);
-    }
-
-    .atlas-label--orda {
-      top: 107px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .atlas-label--orda::after {
-      left: 50%;
-      bottom: -18px;
-      transform: translateX(-50%);
-    }
-
-    .atlas-label--velan {
-      top: 230px;
-      left: 24px;
-    }
-
-    .atlas-label--velan::after {
-      right: -17px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .atlas-label--seren {
-      top: 302px;
-      left: 70px;
-    }
-
-    .atlas-label--seren::after {
-      right: -17px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .atlas-label--leria {
-      top: 202px;
-      right: 42px;
-      color: var(--ruvia-light);
-      border-color: var(--ruvia-line-strong);
-    }
-
-    .atlas-label--leria::after {
-      left: -17px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .atlas-label--karos {
-      top: 330px;
-      right: 30px;
-    }
-
-    .atlas-label--karos::after {
-      left: -17px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .atlas-label--planicie {
-      top: 410px;
-      right: 62px;
-    }
-
-    .atlas-label--planicie::after {
-      left: -17px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .atlas-label--sarn {
-      left: 50%;
-      bottom: 42px;
-      transform: translateX(-50%);
-    }
-
-    .atlas-label--sarn::after {
-      left: 50%;
-      top: -18px;
-      transform: translateX(-50%);
-    }
-
-    .atlas-schematic__note {
-      position: absolute;
-      right: 23px;
-      bottom: 17px;
-      z-index: 4;
-      color: rgba(207, 197, 186, .46);
-      font-family: var(--ui);
-      font-size: 6px;
-      letter-spacing: .85px;
-      text-transform: uppercase;
-    }
-
-    .ruvia-section {
-      position: relative;
-      padding: 72px 0;
-      border-top: 1px solid transparent;
-      border-image: linear-gradient(90deg, transparent, var(--ruvia-line), transparent) 1;
-    }
-
-    .ruvia-section__heading {
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 14px;
-      align-items: start;
-      margin-bottom: 38px;
-    }
-
-    .ruvia-section__number {
-      margin: 4px 0 0;
-      color: rgba(174, 187, 102, .52);
-      font-family: var(--display);
-      font-size: 32px;
-      line-height: 1;
-      text-align: center;
-    }
-
-    .ruvia-section__number::after {
-      content: "";
-      display: block;
-      width: 1px;
-      height: 58px;
-      margin: 10px auto 0;
-      background: linear-gradient(var(--ruvia-line-strong), transparent);
-    }
-
-    .ruvia-section__kicker {
-      margin: 0 0 7px;
-      color: var(--ruvia);
-      font-family: var(--ui);
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 1.7px;
-      text-transform: uppercase;
-    }
-
-    .ruvia-section__heading h2 {
-      margin: 0;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: clamp(42px, 12vw, 64px);
-      font-weight: 600;
-      line-height: .98;
-      letter-spacing: -1px;
-      text-wrap: balance;
-    }
-
-    .ruvia-section__summary {
-      max-width: 660px;
-      margin: 14px 0 0;
-      color: var(--paper-soft);
-      font-size: 14px !important;
-      line-height: 1.72 !important;
-    }
-
-    .region-ledger {
-      position: relative;
-      display: grid;
-      gap: 28px;
-    }
-
-    .region-ledger::before {
-      content: "";
-      position: absolute;
-      left: 17px;
-      top: 18px;
-      bottom: 18px;
-      width: 1px;
-      background: linear-gradient(var(--ruvia-line-strong), rgba(174, 187, 102, .04));
-    }
-
-    .region-entry {
-      position: relative;
-      display: grid;
-      grid-template-columns: 36px minmax(0, 1fr);
-      gap: 17px;
-    }
-
-    .region-entry__mark {
-      position: relative;
-      z-index: 1;
-      width: 35px;
-      height: 35px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--ruvia-line-strong);
-      border-radius: 50%;
-      background: #0c0e0a;
-      color: var(--ruvia-light);
-      font-family: var(--display);
-      font-size: 14px;
-      box-shadow: 0 0 20px rgba(174, 187, 102, .08);
-    }
-
-    .region-entry__body {
-      padding: 0 0 27px;
-      border-bottom: 1px solid rgba(174, 187, 102, .09);
-    }
-
-    .region-entry:last-child .region-entry__body {
-      border-bottom: 0;
-    }
-
-    .region-entry h3,
-    .institution-card h3,
-    .village-card h3,
-    .catalog-card h3,
-    .threat-card h3 {
-      margin: 0;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: 28px;
-      font-weight: 600;
-      line-height: 1.06;
-    }
-
-    .region-entry p {
-      max-width: 780px;
-      margin: 14px 0 0;
-    }
-
-    .culture-layout,
-    .capital-layout {
-      display: grid;
-      gap: 30px;
-    }
-
-    .culture-prose > p,
-    .capital-copy > p {
-      max-width: 760px;
-      margin: 0 0 22px;
-    }
-
-    .customs-ledger {
-      display: grid;
-      gap: 10px;
-    }
-
-    .custom-entry {
-      position: relative;
-      min-height: 82px;
-      display: grid;
-      grid-template-columns: 39px 1fr;
-      align-items: center;
-      gap: 13px;
-      padding: 15px 17px;
-      border: 1px solid var(--ruvia-line);
-      border-radius: 17px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, .02), transparent),
-        rgba(15, 17, 12, .78);
-    }
-
-    .custom-entry__symbol {
-      width: 39px;
-      height: 39px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--ruvia-line-strong);
-      border-radius: 50%;
-      color: var(--ruvia-light);
-      font-family: var(--display);
-      font-size: 17px;
-    }
-
-    .custom-entry span,
-    .custom-entry strong {
-      display: block;
-    }
-
-    .custom-entry span {
-      color: var(--muted);
-      font-family: var(--ui);
-      font-size: 7px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .custom-entry strong {
-      margin-top: 3px;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: 19px;
-      font-weight: 600;
-      line-height: 1.15;
-    }
-
-    .capital-frame {
-      position: relative;
-      min-height: 350px;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      padding: 28px 24px;
-      border: 1px solid var(--ruvia-line-strong);
-      border-radius: 30px;
-      background:
-        linear-gradient(180deg, rgba(8, 10, 7, .05), rgba(8, 10, 7, .36) 42%, rgba(8, 10, 7, .96) 100%),
-        url('/harmonia-caotica/imagens/territorios/ruvia.jpg') center 62% / cover no-repeat;
-      box-shadow: var(--shadow);
-    }
-
-    .capital-frame::after {
-      content: "";
-      position: absolute;
-      inset: 9px;
-      border: 1px solid rgba(217, 223, 154, .11);
-      border-radius: 22px;
-      pointer-events: none;
-    }
-
-    .capital-frame__content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .capital-frame__content span {
-      color: var(--ruvia-light);
-      font-family: var(--ui);
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    .capital-frame__content strong {
-      display: block;
-      margin-top: 5px;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: 54px;
-      font-weight: 600;
-      line-height: .9;
-      text-shadow: 0 6px 22px rgba(0, 0, 0, .92);
-    }
-
-    .capital-frame__content p {
-      max-width: 470px;
-      margin: 15px 0 0;
-      color: rgba(245, 239, 229, .88);
-      font-size: 13px;
-      line-height: 1.6;
-      text-shadow: 0 3px 14px rgba(0, 0, 0, .94);
-    }
-
-    .institution-grid {
-      display: grid;
-      gap: 14px;
-      margin-top: 35px;
-    }
-
-    .institution-card,
-    .catalog-card,
-    .threat-card {
-      position: relative;
-      overflow: hidden;
-      padding: 24px 21px;
-      border: 1px solid var(--ruvia-line);
-      border-radius: 21px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(174, 187, 102, .08), transparent 46%),
-        linear-gradient(145deg, rgba(24, 27, 18, .94), rgba(12, 14, 10, .96));
-      box-shadow: var(--shadow-soft);
-    }
-
-    .institution-card::before,
-    .catalog-card::before,
-    .threat-card::before {
-      content: attr(data-mark);
-      position: absolute;
-      top: 7px;
-      right: 14px;
-      color: rgba(174, 187, 102, .08);
-      font-family: var(--display);
-      font-size: 72px;
-      font-weight: 600;
-      line-height: 1;
-    }
-
-    .institution-card p,
-    .catalog-card p,
-    .threat-card p {
-      position: relative;
-      margin: 14px 0 0;
-      font-size: 13px;
-      line-height: 1.67;
-    }
-
-    .village-grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .village-card {
-      --village-accent: 174, 187, 102;
-      position: relative;
-      padding: 26px 22px;
-      overflow: hidden;
-      border: 1px solid rgba(var(--village-accent), .25);
-      border-radius: 24px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(var(--village-accent), .09), transparent 48%),
-        linear-gradient(145deg, rgba(23, 25, 18, .95), rgba(10, 12, 9, .97));
-      box-shadow: var(--shadow-soft);
-    }
-
-    .village-card:nth-child(2) { --village-accent: 111, 149, 144; }
-    .village-card:nth-child(3) { --village-accent: 137, 166, 103; }
-    .village-card:nth-child(4) { --village-accent: 184, 160, 102; }
-    .village-card:nth-child(5) { --village-accent: 161, 179, 91; }
-
-    .village-card__meta {
-      margin: 0 0 7px;
-      color: rgb(var(--village-accent));
-      font-family: var(--ui);
-      font-size: 7px;
-      font-weight: 700;
-      letter-spacing: 1.25px;
-      text-transform: uppercase;
-    }
-
-    .village-card p:not(.village-card__meta) {
-      margin: 14px 0 0;
-      font-size: 13px;
-      line-height: 1.69;
-    }
-
-    .catalog-grid,
-    .threat-grid {
-      display: grid;
-      gap: 14px;
-    }
-
-    .catalog-card h3,
-    .threat-card h3 {
-      position: relative;
-      font-size: 25px;
-    }
-
-    .fauna-note,
-    .threat-note {
-      margin-top: 22px;
-      padding: 23px 21px;
-      border: 1px solid var(--ruvia-line);
-      border-left: 3px solid var(--ruvia);
-      border-radius: 0 18px 18px 0;
-      background: linear-gradient(90deg, rgba(174, 187, 102, .08), transparent 62%);
-    }
-
-    .fauna-note p,
-    .threat-note p {
-      margin: 0 0 16px;
-      font-size: 14px;
-      line-height: 1.75;
-    }
-
-    .fauna-note p:last-child,
-    .threat-note p:last-child {
-      margin-bottom: 0;
-    }
-
-    .threat-card {
-      border-color: rgba(193, 128, 84, .23);
-      background:
-        radial-gradient(circle at 100% 0%, rgba(193, 128, 84, .09), transparent 48%),
-        linear-gradient(145deg, rgba(27, 21, 17, .96), rgba(12, 11, 9, .97));
-    }
-
-    .threat-card::before {
-      color: rgba(193, 128, 84, .08);
-    }
-
-    .threat-card h3 {
-      color: #e4c0a0;
-    }
-
-    .relations-ledger {
-      display: grid;
-      gap: 1px;
-      overflow: hidden;
-      border: 1px solid var(--ruvia-line);
-      border-radius: 24px;
-      background: rgba(174, 187, 102, .13);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .relation-entry {
-      display: grid;
-      grid-template-columns: 45px minmax(0, 1fr);
-      gap: 14px;
-      padding: 21px 19px;
-      background: rgba(12, 14, 10, .97);
-    }
-
-    .relation-entry__sigil {
-      width: 45px;
-      height: 45px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--ruvia-line-strong);
-      border-radius: 50%;
-      color: var(--ruvia-light);
-      font-family: var(--display);
-      font-size: 18px;
-    }
-
-    .relation-entry strong {
-      display: block;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: 21px;
-      font-weight: 600;
-    }
-
-    .relation-entry p {
-      margin: 6px 0 0;
-      font-size: 13px;
-      line-height: 1.64;
-    }
-
-    .ruvia-closing {
-      position: relative;
-      margin: 46px 0 0;
-      padding: 32px 24px 29px;
-      overflow: hidden;
-      border: 1px solid var(--ruvia-line-strong);
-      border-radius: 25px;
-      background:
-        radial-gradient(circle at 80% 0%, rgba(174, 187, 102, .14), transparent 50%),
-        linear-gradient(145deg, rgba(24, 27, 18, .96), rgba(10, 12, 9, .98));
-      box-shadow: var(--shadow);
-    }
-
-    .ruvia-closing::after {
-      content: "";
-      position: absolute;
-      inset: 8px;
-      border: 1px solid rgba(217, 223, 154, .06);
-      border-radius: 18px;
-      pointer-events: none;
-    }
-
-    .ruvia-closing p {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      color: var(--ruvia-light);
-      font-family: var(--display);
-      font-size: 22px;
-      font-style: italic;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    .ruvia-navigation {
-      display: grid;
-      gap: 11px;
-      margin-top: 55px;
-    }
-
-    .ruvia-navigation a {
-      min-height: 54px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 18px;
-      border: 1px solid var(--ruvia-line-strong);
-      border-radius: 999px;
-      background: rgba(174, 187, 102, .055);
-      color: var(--ruvia-light);
-      font-family: var(--ui);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: .95px;
-      text-align: center;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 680ms ease, transform 680ms cubic-bezier(.2, .7, .2, 1);
-    }
-
-    [data-reveal].is-visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    @media (min-width: 560px) {
-      .ruvia-facts {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .ruvia-navigation,
-      .catalog-grid,
-      .threat-grid,
-      .institution-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .institution-card:first-child {
-        grid-column: 1 / -1;
-      }
-    }
-
-    @media (min-width: 900px) {
-      .ruvia-hero {
-        min-height: 88vh;
-        padding-bottom: 76px;
-      }
-
-      .ruvia-hero__layout {
-        grid-template-columns: minmax(0, 1.2fr) minmax(420px, .8fr);
-        gap: 64px;
-      }
-
-      .ruvia-hero__title {
-        font-size: 126px;
-      }
-
-      .ruvia-opening {
-        grid-template-columns: minmax(0, .95fr) minmax(400px, 1.05fr);
-        gap: 62px;
-        align-items: start;
-        padding: 84px 0 104px;
-      }
-
-      .ruvia-section {
-        padding: 96px 0;
-      }
-
-      .ruvia-section__heading {
-        grid-template-columns: 70px 1fr;
-        gap: 24px;
-        margin-bottom: 54px;
-      }
-
-      .ruvia-section__number {
-        font-size: 42px;
-      }
-
-      .ruvia-section__heading h2 {
-        font-size: 72px;
-      }
-
-      .region-ledger {
-        max-width: 900px;
-        margin-left: 94px;
-      }
-
-      .culture-layout,
-      .capital-layout {
-        grid-template-columns: minmax(0, .95fr) minmax(360px, 1.05fr);
-        gap: 56px;
-        align-items: start;
-      }
-
-      .capital-layout {
-        grid-template-columns: minmax(420px, 1.05fr) minmax(0, .95fr);
-      }
-
-      .institution-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .institution-card:first-child {
-        grid-column: auto;
-      }
-
-      .village-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
-      }
-
-      .village-card:first-child {
-        grid-column: 1 / -1;
-      }
-
-      .catalog-grid,
-      .threat-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .relations-ledger {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .relation-entry:nth-child(odd):last-child {
-        grid-column: 1 / -1;
-      }
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .ruvia-index a:hover {
-        border-color: var(--ruvia-line-strong);
-        background: rgba(174, 187, 102, .07);
-        color: var(--ruvia-light);
-      }
-
-      .institution-card,
-      .village-card,
-      .catalog-card,
-      .threat-card,
-      .relation-entry,
-      .ruvia-navigation a {
-        transition: transform var(--ease), border-color var(--ease), background var(--ease), box-shadow var(--ease);
-      }
-
-      .institution-card:hover,
-      .village-card:hover,
-      .catalog-card:hover,
-      .threat-card:hover {
-        transform: translateY(-4px);
-        border-color: var(--ruvia-line-strong);
-        box-shadow: 0 24px 58px rgba(0, 0, 0, .44);
-      }
-
-      .relation-entry:hover {
-        background: rgba(20, 23, 15, .98);
-      }
-
-      .ruvia-navigation a:hover {
-        transform: translateY(-2px);
-        background: rgba(174, 187, 102, .09);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      [data-reveal] {
-        opacity: 1;
-        transform: none;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../css/ruvia.css">
 </head>
 
 <body id="topo" class="territory-page territory-page--ruvia ruvia-page">
@@ -1156,9 +17,7 @@
 
   <header class="mobile-header">
     <div class="mobile-header-inner mobile-container">
-      <a class="mobile-logo" href="../index.html" aria-label="Voltar à página inicial">
-        Harmonia Caótica
-      </a>
+      <a class="mobile-logo" href="../index.html" aria-label="Voltar à página inicial">Harmonia Caótica</a>
       <a class="header-action" href="../index.html#territorios" aria-label="Voltar para os Territórios">‹</a>
     </div>
   </header>
@@ -1174,27 +33,15 @@
           <h1 id="titulo-ruvia" class="ruvia-hero__title">Rúvia</h1>
           <div class="ruvia-hero__domain">Território do Senhor das Chagas</div>
           <p class="ruvia-hero__summary">
-            Uma vasta bacia de pântanos, rios largos e planícies alagáveis, onde a convivência com doenças e parasitas transformou atenção, pesquisa e prevenção em pilares da sociedade.
+            Uma vasta bacia de rios, pântanos e florestas fúngicas onde doenças são cultivadas, parasitas tornam-se heranças e a carne é tratada como matéria capaz de assumir novas formas.
           </p>
         </div>
 
         <div class="ruvia-facts" data-reveal aria-label="Informações essenciais de Rúvia">
-          <div class="ruvia-fact">
-            <span>Capital</span>
-            <strong>Leria</strong>
-          </div>
-          <div class="ruvia-fact">
-            <span>Grande rio</span>
-            <strong>Olen</strong>
-          </div>
-          <div class="ruvia-fact">
-            <span>Bioma</span>
-            <strong>Terras alagadas</strong>
-          </div>
-          <div class="ruvia-fact">
-            <span>Vilas</span>
-            <strong>Cinco</strong>
-          </div>
+          <div class="ruvia-fact"><span>Capital</span><strong>Leria</strong></div>
+          <div class="ruvia-fact"><span>Grande rio</span><strong>Olen</strong></div>
+          <div class="ruvia-fact"><span>Bioma</span><strong>Terras alagadas</strong></div>
+          <div class="ruvia-fact"><span>Religião</span><strong>A Segunda Carne</strong></div>
         </div>
       </div>
     </section>
@@ -1204,9 +51,10 @@
         <li><a class="active" href="#visao-geral">Visão geral</a></li>
         <li><a href="#geografia">Geografia</a></li>
         <li><a href="#povo">O povo</a></li>
+        <li><a href="#economia">Economia</a></li>
         <li><a href="#leria">Leria</a></li>
         <li><a href="#vilas">Vilas</a></li>
-        <li><a href="#natureza">Fauna e flora</a></li>
+        <li><a href="#natureza">Natureza</a></li>
         <li><a href="#ameacas">Ameaças</a></li>
         <li><a href="#mundo">Relações</a></li>
       </ul>
@@ -1216,77 +64,37 @@
       <section id="visao-geral" class="ruvia-opening">
         <div class="ruvia-opening__copy" data-reveal>
           <p class="ruvia-opening__lead">
-            Rúvia ocupa uma vasta região de terras baixas, atravessada por rios de corrente lenta e marcada por inundações sazonais.
+            Rúvia não procura preservar todos os corpos como nasceram. Seu povo aprendeu a viver em um território onde a vida invade, consome, substitui e transforma a si mesma.
           </p>
 
-          <p>
-            Grande parte do território permanece coberta por pântanos, brejos, lagos rasos e campos que passam vários meses do ano sob a água. Mesmo as áreas consideradas secas raramente estão distantes de um canal, uma nascente ou um terreno encharcado.
-          </p>
+          <p>O território ocupa uma grande bacia cercada pela Serra de Orda. Rios de corrente lenta atravessam planícies inundáveis, florestas úmidas e pântanos profundos antes de se reunirem no Rio Olen, a principal artéria de Rúvia.</p>
 
-          <p>
-            A água define a paisagem e também a vida dos habitantes. Ela transporta pessoas, mercadorias, animais e doenças; alimenta plantações, mas também cria condições favoráveis para insetos, fungos e parasitas. Em Rúvia, o mesmo rio que sustenta uma comunidade pode tornar-se a origem de um surto caso não seja corretamente observado.
-          </p>
+          <p>A água transporta pessoas, mercadorias, animais, esporos, ovos e doenças. Ela alimenta as plantações, sustenta as cidades e permite que uma contaminação atravesse comunidades inteiras antes que seus primeiros sintomas sejam reconhecidos.</p>
 
-          <p>
-            A presença do Senhor das Chagas não transformou o território em uma região morta ou abandonada. Pelo contrário, Rúvia possui uma das maiores concentrações de vida do continente. Plantas crescem em diferentes níveis, raízes acumulam-se sob a água e incontáveis espécies vivem sobre ou dentro de outras criaturas. A morte de um animal rapidamente alimenta fungos, insetos e organismos menores, mantendo o ambiente em constante atividade.
-          </p>
+          <p>Os ruvianos não tratam toda enfermidade como inimiga, nem todo parasita como praga. Algumas linhagens são preservadas por famílias, outras são utilizadas em profissões e ritos, e certas criaturas substituem órgãos, filtram toxinas ou alteram os sentidos de seus hospedeiros. Existem também chagas criadas para matar, consumir ou deformar — e Rúvia não esconde essa parte de sua fé.</p>
 
-          <p>
-            A doença também faz parte desse equilíbrio. Os ruvianos não acreditam que toda enfermidade deva ser aceita sem resistência, mas consideram perigoso destruir aquilo que ainda não foi compreendido. Uma infecção pode ser contida, tratada ou eliminada, porém deve antes ser registrada e estudada. Esse princípio transformou Rúvia em referência no controle de epidemias, no tratamento de contaminações e no estudo de organismos parasitários.
-          </p>
+          <p>Contenção e estudo permanecem essenciais, mas não porque o território rejeite as Chagas. Para a Segunda Carne, libertar uma criação sem conhecer seus sintomas, vetores e consequências demonstra incompetência religiosa. O ruviano responsável não é aquele que evita toda contaminação: é aquele que sabe o que carrega e assume as consequências de propagá-lo.</p>
 
-          <p>
-            Para os estrangeiros, suas águas escuras, o excesso de insetos e o uso frequente de máscaras podem causar desconforto.
-          </p>
-
-          <blockquote class="ruvia-testimony">
-            <p>Para os habitantes, porém, viver em Rúvia exige atenção, não medo.</p>
+          <blockquote class="ruvia-quote">
+            <p>Em Rúvia, a pergunta não é apenas como manter um corpo vivo, mas quanto dele ainda pertence somente a quem o habita.</p>
           </blockquote>
         </div>
 
-        <aside class="atlas-schematic" data-reveal aria-label="Esquema geográfico de Rúvia">
-          <div class="atlas-schematic__header">
+        <aside class="basin-card" data-reveal aria-label="Relações geográficas da bacia de Rúvia">
+          <div class="basin-card__header">
             <span>Leitura territorial</span>
             <strong>A bacia de Rúvia</strong>
           </div>
-
-          <svg class="atlas-schematic__river" viewBox="0 0 360 500" aria-hidden="true">
-            <defs>
-              <linearGradient id="olenGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#b7d2c7" stop-opacity=".8"/>
-                <stop offset=".55" stop-color="#6f9590" stop-opacity=".76"/>
-                <stop offset="1" stop-color="#476f6c" stop-opacity=".48"/>
-              </linearGradient>
-              <filter id="riverGlow" x="-40%" y="-20%" width="180%" height="140%">
-                <feGaussianBlur stdDeviation="3" result="blur"/>
-                <feMerge>
-                  <feMergeNode in="blur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-            <path
-              d="M196 5 C178 68, 226 102, 199 158 C171 217, 223 258, 201 317 C183 365, 222 402, 187 492"
-              fill="none"
-              stroke="url(#olenGradient)"
-              stroke-width="12"
-              stroke-linecap="round"
-              filter="url(#riverGlow)"
-            />
-            <path d="M199 306 C149 342, 136 390, 111 472" fill="none" stroke="#5f8782" stroke-opacity=".42" stroke-width="5" stroke-linecap="round"/>
-            <path d="M201 318 C250 353, 262 409, 279 472" fill="none" stroke="#5f8782" stroke-opacity=".42" stroke-width="5" stroke-linecap="round"/>
-            <path d="M192 82 C153 86, 123 78, 91 62" fill="none" stroke="#6f7e44" stroke-opacity=".45" stroke-width="2" stroke-dasharray="4 7"/>
-            <path d="M200 180 C246 183, 285 166, 324 142" fill="none" stroke="#6f7e44" stroke-opacity=".38" stroke-width="2" stroke-dasharray="4 7"/>
-          </svg>
-
-          <span class="atlas-label atlas-label--orda">Serra de Orda</span>
-          <span class="atlas-label atlas-label--velan">Floresta de Velan</span>
-          <span class="atlas-label atlas-label--seren">Seren</span>
-          <span class="atlas-label atlas-label--leria">Leria</span>
-          <span class="atlas-label atlas-label--karos">Distrito de Karos</span>
-          <span class="atlas-label atlas-label--planicie">Planície do Olen</span>
-          <span class="atlas-label atlas-label--sarn">Pântanos de Sarn</span>
-          <small class="atlas-schematic__note">Esquema de relações geográficas</small>
+          <ul class="basin-route">
+            <li>Serra de Orda · Norte</li>
+            <li>Arquivo de Vetores</li>
+            <li>Leria · Margem norte do Olen</li>
+            <li>Floresta de Velan · Oeste</li>
+            <li>Seren · Transição florestal</li>
+            <li>Planície do Olen · Centro e leste</li>
+            <li>Distrito de Karos · Centro</li>
+            <li>Pântanos de Sarn · Sul</li>
+          </ul>
         </aside>
       </section>
 
@@ -1294,93 +102,41 @@
         <header class="ruvia-section__heading" data-reveal>
           <p class="ruvia-section__number">I</p>
           <div>
-            <p class="ruvia-section__kicker">Águas, relevo e contenção</p>
+            <p class="ruvia-section__kicker">Águas, relevo e circulação</p>
             <h2>As Terras Alagadas</h2>
-            <p class="ruvia-section__summary">
-              Rúvia é uma bacia cercada pela Serra de Orda e organizada ao redor do Rio Olen, cujas águas conectam florestas, planícies, cidades e pântanos.
-            </p>
+            <p class="ruvia-section__summary">A geografia de Rúvia permanece organizada pela Serra de Orda, pelo Rio Olen e pelas regiões que ocupam os diferentes níveis da bacia.</p>
           </div>
         </header>
 
-        <div class="region-ledger">
-          <article class="region-entry" data-reveal>
-            <span class="region-entry__mark">I</span>
-            <div class="region-entry__body">
-              <h3>A Bacia e a Serra de Orda</h3>
-              <p>
-                O território encontra-se em uma grande bacia cercada pela Serra de Orda. Suas elevações formam a principal barreira natural de Rúvia, concentram as nascentes e criam passagens controláveis entre o interior úmido e as terras exteriores.
-              </p>
-              <p>
-                Das encostas de Orda descem vários cursos de água que se encontram no Rio Olen. O Olen atravessa Rúvia, curvando-se para o leste antes de se dividir em braços menores nos Pântanos de Sarn. Ele é a principal via de circulação do território e a base de sua agricultura.
-              </p>
-            </div>
+        <div class="card-grid">
+          <article class="lore-card" data-mark="I" data-reveal>
+            <h3>A Serra de Orda e o Rio Olen</h3>
+            <p>A Serra de Orda circunda a bacia e forma sua principal barreira natural. Suas passagens controlam as entradas terrestres, enquanto cavernas, rios subterrâneos e áreas de extração atravessam suas encostas.</p>
+            <p>Os cursos de água que descem da serra alimentam o Rio Olen. O rio cruza as terras centrais, torna-se largo e navegável diante de Leria e segue em direção às regiões baixas do sul.</p>
           </article>
 
-          <article class="region-entry" data-reveal>
-            <span class="region-entry__mark">II</span>
-            <div class="region-entry__body">
-              <h3>A Planície do Olen</h3>
-              <p>
-                Ao redor do rio encontra-se a Planície do Olen. Apesar do nome, não se trata de uma extensão completamente seca. Durante a estação das chuvas, grande parte da planície é inundada, deixando apenas algumas elevações e estradas acima do nível da água. Quando o rio retorna ao seu leito, deposita sedimentos férteis que permitem o cultivo de cereais, raízes, ervas medicinais e plantas utilizadas na alimentação de animais.
-              </p>
-              <p>
-                Os assentamentos da planície são construídos sobre elevações naturais ou plataformas artificiais. Canais conduzem a água para reservatórios e áreas de cultivo, enquanto diques menores impedem que enchentes destruam armazéns e residências.
-              </p>
-              <p>
-                O controle desses canais é uma responsabilidade coletiva. Um bloqueio mal planejado pode inundar uma vila vizinha, espalhar doenças ou alterar o curso de um braço do Olen. Por isso, toda obra realizada sobre as águas precisa ser aprovada pelas autoridades locais e pelos representantes da Igreja do Senhor das Chagas.
-              </p>
-            </div>
+          <article class="lore-card" data-mark="II" data-reveal>
+            <h3>A Planície do Olen</h3>
+            <p>A Planície do Olen ocupa principalmente o centro e o leste. Durante as chuvas, grandes áreas ficam submersas; quando as águas recuam, sedimentos férteis sustentam cereais, raízes, ervas, plantas tóxicas e cultivos destinados à alimentação de animais e colônias parasitárias.</p>
+            <p>Assentamentos erguem-se sobre elevações e plataformas. Canais e comportas distribuem água, mas qualquer alteração pode inundar comunidades, arruinar colheitas ou espalhar organismos pelo território.</p>
           </article>
 
-          <article class="region-entry" data-reveal>
-            <span class="region-entry__mark">III</span>
-            <div class="region-entry__body">
-              <h3>Os Pântanos de Sarn</h3>
-              <p>
-                No sul da bacia começam os Pântanos de Sarn, a maior região alagada de Rúvia. Ali, o Rio Olen divide-se em diversos canais, formando ilhas de vegetação, lagos rasos e áreas de lama profunda. As águas mudam de posição ao longo do ano, apagando antigas rotas e criando novas passagens.
-              </p>
-              <p>
-                A maioria dos habitantes de Sarn utiliza barcos estreitos, capazes de atravessar canais cobertos por raízes e plantas flutuantes. As casas são erguidas sobre estacas, com passarelas ligando residências, depósitos e áreas de criação.
-              </p>
-              <p>
-                Os pântanos fornecem peixes, répteis, sanguessugas, plantas medicinais e substâncias usadas na fabricação de repelentes. Também abrigam as maiores populações de insetos transmissores de doenças do território. Certas áreas são temporariamente interditadas durante os períodos de reprodução, quando nuvens de moscas e mosquitos tornam a permanência quase impossível.
-              </p>
-            </div>
+          <article class="lore-card" data-mark="III" data-reveal>
+            <h3>Os Pântanos de Sarn</h3>
+            <p>No sul, o Olen divide-se em canais que formam ilhas, lagos rasos e extensões de lama profunda. As rotas mudam ao longo do ano, obrigando os habitantes a depender de barcos estreitos e guias locais.</p>
+            <p>Sarn fornece peixes, répteis, sanguessugas, venenos, plantas aquáticas e inúmeras espécies utilizadas por criadores da Segunda Carne. Também concentra vetores capazes de provocar surtos em toda a bacia.</p>
           </article>
 
-          <article class="region-entry" data-reveal>
-            <span class="region-entry__mark">IV</span>
-            <div class="region-entry__body">
-              <h3>A Floresta de Velan</h3>
-              <p>
-                A oeste da Planície do Olen encontra-se a Floresta de Velan. Sua vegetação cresce sobre solos permanentemente úmidos, atravessados por riachos e bolsões de água escura. Árvores de raízes largas sustentam-se acima do lodo, enquanto fungos e musgos cobrem troncos, pedras e animais.
-              </p>
-              <p>
-                Velan funciona como uma transição entre a planície alagável e os brejos mais densos. Muitas espécies encontradas na floresta também vivem nos Pântanos de Sarn, mas assumem comportamentos diferentes devido à sombra, à umidade e à presença constante de fungos.
-              </p>
-              <p>
-                O interior da floresta é atravessado por trilhas elevadas, construídas e mantidas pela população de Seren. Abandonar essas rotas sem um guia é perigoso. O terreno pode parecer firme e ceder sob o peso de uma pessoa, enquanto certas áreas acumulam gases ou esporos capazes de causar desmaios.
-              </p>
-            </div>
+          <article class="lore-card" data-mark="IV" data-reveal>
+            <h3>A Floresta de Velan</h3>
+            <p>A oeste da planície, Velan cresce sobre solos permanentemente úmidos. Árvores de raízes expostas, fungos, musgos e riachos escuros formam uma transição entre os campos alagáveis e os brejos mais densos.</p>
+            <p>Trilhas elevadas mantidas por Seren atravessam a floresta. Fora delas, o solo pode ceder, gases acumulados provocam desmaios e nuvens de esporos alteram corpos e comportamentos.</p>
           </article>
 
-          <article class="region-entry" data-reveal>
-            <span class="region-entry__mark">V</span>
-            <div class="region-entry__body">
-              <h3>O Distrito de Karos</h3>
-              <p>
-                No centro de Rúvia encontra-se o Distrito de Karos. A região foi escolhida por estar relativamente distante das principais cidades e, ao mesmo tempo, próxima dos braços navegáveis do Olen.
-              </p>
-              <p>
-                Karos é uma área fortificada, dividida em setores independentes. Doenças desconhecidas, parasitas agressivos e criaturas contaminadas são levados para suas instalações quando não podem ser estudados com segurança em outros lugares.
-              </p>
-              <p>
-                O distrito não recebe enfermos comuns. Sua função é conter ameaças capazes de atingir comunidades inteiras. Cada setor possui suas próprias reservas de água, sistemas de descarte e equipes de observação. Caso uma contenção seja rompida, o setor afetado pode ser isolado do restante do complexo.
-              </p>
-              <p>
-                As estradas que conduzem a Karos terminam em postos de inspeção. Nenhum visitante entra sem autorização, e nenhuma amostra deixa o distrito sem registro.
-              </p>
-            </div>
+          <article class="lore-card" data-mark="V" data-reveal>
+            <h3>O Distrito de Karos</h3>
+            <p>Karos ocupa o centro de Rúvia, afastado das maiores áreas urbanas e próximo de braços navegáveis do Olen. Seus setores independentes podem ser isolados quando uma contenção é rompida.</p>
+            <p>O distrito não é apenas uma prisão biológica. Ele preserva espécies proibidas, chagas consideradas extintas, fracassos de pesquisa e hospedeiros que não sobreviveriam fora de suas instalações. Para a Segunda Carne, conter não significa negar a uma criação o direito de existir.</p>
           </article>
         </div>
       </section>
@@ -1389,336 +145,332 @@
         <header class="ruvia-section__heading" data-reveal>
           <p class="ruvia-section__number">II</p>
           <div>
-            <p class="ruvia-section__kicker">Cultura de atenção</p>
+            <p class="ruvia-section__kicker">Corpos, Casas e responsabilidades</p>
             <h2>O Povo de Rúvia</h2>
-            <p class="ruvia-section__summary">
-              A convivência com a água, a infestação e o contágio transformou prevenção, registro e responsabilidade coletiva em hábitos cotidianos.
-            </p>
+            <p class="ruvia-section__summary">A prudência ruviana nasce da fé: criar, portar e transmitir uma chaga exige conhecimento suficiente para responder por suas consequências.</p>
           </div>
         </header>
 
-        <div class="culture-layout">
-          <div class="culture-prose" data-reveal>
-            <p>
-              A cultura ruviana foi moldada pela convivência com a água e pela necessidade de impedir que doenças atravessem as comunidades. A limpeza de canais, o tratamento de água e a observação de sintomas são responsabilidades tão importantes quanto a defesa militar.
-            </p>
-            <p>
-              As crianças aprendem cedo a reconhecer as principais espécies de insetos, diferenciar água segura de água contaminada e tratar ferimentos simples. Também são instruídas a comunicar febres, manchas, dores incomuns ou alterações no comportamento de animais domésticos.
-            </p>
-            <p>
-              Ocultar deliberadamente uma doença contagiosa é considerado uma ofensa grave. Para os ruvianos, esse ato não ameaça apenas o indivíduo, mas toda a rede de pessoas que depende dele.
-            </p>
-            <p>
-              Máscaras, luvas e véus são usados com frequência, sobretudo durante as estações de maior infestação. Esses objetos não representam medo ou isolamento social. Eles fazem parte das roupas locais e podem indicar profissão, origem ou posição dentro da Igreja.
-            </p>
-            <p>
-              Os cumprimentos raramente envolvem apertos de mão. A saudação mais comum consiste em tocar o próprio peito e inclinar levemente a cabeça. O gesto demonstra respeito sem criar contato desnecessário.
-            </p>
-            <p>
-              As residências possuem boa ventilação, pisos elevados e áreas destinadas à limpeza de roupas e utensílios. As cozinhas são separadas dos locais onde animais e mercadorias são recebidos, e a água potável é mantida em recipientes fechados.
-            </p>
-            <p>
-              Nas vilas alagadas, o andar inferior das construções é usado apenas durante a estação seca. Quando as águas sobem, as famílias transferem alimentos, ferramentas e animais para os níveis superiores.
-            </p>
-            <p>
-              A alimentação baseia-se em peixes, raízes, grãos cultivados nas margens do Olen, carne de répteis, fungos e alimentos fermentados. Muitas famílias preservam culturas próprias de fermentação durante várias gerações, tratando-as como parte da herança doméstica.
-            </p>
-            <p>
-              Copos, facas e colheres pessoais raramente são compartilhados. Cada habitante costuma carregar seus próprios utensílios em uma pequena bolsa presa à roupa.
-            </p>
+        <div class="prose-columns" data-reveal>
+          <div>
+            <p>Máscaras, luvas, véus e utensílios pessoais fazem parte do cotidiano, mas não representam uma cultura dedicada apenas a evitar doenças. Eles permitem que os habitantes escolham quando haverá contato, inoculação ou transmissão.</p>
+            <p>As crianças aprendem a reconhecer sintomas, vetores e águas contaminadas. Também aprendem a identificar parasitas permitidos, linhagens familiares e sinais de que uma simbiose deixou de beneficiar seu hospedeiro.</p>
+            <p>Ocultar deliberadamente uma doença transmissível é uma ofensa grave. O problema não é estar contaminado, mas privar os demais da possibilidade de decidir se desejam aproximar-se, proteger-se ou participar daquela relação.</p>
+          </div>
+          <div>
+            <p>Muitos ruvianos carregam organismos voluntariamente. Barqueiros usam colônias que percebem alterações na água; coletores permitem que fungos cresçam sobre a pele para resistir a esporos; trabalhadores de Sarn criam sanguessugas capazes de filtrar determinadas toxinas.</p>
+            <p>Algumas famílias preservam enfermidades ou parasitas por gerações. A linhagem pode funcionar como herança, marca religiosa, ferramenta profissional ou prova de pertencimento a uma Casa.</p>
+            <p>Nem toda transformação é aceita. A Casa-Mãe, as Casas locais e as autoridades civis disputam constantemente o limite entre hospedeiro, paciente, criador, propriedade e matéria religiosa.</p>
+          </div>
+        </div>
+
+        <div class="doctrine-band" data-reveal>
+          <div class="doctrine-entry">
+            <span>Quarta Ordem</span>
+            <strong>Não libertarás aquilo que não és capaz de carregar.</strong>
+          </div>
+          <div class="doctrine-entry">
+            <span>Sexta Ordem</span>
+            <strong>Preservarás aquilo que o medo dos homens desejar apagar.</strong>
+          </div>
+          <div class="doctrine-entry">
+            <span>Comunidades</span>
+            <strong>Casas da Segunda Carne</strong>
+          </div>
+          <div class="doctrine-entry">
+            <span>Corrente temida</span>
+            <strong>Herdeiros do Surto</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="economia" class="ruvia-section">
+        <header class="ruvia-section__heading" data-reveal>
+          <p class="ruvia-section__number">III</p>
+          <div>
+            <p class="ruvia-section__kicker">Riqueza, trabalho e dependências</p>
+            <h2>A Economia das Chagas</h2>
+            <p class="ruvia-section__summary">A riqueza de Rúvia nasce das águas, da fertilidade da bacia e da capacidade de transformar organismos perigosos em recursos, ferramentas e mercadorias.</p>
+          </div>
+        </header>
+
+        <div class="economy-ledger">
+          <div class="economy-highlight" data-reveal>
+            <p>O Rio Olen é a principal rota econômica. Grãos, raízes, peixes, madeira úmida, fungos, fermentos, toxinas, tecidos impermeabilizados, animais, amostras e hospedeiros autorizados circulam por seus portos.</p>
+            <p>Leria controla os maiores armazéns, registros e licenças de trânsito. Darsa domina a construção de embarcações de fundo raso; Seren concentra o comércio de fungos; Maren fornece produtos de Sarn; Rinal alimenta a capital; Ordel controla passagens, nascentes e extrações da Serra de Orda.</p>
+            <p>Rúvia importa metais trabalhados, sal de regiões secas, madeira resistente à umidade, tecidos finos e parte dos cereais que não suportam o clima da bacia. Enchentes, quarentenas e surtos podem interromper rotas e elevar preços em poucos dias.</p>
           </div>
 
-          <aside class="customs-ledger" data-reveal aria-label="Costumes cotidianos de Rúvia">
-            <div class="custom-entry">
-              <span class="custom-entry__symbol">◇</span>
-              <div><span>Saudação</span><strong>Mão sobre o peito</strong></div>
-            </div>
-            <div class="custom-entry">
-              <span class="custom-entry__symbol">◌</span>
-              <div><span>Vestuário</span><strong>Máscaras, luvas e véus</strong></div>
-            </div>
-            <div class="custom-entry">
-              <span class="custom-entry__symbol">≈</span>
-              <div><span>Dever coletivo</span><strong>Cuidar da água</strong></div>
-            </div>
-            <div class="custom-entry">
-              <span class="custom-entry__symbol">✦</span>
-              <div><span>Educação</span><strong>Reconhecer sintomas</strong></div>
-            </div>
-            <div class="custom-entry">
-              <span class="custom-entry__symbol">∴</span>
-              <div><span>Alimentação</span><strong>Peixes e fermentados</strong></div>
-            </div>
-            <div class="custom-entry">
-              <span class="custom-entry__symbol">□</span>
-              <div><span>Arquitetura</span><strong>Pisos elevados</strong></div>
-            </div>
-          </aside>
+          <div class="economy-grid">
+            <article class="economy-card" data-mark="I" data-reveal>
+              <p class="economy-card__meta">Produção</p>
+              <h3>Água, alimento e fermentação</h3>
+              <p>A agricultura acompanha o ciclo das cheias. Peixes, répteis, raízes, cereais, fungos e alimentos fermentados sustentam a população e abastecem caravanas e embarcações.</p>
+            </article>
+
+            <article class="economy-card" data-mark="II" data-reveal>
+              <p class="economy-card__meta">Biologia aplicada</p>
+              <h3>Linhagens e organismos</h3>
+              <p>Casas, criadores e estudiosos comercializam parasitas de uso profissional, culturas fúngicas, vetores controlados, venenos, repelentes, toxinas e organismos destinados à pesquisa.</p>
+            </article>
+
+            <article class="economy-card" data-mark="III" data-reveal>
+              <p class="economy-card__meta">Profissões</p>
+              <h3>Trabalho especializado</h3>
+              <p>Barqueiros, guias de pântano, coletores, cultivadores de fungos, criadores de hospedeiros, registradores de surtos, cirurgiões de simbiose, guardas de contenção e inspetores de carga formam a base profissional.</p>
+            </article>
+
+            <article class="economy-card" data-mark="IV" data-reveal>
+              <p class="economy-card__meta">Tributos</p>
+              <h3>Licenças e pedágios</h3>
+              <p>Leria cobra taxas sobre portos, canais, amostras, organismos vivos e cargas perigosas. Casas locais também exigem contribuições para manter laboratórios, arquivos e contenções.</p>
+            </article>
+
+            <article class="economy-card" data-mark="V" data-reveal>
+              <p class="economy-card__meta">Desigualdade</p>
+              <h3>Capital e periferias</h3>
+              <p>Os bairros altos de Leria controlam armazéns e registros, enquanto vilas alagadas e comunidades de Sarn assumem os maiores riscos de coleta, infestação e perda durante as cheias.</p>
+            </article>
+
+            <article class="economy-card" data-mark="VI" data-reveal>
+              <p class="economy-card__meta">Contrabando</p>
+              <h3>O mercado oculto</h3>
+              <p>Chagas proibidas, hospedeiros roubados, vetores sem registro e linhagens retiradas de Karos alimentam uma economia clandestina que atravessa portos menores e passagens da serra.</p>
+            </article>
+          </div>
         </div>
       </section>
 
       <section id="leria" class="ruvia-section">
         <header class="ruvia-section__heading" data-reveal>
-          <p class="ruvia-section__number">III</p>
+          <p class="ruvia-section__number">IV</p>
           <div>
             <p class="ruvia-section__kicker">Capital da bacia</p>
             <h2>Leria</h2>
-            <p class="ruvia-section__summary">
-              Centro político, religioso, médico e comercial de Rúvia, construído na margem norte do Rio Olen.
-            </p>
+            <p class="ruvia-section__summary">Centro político, religioso, comercial e biológico de Rúvia, construído na margem norte de um trecho largo e navegável do Rio Olen.</p>
           </div>
         </header>
 
-        <div class="capital-layout">
-          <div class="capital-frame" data-reveal>
-            <div class="capital-frame__content">
+        <div class="capital-panel">
+          <div class="capital-image" data-reveal>
+            <div>
               <span>Capital de Rúvia</span>
               <strong>Leria</strong>
-              <p>Uma cidade de canais, pontes elevadas, setores isoláveis e instituições dedicadas ao estudo da doença.</p>
+              <p>Uma cidade de canais, pontes elevadas, setores isoláveis, mercados de organismos e instituições que disputam o futuro da carne.</p>
             </div>
           </div>
 
-          <div class="capital-copy" data-reveal>
-            <p>
-              Leria é a capital de Rúvia e sua maior cidade. Foi construída sobre uma elevação natural na margem norte do Rio Olen, em um trecho largo e profundo o bastante para receber embarcações de grande porte.
-            </p>
-            <p>
-              A cidade domina o principal ponto de encontro entre as rotas vindas da Serra de Orda, da Floresta de Velan, do Distrito de Karos e dos Pântanos de Sarn. Mercadorias, viajantes e informações passam por Leria antes de seguir para outras partes do território.
-            </p>
-            <p>
-              Grande parte da cidade está ligada por canais. Barcos pequenos transportam pessoas entre bairros, enquanto pontes elevadas permitem a circulação durante os períodos de cheia. Os distritos mais antigos encontram-se nas áreas mais altas; os bairros mais recentes foram construídos sobre plataformas e aterros reforçados.
-            </p>
-            <p>
-              Leria é dividida em setores que podem ser isolados em caso de epidemia. Cada setor possui reservatórios de água, armazéns e postos médicos próprios. Caso uma região precise ser fechada, o restante da cidade pode continuar funcionando.
-            </p>
+          <div data-reveal>
+            <p>Leria domina o encontro das estradas vindas de Seren, de Karos e das passagens da Serra de Orda. Mercadorias, viajantes, amostras e informações passam pela capital antes de seguir para outras partes da bacia.</p>
+            <p>Seus bairros são ligados por canais e pontes elevadas. Setores inteiros podem ser fechados durante um surto, não apenas para proteger a cidade, mas para impedir que uma criação ainda desconhecida escape antes de ser compreendida.</p>
+            <p>A riqueza se concentra nas áreas altas, próximas aos grandes armazéns, às Casas antigas e aos cais capazes de receber embarcações maiores. Trabalhadores dos bairros baixos convivem com cheias, infestações e bloqueios muito mais frequentes.</p>
           </div>
         </div>
 
         <div class="institution-grid">
           <article class="institution-card" data-mark="I" data-reveal>
             <h3>Templo Maior de Leria</h3>
-            <p>
-              No centro da capital encontra-se a sede da Igreja do Senhor das Chagas. O complexo reúne espaços de culto, arquivos, salas de estudo e áreas destinadas à preservação de amostras.
-            </p>
-            <p>
-              O templo mantém registros sobre doenças, parasitas, surtos e tratamentos observados ao longo de gerações. Essas informações são copiadas e enviadas às vilas para impedir que o conhecimento permaneça restrito à capital.
-            </p>
+            <p>O Templo Maior abriga a <strong>Casa-Mãe de Leria</strong>, as versões mais amplas do <strong>Códice da Segunda Carne</strong> e os espaços onde Casas rivais apresentam disputas, acusações e interpretações das Dez Ordens.</p>
+            <p>O complexo conserva registros religiosos, hospedeiros voluntários, linhagens e decisões antigas. Sua autoridade é grande, mas não absoluta: Casas distantes e correntes radicais frequentemente rejeitam seus julgamentos.</p>
           </article>
 
           <article class="institution-card" data-mark="II" data-reveal>
             <h3>Hospital de Edras</h3>
-            <p>
-              Próximo ao templo, suas alas ocupam edifícios separados, ligados por corredores abertos e passagens controladas. Essa disposição permite atender pacientes com diferentes enfermidades sem colocá-los em contato.
-            </p>
-            <p>
-              Edras também forma médicos, cirurgiões, alquimistas e sacerdotes. Muitos estudiosos estrangeiros viajam até Leria para aprender técnicas de isolamento e tratamento desenvolvidas em Rúvia.
-            </p>
+            <p>Edras não procura simplesmente restaurar o corpo à forma anterior. Seus cuidadores introduzem parasitas que assumem funções perdidas, controlam uma doença utilizando outra, substituem tecidos por colônias e mantêm hospedeiros vivos durante metamorfoses.</p>
+            <p>Uma pessoa pode sair de Edras viva e funcional, mas com um corpo profundamente diferente. É essa diferença que torna seus métodos valiosos para alguns povos e intoleráveis para outros.</p>
           </article>
 
           <article class="institution-card" data-mark="III" data-reveal>
             <h3>Arquivo de Vetores</h3>
-            <p>
-              Ao norte da cidade, próximo à estrada que conduz à Serra de Orda, o arquivo preserva registros e restos de animais associados a grandes epidemias.
-            </p>
-            <p>
-              Cada exemplar é acompanhado por informações sobre a enfermidade transmitida, a região atingida e os métodos utilizados para controlar o surto.
-            </p>
+            <p>Ao norte da capital, próximo à estrada para a Serra de Orda, o Arquivo conserva animais e organismos transmissores, mapas de surtos, linhagens de doenças, primeiros hospedeiros, mutações, amostras e formas de transmissão.</p>
+            <p>Também registra vetores destruídos ou desaparecidos. Parte de seu acervo existe porque as informações não cabem nos textos litúrgicos e não podem depender apenas da memória das Casas.</p>
           </article>
         </div>
       </section>
 
       <section id="vilas" class="ruvia-section">
         <header class="ruvia-section__heading" data-reveal>
-          <p class="ruvia-section__number">IV</p>
+          <p class="ruvia-section__number">V</p>
           <div>
             <p class="ruvia-section__kicker">Assentamentos da bacia</p>
             <h2>As Cinco Vilas</h2>
-            <p class="ruvia-section__summary">
-              Cada vila ocupa uma posição estratégica dentro do sistema de águas, florestas, montanhas e rotas de Rúvia.
-            </p>
+            <p class="ruvia-section__summary">Cada vila ocupa uma posição estratégica nas rotas, na produção e na ecologia de Rúvia.</p>
           </div>
         </header>
 
-        <div class="village-grid">
-          <article class="village-card" data-reveal>
-            <p class="village-card__meta">Floresta de Velan · Oeste</p>
+        <div class="settlement-grid">
+          <article class="settlement-card" data-reveal>
+            <p class="settlement-card__meta">Floresta de Velan · Oeste</p>
             <h3>Seren</h3>
-            <p>Seren encontra-se a oeste de Leria, na margem oriental da Floresta de Velan. A vila funciona como principal ponto de entrada para a floresta e concentra coletores, estudiosos e comerciantes de fungos.</p>
-            <p>As construções são erguidas sobre fundações de pedra, com passarelas elevadas ligando as áreas próximas ao solo alagado. Grandes depósitos ventilados permitem secar e separar fungos antes que sejam enviados para Leria.</p>
-            <p>A população de Seren mantém as trilhas elevadas que atravessam Velan. Guias locais acompanham expedições e registram mudanças no terreno, no comportamento dos animais e na presença de esporos.</p>
-            <p>Abaixo da vila existem cavernas ocupadas por uma antiga colônia fúngica. Parte dos estudiosos acredita que a colônia reage de maneira consciente à presença de pessoas e animais. A Igreja ainda não reconheceu essa hipótese como verdadeira, mas mantém observadores permanentes no local.</p>
+            <p>Seren ocupa a margem oriental de Velan, no ponto de transição entre a floresta e a Planície do Olen. Coletores, estudiosos e comerciantes de fungos dominam sua economia.</p>
+            <p>Depósitos ventilados secam colheitas antes do envio a Leria. Sob a vila, uma antiga colônia fúngica parece reagir à presença de pessoas e animais, dividindo as Casas entre aqueles que a consideram criatura, comunidade ou simples crescimento.</p>
           </article>
 
-          <article class="village-card" data-reveal>
-            <p class="village-card__meta">Rio Olen · Leste</p>
+          <article class="settlement-card" data-reveal>
+            <p class="settlement-card__meta">Rio Olen · Leste</p>
             <h3>Darsa</h3>
-            <p>Darsa está localizada a leste de Leria, onde o Rio Olen se torna mais largo antes de alcançar os grandes pântanos. É a principal vila portuária do interior e serve como ponto de distribuição para mercadorias que seguem em direção ao sul.</p>
-            <p>Seus habitantes são conhecidos pela construção de barcos de fundo raso, adequados aos canais de Sarn. Também produzem redes, velas impermeabilizadas e recipientes próprios para transportar medicamentos sem contato com a água.</p>
-            <p>Os cais de Darsa permanecem ativos durante quase todo o ano. Na estação das chuvas, quando algumas estradas desaparecem sob a água, a vila torna-se ainda mais importante para o abastecimento das comunidades afastadas.</p>
+            <p>Darsa é a principal vila portuária do interior. Seus construtores produzem barcos de fundo raso, redes, velas impermeabilizadas e recipientes selados para transportar organismos, venenos, fermentos e amostras.</p>
+            <p>Quando as chuvas cobrem as estradas, seus cais tornam-se essenciais para abastecer as comunidades do sul.</p>
           </article>
 
-          <article class="village-card" data-reveal>
-            <p class="village-card__meta">Pântanos de Sarn · Sul</p>
+          <article class="settlement-card" data-reveal>
+            <p class="settlement-card__meta">Pântanos de Sarn · Sul</p>
             <h3>Maren</h3>
-            <p>Maren encontra-se no interior dos Pântanos de Sarn. Toda a vila foi construída sobre estacas e plataformas ligadas por passarelas estreitas.</p>
-            <p>As casas possuem telhados altos e áreas abertas onde redes, ervas e peixes podem ser secos. Pequenos barcos ficam presos sob as construções, permitindo que os moradores deixem suas casas mesmo quando as passarelas estão submersas.</p>
-            <p>Os habitantes de Maren coletam sanguessugas, plantas aquáticas, venenos e substâncias usadas na fabricação de repelentes. Também atuam como guias para pesquisadores e viajantes que precisam atravessar Sarn.</p>
-            <p>A vila é cercada por campos de lírios que atraem moscas para longe das residências. Esses campos precisam ser queimados e replantados regularmente para impedir que se tornem focos de contaminação.</p>
+            <p>Maren foi erguida sobre estacas e plataformas no interior de Sarn. Seus habitantes coletam sanguessugas, plantas aquáticas, venenos e substâncias usadas em repelentes e criações parasitárias.</p>
+            <p>Campos de lírios atraem vetores para áreas controladas. O cultivo precisa ser queimado e replantado para que a proteção não se transforme em foco de infestação.</p>
           </article>
 
-          <article class="village-card" data-reveal>
-            <p class="village-card__meta">Serra de Orda · Norte</p>
+          <article class="settlement-card" data-reveal>
+            <p class="settlement-card__meta">Serra de Orda · Norte</p>
             <h3>Ordel</h3>
-            <p>Ordel está situada ao norte, próxima às encostas da Serra de Orda. É a única das cinco vilas construída em terreno predominantemente seco.</p>
-            <p>Sua principal função é controlar as nascentes e as rotas que atravessam as montanhas. A água que desce da serra é examinada antes de seguir para o Rio Olen, pois qualquer contaminação nessa região poderia atingir todo o território.</p>
-            <p>Ordel também recebe mineiros, exploradores e estudiosos que trabalham nas cavernas de Orda. Mercadorias e amostras passam por inspeção antes de serem transportadas para Leria.</p>
-            <p>Os habitantes mantêm postos de vigilância ao longo das passagens montanhosas. Durante chuvas intensas, deslizamentos podem bloquear estradas ou abrir entradas para cavernas anteriormente desconhecidas.</p>
+            <p>Ordel controla as nascentes, as rotas montanhosas e o trânsito de mineiros, exploradores e estudiosos das cavernas de Orda. Toda carga destinada a Leria passa por inspeção.</p>
+            <p>Deslizamentos podem bloquear estradas, alterar cursos subterrâneos ou revelar cavernas ocupadas por formas de vida desconhecidas.</p>
           </article>
 
-          <article class="village-card" data-reveal>
-            <p class="village-card__meta">Planície do Olen · Centro</p>
+          <article class="settlement-card" data-reveal>
+            <p class="settlement-card__meta">Planície do Olen · Centro</p>
             <h3>Rinal</h3>
-            <p>Rinal encontra-se no centro da Planície do Olen, ao sul de Leria e próximo a dois braços menores do rio. É uma vila agrícola cercada por campos que permanecem parcialmente inundados durante vários meses.</p>
-            <p>Seus habitantes desenvolveram sistemas de canais e comportas capazes de controlar a entrada e a saída da água. As plantações são organizadas de acordo com o nível das cheias, permitindo o cultivo de diferentes espécies ao longo do ano.</p>
-            <p>Rinal é responsável por grande parte dos grãos, raízes e ervas consumidos em Leria. A vila também mantém reservas de sementes protegidas contra umidade, fungos e infestações.</p>
-            <p>Por depender diretamente do equilíbrio das águas, Rinal mantém uma relação difícil com comunidades que constroem canais rio acima. Qualquer alteração no curso do Olen pode reduzir suas colheitas ou inundar áreas residenciais.</p>
+            <p>Rinal produz grande parte dos grãos, raízes e ervas consumidos em Leria. Canais e comportas permitem alternar cultivos conforme o nível das cheias.</p>
+            <p>A vila mantém sementes protegidas contra umidade e infestação, mas depende das decisões tomadas rio acima. Alterações no Olen podem enriquecer uma comunidade e arruinar outra.</p>
           </article>
         </div>
       </section>
 
       <section id="natureza" class="ruvia-section">
         <header class="ruvia-section__heading" data-reveal>
-          <p class="ruvia-section__number">V</p>
+          <p class="ruvia-section__number">VI</p>
           <div>
-            <p class="ruvia-section__kicker">Ecologia de convivência</p>
+            <p class="ruvia-section__kicker">Vida sobre, dentro e através</p>
             <h2>Fauna e Flora</h2>
-            <p class="ruvia-section__summary">
-              Em Rúvia, plantas, fungos, animais e parasitas formam relações de defesa, alimentação, contágio e sobrevivência.
-            </p>
+            <p class="ruvia-section__summary">Plantas, fungos, animais e parasitas formam relações de defesa, alimentação, contágio, transformação e dependência.</p>
           </div>
         </header>
 
-        <p data-reveal>
-          A vegetação de Rúvia é adaptada à água. Árvores desenvolvem raízes largas ou expostas, plantas flutuam sobre lagos e certas espécies permanecem submersas durante parte do ano.
-        </p>
-
-        <div class="catalog-grid">
-          <article class="catalog-card" data-mark="I" data-reveal>
+        <div class="nature-grid">
+          <article class="nature-card" data-reveal>
             <h3>Árvore de Varo</h3>
-            <p>A Árvore de Varo é comum nas margens do Olen e na Floresta de Velan. Seu tronco oco abriga colônias de insetos que defendem a planta contra animais maiores. Em troca, alimentam-se de uma seiva produzida em seu interior.</p>
+            <p>Seu tronco oco abriga insetos que defendem a planta contra animais maiores e se alimentam da seiva produzida em seu interior.</p>
           </article>
-          <article class="catalog-card" data-mark="II" data-reveal>
+          <article class="nature-card" data-reveal>
             <h3>Flor Febril</h3>
-            <p>A Flor Febril cresce nas áreas rasas dos Pântanos de Sarn. Suas folhas são utilizadas na preparação de remédios capazes de alterar a temperatura do corpo. O uso incorreto, entretanto, pode causar febres graves.</p>
+            <p>Cresce nas áreas rasas de Sarn. Preparações feitas com suas folhas alteram a temperatura do corpo e podem induzir febres úteis em certos ritos ou perigosas quando mal dosadas.</p>
           </article>
-          <article class="catalog-card" data-mark="III" data-reveal>
+          <article class="nature-card" data-reveal>
             <h3>Musgo Vermelho</h3>
-            <p>O Musgo Vermelho desenvolve-se sobre madeira úmida e matéria orgânica. Quando preparado corretamente, pode ajudar a conter sangramentos. Aplicado diretamente sobre uma ferida, tende a penetrar no tecido e provocar infecções.</p>
+            <p>Pode conter sangramentos quando preparado, mas tende a penetrar em feridas e formar colônias infecciosas quando aplicado sem controle.</p>
           </article>
-          <article class="catalog-card" data-mark="IV" data-reveal>
+          <article class="nature-card" data-reveal>
             <h3>Lírio de Sarn</h3>
-            <p>O Lírio de Sarn atrai moscas e outros insetos. Vilas e cidades cultivam essa planta longe das residências para concentrar vetores em áreas controladas.</p>
+            <p>Atrai moscas e outros insetos. Vilas cultivam campos afastados para concentrar vetores em áreas conhecidas.</p>
           </article>
-        </div>
-
-        <div class="fauna-note" data-reveal>
-          <p>Entre os animais, destacam-se as Garças de Sarn, que se alimentam de vermes e sanguessugas, e os Cervos de Velan, cujos chifres servem de suporte para diferentes espécies de fungos.</p>
-          <p>Ratos Farejadores são criados para identificar alimentos contaminados, enquanto grandes lagartos dos pântanos convivem com ácaros que removem tecidos mortos de suas escamas.</p>
+          <article class="nature-card" data-reveal>
+            <h3>Animais da bacia</h3>
+            <p>Garças de Sarn alimentam-se de vermes e sanguessugas. Cervos de Velan carregam fungos nos chifres. Ratos Farejadores identificam cargas contaminadas.</p>
+          </article>
+          <article class="nature-card" data-reveal>
+            <h3>Relações cultivadas</h3>
+            <p>Grandes lagartos convivem com ácaros que removem tecidos mortos, enquanto criadores ruvianos selecionam organismos para tarefas específicas ao longo de gerações.</p>
+          </article>
         </div>
       </section>
 
       <section id="ameacas" class="ruvia-section">
         <header class="ruvia-section__heading" data-reveal>
-          <p class="ruvia-section__number">VI</p>
+          <p class="ruvia-section__number">VII</p>
           <div>
             <p class="ruvia-section__kicker">Quando a relação perde o limite</p>
             <h2>Ameaças de Rúvia</h2>
-            <p class="ruvia-section__summary">
-              As maiores ameaças do território não são apenas predadores. Muitas surgem quando uma relação natural cresce além do que o ambiente pode suportar.
-            </p>
+            <p class="ruvia-section__summary">Nem toda criação pode ser carregada com segurança, e nem toda Casa concorda sobre quando preservar, conter ou destruir.</p>
           </div>
         </header>
 
         <div class="threat-grid">
-          <article class="threat-card" data-mark="I" data-reveal>
+          <article class="threat-card" data-reveal>
             <h3>Enxames-Carcaça</h3>
-            <p>Colônias de pequenos organismos capazes de ocupar cadáveres, armaduras e estruturas abandonadas. Utilizam esses corpos como abrigo e meio de locomoção. Quando sua forma é destruída, dispersam-se em busca de outra.</p>
+            <p>Colônias que ocupam cadáveres, armaduras e estruturas abandonadas, utilizando-os como abrigo e meio de locomoção.</p>
           </article>
-          <article class="threat-card" data-mark="II" data-reveal>
+          <article class="threat-card" data-reveal>
             <h3>Mosca-Rainha</h3>
-            <p>Um inseto de grande porte capaz de produzir milhares de descendentes em poucos dias. Sua aparição pode obrigar vilas inteiras a abandonar temporariamente uma região.</p>
+            <p>Inseto de grande porte capaz de produzir milhares de descendentes em poucos dias e obrigar vilas inteiras a abandonar uma região.</p>
           </article>
-          <article class="threat-card" data-mark="III" data-reveal>
+          <article class="threat-card" data-reveal>
             <h3>Hospedeiro Composto</h3>
-            <p>Possui forma humanoide, mas seu corpo é ocupado por diferentes espécies de parasitas. Não se sabe se um único organismo controla seus movimentos ou se todos compartilham essa função.</p>
+            <p>Corpo humanoide ocupado por várias espécies. Não se sabe se existe uma vontade dominante ou se todas compartilham movimentos e sentidos.</p>
           </article>
-          <article class="threat-card" data-mark="IV" data-reveal>
+          <article class="threat-card" data-reveal>
             <h3>O Grande Verme</h3>
-            <p>Sob a Serra de Orda vive uma criatura que abre túneis e altera o curso de rios subterrâneos. Seus movimentos podem provocar deslizamentos, secar nascentes ou inundar cavernas.</p>
+            <p>Criatura que abre túneis sob a Serra de Orda, altera rios subterrâneos e pode secar nascentes, inundar cavernas ou provocar deslizamentos.</p>
           </article>
         </div>
 
-        <div class="threat-note" data-reveal>
-          <p>A Igreja não considera essas criaturas malignas por natureza. Quando possível, são estudadas e afastadas das áreas habitadas. A destruição torna-se necessária apenas quando sua presença ameaça comunidades ou rompe os limites de Karos.</p>
+        <div class="warning-note" data-reveal>
+          <p>As Casas da Segunda Carne não consideram essas criaturas malignas por natureza. A disputa começa quando sua preservação ameaça comunidades, quando uma contenção falha ou quando alguém decide libertá-las para provar uma interpretação religiosa.</p>
         </div>
       </section>
 
       <section id="mundo" class="ruvia-section">
         <header class="ruvia-section__heading" data-reveal>
-          <p class="ruvia-section__number">VII</p>
+          <p class="ruvia-section__number">VIII</p>
           <div>
-            <p class="ruvia-section__kicker">Comércio, fé e diplomacia</p>
+            <p class="ruvia-section__kicker">Fé, comércio e diplomacia</p>
             <h2>Rúvia no Mundo</h2>
-            <p class="ruvia-section__summary">
-              Medicamentos, conhecimento epidemiológico e rotas fluviais tornam Rúvia indispensável mesmo para povos que desconfiam de sua religião.
-            </p>
+            <p class="ruvia-section__summary">Outros povos precisam das rotas, dos recursos e do conhecimento de Rúvia, mas raramente confiam naquilo que seus habitantes estão dispostos a preservar ou criar.</p>
           </div>
         </header>
 
-        <div class="relations-ledger" data-reveal>
-          <article class="relation-entry">
-            <span class="relation-entry__sigil">≈</span>
+        <div class="relation-grid">
+          <article class="relation-card relation-card--aurora" data-reveal>
+            <span class="relation-card__sigil">☼</span>
             <div>
-              <strong>Comércio e rotas</strong>
-              <p>Rúvia exporta medicamentos, antídotos, repelentes, venenos, fungos, alimentos fermentados e tecidos resistentes à umidade. O Rio Olen é a principal rota interna, enquanto estradas vindas da Serra de Orda e da Floresta de Velan convergem para Leria.</p>
+              <h3>Senhora da Aurora</h3>
+              <p>A relação com Alba é marcada por cooperação ocasional, conflitos médicos, acusações religiosas e disputas políticas. Para muitos habitantes de Alba, Rúvia profana a vida ao preservar doenças, alterar corpos e permitir que parasitas permaneçam em pacientes.</p>
+              <p>Os ruvianos, por sua vez, descrevem Alba como ingênua, hipócrita e incapaz de aceitar que doença, decomposição e mutação também pertencem à existência. Enquanto Alba tende a buscar uma forma íntegra que deve ser restaurada, a Segunda Carne questiona se o corpo original possui qualquer direito sagrado de permanecer intacto.</p>
             </div>
           </article>
 
-          <article class="relation-entry">
-            <span class="relation-entry__sigil">☼</span>
+          <article class="relation-card" data-reveal>
+            <span class="relation-card__sigil">●</span>
             <div>
-              <strong>Senhora da Aurora</strong>
-              <p>A relação é marcada pela cooperação médica e por divergências religiosas. Os fiéis da Aurora procuram preservar a vida imediatamente; os estudiosos das Chagas insistem que a enfermidade precisa ser compreendida antes de ser eliminada.</p>
+              <h3>Senhor do Crepúsculo</h3>
+              <p>Os conflitos envolvem cadáveres e memória. Rúvia vê corpos mortos como fontes de informação, hospedeiros possíveis e registros biológicos; Umbra exige limites para que o estudo não destrua o descanso nem a identidade preservada dos mortos.</p>
             </div>
           </article>
 
-          <article class="relation-entry">
-            <span class="relation-entry__sigil">●</span>
+          <article class="relation-card" data-reveal>
+            <span class="relation-card__sigil">✦</span>
             <div>
-              <strong>Senhor do Crepúsculo</strong>
-              <p>Os conflitos envolvem o estudo dos mortos. Rúvia considera cadáveres fontes valiosas de informação, enquanto os seguidores do Crepúsculo defendem o descanso dos corpos.</p>
+              <h3>Soberana do Céu</h3>
+              <p>Observadores e caravanas ajudam a prever chuvas, ventos e migrações de insetos. Em troca, Rúvia fornece repelentes, alimentos preservados e conhecimentos úteis para atravessar regiões infestadas.</p>
             </div>
           </article>
 
-          <article class="relation-entry">
-            <span class="relation-entry__sigil">✦</span>
+          <article class="relation-card relation-card--veus" data-reveal>
+            <span class="relation-card__sigil">◇</span>
             <div>
-              <strong>Soberana do Céu</strong>
-              <p>Seus observadores ajudam a prever chuvas, mudanças nos ventos e migrações de insetos. Essas informações permitem que Rúvia se prepare para enchentes e surtos sazonais.</p>
+              <h3>Senhor dos Véus</h3>
+              <p>Névia e Rúvia cooperam para distinguir sonhos, presságios e pesadelos de delírios produzidos por febres, fungos, toxinas e parasitas. A relação é necessária porque uma visão pode anunciar um sintoma antes do despertar — ou ser apenas o organismo falando através da mente.</p>
             </div>
           </article>
 
-          <article class="relation-entry">
-            <span class="relation-entry__sigil">◇</span>
+          <article class="relation-card" data-reveal>
+            <span class="relation-card__sigil">≈</span>
             <div>
-              <strong>Memória dos surtos</strong>
-              <p>Os principais festivais acontecem após o encerramento de epidemias. Nessas ocasiões, os mortos são lembrados e as descobertas feitas durante o surto são apresentadas à população.</p>
+              <h3>Rotas exteriores</h3>
+              <p>Mercadores estrangeiros entram pela Serra de Orda ou alcançam os portos ligados ao Olen. Cargas vivas e amostras exigem registro, mas o contrabando prospera onde a fiscalização é fraca ou comprada.</p>
+            </div>
+          </article>
+
+          <article class="relation-card" data-reveal>
+            <span class="relation-card__sigil">◉</span>
+            <div>
+              <h3>Memória dos surtos</h3>
+              <p>Após grandes epidemias, comunidades registram mortos, mutações, sobreviventes e criações surgidas durante o desastre. Os festivais não celebram uma vitória sobre as Chagas, mas aquilo que o surto revelou e deixou para trás.</p>
             </div>
           </article>
         </div>
 
-        <blockquote class="ruvia-closing" data-reveal>
-          <p>Para os ruvianos, sobreviver a uma doença não significa derrotar o Senhor das Chagas. Significa receber a responsabilidade de impedir que aquilo que foi aprendido seja esquecido.</p>
+        <blockquote class="ruvia-quote" data-reveal>
+          <p>Alba pergunta como devolver o corpo ao que ele era. Rúvia pergunta o que ele pode se tornar agora.</p>
         </blockquote>
 
         <nav class="ruvia-navigation" aria-label="Navegação da página">
