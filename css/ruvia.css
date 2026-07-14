@@ -1,0 +1,787 @@
+.ruvia-page {
+  --ruvia: #aebb66;
+  --ruvia-light: #dce3a2;
+  --ruvia-deep: #4d5929;
+  --ruvia-water: #78a19b;
+  --ruvia-amber: #c7a25d;
+  --ruvia-danger: #b86b55;
+  --ruvia-line: rgba(174, 187, 102, .23);
+  --ruvia-line-strong: rgba(174, 187, 102, .46);
+  background:
+    radial-gradient(circle at 4% 20%, rgba(93, 111, 54, .1), transparent 31rem),
+    radial-gradient(circle at 96% 55%, rgba(73, 112, 108, .08), transparent 32rem),
+    linear-gradient(180deg, #070907, #0a0b09 42%, #080907 100%);
+}
+
+.ruvia-page .mobile-header::after {
+  background: linear-gradient(90deg, transparent, rgba(174, 187, 102, .38), transparent);
+}
+
+.ruvia-page .reading-progress {
+  background: linear-gradient(90deg, var(--ruvia-deep), var(--ruvia-light), var(--ruvia-water));
+}
+
+.ruvia-hero {
+  position: relative;
+  min-height: 88svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  padding: calc(96px + env(safe-area-inset-top)) 0 54px;
+  background: #090b07;
+}
+
+.ruvia-hero__image,
+.ruvia-hero__veil {
+  position: absolute;
+  inset: 0;
+}
+
+.ruvia-hero__image {
+  z-index: -3;
+  background: url('/harmonia-caotica/imagens/territorios/ruvia.jpg') center / cover no-repeat;
+  transform: scale(1.025);
+}
+
+.ruvia-hero__veil {
+  z-index: -2;
+  background:
+    radial-gradient(circle at 52% 26%, transparent 0 18%, rgba(0, 0, 0, .3) 82%),
+    linear-gradient(180deg, rgba(6, 8, 5, .05) 0%, rgba(6, 8, 5, .18) 34%, rgba(7, 9, 6, .76) 73%, #080907 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, .48), transparent 66%, rgba(0, 0, 0, .14));
+}
+
+.ruvia-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 130px;
+  z-index: -1;
+  background: linear-gradient(transparent, #080907);
+}
+
+.ruvia-hero__layout {
+  display: grid;
+  gap: 28px;
+  align-items: end;
+}
+
+.ruvia-hero__content {
+  max-width: 760px;
+}
+
+.ruvia-hero__content::before {
+  content: "";
+  display: block;
+  width: 74px;
+  height: 1px;
+  margin-bottom: 18px;
+  background: linear-gradient(90deg, var(--ruvia-light), transparent);
+}
+
+.ruvia-hero__index {
+  margin: 0 0 10px;
+  color: var(--ruvia-light);
+  font-family: var(--ui);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, .9);
+}
+
+.ruvia-hero__title {
+  margin: 0;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: clamp(68px, 21vw, 116px);
+  font-weight: 600;
+  line-height: .8;
+  letter-spacing: -2.5px;
+  text-shadow: 0 12px 36px rgba(0, 0, 0, .8);
+}
+
+.ruvia-hero__domain {
+  width: fit-content;
+  margin: 24px 0 0;
+  padding: 8px 12px;
+  border: 1px solid rgba(174, 187, 102, .4);
+  border-radius: 999px;
+  background: rgba(7, 9, 6, .58);
+  color: var(--ruvia-light);
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.15px;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ruvia-hero__summary {
+  max-width: 670px;
+  margin: 20px 0 0;
+  color: rgba(245, 239, 229, .92);
+  font-size: 15px;
+  line-height: 1.74;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, .94);
+}
+
+.ruvia-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(174, 187, 102, .22);
+  border-radius: 24px;
+  background: rgba(174, 187, 102, .18);
+  box-shadow: 0 22px 58px rgba(0, 0, 0, .42);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.ruvia-fact {
+  min-height: 91px;
+  padding: 17px 15px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .035), transparent), rgba(9, 11, 8, .81);
+}
+
+.ruvia-fact span,
+.ruvia-fact strong {
+  display: block;
+}
+
+.ruvia-fact span {
+  color: var(--muted);
+  font-family: var(--ui);
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+}
+
+.ruvia-fact strong {
+  margin-top: 6px;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.ruvia-index {
+  position: sticky;
+  top: calc(var(--header) + env(safe-area-inset-top));
+  z-index: 90;
+  border-top: 1px solid rgba(255, 255, 255, .035);
+  border-bottom: 1px solid var(--ruvia-line);
+  background: rgba(8, 9, 7, .91);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .26);
+  backdrop-filter: blur(20px) saturate(125%);
+  -webkit-backdrop-filter: blur(20px) saturate(125%);
+}
+
+.ruvia-index__list {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin: 0;
+  padding: 10px max(var(--page), env(safe-area-inset-left));
+  list-style: none;
+  scrollbar-width: none;
+  scroll-padding-inline: var(--page);
+}
+
+.ruvia-index__list::-webkit-scrollbar {
+  display: none;
+}
+
+.ruvia-index a {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 13px;
+  border: 1px solid rgba(174, 187, 102, .16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .018);
+  color: var(--muted);
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .75px;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color var(--ease), border-color var(--ease), background var(--ease);
+}
+
+.ruvia-index a.active,
+.ruvia-index a:active {
+  border-color: var(--ruvia-line-strong);
+  background: rgba(174, 187, 102, .08);
+  color: var(--ruvia-light);
+}
+
+.ruvia-content {
+  max-width: 1180px;
+  padding-top: 30px;
+  padding-bottom: 118px;
+}
+
+.ruvia-content p {
+  color: var(--paper-soft);
+  font-size: 15px;
+  line-height: 1.88;
+}
+
+.ruvia-opening,
+.ruvia-section {
+  scroll-margin-top: calc(var(--header) + 70px);
+}
+
+.ruvia-opening {
+  display: grid;
+  gap: 34px;
+  padding: 52px 0 74px;
+}
+
+.ruvia-opening__copy {
+  max-width: 760px;
+}
+
+.ruvia-opening__lead {
+  margin: 0 0 30px;
+  padding-left: 18px;
+  border-left: 2px solid var(--ruvia);
+  color: var(--paper) !important;
+  font-family: var(--display);
+  font-size: 25px !important;
+  line-height: 1.48 !important;
+}
+
+.ruvia-opening__copy > p:not(.ruvia-opening__lead) {
+  margin: 0 0 22px;
+}
+
+.ruvia-quote {
+  position: relative;
+  margin: 36px 0 0;
+  padding: 29px 24px 26px;
+  overflow: hidden;
+  border: 1px solid var(--ruvia-line);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(174, 187, 102, .12), transparent 48%),
+    linear-gradient(145deg, rgba(174, 187, 102, .06), rgba(16, 18, 13, .94));
+  box-shadow: var(--shadow-soft);
+}
+
+.ruvia-quote::before {
+  content: "“";
+  position: absolute;
+  top: -8px;
+  left: 13px;
+  color: rgba(217, 223, 154, .18);
+  font-family: var(--display);
+  font-size: 88px;
+  line-height: 1;
+}
+
+.ruvia-quote p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--ruvia-light);
+  font-family: var(--display);
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.basin-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px 24px;
+  border: 1px solid var(--ruvia-line-strong);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 26% 25%, rgba(84, 105, 52, .17), transparent 32%),
+    radial-gradient(circle at 72% 78%, rgba(86, 130, 124, .13), transparent 36%),
+    linear-gradient(145deg, #171a12, #0a0c09 68%);
+  box-shadow: var(--shadow);
+}
+
+.basin-card::after {
+  content: "";
+  position: absolute;
+  top: 84px;
+  bottom: 30px;
+  left: 52%;
+  width: 8px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(183, 210, 199, .72), rgba(71, 111, 108, .32));
+  box-shadow: 0 0 18px rgba(111, 149, 144, .22);
+  transform: rotate(5deg);
+}
+
+.basin-card__header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 28px;
+}
+
+.basin-card__header span,
+.basin-card__header strong {
+  display: block;
+}
+
+.basin-card__header span {
+  color: var(--muted);
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+}
+
+.basin-card__header strong {
+  margin-top: 5px;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.basin-route {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.basin-route li {
+  width: fit-content;
+  max-width: 78%;
+  padding: 9px 12px;
+  border: 1px solid rgba(174, 187, 102, .17);
+  border-radius: 999px;
+  background: rgba(8, 10, 7, .82);
+  color: var(--paper-soft);
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .65px;
+  text-transform: uppercase;
+}
+
+.basin-route li:nth-child(even) {
+  margin-left: auto;
+  border-color: rgba(111, 149, 144, .25);
+}
+
+.ruvia-section {
+  padding: 76px 0;
+  border-top: 1px solid rgba(174, 187, 102, .12);
+}
+
+.ruvia-section__heading {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.ruvia-section__number {
+  margin: 2px 0 0 !important;
+  color: var(--ruvia-light) !important;
+  font-family: var(--display);
+  font-size: 34px !important;
+  line-height: 1 !important;
+}
+
+.ruvia-section__kicker {
+  margin: 0 0 5px !important;
+  color: var(--ruvia-light) !important;
+  font-family: var(--ui);
+  font-size: 8px !important;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+.ruvia-section h2 {
+  margin: 0;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: clamp(36px, 11vw, 57px);
+  font-weight: 600;
+  line-height: .95;
+  letter-spacing: -.8px;
+}
+
+.ruvia-section__summary {
+  max-width: 720px;
+  margin: 13px 0 0 !important;
+  color: var(--muted) !important;
+  font-size: 14px !important;
+  line-height: 1.72 !important;
+}
+
+.prose-columns {
+  display: grid;
+  gap: 24px;
+}
+
+.prose-columns p {
+  margin: 0 0 20px;
+}
+
+.card-grid,
+.settlement-grid,
+.relation-grid,
+.economy-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.lore-card,
+.settlement-card,
+.relation-card,
+.economy-card,
+.institution-card,
+.threat-card,
+.nature-card {
+  position: relative;
+  overflow: hidden;
+  padding: 23px 21px;
+  border: 1px solid var(--ruvia-line);
+  border-radius: 21px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(174, 187, 102, .07), transparent 42%),
+    rgba(16, 18, 13, .79);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, .22);
+}
+
+.lore-card::before,
+.institution-card::before,
+.economy-card::before {
+  content: attr(data-mark);
+  position: absolute;
+  top: 13px;
+  right: 16px;
+  color: rgba(217, 223, 154, .18);
+  font-family: var(--display);
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.lore-card h3,
+.settlement-card h3,
+.relation-card h3,
+.economy-card h3,
+.institution-card h3,
+.threat-card h3,
+.nature-card h3 {
+  margin: 0 0 12px;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.lore-card p,
+.settlement-card p,
+.relation-card p,
+.economy-card p,
+.institution-card p,
+.threat-card p,
+.nature-card p {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.76;
+}
+
+.lore-card p:last-child,
+.settlement-card p:last-child,
+.relation-card p:last-child,
+.economy-card p:last-child,
+.institution-card p:last-child,
+.threat-card p:last-child,
+.nature-card p:last-child {
+  margin-bottom: 0;
+}
+
+.settlement-card__meta,
+.economy-card__meta {
+  margin: 0 0 7px !important;
+  color: var(--ruvia-light) !important;
+  font-family: var(--ui);
+  font-size: 8px !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.doctrine-band {
+  margin: 34px 0 0;
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--ruvia-line);
+  border-radius: 24px;
+  background: var(--ruvia-line);
+}
+
+.doctrine-entry {
+  padding: 23px 21px;
+  background: rgba(10, 12, 8, .95);
+}
+
+.doctrine-entry span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--ruvia-light);
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.doctrine-entry strong {
+  display: block;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.capital-panel {
+  display: grid;
+  gap: 24px;
+}
+
+.capital-image {
+  min-height: 360px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 25px;
+  border: 1px solid var(--ruvia-line-strong);
+  border-radius: 29px;
+  background:
+    linear-gradient(180deg, transparent, rgba(5, 7, 4, .88)),
+    url('/harmonia-caotica/imagens/territorios/ruvia.jpg') center / cover no-repeat;
+  box-shadow: var(--shadow);
+}
+
+.capital-image span,
+.capital-image strong,
+.capital-image p {
+  display: block;
+}
+
+.capital-image span {
+  color: var(--ruvia-light);
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.capital-image strong {
+  margin-top: 4px;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: 48px;
+  line-height: .95;
+}
+
+.capital-image p {
+  max-width: 480px;
+  margin: 12px 0 0;
+  color: rgba(245, 239, 229, .86);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.institution-grid,
+.nature-grid,
+.threat-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.relation-card {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.relation-card__sigil {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ruvia-line);
+  border-radius: 50%;
+  color: var(--ruvia-light);
+  font-family: var(--display);
+  font-size: 21px;
+}
+
+.relation-card--aurora {
+  border-color: rgba(201, 164, 93, .42);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(201, 164, 93, .1), transparent 44%),
+    rgba(20, 17, 12, .82);
+}
+
+.relation-card--veus {
+  border-color: rgba(125, 107, 155, .34);
+}
+
+.economy-ledger {
+  display: grid;
+  gap: 28px;
+}
+
+.economy-highlight {
+  padding: 27px 24px;
+  border: 1px solid var(--ruvia-line-strong);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 92% 4%, rgba(199, 162, 93, .12), transparent 42%),
+    linear-gradient(145deg, rgba(174, 187, 102, .07), rgba(13, 15, 10, .94));
+}
+
+.economy-highlight p {
+  margin: 0 0 18px;
+}
+
+.economy-highlight p:last-child {
+  margin-bottom: 0;
+}
+
+.warning-note {
+  margin-top: 25px;
+  padding: 21px;
+  border-left: 2px solid var(--ruvia-danger);
+  background: rgba(184, 107, 85, .06);
+}
+
+.warning-note p {
+  margin: 0;
+  color: var(--paper-soft);
+}
+
+.ruvia-navigation {
+  display: grid;
+  gap: 10px;
+  margin-top: 44px;
+}
+
+.ruvia-navigation a {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border: 1px solid var(--ruvia-line);
+  border-radius: 999px;
+  color: var(--paper-soft);
+  font-family: var(--ui);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 650ms ease, transform 650ms ease;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (min-width: 700px) {
+  .ruvia-opening {
+    grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
+    align-items: start;
+  }
+
+  .ruvia-facts,
+  .doctrine-band {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .card-grid,
+  .settlement-grid,
+  .economy-grid,
+  .institution-grid,
+  .nature-grid,
+  .threat-grid,
+  .relation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .capital-panel,
+  .economy-ledger {
+    grid-template-columns: minmax(320px, .85fr) minmax(0, 1.15fr);
+    align-items: start;
+  }
+
+  .ruvia-navigation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 980px) {
+  .ruvia-hero__layout {
+    grid-template-columns: minmax(0, 1fr) 410px;
+  }
+
+  .ruvia-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .prose-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 42px;
+  }
+
+  .settlement-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .institution-grid,
+  .nature-grid,
+  .threat-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .relation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
