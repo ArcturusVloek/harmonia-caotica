@@ -6,1112 +6,41 @@
   <meta name="theme-color" content="#09080d">
   <meta name="color-scheme" content="dark">
   <meta name="description" content="Conheça Umbra, território do Senhor do Crepúsculo no mundo de Vaelora.">
-
   <title>Umbra — Harmonia Caótica</title>
-
-  <link
-    rel="preload"
-    href="/harmonia-caotica/imagens/territorios/umbra.jpg"
-    as="image"
-    type="image/jpeg"
-    fetchpriority="high"
-  >
+  <link rel="preload" href="/harmonia-caotica/imagens/territorios/umbra.jpg" as="image" type="image/jpeg" fetchpriority="high">
   <link rel="stylesheet" href="../css/mobile.css">
-
   <style>
-    .umbra-page {
-      --umbra: #a99bcf;
-      --umbra-light: #d9d0ee;
-      --umbra-deep: #554a78;
-      --umbra-blue: #71839e;
-      --umbra-silver: #b8bdc9;
-      --umbra-line: rgba(169, 155, 207, .24);
-      --umbra-line-strong: rgba(169, 155, 207, .48);
-      background:
-        radial-gradient(circle at 7% 24%, rgba(89, 74, 126, .11), transparent 30rem),
-        radial-gradient(circle at 94% 53%, rgba(91, 113, 139, .08), transparent 34rem),
-        linear-gradient(180deg, #07070a, #0a0910 44%, #08080c 100%);
-    }
-
-    .umbra-page .mobile-header::after {
-      background: linear-gradient(90deg, transparent, rgba(169, 155, 207, .38), transparent);
-    }
-
-    .umbra-hero {
-      position: relative;
-      min-height: 90svh;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      isolation: isolate;
-      padding: calc(96px + env(safe-area-inset-top)) 0 56px;
-      background: #08080c;
-    }
-
-    .umbra-hero__image,
-    .umbra-hero__veil {
-      position: absolute;
-      inset: 0;
-    }
-
-    .umbra-hero__image {
-      z-index: -3;
-      background: url('/harmonia-caotica/imagens/territorios/umbra.jpg') center / cover no-repeat;
-      transform: scale(1.03);
-      filter: saturate(.9) contrast(1.03);
-    }
-
-    .umbra-hero__veil {
-      z-index: -2;
-      background:
-        radial-gradient(circle at 58% 25%, transparent 0 20%, rgba(0, 0, 0, .36) 84%),
-        linear-gradient(180deg, rgba(6, 6, 10, .06) 0%, rgba(7, 7, 12, .17) 30%, rgba(8, 8, 13, .72) 72%, #08080c 100%),
-        linear-gradient(90deg, rgba(0, 0, 0, .48), transparent 66%, rgba(0, 0, 0, .16));
-    }
-
-    .umbra-hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0;
-      z-index: -1;
-      height: 124px;
-      background: linear-gradient(transparent, #08080c);
-    }
-
-    .umbra-hero__layout {
-      display: grid;
-      gap: 28px;
-      align-items: end;
-    }
-
-    .umbra-hero__content {
-      max-width: 740px;
-    }
-
-    .umbra-hero__content::before {
-      content: "";
-      display: block;
-      width: 74px;
-      height: 1px;
-      margin-bottom: 18px;
-      background: linear-gradient(90deg, var(--umbra-light), transparent);
-    }
-
-    .umbra-hero__index {
-      margin: 0 0 10px;
-      color: var(--umbra-light);
-      font-family: var(--ui);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 2.2px;
-      text-transform: uppercase;
-      text-shadow: 0 3px 15px rgba(0, 0, 0, .92);
-    }
-
-    .umbra-hero__title {
-      margin: 0;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: clamp(66px, 21vw, 112px);
-      font-weight: 600;
-      line-height: .78;
-      letter-spacing: -2.4px;
-      text-shadow: 0 12px 38px rgba(0, 0, 0, .82);
-    }
-
-    .umbra-hero__domain {
-      width: fit-content;
-      margin: 24px 0 0;
-      padding: 8px 12px;
-      border: 1px solid rgba(169, 155, 207, .38);
-      border-radius: 999px;
-      background: rgba(8, 8, 13, .58);
-      color: var(--umbra-light);
-      font-family: var(--ui);
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .umbra-hero__summary {
-      max-width: 620px;
-      margin: 19px 0 0;
-      color: rgba(245, 239, 229, .9);
-      font-size: 15px;
-      line-height: 1.72;
-      text-shadow: 0 4px 18px rgba(0, 0, 0, .94);
-    }
-
-    .umbra-facts {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1px;
-      overflow: hidden;
-      border: 1px solid rgba(169, 155, 207, .22);
-      border-radius: 24px;
-      background: rgba(169, 155, 207, .17);
-      box-shadow: 0 22px 58px rgba(0, 0, 0, .46);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-    }
-
-    .umbra-fact {
-      min-height: 92px;
-      padding: 17px 15px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, .035), transparent),
-        rgba(9, 9, 15, .82);
-    }
-
-    .umbra-fact span,
-    .umbra-fact strong {
-      display: block;
-    }
-
-    .umbra-fact span {
-      color: var(--muted);
-      font-family: var(--ui);
-      font-size: 7px;
-      font-weight: 700;
-      letter-spacing: 1.25px;
-      text-transform: uppercase;
-    }
-
-    .umbra-fact strong {
-      margin-top: 6px;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: 19px;
-      font-weight: 600;
-      line-height: 1.05;
-    }
-
-    .umbra-index {
-      position: sticky;
-      top: calc(var(--header) + env(safe-area-inset-top));
-      z-index: 90;
-      border-top: 1px solid rgba(255, 255, 255, .035);
-      border-bottom: 1px solid var(--umbra-line);
-      background: rgba(8, 8, 12, .91);
-      box-shadow: 0 14px 34px rgba(0, 0, 0, .28);
-      backdrop-filter: blur(20px) saturate(125%);
-      -webkit-backdrop-filter: blur(20px) saturate(125%);
-    }
-
-    .umbra-index__list {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      margin: 0;
-      padding: 10px max(var(--page), env(safe-area-inset-left));
-      list-style: none;
-      scrollbar-width: none;
-      scroll-padding-inline: var(--page);
-    }
-
-    .umbra-index__list::-webkit-scrollbar {
-      display: none;
-    }
-
-    .umbra-index a {
-      min-height: 36px;
-      display: inline-flex;
-      align-items: center;
-      padding: 0 13px;
-      border: 1px solid rgba(169, 155, 207, .16);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .018);
-      color: var(--muted);
-      font-family: var(--ui);
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: .75px;
-      text-decoration: none;
-      text-transform: uppercase;
-      white-space: nowrap;
-      transition: color var(--ease), border-color var(--ease), background var(--ease);
-    }
-
-    .umbra-index a.active,
-    .umbra-index a:active {
-      border-color: var(--umbra-line-strong);
-      background: rgba(169, 155, 207, .08);
-      color: var(--umbra-light);
-    }
-
-    .umbra-content {
-      max-width: 1180px;
-      padding-top: 24px;
-      padding-bottom: 118px;
-    }
-
-    .umbra-content p {
-      color: var(--paper-soft);
-      font-size: 15px;
-      line-height: 1.86;
-    }
-
-    .umbra-opening,
-    .umbra-section {
-      scroll-margin-top: calc(var(--header) + 70px);
-    }
-
-    .umbra-opening {
-      display: grid;
-      gap: 34px;
-      padding: 54px 0 76px;
-    }
-
-    .umbra-opening__copy {
-      max-width: 720px;
-    }
-
-    .umbra-opening__lead {
-      margin: 0 0 29px;
-      padding-left: 18px;
-      border-left: 2px solid var(--umbra);
-      color: var(--paper) !important;
-      font-family: var(--display);
-      font-size: 25px !important;
-      line-height: 1.47 !important;
-    }
-
-    .umbra-opening__copy > p:not(.umbra-opening__lead) {
-      margin: 0 0 22px;
-    }
-
-    .umbra-maxim {
-      position: relative;
-      margin: 36px 0 0;
-      padding: 30px 24px 27px;
-      overflow: hidden;
-      border: 1px solid var(--umbra-line);
-      border-radius: 22px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(169, 155, 207, .13), transparent 48%),
-        linear-gradient(145deg, rgba(169, 155, 207, .06), rgba(15, 14, 22, .95));
-      box-shadow: var(--shadow-soft);
-    }
-
-    .umbra-maxim::before {
-      content: "“";
-      position: absolute;
-      top: -9px;
-      left: 13px;
-      color: rgba(217, 208, 238, .17);
-      font-family: var(--display);
-      font-size: 90px;
-      line-height: 1;
-    }
-
-    .umbra-maxim p {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      color: var(--umbra-light);
-      font-family: var(--display);
-      font-size: 22px;
-      font-style: italic;
-      line-height: 1.48;
-    }
-
-    .memory-seal {
-      position: relative;
-      min-height: 570px;
-      overflow: hidden;
-      border: 1px solid var(--umbra-line-strong);
-      border-radius: 32px;
-      background:
-        radial-gradient(circle at 50% 46%, rgba(169, 155, 207, .1), transparent 31%),
-        radial-gradient(circle at 28% 72%, rgba(94, 119, 144, .1), transparent 33%),
-        linear-gradient(145deg, #17151f, #0a0a10 70%);
-      box-shadow: var(--shadow), 0 0 50px rgba(169, 155, 207, .07);
-    }
-
-    .memory-seal::before {
-      content: "";
-      position: absolute;
-      inset: 9px;
-      z-index: 3;
-      border: 1px solid rgba(217, 208, 238, .09);
-      border-radius: 23px;
-      pointer-events: none;
-    }
-
-    .memory-seal__header {
-      position: absolute;
-      inset: 24px 24px auto;
-      z-index: 4;
-    }
-
-    .memory-seal__header span,
-    .memory-seal__header strong {
-      display: block;
-    }
-
-    .memory-seal__header span {
-      color: var(--umbra);
-      font-family: var(--ui);
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-    }
-
-    .memory-seal__header strong {
-      margin-top: 4px;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: 27px;
-      font-weight: 600;
-    }
-
-    .memory-seal__orbit {
-      position: absolute;
-      left: 50%;
-      top: 51%;
-      width: 290px;
-      height: 290px;
-      transform: translate(-50%, -50%);
-      border: 1px solid rgba(169, 155, 207, .22);
-      border-radius: 50%;
-      box-shadow: inset 0 0 50px rgba(169, 155, 207, .045);
-    }
-
-    .memory-seal__orbit::before,
-    .memory-seal__orbit::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(169, 155, 207, .12);
-      border-radius: 50%;
-    }
-
-    .memory-seal__orbit::before {
-      inset: 42px;
-    }
-
-    .memory-seal__orbit::after {
-      inset: 92px;
-      background: radial-gradient(circle, rgba(169, 155, 207, .11), rgba(8, 8, 13, .88) 65%);
-      box-shadow: 0 0 35px rgba(169, 155, 207, .08);
-    }
-
-    .memory-seal__core {
-      position: absolute;
-      left: 50%;
-      top: 51%;
-      z-index: 2;
-      width: 68px;
-      height: 68px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--umbra-line-strong);
-      border-radius: 50%;
-      background: #0a0a10;
-      color: var(--umbra-light);
-      font-family: var(--display);
-      font-size: 29px;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 30px rgba(169, 155, 207, .13);
-    }
-
-    .memory-seal__path {
-      position: absolute;
-      left: 50%;
-      top: 158px;
-      bottom: 72px;
-      width: 1px;
-      background: linear-gradient(var(--umbra-line-strong), transparent);
-      transform: translateX(-50%);
-    }
-
-    .memory-seal__word {
-      position: absolute;
-      z-index: 4;
-      min-width: 94px;
-      padding: 8px 10px;
-      border: 1px solid rgba(169, 155, 207, .2);
-      border-radius: 999px;
-      background: rgba(8, 8, 13, .76);
-      color: var(--paper-soft);
-      font-family: var(--ui);
-      font-size: 7px;
-      font-weight: 700;
-      letter-spacing: .9px;
-      text-align: center;
-      text-transform: uppercase;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .memory-seal__word--name { top: 168px; left: 50%; transform: translateX(-50%); }
-    .memory-seal__word--life { top: 258px; right: 24px; }
-    .memory-seal__word--truth { top: 390px; right: 45px; }
-    .memory-seal__word--rest { top: 390px; left: 45px; }
-    .memory-seal__word--memory { top: 258px; left: 24px; }
-
-    .memory-seal__note {
-      position: absolute;
-      right: 23px;
-      bottom: 18px;
-      z-index: 4;
-      color: rgba(207, 197, 186, .46);
-      font-family: var(--ui);
-      font-size: 6px;
-      letter-spacing: .85px;
-      text-transform: uppercase;
-    }
-
-    .umbra-section {
-      position: relative;
-      padding: 74px 0;
-      border-top: 1px solid transparent;
-      border-image: linear-gradient(90deg, transparent, var(--umbra-line), transparent) 1;
-    }
-
-    .umbra-section__heading {
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 14px;
-      align-items: start;
-      margin-bottom: 38px;
-    }
-
-    .umbra-section__number {
-      margin: 4px 0 0;
-      color: rgba(169, 155, 207, .54);
-      font-family: var(--display);
-      font-size: 32px;
-      line-height: 1;
-      text-align: center;
-    }
-
-    .umbra-section__number::after {
-      content: "";
-      display: block;
-      width: 1px;
-      height: 58px;
-      margin: 10px auto 0;
-      background: linear-gradient(var(--umbra-line-strong), transparent);
-    }
-
-    .umbra-section__kicker {
-      margin: 0 0 7px;
-      color: var(--umbra);
-      font-family: var(--ui);
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 1.7px;
-      text-transform: uppercase;
-    }
-
-    .umbra-section__heading h2 {
-      margin: 0;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: clamp(42px, 12vw, 64px);
-      font-weight: 600;
-      line-height: .98;
-      letter-spacing: -1px;
-      text-wrap: balance;
-    }
-
-    .umbra-section__summary {
-      max-width: 670px;
-      margin: 14px 0 0;
-      color: var(--paper-soft);
-      font-size: 14px !important;
-      line-height: 1.72 !important;
-    }
-
-    .geography-ledger {
-      position: relative;
-      display: grid;
-      gap: 24px;
-    }
-
-    .geography-ledger::before {
-      content: "";
-      position: absolute;
-      left: 17px;
-      top: 18px;
-      bottom: 18px;
-      width: 1px;
-      background: linear-gradient(var(--umbra-line-strong), rgba(169, 155, 207, .03));
-    }
-
-    .geography-entry {
-      position: relative;
-      display: grid;
-      grid-template-columns: 36px minmax(0, 1fr);
-      gap: 17px;
-    }
-
-    .geography-entry__mark {
-      position: relative;
-      z-index: 1;
-      width: 35px;
-      height: 35px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--umbra-line-strong);
-      border-radius: 50%;
-      background: #0b0b11;
-      color: var(--umbra-light);
-      font-family: var(--display);
-      font-size: 14px;
-      box-shadow: 0 0 20px rgba(169, 155, 207, .08);
-    }
-
-    .geography-entry__body {
-      padding: 0 0 27px;
-      border-bottom: 1px solid rgba(169, 155, 207, .09);
-    }
-
-    .geography-entry:last-child .geography-entry__body {
-      border-bottom: 0;
-    }
-
-    .geography-entry h3,
-    .institution-card h3,
-    .settlement-card h3,
-    .species-card h3,
-    .threat-card h3 {
-      margin: 0;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: 28px;
-      font-weight: 600;
-      line-height: 1.06;
-    }
-
-    .geography-entry p {
-      max-width: 800px;
-      margin: 14px 0 0;
-    }
-
-    .culture-layout,
-    .capital-layout {
-      display: grid;
-      gap: 32px;
-    }
-
-    .culture-copy > p,
-    .capital-copy > p {
-      max-width: 780px;
-      margin: 0 0 22px;
-    }
-
-    .customs-ledger {
-      display: grid;
-      gap: 10px;
-    }
-
-    .custom-entry {
-      min-height: 84px;
-      display: grid;
-      grid-template-columns: 41px 1fr;
-      align-items: center;
-      gap: 13px;
-      padding: 15px 17px;
-      border: 1px solid var(--umbra-line);
-      border-radius: 17px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, .022), transparent),
-        rgba(15, 14, 22, .8);
-    }
-
-    .custom-entry__symbol {
-      width: 41px;
-      height: 41px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--umbra-line-strong);
-      border-radius: 50%;
-      color: var(--umbra-light);
-      font-family: var(--display);
-      font-size: 18px;
-    }
-
-    .custom-entry span,
-    .custom-entry strong {
-      display: block;
-    }
-
-    .custom-entry span {
-      color: var(--muted);
-      font-family: var(--ui);
-      font-size: 7px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .custom-entry strong {
-      margin-top: 3px;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: 19px;
-      font-weight: 600;
-      line-height: 1.15;
-    }
-
-    .capital-frame {
-      position: relative;
-      min-height: 370px;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      padding: 29px 24px;
-      border: 1px solid var(--umbra-line-strong);
-      border-radius: 30px;
-      background:
-        linear-gradient(180deg, rgba(8, 8, 13, .04), rgba(8, 8, 13, .34) 42%, rgba(8, 8, 13, .97) 100%),
-        url('/harmonia-caotica/imagens/territorios/umbra.jpg') center 62% / cover no-repeat;
-      box-shadow: var(--shadow);
-    }
-
-    .capital-frame::after {
-      content: "";
-      position: absolute;
-      inset: 9px;
-      border: 1px solid rgba(217, 208, 238, .11);
-      border-radius: 22px;
-      pointer-events: none;
-    }
-
-    .capital-frame__content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .capital-frame__content span {
-      color: var(--umbra-light);
-      font-family: var(--ui);
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    .capital-frame__content strong {
-      display: block;
-      margin-top: 5px;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: 54px;
-      font-weight: 600;
-      line-height: .9;
-      text-shadow: 0 6px 22px rgba(0, 0, 0, .94);
-    }
-
-    .capital-frame__content p {
-      max-width: 480px;
-      margin: 15px 0 0;
-      color: rgba(245, 239, 229, .9);
-      font-size: 13px;
-      line-height: 1.6;
-      text-shadow: 0 3px 14px rgba(0, 0, 0, .95);
-    }
-
-    .institution-grid,
-    .species-grid,
-    .threat-grid {
-      display: grid;
-      gap: 14px;
-      margin-top: 35px;
-    }
-
-    .institution-card,
-    .species-card,
-    .threat-card {
-      position: relative;
-      overflow: hidden;
-      padding: 24px 21px;
-      border: 1px solid var(--umbra-line);
-      border-radius: 21px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(169, 155, 207, .08), transparent 46%),
-        linear-gradient(145deg, rgba(23, 21, 31, .95), rgba(12, 12, 18, .97));
-      box-shadow: var(--shadow-soft);
-    }
-
-    .institution-card::before,
-    .species-card::before,
-    .threat-card::before {
-      content: attr(data-mark);
-      position: absolute;
-      top: 7px;
-      right: 14px;
-      color: rgba(169, 155, 207, .08);
-      font-family: var(--display);
-      font-size: 72px;
-      font-weight: 600;
-      line-height: 1;
-    }
-
-    .institution-card p,
-    .species-card p,
-    .threat-card p {
-      position: relative;
-      margin: 14px 0 0;
-      font-size: 13px;
-      line-height: 1.67;
-    }
-
-    .settlement-grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .settlement-card {
-      --settlement: 169, 155, 207;
-      position: relative;
-      padding: 26px 22px;
-      overflow: hidden;
-      border: 1px solid rgba(var(--settlement), .25);
-      border-radius: 24px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(var(--settlement), .09), transparent 48%),
-        linear-gradient(145deg, rgba(22, 20, 30, .96), rgba(10, 10, 15, .98));
-      box-shadow: var(--shadow-soft);
-    }
-
-    .settlement-card:nth-child(2) { --settlement: 116, 139, 167; }
-    .settlement-card:nth-child(3) { --settlement: 154, 130, 180; }
-    .settlement-card:nth-child(4) { --settlement: 148, 132, 126; }
-    .settlement-card:nth-child(5) { --settlement: 104, 139, 153; }
-
-    .settlement-card__meta {
-      margin: 0 0 7px;
-      color: rgb(var(--settlement));
-      font-family: var(--ui);
-      font-size: 7px;
-      font-weight: 700;
-      letter-spacing: 1.25px;
-      text-transform: uppercase;
-    }
-
-    .settlement-card p:not(.settlement-card__meta) {
-      margin: 14px 0 0;
-      font-size: 13px;
-      line-height: 1.69;
-    }
-
-    .species-card h3,
-    .threat-card h3 {
-      position: relative;
-      font-size: 24px;
-    }
-
-    .fauna-ledger,
-    .violations-note {
-      margin-top: 22px;
-      padding: 23px 21px;
-      border: 1px solid var(--umbra-line);
-      border-left: 3px solid var(--umbra);
-      border-radius: 0 18px 18px 0;
-      background: linear-gradient(90deg, rgba(169, 155, 207, .08), transparent 62%);
-    }
-
-    .fauna-ledger p,
-    .violations-note p {
-      margin: 0 0 16px;
-      font-size: 14px;
-      line-height: 1.75;
-    }
-
-    .fauna-ledger p:last-child,
-    .violations-note p:last-child {
-      margin-bottom: 0;
-    }
-
-    .threat-card {
-      border-color: rgba(126, 107, 158, .28);
-      background:
-        radial-gradient(circle at 100% 0%, rgba(126, 107, 158, .12), transparent 48%),
-        linear-gradient(145deg, rgba(24, 20, 31, .97), rgba(10, 9, 15, .98));
-    }
-
-    .threat-card h3 {
-      color: #d0c1e7;
-    }
-
-    .economy-ledger,
-    .relations-ledger {
-      display: grid;
-      gap: 1px;
-      overflow: hidden;
-      border: 1px solid var(--umbra-line);
-      border-radius: 24px;
-      background: rgba(169, 155, 207, .13);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .economy-entry,
-    .relation-entry {
-      display: grid;
-      grid-template-columns: 45px minmax(0, 1fr);
-      gap: 14px;
-      padding: 21px 19px;
-      background: rgba(12, 12, 18, .97);
-    }
-
-    .economy-entry__sigil,
-    .relation-entry__sigil {
-      width: 45px;
-      height: 45px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--umbra-line-strong);
-      border-radius: 50%;
-      color: var(--umbra-light);
-      font-family: var(--display);
-      font-size: 18px;
-    }
-
-    .economy-entry strong,
-    .relation-entry strong {
-      display: block;
-      color: var(--paper);
-      font-family: var(--display);
-      font-size: 21px;
-      font-weight: 600;
-    }
-
-    .economy-entry p,
-    .relation-entry p {
-      margin: 6px 0 0;
-      font-size: 13px;
-      line-height: 1.64;
-    }
-
-    .relations-ledger {
-      margin-top: 24px;
-    }
-
-    .umbra-closing {
-      position: relative;
-      margin: 47px 0 0;
-      padding: 32px 24px 29px;
-      overflow: hidden;
-      border: 1px solid var(--umbra-line-strong);
-      border-radius: 25px;
-      background:
-        radial-gradient(circle at 80% 0%, rgba(169, 155, 207, .15), transparent 50%),
-        linear-gradient(145deg, rgba(23, 21, 31, .97), rgba(10, 10, 15, .99));
-      box-shadow: var(--shadow);
-    }
-
-    .umbra-closing::after {
-      content: "";
-      position: absolute;
-      inset: 8px;
-      border: 1px solid rgba(217, 208, 238, .06);
-      border-radius: 18px;
-      pointer-events: none;
-    }
-
-    .umbra-closing p {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      color: var(--umbra-light);
-      font-family: var(--display);
-      font-size: 22px;
-      font-style: italic;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    .umbra-navigation {
-      display: grid;
-      gap: 11px;
-      margin-top: 55px;
-    }
-
-    .umbra-navigation a {
-      min-height: 54px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 18px;
-      border: 1px solid var(--umbra-line-strong);
-      border-radius: 999px;
-      background: rgba(169, 155, 207, .055);
-      color: var(--umbra-light);
-      font-family: var(--ui);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: .95px;
-      text-align: center;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 680ms ease, transform 680ms cubic-bezier(.2, .7, .2, 1);
-    }
-
-    [data-reveal].is-visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    @media (min-width: 560px) {
-      .umbra-facts {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .umbra-navigation,
-      .species-grid,
-      .threat-grid,
-      .institution-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (min-width: 900px) {
-      .umbra-hero {
-        min-height: 88vh;
-        padding-bottom: 76px;
-      }
-
-      .umbra-hero__layout {
-        grid-template-columns: minmax(0, 1.2fr) minmax(420px, .8fr);
-        gap: 64px;
-      }
-
-      .umbra-hero__title {
-        font-size: 126px;
-      }
-
-      .umbra-opening {
-        grid-template-columns: minmax(0, .95fr) minmax(400px, 1.05fr);
-        gap: 62px;
-        align-items: start;
-        padding: 84px 0 104px;
-      }
-
-      .umbra-section {
-        padding: 98px 0;
-      }
-
-      .umbra-section__heading {
-        grid-template-columns: 70px 1fr;
-        gap: 24px;
-        margin-bottom: 54px;
-      }
-
-      .umbra-section__number {
-        font-size: 42px;
-      }
-
-      .umbra-section__heading h2 {
-        font-size: 72px;
-      }
-
-      .geography-ledger {
-        max-width: 920px;
-        margin-left: 94px;
-      }
-
-      .culture-layout,
-      .capital-layout {
-        grid-template-columns: minmax(0, .95fr) minmax(360px, 1.05fr);
-        gap: 56px;
-        align-items: start;
-      }
-
-      .capital-layout {
-        grid-template-columns: minmax(430px, 1.05fr) minmax(0, .95fr);
-      }
-
-      .institution-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .institution-card:first-child,
-      .institution-card:last-child {
-        grid-column: 1 / -1;
-      }
-
-      .settlement-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
-      }
-
-      .settlement-card:first-child {
-        grid-column: 1 / -1;
-      }
-
-      .species-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .threat-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .economy-ledger,
-      .relations-ledger {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .economy-entry:nth-child(odd):last-child,
-      .relation-entry:nth-child(odd):last-child {
-        grid-column: 1 / -1;
-      }
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .umbra-index a:hover {
-        border-color: var(--umbra-line-strong);
-        background: rgba(169, 155, 207, .07);
-        color: var(--umbra-light);
-      }
-
-      .institution-card,
-      .settlement-card,
-      .species-card,
-      .threat-card,
-      .economy-entry,
-      .relation-entry,
-      .umbra-navigation a {
-        transition: transform var(--ease), border-color var(--ease), background var(--ease), box-shadow var(--ease);
-      }
-
-      .institution-card:hover,
-      .settlement-card:hover,
-      .species-card:hover,
-      .threat-card:hover {
-        transform: translateY(-4px);
-        border-color: var(--umbra-line-strong);
-        box-shadow: 0 24px 58px rgba(0, 0, 0, .45);
-      }
-
-      .economy-entry:hover,
-      .relation-entry:hover {
-        background: rgba(19, 18, 27, .99);
-      }
-
-      .umbra-navigation a:hover {
-        transform: translateY(-2px);
-        background: rgba(169, 155, 207, .09);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      [data-reveal] {
-        opacity: 1;
-        transform: none;
-      }
-    }
+    .umbra-page{--umbra:#a99bcf;--umbra-light:#d9d0ee;--umbra-deep:#554a78;--umbra-blue:#71839e;--umbra-line:rgba(169,155,207,.24);--umbra-line-strong:rgba(169,155,207,.48);background:radial-gradient(circle at 7% 24%,rgba(89,74,126,.11),transparent 30rem),radial-gradient(circle at 94% 53%,rgba(91,113,139,.08),transparent 34rem),linear-gradient(180deg,#07070a,#0a0910 44%,#08080c 100%)}
+    .umbra-page .mobile-header::after{background:linear-gradient(90deg,transparent,rgba(169,155,207,.38),transparent)}
+    .umbra-hero{position:relative;min-height:90svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;padding:calc(96px + env(safe-area-inset-top)) 0 56px;background:#08080c}
+    .umbra-hero__image,.umbra-hero__veil{position:absolute;inset:0}
+    .umbra-hero__image{z-index:-3;background:url('/harmonia-caotica/imagens/territorios/umbra.jpg') center/cover no-repeat;transform:scale(1.03);filter:saturate(.9) contrast(1.03)}
+    .umbra-hero__veil{z-index:-2;background:radial-gradient(circle at 58% 25%,transparent 0 20%,rgba(0,0,0,.36) 84%),linear-gradient(180deg,rgba(6,6,10,.06),rgba(7,7,12,.17) 30%,rgba(8,8,13,.72) 72%,#08080c 100%),linear-gradient(90deg,rgba(0,0,0,.48),transparent 66%,rgba(0,0,0,.16))}
+    .umbra-hero::after{content:"";position:absolute;inset:auto 0 0;z-index:-1;height:124px;background:linear-gradient(transparent,#08080c)}
+    .umbra-hero__layout{display:grid;gap:28px;align-items:end}.umbra-hero__content{max-width:740px}.umbra-hero__content::before{content:"";display:block;width:74px;height:1px;margin-bottom:18px;background:linear-gradient(90deg,var(--umbra-light),transparent)}
+    .umbra-hero__index{margin:0 0 10px;color:var(--umbra-light);font-family:var(--ui);font-size:9px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;text-shadow:0 3px 15px rgba(0,0,0,.92)}
+    .umbra-hero__title{margin:0;color:var(--paper);font-family:var(--display);font-size:clamp(66px,21vw,112px);font-weight:600;line-height:.78;letter-spacing:-2.4px;text-shadow:0 12px 38px rgba(0,0,0,.82)}
+    .umbra-hero__domain{width:fit-content;margin:24px 0 0;padding:8px 12px;border:1px solid rgba(169,155,207,.38);border-radius:999px;background:rgba(8,8,13,.58);color:var(--umbra-light);font-family:var(--ui);font-size:8px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;backdrop-filter:blur(10px)}
+    .umbra-hero__summary{max-width:620px;margin:19px 0 0;color:rgba(245,239,229,.9);font-size:15px;line-height:1.72;text-shadow:0 4px 18px rgba(0,0,0,.94)}
+    .umbra-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;overflow:hidden;border:1px solid rgba(169,155,207,.22);border-radius:24px;background:rgba(169,155,207,.17);box-shadow:0 22px 58px rgba(0,0,0,.46);backdrop-filter:blur(15px)}
+    .umbra-fact{min-height:92px;padding:17px 15px;background:linear-gradient(180deg,rgba(255,255,255,.035),transparent),rgba(9,9,15,.82)}.umbra-fact span,.umbra-fact strong{display:block}.umbra-fact span{color:var(--muted);font-family:var(--ui);font-size:7px;font-weight:700;letter-spacing:1.25px;text-transform:uppercase}.umbra-fact strong{margin-top:6px;color:var(--paper);font-family:var(--display);font-size:19px;font-weight:600;line-height:1.05}
+    .umbra-index{position:sticky;top:calc(var(--header) + env(safe-area-inset-top));z-index:90;border-top:1px solid rgba(255,255,255,.035);border-bottom:1px solid var(--umbra-line);background:rgba(8,8,12,.91);box-shadow:0 14px 34px rgba(0,0,0,.28);backdrop-filter:blur(20px) saturate(125%)}
+    .umbra-index__list{display:flex;gap:8px;overflow-x:auto;margin:0;padding:10px max(var(--page),env(safe-area-inset-left));list-style:none;scrollbar-width:none}.umbra-index__list::-webkit-scrollbar{display:none}.umbra-index a{min-height:36px;display:inline-flex;align-items:center;padding:0 13px;border:1px solid rgba(169,155,207,.16);border-radius:999px;background:rgba(255,255,255,.018);color:var(--muted);font-family:var(--ui);font-size:8px;font-weight:700;letter-spacing:.75px;text-decoration:none;text-transform:uppercase;white-space:nowrap}.umbra-index a.active{border-color:var(--umbra-line-strong);background:rgba(169,155,207,.08);color:var(--umbra-light)}
+    .umbra-content{max-width:1180px;padding-top:24px;padding-bottom:118px}.umbra-content p{color:var(--paper-soft);font-size:15px;line-height:1.86}.umbra-opening,.umbra-section{scroll-margin-top:calc(var(--header) + 70px)}.umbra-opening{display:grid;gap:34px;padding:54px 0 76px}.umbra-opening__copy{max-width:760px}.umbra-opening__lead{margin:0 0 29px;padding-left:18px;border-left:2px solid var(--umbra);color:var(--paper)!important;font-family:var(--display);font-size:25px!important;line-height:1.47!important}.umbra-opening__copy>p:not(.umbra-opening__lead){margin:0 0 22px}
+    .umbra-maxim{position:relative;margin:36px 0 0;padding:30px 24px 27px;overflow:hidden;border:1px solid var(--umbra-line);border-radius:22px;background:radial-gradient(circle at 100% 0%,rgba(169,155,207,.13),transparent 48%),linear-gradient(145deg,rgba(169,155,207,.06),rgba(15,14,22,.95));box-shadow:var(--shadow-soft)}.umbra-maxim p{margin:0;color:var(--umbra-light);font-family:var(--display);font-size:22px;font-style:italic;line-height:1.48}
+    .memory-seal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:22px;border:1px solid var(--umbra-line-strong);border-radius:28px;background:radial-gradient(circle at 50% 30%,rgba(169,155,207,.12),transparent 38%),linear-gradient(145deg,#17151f,#0a0a10 70%);box-shadow:var(--shadow)}.memory-seal__header{grid-column:1/-1;padding-bottom:8px}.memory-seal__header span,.memory-seal__header strong{display:block}.memory-seal__header span{color:var(--muted);font-family:var(--ui);font-size:8px;letter-spacing:1.2px;text-transform:uppercase}.memory-seal__header strong{margin-top:5px;color:var(--umbra-light);font-family:var(--display);font-size:24px}.memory-seal__word{padding:16px;border:1px solid var(--umbra-line);border-radius:16px;background:rgba(255,255,255,.025);color:var(--paper);font-family:var(--display);text-align:center}.memory-seal__note{grid-column:1/-1;color:var(--muted);text-align:center}
+    .umbra-section{padding:74px 0;border-top:1px solid rgba(169,155,207,.12)}.umbra-section__heading{display:grid;grid-template-columns:50px 1fr;gap:18px;margin-bottom:38px}.umbra-section__number{margin:0!important;color:rgba(169,155,207,.5)!important;font-family:var(--display);font-size:34px!important;line-height:1!important}.umbra-section__kicker{margin:0 0 7px!important;color:var(--umbra)!important;font-family:var(--ui);font-size:8px!important;font-weight:700;letter-spacing:1.4px;text-transform:uppercase}.umbra-section__heading h2{margin:0;color:var(--paper);font-family:var(--display);font-size:clamp(40px,11vw,66px);font-weight:600;line-height:.94}.umbra-section__summary{max-width:720px;margin:14px 0 0!important;color:var(--muted)!important}
+    .geography-ledger,.institution-grid,.settlement-grid,.species-grid,.threat-grid,.economy-ledger,.relations-ledger{display:grid;gap:16px}.geography-entry,.institution-card,.settlement-card,.species-card,.threat-card,.economy-entry,.relation-entry{border:1px solid var(--umbra-line);border-radius:20px;background:linear-gradient(145deg,rgba(24,22,33,.94),rgba(11,10,16,.96));box-shadow:0 18px 45px rgba(0,0,0,.25)}
+    .geography-entry{display:grid;grid-template-columns:42px 1fr;padding:22px}.geography-entry__mark{color:var(--umbra);font-family:var(--display);font-size:24px}.geography-entry h3,.institution-card h3,.settlement-card h3,.species-card h3,.threat-card h3{margin:0 0 12px;color:var(--paper);font-family:var(--display);font-size:25px;font-weight:600}.geography-entry p,.institution-card p,.settlement-card p,.species-card p,.threat-card p{margin:0 0 12px}.geography-entry p:last-child,.institution-card p:last-child,.settlement-card p:last-child,.species-card p:last-child,.threat-card p:last-child{margin-bottom:0}
+    .culture-layout,.capital-layout{display:grid;gap:28px}.culture-copy p{margin:0 0 18px}.customs-ledger{display:grid;gap:10px}.custom-entry{display:flex;gap:14px;align-items:center;padding:14px;border:1px solid var(--umbra-line);border-radius:16px;background:rgba(255,255,255,.02)}.custom-entry__symbol{color:var(--umbra);font-size:20px}.custom-entry span,.custom-entry strong{display:block}.custom-entry span{color:var(--muted);font-family:var(--ui);font-size:7px;letter-spacing:1px;text-transform:uppercase}.custom-entry strong{margin-top:3px;color:var(--paper);font-family:var(--display);font-size:17px}
+    .faith-panel{display:grid;gap:16px}.faith-panel__block{padding:22px;border:1px solid var(--umbra-line);border-radius:20px;background:linear-gradient(145deg,rgba(169,155,207,.06),rgba(13,12,19,.96))}.faith-panel__block h3{margin:0 0 10px;color:var(--umbra-light);font-family:var(--display);font-size:25px}.faith-panel__block p{margin:0 0 12px}.faith-panel__block p:last-child{margin-bottom:0}
+    .capital-frame{min-height:320px;display:flex;align-items:flex-end;padding:24px;border:1px solid var(--umbra-line-strong);border-radius:28px;background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.78)),url('/harmonia-caotica/imagens/territorios/umbra.jpg') center/cover no-repeat;box-shadow:var(--shadow)}.capital-frame span,.capital-frame strong{display:block}.capital-frame span{color:var(--muted);font-family:var(--ui);font-size:8px;letter-spacing:1.2px;text-transform:uppercase}.capital-frame strong{margin-top:6px;color:var(--paper);font-family:var(--display);font-size:48px}.capital-copy p{margin:0 0 18px}.institution-card,.settlement-card,.species-card,.threat-card{padding:22px}.settlement-card__meta{margin:0 0 7px!important;color:var(--umbra)!important;font-family:var(--ui);font-size:8px!important;font-weight:700;letter-spacing:1.1px;text-transform:uppercase}
+    .resource-note,.violations-note{margin-top:20px;padding:20px;border:1px solid var(--umbra-line);border-radius:18px;background:rgba(169,155,207,.045)}.resource-note p,.violations-note p{margin:0 0 12px}.resource-note p:last-child,.violations-note p:last-child{margin-bottom:0}
+    .economy-entry,.relation-entry{padding:20px}.economy-entry strong,.relation-entry strong{display:block;margin-bottom:8px;color:var(--paper);font-family:var(--display);font-size:22px}.economy-entry p,.relation-entry p{margin:0 0 12px}.economy-entry p:last-child,.relation-entry p:last-child{margin-bottom:0}.economy-entry__sigil,.relation-entry__sigil{display:block;margin-bottom:10px;color:var(--umbra);font-size:23px}
+    .umbra-closing{margin:44px 0;padding:28px;border-left:2px solid var(--umbra);background:rgba(169,155,207,.045)}.umbra-closing p{margin:0;color:var(--umbra-light);font-family:var(--display);font-size:24px;line-height:1.45}.umbra-navigation{display:flex;flex-wrap:wrap;gap:12px}.umbra-navigation a{padding:14px 18px;border:1px solid var(--umbra-line);border-radius:999px;color:var(--paper);text-decoration:none;background:rgba(255,255,255,.02)}
+    [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}[data-reveal].is-visible{opacity:1;transform:none}
+    @media(min-width:760px){.umbra-hero__layout{grid-template-columns:1fr 360px}.umbra-opening{grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr);align-items:start}.geography-ledger{grid-template-columns:repeat(2,minmax(0,1fr))}.culture-layout,.capital-layout{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.faith-panel,.institution-grid,.settlement-grid,.economy-ledger,.relations-ledger{grid-template-columns:repeat(2,minmax(0,1fr))}.species-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.threat-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.institution-card:first-child,.institution-card:last-child,.settlement-card:first-child{grid-column:1/-1}}
+    @media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none}}
   </style>
 </head>
 
@@ -1129,22 +58,18 @@
     <section class="umbra-hero" aria-labelledby="titulo-umbra">
       <div class="umbra-hero__image" aria-hidden="true"></div>
       <div class="umbra-hero__veil" aria-hidden="true"></div>
-
       <div class="mobile-container umbra-hero__layout">
         <div class="umbra-hero__content" data-reveal>
           <p class="umbra-hero__index">Atlas de Vaelora · Território II</p>
           <h1 id="titulo-umbra" class="umbra-hero__title">Umbra</h1>
           <div class="umbra-hero__domain">Território do Senhor do Crepúsculo</div>
-          <p class="umbra-hero__summary">
-            Bosques de folhas escuras, lagos silenciosos, campos frios de flores noturnas e cidades dedicadas a preservar aquilo que a morte não deveria apagar.
-          </p>
+          <p class="umbra-hero__summary">Bosques de folhas escuras, lagos silenciosos, campos frios de flores noturnas e cidades dedicadas a preservar aquilo que a morte não deveria apagar.</p>
         </div>
-
         <div class="umbra-facts" data-reveal aria-label="Informações essenciais de Umbra">
           <div class="umbra-fact"><span>Capital</span><strong>Noctis</strong></div>
           <div class="umbra-fact"><span>Grande rio</span><strong>Letheon</strong></div>
           <div class="umbra-fact"><span>Bioma</span><strong>Bosques e lagos</strong></div>
-          <div class="umbra-fact"><span>Assentamentos</span><strong>Cinco</strong></div>
+          <div class="umbra-fact"><span>Fé predominante</span><strong>Senhor do Crepúsculo</strong></div>
         </div>
       </div>
     </section>
@@ -1154,169 +79,65 @@
         <li><a class="active" href="#visao-geral">Visão geral</a></li>
         <li><a href="#geografia">Geografia</a></li>
         <li><a href="#povo">O povo</a></li>
+        <li><a href="#fe">Religião</a></li>
         <li><a href="#noctis">Noctis</a></li>
         <li><a href="#assentamentos">Assentamentos</a></li>
         <li><a href="#natureza">Natureza</a></li>
         <li><a href="#ameacas">Ameaças</a></li>
-        <li><a href="#economia">Relações</a></li>
+        <li><a href="#economia">Economia</a></li>
+        <li><a href="#relacoes">Relações</a></li>
       </ul>
     </nav>
 
     <article class="umbra-content mobile-container">
       <section id="visao-geral" class="umbra-opening">
         <div class="umbra-opening__copy" data-reveal>
-          <p class="umbra-opening__lead">
-            Umbra ocupa uma região de bosques escuros, planícies frias, lagos de águas calmas e montanhas frequentemente cobertas por névoa.
-          </p>
-
+          <p class="umbra-opening__lead">Umbra ocupa uma região de bosques escuros, planícies frias, lagos de águas calmas e montanhas frequentemente cobertas por névoa.</p>
           <p>Jardins funerários, cemitérios e memoriais acompanham suas estradas, mas o território não é uma terra morta ou consumida pela decadência.</p>
-          <p>A vida cresce em Umbra de maneira discreta. Árvores de folhas negras acompanham os rios, flores noturnas cobrem os campos e pequenos pomares ocupam vales protegidos. Rebanhos percorrem as áreas mais abertas, pescadores trabalham nos lagos e comunidades inteiras vivem da agricultura, do artesanato, da preservação de documentos e do comércio.</p>
-          <p>A presença do Senhor do Crepúsculo não mantém o território sob um eclipse eterno. Durante o dia, a luz é suavizada pelas nuvens, pela névoa e pelo relevo. O amanhecer e o entardecer são mais longos do que em outras regiões, cobrindo a paisagem com tons cinzentos, violetas e azulados.</p>
-          <p>Eclipses acontecem em ciclos naturais e são considerados acontecimentos sagrados, mas não alteram permanentemente o céu. A Lua, quando visível, reflete nos lagos, nos telhados escuros e nos cristais extraídos das montanhas.</p>
-          <p>Os umbranos não consideram as Trevas uma força maligna. A escuridão permite o repouso, protege a intimidade e marca o encerramento das atividades. O perigo não está na ausência de luz, mas naquilo que escolhe ocultar-se para causar dano.</p>
-          <p>A morte também não é venerada como destruição. Ela é entendida como a conclusão natural de toda existência. Os seguidores de Erebus procuram preservar a vida enquanto ainda houver possibilidade de recuperação, mas rejeitam tentativas de manter alguém preso indefinidamente a um corpo incapaz de continuar.</p>
+          <p>A vida cresce de maneira discreta. Árvores de folhas negras acompanham os rios, flores noturnas cobrem os campos e pequenos pomares ocupam vales protegidos. Rebanhos percorrem áreas abertas, pescadores trabalham nos lagos e comunidades vivem da agricultura, do artesanato, da preservação de documentos e do comércio.</p>
+          <p>A presença do Senhor do Crepúsculo não mantém Umbra sob eclipse ou noite permanentes. Durante o dia, a luz é suavizada pelas nuvens, pela névoa e pelo relevo. Amanheceres e entardeceres prolongados cobrem a paisagem com tons cinzentos, violetas e azulados.</p>
+          <p>Eclipses acontecem em ciclos naturais e são considerados sagrados, mas não alteram permanentemente o céu.</p>
+          <p>Os umbranos não consideram as Trevas uma força maligna. A escuridão permite repouso, protege a intimidade e marca o encerramento das atividades. O perigo está naquilo que decide utilizá-la para causar dano.</p>
+          <p>Os seguidores do Senhor do Crepúsculo valorizam o cuidado dos vivos, mas também discutem os limites de tratamentos que já não oferecem recuperação, consciência ou autonomia. Essas decisões envolvem pacientes, médicos, familiares, sacerdotes e autoridades responsáveis.</p>
           <p>Essa compreensão transformou Umbra em uma civilização dedicada à memória. Seus habitantes registram nomes, famílias, idiomas, canções e acontecimentos para impedir que pessoas e povos desapareçam completamente depois da morte.</p>
-          <p>Esquecer deliberadamente alguém é considerado mais grave do que temê-lo.</p>
-          <p>As crianças aprendem desde cedo a cuidar de lápides, plantar flores memoriais e escutar as histórias das gerações anteriores. Bibliotecas, arquivos, jardins e escolas ocupam uma posição tão importante quanto muralhas, fortalezas e mercados.</p>
+          <p>Apagar deliberadamente um nome ou alterar registros para proteger os vivos é considerado uma violação grave.</p>
           <p>Em Umbra, reconhecer a morte não significa abandonar a vida. Significa compreender por que ela merece ser valorizada.</p>
-
-          <blockquote class="umbra-maxim">
-            <p>Aquele que compreende a morte aprende o verdadeiro valor da vida.</p>
-          </blockquote>
+          <blockquote class="umbra-maxim"><p>Aquele que compreende a morte aprende o verdadeiro valor da vida.</p></blockquote>
         </div>
-
         <aside class="memory-seal" data-reveal aria-label="Princípios da memória em Umbra">
-          <div class="memory-seal__header">
-            <span>Fundamento civilizacional</span>
-            <strong>O ciclo da memória</strong>
-          </div>
-          <span class="memory-seal__path" aria-hidden="true"></span>
-          <div class="memory-seal__orbit" aria-hidden="true"></div>
-          <span class="memory-seal__core">◉</span>
-          <span class="memory-seal__word memory-seal__word--name">Nome</span>
-          <span class="memory-seal__word memory-seal__word--life">Vida</span>
-          <span class="memory-seal__word memory-seal__word--truth">Verdade</span>
-          <span class="memory-seal__word memory-seal__word--rest">Descanso</span>
-          <span class="memory-seal__word memory-seal__word--memory">Memória</span>
+          <div class="memory-seal__header"><span>Fundamento civilizacional</span><strong>O ciclo da memória</strong></div>
+          <span class="memory-seal__word">Nome</span><span class="memory-seal__word">Vida</span><span class="memory-seal__word">Verdade</span><span class="memory-seal__word">Descanso</span><span class="memory-seal__word">Memória</span><span class="memory-seal__word">Testemunho</span>
           <small class="memory-seal__note">O fim não exige o apagamento</small>
         </aside>
       </section>
 
       <section id="geografia" class="umbra-section">
-        <header class="umbra-section__heading" data-reveal>
-          <p class="umbra-section__number">I</p>
-          <div>
-            <p class="umbra-section__kicker">Névoa, pedra e água escura</p>
-            <h2>As Terras de Umbra</h2>
-            <p class="umbra-section__summary">O Rio Letheon organiza o território entre as montanhas ocidentais, a Floresta dos Corvos, os Campos das Lanternas e os lagos do sudeste.</p>
-          </div>
-        </header>
-
+        <header class="umbra-section__heading" data-reveal><p class="umbra-section__number">I</p><div><p class="umbra-section__kicker">Névoa, pedra e água escura</p><h2>As Terras de Umbra</h2><p class="umbra-section__summary">O Rio Letheon organiza o território entre as montanhas ocidentais, a Floresta dos Corvos, os Campos das Lanternas e os lagos do sudeste.</p></div></header>
         <div class="geography-ledger">
-          <article class="geography-entry" data-reveal>
-            <span class="geography-entry__mark">I</span>
-            <div class="geography-entry__body">
-              <h3>Rio Letheon e Fontes do Véu</h3>
-              <p>O território é atravessado pelo Rio Letheon, que nasce nas Fontes do Véu, nas elevações ocidentais, e segue em direção ao centro e ao sudeste.</p>
-              <p>Suas águas possuem uma coloração escura devido aos minerais presentes no solo. Apesar da aparência, são limpas e sustentam peixes, plantas aquáticas e diversas comunidades ribeirinhas.</p>
-              <p>O Letheon passa por Noctis e alimenta os lagos de Belar antes de alcançar a costa. Pequenos portos e embarcações fluviais transportam alimentos, pedra, madeira, documentos e passageiros entre a capital e os assentamentos do interior.</p>
-              <p>Salgueiros negros, ciprestes e lírios cinzentos crescem em suas margens. Durante a noite, peixes translúcidos produzem pequenos pontos luminosos sob a superfície, fazendo o rio parecer coberto por estrelas.</p>
-            </div>
-          </article>
-
-          <article class="geography-entry" data-reveal>
-            <span class="geography-entry__mark">II</span>
-            <div class="geography-entry__body">
-              <h3>Montanhas de Obsidiana</h3>
-              <p>No oeste erguem-se as Montanhas de Obsidiana, uma cadeia de rocha escura, cavernas profundas e encostas cobertas por florestas resistentes ao frio.</p>
-              <p>Nem toda a cordilheira é formada por obsidiana verdadeira. Basalto, granito e diferentes minerais dividem espaço com grandes veios da chamada Pedra Crepuscular, utilizada em templos, bibliotecas, pontes e memoriais.</p>
-              <p>A extração é controlada. Escavações mal planejadas podem atingir antigas tumbas, comprometer fontes de água ou provocar desmoronamentos.</p>
-              <p>Dentro da cordilheira encontra-se a Montanha do Véu, onde foi construída Valemonte. As Fontes do Véu surgem nas cavernas e vales ao redor dessa montanha, formando os primeiros braços do Letheon.</p>
-              <p>As encostas mais baixas sustentam pomares, rebanhos de cabras e ovelhas e pequenas comunidades de mineiros e pastores. As montanhas fornecem materiais importantes, mas também água e alimento.</p>
-            </div>
-          </article>
-
-          <article class="geography-entry" data-reveal>
-            <span class="geography-entry__mark">III</span>
-            <div class="geography-entry__body">
-              <h3>Floresta dos Corvos</h3>
-              <p>Ao norte estende-se a Floresta dos Corvos. Suas árvores possuem troncos escuros, raízes profundas e folhas que permanecem presas aos galhos durante grande parte do ano.</p>
-              <p>Boa parte da floresta é considerada sagrada. A derrubada de árvores só é permitida em regiões determinadas, sempre acompanhada por guardiões.</p>
-              <p>Milhares de corvos constroem ninhos entre as copas. Eles se alimentam de insetos, frutas, pequenos animais e restos deixados pelos habitantes.</p>
-              <p>Os umbranos não acreditam que toda ave carregue uma mensagem divina. Entretanto, mudanças repentinas no comportamento dos bandos podem indicar incêndios, cadáveres expostos, invasores ou manifestações espirituais.</p>
-              <p>Cervos, lobos, corujas, raposas e mariposas também vivem na floresta. Ervas, resinas, madeira e cogumelos são coletados em áreas autorizadas.</p>
-              <p>Ruínas e sepulturas antigas permanecem espalhadas entre as árvores. Algumas pertencem a comunidades desaparecidas muito antes da formação do atual território.</p>
-            </div>
-          </article>
-
-          <article class="geography-entry" data-reveal>
-            <span class="geography-entry__mark">IV</span>
-            <div class="geography-entry__body">
-              <h3>Campos das Lanternas</h3>
-              <p>Ao sul de Noctis ficam os Campos das Lanternas, vastas planícies cobertas por flores noturnas, jardins funerários e caminhos de pedra.</p>
-              <p>Milhares de lanternas são acesas ao anoitecer. Cada uma pode representar uma pessoa, uma família, uma comunidade ou um grupo cuja memória permanece sob os cuidados de Umbra.</p>
-              <p>As luzes não pertencem apenas aos mortos umbranos. Viajantes podem dedicar uma lanterna a alguém sepultado em outro território ou cujo corpo nunca tenha sido encontrado.</p>
-              <p>Durante o dia, os campos são cultivados por jardineiros, sacerdotes, estudantes e famílias. Pequenos rebanhos pastam em setores afastados das sepulturas, ajudando a controlar o crescimento da vegetação.</p>
-              <p>Quando a noite chega, as lanternas formam longas linhas ao redor das estradas e memoriais. O lugar permanece solene, mas não representa um luto permanente. Reuniões familiares, refeições e cerimônias também acontecem ali.</p>
-            </div>
-          </article>
-
-          <article class="geography-entry" data-reveal>
-            <span class="geography-entry__mark">V</span>
-            <div class="geography-entry__body">
-              <h3>Ermos de Torva</h3>
-              <p>Mais ao sul começam os Ermos de Torva, uma região marcada por guerras antigas. Ruínas, trincheiras, crateras e restos de fortificações ainda cortam a paisagem.</p>
-              <p>A vida retorna lentamente aos ermos. Gramíneas, arbustos e pequenos animais já ocupam parte do terreno, enquanto equipes de Torva procuram ossos, armas e registros perdidos.</p>
-            </div>
-          </article>
-
-          <article class="geography-entry" data-reveal>
-            <span class="geography-entry__mark">VI</span>
-            <div class="geography-entry__body">
-              <h3>O Leste e os Lagos de Belar</h3>
-              <p>O leste de Umbra é formado por lagos, bosques de ciprestes, encostas rochosas e falésias cobertas por névoa.</p>
-              <p>O relevo protege diversos vales dos ventos mais fortes, permitindo o cultivo de frutas, flores, ervas e pequenas vinhas.</p>
-              <p>Elysthia ocupa essa região, entre montanhas menores e lagos silenciosos. A cidade não é invisível por magia, mas a combinação de neblina, estradas estreitas e paredões torna sua localização difícil para quem não conhece as rotas.</p>
-              <p>No sudeste ficam os Lagos de Belar, ligados ao Letheon por canais e áreas alagadas. Suas águas são frias e ricas em sais minerais.</p>
-              <p>Peixes, aves, juncos e flores aquáticas ocupam os lagos. Os minerais extraídos ali são utilizados na conservação de alimentos, tecidos, documentos e corpos durante investigações ou transportes funerários.</p>
-            </div>
-          </article>
+          <article class="geography-entry" data-reveal><span class="geography-entry__mark">I</span><div><h3>Rio Letheon e Fontes do Véu</h3><p>O Letheon nasce nas Fontes do Véu, nas elevações ocidentais, atravessa Noctis e segue até os Lagos de Belar.</p><p>Suas águas escuras são limpas e ricas em minerais. Pequenos portos transportam alimentos, pedra, madeira, documentos e passageiros entre a capital e o interior.</p><p>Salgueiros negros, ciprestes e lírios cinzentos crescem em suas margens. Peixes translúcidos produzem pontos luminosos sob a superfície durante a noite.</p></div></article>
+          <article class="geography-entry" data-reveal><span class="geography-entry__mark">II</span><div><h3>Montanhas de Obsidiana</h3><p>No oeste erguem-se montanhas de rocha escura, cavernas profundas e encostas frias. Basalto, granito, metais, Cristais de Umbra e Pedra Crepuscular sustentam mineração e artesanato.</p><p>A extração é controlada porque escavações podem atingir tumbas, comprometer fontes ou provocar desmoronamentos.</p><p>A Montanha do Véu abriga Valemonte, enquanto pomares, cabras, ovelhas e comunidades de mineiros ocupam as encostas mais baixas.</p></div></article>
+          <article class="geography-entry" data-reveal><span class="geography-entry__mark">III</span><div><h3>Floresta dos Corvos</h3><p>Ao norte estende-se uma floresta de troncos escuros, raízes profundas e folhas persistentes. A derrubada só é permitida em regiões determinadas.</p><p>Corvos, cervos, lobos, corujas, raposas e mariposas vivem entre ruínas e sepulturas antigas. Ervas, resinas, madeira e cogumelos são coletados em áreas autorizadas.</p><p>Mudanças repentinas nos bandos podem indicar incêndios, cadáveres expostos, invasores ou manifestações espirituais.</p></div></article>
+          <article class="geography-entry" data-reveal><span class="geography-entry__mark">IV</span><div><h3>Campos das Lanternas</h3><p>Ao sul de Noctis, planícies de flores noturnas, jardins funerários e caminhos de pedra recebem milhares de lanternas ao anoitecer.</p><p>As luzes podem representar pessoas, famílias, comunidades ou desaparecidos cujos corpos nunca foram encontrados.</p><p>Durante o dia, jardineiros, estudantes e famílias cultivam os campos. Refeições, encontros e cerimônias coexistem com os memoriais.</p></div></article>
+          <article class="geography-entry" data-reveal><span class="geography-entry__mark">V</span><div><h3>Ermos de Torva</h3><p>No extremo sul, guerras antigas deixaram ruínas, trincheiras, crateras e restos de fortificações.</p><p>A vegetação retorna lentamente, enquanto equipes procuram ossos, armas, documentos e símbolos capazes de identificar desaparecidos.</p></div></article>
+          <article class="geography-entry" data-reveal><span class="geography-entry__mark">VI</span><div><h3>O Leste e os Lagos de Belar</h3><p>O leste reúne lagos, bosques de ciprestes, vales protegidos, falésias e encostas cobertas por névoa. Elysthia ocupa essa região.</p><p>No sudeste, os Lagos de Belar recebem águas do Letheon. Peixes, aves, juncos e flores aquáticas sustentam comunidades lacustres.</p><p>Seus sais minerais conservam alimentos, tecidos, documentos e corpos durante investigações ou transportes funerários.</p></div></article>
         </div>
       </section>
 
       <section id="povo" class="umbra-section">
-        <header class="umbra-section__heading" data-reveal>
-          <p class="umbra-section__number">II</p>
-          <div>
-            <p class="umbra-section__kicker">Silêncio, comunidade e memória</p>
-            <h2>O Povo de Umbra</h2>
-            <p class="umbra-section__summary">Os umbranos são reservados, mas não frios. Valorizam o silêncio porque acreditam que escutar também é uma forma de respeito.</p>
-          </div>
-        </header>
-
+        <header class="umbra-section__heading" data-reveal><p class="umbra-section__number">II</p><div><p class="umbra-section__kicker">Silêncio, comunidade e memória</p><h2>O Povo de Umbra</h2><p class="umbra-section__summary">Os umbranos são reservados, mas não frios. Valorizam o silêncio porque escutar também é uma forma de respeito.</p></div></header>
         <div class="culture-layout">
           <div class="culture-copy" data-reveal>
-            <p>Interromper alguém durante um relato importante, falar alto em cerimônias ou transformar a dor de outra pessoa em espetáculo é considerado ofensivo.</p>
-            <p>A vida comunitária é forte. Quando alguém perde uma pessoa próxima, vizinhos e familiares assumem parte de suas tarefas. Alimentos são levados até sua casa, animais são cuidados e compromissos podem ser adiados.</p>
-            <p>Não existe uma duração obrigatória para o luto. Cada pessoa recebe tempo para reconhecer a perda, mas também é ajudada a retornar gradualmente às responsabilidades e ao convívio.</p>
-            <p>Os umbranos acreditam que o morto deve seguir para o descanso e que os vivos não devem abandonar completamente o mundo por causa dele.</p>
-            <p>Casamentos, nascimentos, colheitas e festivais são celebrados normalmente. As festas possuem música, comida, dança e bebida, embora sejam menos ruidosas do que em outros territórios.</p>
-            <p>Instrumentos de corda, flautas graves e pequenos tambores são comuns. Réquiens e canções de despedida fazem parte da cultura, mas também existem músicas sobre viagens, amores, colheitas e histórias familiares.</p>
-            <p>Contar uma lembrança engraçada durante uma refeição funerária não é considerado ofensivo. Para os umbranos, chorar reconhece a perda; rir de uma lembrança reconhece que aquela vida realmente aconteceu.</p>
+            <p>Interromper um relato importante, falar alto em cerimônias ou transformar a dor alheia em espetáculo é considerado ofensivo.</p>
+            <p>Quando alguém perde uma pessoa próxima, vizinhos e familiares assumem parte de suas tarefas. Alimentos são levados à casa, animais são cuidados e compromissos podem ser adiados.</p>
+            <p>Não existe duração obrigatória para o luto. Cada pessoa recebe tempo para reconhecer a perda e apoio para retornar gradualmente às responsabilidades.</p>
+            <p>Casamentos, nascimentos, colheitas e festivais são celebrados com música, comida, dança e bebida. Réquiens e canções de despedida convivem com músicas sobre viagens, amores e histórias familiares.</p>
+            <p>Contar uma lembrança engraçada durante uma refeição funerária não é ofensivo. Chorar reconhece a perda; rir de uma lembrança reconhece que aquela vida realmente aconteceu.</p>
             <p>A educação valoriza história, escrita, filosofia, primeiros socorros, genealogia e conservação de documentos.</p>
-            <p>As crianças aprendem a reconhecer símbolos funerários, registrar nomes e cuidar de jardins. Também recebem instruções sobre saúde, alimentação e proteção dos vivos.</p>
-            <p>A morte nunca é apresentada como uma ameaça utilizada para controlar comportamentos. Ela é ensinada como parte inevitável do ciclo da existência.</p>
-            <p>Os estudantes também aprendem que preservar a memória não significa esconder os erros do passado. Registros devem incluir conquistas, crimes, fracassos e arrependimentos.</p>
-            <p>Alterar uma história para proteger a reputação de uma família é considerado uma forma de esquecimento.</p>
-            <p>Muitos habitantes carregam pequenos amuletos de prata, pedra ou obsidiana gravados com nomes de ancestrais. Esses objetos não aprisionam espíritos. Servem apenas como lembranças.</p>
-            <p>As roupas utilizam tons de preto, cinza, azul profundo, verde escuro e violeta. Bordados prateados podem representar estrelas, árvores, rios ou nomes familiares.</p>
-            <p>Joias exuberantes são raras. Objetos valiosos costumam possuir significado histórico ou familiar.</p>
-            <p>Durante o luto, uma faixa escura é presa ao braço, ao pescoço ou à cintura. Quando o período formal termina, a faixa é desatada diante da família e pode ser guardada, queimada ou enterrada junto a uma lembrança.</p>
-            <p>As construções utilizam pedra escura, madeira tratada, telhados inclinados e janelas protegidas contra o frio. Pátios internos recebem luz durante o dia e abrigam pequenos jardins.</p>
-            <p>Canais, espelhos d’água, árvores e flores fazem parte das cidades. Mesmo edifícios públicos e fortalezas mantêm espaços destinados ao repouso.</p>
-            <p>A iluminação noturna utiliza lamparinas, Musgo-Lúmen e Cristais de Umbra. As ruas permanecem visíveis sem que a claridade elimine totalmente as sombras.</p>
+            <p>Preservar a memória não significa esconder erros. Registros devem incluir conquistas, crimes, fracassos e arrependimentos.</p>
+            <p>Arquivos podem conter testemunhos incompletos, traduções incorretas, versões contraditórias e histórias influenciadas por famílias poderosas. Os umbranos preferem reconhecer uma lacuna a fabricar certeza.</p>
+            <p>Muitos habitantes carregam amuletos gravados com nomes de ancestrais. Esses objetos não aprisionam espíritos; servem como lembranças.</p>
+            <p>As construções utilizam pedra escura, madeira tratada, telhados inclinados e pátios internos. Lamparinas, Musgo-Lúmen e Cristais de Umbra iluminam as ruas sem eliminar todas as sombras.</p>
           </div>
-
           <aside class="customs-ledger" data-reveal aria-label="Costumes de Umbra">
             <div class="custom-entry"><span class="custom-entry__symbol">◌</span><div><span>Virtude</span><strong>Escutar antes de falar</strong></div></div>
             <div class="custom-entry"><span class="custom-entry__symbol">◇</span><div><span>Luto</span><strong>Sem duração obrigatória</strong></div></div>
@@ -1326,242 +147,96 @@
             <div class="custom-entry"><span class="custom-entry__symbol">♧</span><div><span>Memória</span><strong>Árvores memoriais</strong></div></div>
           </aside>
         </div>
-
-        <div class="umbra-maxim" data-reveal>
-          <p>Chorar reconhece a perda; rir de uma lembrança reconhece que aquela vida realmente aconteceu.</p>
+        <div class="culture-copy" data-reveal style="margin-top:38px">
+          <p>Quando alguém morre, o corpo é lavado, examinado e identificado. Médicos, sacerdotes e investigadores procuram sinais de violência, doença, maldição ou presença espiritual.</p>
+          <p>Objetos pessoais são registrados antes de serem devolvidos à família. O nome do morto é pronunciado e sua vida é lembrada sem obrigação de apresentá-lo como alguém perfeito.</p>
+          <p>O corpo pode ser sepultado ou cremado conforme a tradição familiar. Depois da despedida, os presentes compartilham uma refeição e contam histórias.</p>
+          <p>Muitas famílias plantam Árvores Memoriais. Cemitérios tradicionais continuam existindo; as árvores oferecem outra forma de preservar uma vida.</p>
         </div>
+      </section>
 
-        <div class="culture-copy" data-reveal style="margin-top: 38px;">
-          <p>Quando alguém morre, o corpo é lavado, examinado e identificado. Médicos, sacerdotes e guardiões procuram sinais de violência, doença, maldição ou presença espiritual.</p>
-          <p>Os objetos pessoais são registrados antes de serem devolvidos à família.</p>
-          <p>Os funerais comuns acontecem ao entardecer. O nome do morto é pronunciado, sua vida é lembrada e o corpo é sepultado ou cremado de acordo com a tradição familiar.</p>
-          <p>Não existe obrigação de apresentar o falecido como alguém perfeito. Erros e conflitos podem ser reconhecidos, desde que a cerimônia não seja utilizada para humilhá-lo.</p>
-          <p>Depois do rito, os presentes compartilham uma refeição e contam histórias.</p>
-          <p>Muitas famílias plantam uma Árvore Memorial em vez de erguer um grande monumento. A espécie, o local e os objetos enterrados junto às raízes preservam aspectos da vida da pessoa.</p>
-          <p>Cemitérios tradicionais continuam existindo. As árvores não substituem todos os túmulos; oferecem outra forma de memória.</p>
+      <section id="fe" class="umbra-section">
+        <header class="umbra-section__heading" data-reveal><p class="umbra-section__number">III</p><div><p class="umbra-section__kicker">Dignidade, finitude e responsabilidade</p><h2>A Fé em Umbra</h2><p class="umbra-section__summary">A religião dedicada ao Senhor do Crepúsculo atua publicamente nos funerais, nos cemitérios, na identificação dos mortos e nos debates sobre os limites do cuidado.</p></div></header>
+        <div class="faith-panel">
+          <article class="faith-panel__block" data-reveal><h3>Mortos e memória</h3><p>Templos acompanham funerais, protegem cemitérios, recebem corpos não identificados e auxiliam famílias durante o luto.</p><p>Sacerdotes colaboram com escribas, médicos, investigadores e restauradores quando uma morte precisa ser esclarecida.</p></article>
+          <article class="faith-panel__block" data-reveal><h3>Corpos e pesquisa</h3><p>Corpos e manifestações espirituais não devem ser tratados como propriedade. Exames e pesquisas podem ser aceitos quando possuem finalidade conhecida, registro e respeito pela identidade do morto.</p><p>A autorização de famílias e instituições responsáveis é considerada sempre que as circunstâncias permitem.</p></article>
+          <article class="faith-panel__block" data-reveal><h3>Vida e tratamento</h3><p>A fé não celebra assassinatos nem transforma sofrimento em devoção. Seus seguidores valorizam o cuidado dos vivos.</p><p>Quando um tratamento já não oferece recuperação, consciência ou autonomia, pacientes, médicos, famílias e sacerdotes podem discutir seus limites. Nenhuma autoridade religiosa decide sozinha.</p></article>
+          <article class="faith-panel__block" data-reveal><h3>Poder e responsabilidade</h3><p>Manifestações espirituais são investigadas antes de serem destruídas, pois nem toda presença representa uma ameaça.</p><p>A Bênção não é controlada pelo sacerdócio. A religião pode condenar a maneira como um milagre é utilizado, mas não altera sua origem divina.</p></article>
         </div>
       </section>
 
       <section id="noctis" class="umbra-section">
-        <header class="umbra-section__heading" data-reveal>
-          <p class="umbra-section__number">III</p>
-          <div>
-            <p class="umbra-section__kicker">Capital da memória</p>
-            <h2>Noctis</h2>
-            <p class="umbra-section__summary">A única capital de Umbra concentra sua administração, sua religião, seus arquivos e suas principais instituições de formação.</p>
-          </div>
-        </header>
-
+        <header class="umbra-section__heading" data-reveal><p class="umbra-section__number">IV</p><div><p class="umbra-section__kicker">Capital da memória</p><h2>Noctis</h2><p class="umbra-section__summary">A única capital de Umbra concentra administração, religião, arquivos, ensino e as principais instituições de identificação e preservação.</p></div></header>
         <div class="capital-layout">
-          <div class="capital-frame" data-reveal>
-            <div class="capital-frame__content">
-              <span>Capital de Umbra</span>
-              <strong>Noctis</strong>
-              <p>Uma cidade nas duas margens do Letheon, iluminada por prata e cristais sem expulsar completamente as sombras.</p>
-            </div>
-          </div>
-
-          <div class="capital-copy" data-reveal>
-            <p>Noctis é a capital de Umbra e sua maior cidade. Foi construída nas duas margens do Rio Letheon, em uma região de colinas baixas, jardins e lagos menores.</p>
-            <p>Pontes de pedra conectam bairros residenciais, mercados, oficinas, portos e instituições religiosas. Lanternas de prata e Cristais de Umbra iluminam as avenidas durante a noite.</p>
-            <p>A capital não é uma necrópole ocupada apenas por sacerdotes. Possui escolas, estalagens, teatros, oficinas, pomares, mercados e bairros familiares.</p>
-            <p>Escultores, escribas, restauradores, médicos, músicos e artesãos representam grande parte da população. Barcos transportam pessoas e mercadorias pelo Letheon e pelos canais urbanos.</p>
-            <p>Cemitérios e jardins funerários fazem parte da cidade, mas permanecem separados das residências por muros baixos, canais, árvores e caminhos de pedra.</p>
-          </div>
+          <div class="capital-frame" data-reveal><div><span>Capital de Umbra</span><strong>Noctis</strong><p>Uma cidade nas duas margens do Letheon, iluminada por prata e cristais sem expulsar completamente as sombras.</p></div></div>
+          <div class="capital-copy" data-reveal><p>Noctis foi construída entre colinas baixas, jardins e lagos menores. Pontes conectam bairros residenciais, mercados, oficinas, portos e instituições religiosas.</p><p>A capital não é uma necrópole ocupada apenas por sacerdotes. Possui escolas, estalagens, teatros, pomares, mercados e bairros familiares.</p><p>Escultores, escribas, restauradores, médicos, músicos, artesãos e trabalhadores fluviais formam grande parte da população.</p><p>Cemitérios e jardins funerários integram a cidade, mas permanecem separados das residências por muros baixos, canais, árvores e caminhos de pedra.</p></div>
         </div>
-
-        <div class="institution-grid">
-          <article class="institution-card" data-mark="I" data-reveal>
-            <h3>Grande Santuário do Crepúsculo</h3>
-            <p>No centro da capital encontra-se o principal templo mortal do Senhor do Crepúsculo.</p>
-            <p>O complexo possui grandes salões, pátios, espelhos d’água e jardins de Árvores Memoriais. Sua arquitetura utiliza Pedra Crepuscular, madeira escura e detalhes de prata.</p>
-            <p>O salão principal recebe luz por aberturas no teto durante o dia. À noite, cristais e musgos luminosos marcam os caminhos.</p>
-            <p>É no santuário que acontecem os principais julgamentos religiosos, funerais públicos e cerimônias ligadas à passagem dos mortos.</p>
-            <p>Ao redor dele ficam os maiores Jardins do Adeus de Umbra. Cada setor é dedicado a uma forma de memória, e não a uma classe social.</p>
-          </article>
-
-          <article class="institution-card" data-mark="II" data-reveal>
-            <h3>Cidadela do Véu</h3>
-            <p>Em uma elevação próxima encontra-se a Cidadela do Véu, que funciona como universidade, mosteiro, arquivo e centro de formação.</p>
-            <p>Ali são preparados sacerdotes funerários, cronistas, guardiões de cemitérios, historiadores, restauradores e investigadores.</p>
-            <p>A cidadela foi ampliada ao longo de muitas gerações. É uma construção mortal, extensa, mas limitada pelas mesmas dificuldades de qualquer instituição: falta de espaço, documentos incompletos, incêndios, umidade e erros humanos.</p>
-            <p>Suas alas preservam genealogias, mapas, obras artísticas, relatos, cópias de inscrições e registros de povos desaparecidos.</p>
-            <p>Os estudantes aprendem que a memória não deve pertencer apenas aos vencedores. Textos produzidos por povos derrotados, estrangeiros e inimigos também são preservados.</p>
-          </article>
-
-          <article class="institution-card" data-mark="III" data-reveal>
-            <h3>Grande Arquivo das Eras</h3>
-            <p>Sob parte da Cidadela encontra-se o maior repositório histórico do território.</p>
-            <p>Seus livros não surgem espontaneamente e não contêm conhecimento absoluto. O acervo depende do trabalho de escribas, viajantes, arqueólogos, sacerdotes e pesquisadores.</p>
-            <p>Expedições são enviadas para recuperar documentos, canções, objetos e testemunhos antes que desapareçam.</p>
-            <p>Textos incompletos e versões contraditórias são preservados. Os arquivistas preferem reconhecer uma lacuna a inventar uma resposta.</p>
-            <p>Os umbranos acreditam que uma versão perfeita desse arquivo existe no reino divino do Senhor do Crepúsculo. O arquivo mortal procura apenas aproximar-se desse ideal dentro de seus limites.</p>
-          </article>
-
-          <article class="institution-card" data-mark="IV" data-reveal>
-            <h3>Casa da Última Vigília</h3>
-            <p>Próxima ao santuário, a instituição recebe corpos não identificados, investiga mortes suspeitas e abriga pessoas que procuram parentes desaparecidos.</p>
-            <p>Médicos, sacerdotes, investigadores e escribas trabalham em conjunto. Nenhum corpo é registrado como desconhecido sem que suas características, objetos e circunstâncias sejam examinados.</p>
-            <p>A casa também coordena equipes enviadas a guerras, epidemias, acidentes e catástrofes.</p>
-          </article>
-        </div>
-
-        <div class="umbra-maxim" data-reveal>
-          <p>Noctis permanece como a única capital. Valemonte guarda a história subterrânea; Elysthia preserva a arte; nenhuma delas exerce autoridade equivalente.</p>
+        <div class="institution-grid" style="margin-top:28px">
+          <article class="institution-card" data-reveal><h3>Grande Santuário do Crepúsculo</h3><p>O principal templo mortal ocupa o centro de Noctis. Seus salões, pátios, espelhos d’água e jardins recebem funerais públicos, cerimônias e julgamentos religiosos.</p><p>Os Jardins do Adeus são organizados por formas de memória, não por classe social.</p></article>
+          <article class="institution-card" data-reveal><h3>Cidadela do Véu</h3><p>Universidade, mosteiro, arquivo e centro de formação de sacerdotes funerários, cronistas, guardiões de cemitérios, historiadores, restauradores e investigadores.</p><p>Seus acervos sofrem com falta de espaço, umidade, incêndios, documentos incompletos e erros humanos.</p></article>
+          <article class="institution-card" data-reveal><h3>Grande Arquivo das Eras</h3><p>O maior repositório histórico de Umbra depende do trabalho de escribas, viajantes, arqueólogos e pesquisadores.</p><p>Textos incompletos e versões contraditórias são preservados. Expedições procuram documentos, canções, objetos e testemunhos antes que desapareçam.</p><p>O arquivo não pretende possuir todo o conhecimento. Seus responsáveis reconhecem lacunas em vez de inventar respostas.</p></article>
+          <article class="institution-card" data-reveal><h3>Casa da Última Vigília</h3><p>Recebe corpos não identificados, investiga mortes suspeitas e abriga pessoas que procuram parentes desaparecidos.</p><p>Médicos, sacerdotes, investigadores e escribas trabalham em conjunto. A casa também coordena equipes enviadas a guerras, epidemias, acidentes e catástrofes.</p></article>
         </div>
       </section>
 
       <section id="assentamentos" class="umbra-section">
-        <header class="umbra-section__heading" data-reveal>
-          <p class="umbra-section__number">IV</p>
-          <div>
-            <p class="umbra-section__kicker">Cinco centros de função distinta</p>
-            <h2>Os Assentamentos</h2>
-            <p class="umbra-section__summary">Valemonte, Elysthia, Mavra, Torva e Belar sustentam a memória, a arte, os funerais, a recuperação dos mortos e a economia lacustre.</p>
-          </div>
-        </header>
-
+        <header class="umbra-section__heading" data-reveal><p class="umbra-section__number">V</p><div><p class="umbra-section__kicker">Cinco centros de função distinta</p><h2>Os Assentamentos</h2><p class="umbra-section__summary">Valemonte, Elysthia, Mavra, Torva e Belar sustentam a memória, a arte, os funerais, a recuperação dos mortos e a economia lacustre.</p></div></header>
         <div class="settlement-grid">
-          <article class="settlement-card" data-reveal>
-            <p class="settlement-card__meta">Montanha do Véu · Oeste</p>
-            <h3>Valemonte</h3>
-            <p>Valemonte encontra-se no oeste, dentro da Montanha do Véu. É o principal centro histórico, artesanal e subterrâneo de Umbra.</p>
-            <p>A cidade foi talhada em câmaras naturais e salões escavados ao longo de muitas gerações. Portões de pedra marcam suas entradas, mas grande parte da montanha permanece externamente intacta.</p>
-            <p>Rios subterrâneos, cascatas e lagos fornecem água. Cristais naturais e Musgo-Lúmen iluminam pontes, ruas e oficinas.</p>
-            <p>Os bairros ocupam diferentes níveis, conectados por escadarias, plataformas e elevadores de contrapeso. Ferreiros, escultores, restauradores e mineradores formam grande parte da população.</p>
-            <p>Nas áreas mais profundas encontra-se a Cripta das Eras, onde são preservadas armas inutilizadas, coroas, inscrições, ferramentas e objetos de antigas civilizações.</p>
-            <p>O acervo não contém todas as relíquias do mundo. Muitos objetos permanecem sem identificação, enquanto outros foram perdidos, roubados ou destruídos.</p>
-            <p>Valemonte também sustenta comunidades nas encostas externas, com pomares, rebanhos e campos protegidos entre as montanhas.</p>
-          </article>
-
-          <article class="settlement-card" data-reveal>
-            <p class="settlement-card__meta">Lagos e névoa · Leste</p>
-            <h3>Elysthia</h3>
-            <p>Elysthia fica no leste, entre lagos, montanhas menores e bosques cobertos por névoa. É o principal centro artístico e cultural de Umbra.</p>
-            <p>Casas de pedra escura e mármore cinzento acompanham canais e ruas arborizadas. Pontes arqueadas conectam os bairros.</p>
-            <p>Pintores, escultores, músicos e poetas registram rostos, histórias e acontecimentos. A arte não substitui os arquivos, mas preserva aspectos da experiência que documentos administrativos não conseguem transmitir.</p>
-            <p>À noite, lanternas flutuantes percorrem os canais. Cada uma representa uma memória mantida por uma família ou instituição.</p>
-            <p>Quando uma família considera que o legado de um ancestral já foi transmitido, a lanterna pode ser libertada no lago. O gesto não representa esquecimento, mas confiança de que a história continuará sem depender daquele símbolo.</p>
-            <p>No centro da cidade encontra-se o Salão da Última Luz, sede do Conselho dos Cronistas.</p>
-            <p>O conselho coordena festivais, registros culturais e a preservação de obras artísticas, mas permanece subordinado às leis e à administração de Noctis.</p>
-            <p>Elysthia possui mercados, escolas, oficinas, pomares e festivais. Sua beleza não é vista como oposição à morte, mas como prova de que aquilo que é temporário merece cuidado.</p>
-          </article>
-
-          <article class="settlement-card" data-reveal>
-            <p class="settlement-card__meta">Campos das Lanternas · Sul</p>
-            <h3>Mavra</h3>
-            <p>Mavra encontra-se na margem norte dos Campos das Lanternas. É o principal centro de administração dos cemitérios e jardins funerários.</p>
-            <p>A vila abriga escribas, jardineiros, sacerdotes, coveiros, restauradores e guardiões. Seus arquivos registram milhares de sepulturas e Árvores Memoriais.</p>
-            <p>Hospedarias, casas de chá e mercados recebem visitantes de diferentes regiões. Muitas famílias permanecem por vários dias para realizar funerais, pesquisar genealogias ou cuidar de memoriais.</p>
-            <p>Mavra coordena os Jardins do Adeus, onde diferentes flores representam formas de despedida.</p>
-            <p>Lírios Cinzentos são associados a mortes serenas. Rosas Negras homenageiam aqueles que morreram protegendo outras pessoas. Orquídeas Lunares são dedicadas às crianças, enquanto Papoulas Prateadas marcam sepulturas sem nome.</p>
-            <p>Esses significados são culturais. As flores não determinam o destino dos mortos.</p>
-          </article>
-
-          <article class="settlement-card" data-reveal>
-            <p class="settlement-card__meta">Ermos de guerra · Extremo sul</p>
-            <h3>Torva</h3>
-            <p>Torva fica ao sul, na entrada dos ermos marcados por guerras antigas.</p>
-            <p>A vila é fortificada e abriga patrulheiros, ferreiros, médicos, investigadores e equipes especializadas na recuperação de mortos.</p>
-            <p>Expedições percorrem trincheiras, ruínas e campos abandonados procurando ossos, documentos, armas e símbolos capazes de identificar desaparecidos.</p>
-            <p>Pequenos campos protegidos por muros produzem raízes e cereais. A população também cria cães de busca e animais de carga.</p>
-            <p>Armas encontradas nos ermos são registradas antes de serem destruídas, armazenadas ou devolvidas às famílias.</p>
-            <p>Ossários próximos à vila recebem restos que não podem ser separados ou identificados. Mesmo nesses casos, a região e as circunstâncias da descoberta permanecem documentadas.</p>
-          </article>
-
-          <article class="settlement-card" data-reveal>
-            <p class="settlement-card__meta">Lagos minerais · Sudeste</p>
-            <h3>Belar</h3>
-            <p>Belar encontra-se no sudeste, entre os lagos minerais alimentados pelo Rio Letheon.</p>
-            <p>A vila é habitada por pescadores, barqueiros, coletores de sal, botânicos, investigadores e artesãos.</p>
-            <p>Passarelas e pontes conectam casas, cais e armazéns. As construções possuem fundações elevadas para resistir à umidade.</p>
-            <p>Belar fornece Sal das Cinzas, juncos, peixes, lótus e substâncias utilizadas na conservação de alimentos, documentos e corpos.</p>
-            <p>O frio e os minerais dos lagos podem retardar a decomposição. Por isso, restos encontrados na água são examinados antes de seguirem para Noctis.</p>
-            <p>A vila também mantém memoriais para viajantes mortos em travessias e naufrágios.</p>
-          </article>
+          <article class="settlement-card" data-reveal><p class="settlement-card__meta">Montanha do Véu · Oeste</p><h3>Valemonte</h3><p>Cidade subterrânea talhada em câmaras naturais e salões escavados. Rios, cascatas, cristais e Musgo-Lúmen iluminam pontes, ruas e oficinas.</p><p>Ferreiros, escultores, restauradores e mineradores formam grande parte da população. A Cripta das Eras preserva armas inutilizadas, inscrições, ferramentas e objetos de civilizações antigas.</p><p>Nas encostas externas existem pomares, rebanhos e campos protegidos.</p></article>
+          <article class="settlement-card" data-reveal><p class="settlement-card__meta">Lagos e névoa · Leste</p><h3>Elysthia</h3><p>Principal centro artístico e cultural de Umbra. Pintores, escultores, músicos e poetas registram rostos, histórias e experiências que documentos administrativos não conseguem preservar.</p><p>O Salão da Última Luz abriga o Conselho dos Cronistas, subordinado às leis e à administração de Noctis.</p><p>A cidade possui mercados, escolas, oficinas, pomares e festivais.</p></article>
+          <article class="settlement-card" data-reveal><p class="settlement-card__meta">Campos das Lanternas · Sul</p><h3>Mavra</h3><p>Centro de administração dos cemitérios e jardins funerários. Escribas, jardineiros, sacerdotes, coveiros, restauradores e guardiões mantêm milhares de registros.</p><p>Hospedarias, casas de chá e mercados recebem famílias que realizam funerais, pesquisam genealogias ou cuidam de memoriais.</p></article>
+          <article class="settlement-card" data-reveal><p class="settlement-card__meta">Ermos de guerra · Extremo sul</p><h3>Torva</h3><p>Vila fortificada que abriga patrulheiros, ferreiros, médicos, investigadores e equipes especializadas na recuperação de mortos.</p><p>Expedições procuram ossos, documentos, armas e símbolos nos antigos campos de batalha. Ossários recebem restos que não podem ser separados ou identificados, sempre com registro do local e das circunstâncias.</p></article>
+          <article class="settlement-card" data-reveal><p class="settlement-card__meta">Lagos minerais · Sudeste</p><h3>Belar</h3><p>Vila de pescadores, barqueiros, coletores de sal, botânicos, investigadores e artesãos, construída sobre fundações elevadas entre lagos e canais.</p><p>Belar fornece Sal das Cinzas, juncos, peixes, lótus e substâncias usadas na conservação. O frio e os minerais retardam a decomposição, permitindo o exame de restos encontrados na água.</p></article>
         </div>
       </section>
 
       <section id="natureza" class="umbra-section">
-        <header class="umbra-section__heading" data-reveal>
-          <p class="umbra-section__number">V</p>
-          <div>
-            <p class="umbra-section__kicker">Vida sob luz suavizada</p>
-            <h2>Fauna e Flora</h2>
-            <p class="umbra-section__summary">A flora de Umbra é adaptada à baixa luminosidade, à umidade e aos solos ricos em minerais.</p>
-          </div>
-        </header>
-
+        <header class="umbra-section__heading" data-reveal><p class="umbra-section__number">VI</p><div><p class="umbra-section__kicker">Vida sob luz suavizada</p><h2>Fauna e Flora</h2><p class="umbra-section__summary">A natureza de Umbra é adaptada à baixa luminosidade, à umidade, ao frio e aos solos ricos em minerais.</p></div></header>
         <div class="species-grid">
-          <article class="species-card" data-mark="I" data-reveal><h3>Salgueiros Negros</h3><p>Crescem junto ao Letheon. Sua madeira escura é resistente à umidade e utilizada em móveis, embarcações e instrumentos.</p></article>
-          <article class="species-card" data-mark="II" data-reveal><h3>Ciprestes Ancestrais</h3><p>São comuns em jardins e cemitérios. Suas raízes profundas estabilizam o solo sem invadir sepulturas.</p></article>
-          <article class="species-card" data-mark="III" data-reveal><h3>Musgo-Lúmen</h3><p>Cresce sobre pedras, ruínas e troncos úmidos. Produz uma luz prateada fraca, utilizada para marcar caminhos e interiores.</p></article>
-          <article class="species-card" data-mark="IV" data-reveal><h3>Cogumelos de Cinza</h3><p>São cultivados em cavernas e construções subterrâneas. Servem como alimento e ingrediente medicinal.</p></article>
-          <article class="species-card" data-mark="V" data-reveal><h3>Lótus do Véu</h3><p>Cresce em lagos e espelhos d’água. Suas pétalas fornecem sedativos e analgésicos, mas doses elevadas podem causar perda de consciência.</p></article>
-          <article class="species-card" data-mark="VI" data-reveal><h3>Madeira Ébona</h3><p>É retirada de árvores cultivadas e manejadas de maneira controlada. Sua resistência torna-a valiosa para bibliotecas, embarcações e objetos cerimoniais.</p></article>
+          <article class="species-card" data-reveal><h3>Salgueiros Negros</h3><p>Crescem junto ao Letheon. Sua madeira resistente à umidade é usada em móveis, embarcações e instrumentos.</p></article>
+          <article class="species-card" data-reveal><h3>Ciprestes Ancestrais</h3><p>Comuns em jardins e cemitérios, estabilizam o solo sem invadir sepulturas.</p></article>
+          <article class="species-card" data-reveal><h3>Musgo-Lúmen</h3><p>Produz uma luz prateada fraca, utilizada para marcar caminhos e interiores.</p></article>
+          <article class="species-card" data-reveal><h3>Cogumelos de Cinza</h3><p>Cultivados em cavernas e construções subterrâneas, servem como alimento e ingrediente medicinal.</p></article>
+          <article class="species-card" data-reveal><h3>Lótus do Véu</h3><p>Suas pétalas fornecem sedativos e analgésicos; doses elevadas podem causar perda de consciência.</p></article>
+          <article class="species-card" data-reveal><h3>Madeira Ébona</h3><p>Retirada de árvores cultivadas e manejadas, é valiosa para bibliotecas, embarcações e objetos cerimoniais.</p></article>
         </div>
-
-        <div class="fauna-ledger" data-reveal>
-          <p>Entre os animais mais conhecidos estão os Corvos do Véu, as Mariposas do Luto, as Corujas Cinzentas, os Cervos de Ônix, os Lobos Cinéreos, os Peixes-Espectrais e as Abelhas Lunares.</p>
-          <p>Os Cervos de Ônix possuem galhadas escuras e vivem nos bosques protegidos. São esquivos e evitam as cidades.</p>
-          <p>Os Lobos Cinéreos percorrem florestas e montanhas. Reagem de maneira agressiva à necromancia, cadáveres perturbados e certas manifestações espirituais.</p>
-          <p>Os Peixes-Espectrais não são espíritos. Seus corpos translúcidos refletem minerais presentes na água e produzem uma luz suave.</p>
-          <p>As Abelhas Lunares polinizam flores noturnas e produzem o Mel Sombrio, utilizado como alimento, conservante e ingrediente medicinal.</p>
-        </div>
+        <div class="resource-note" data-reveal><p>Corvos do Véu, Mariposas do Luto, Corujas Cinzentas, Cervos de Ônix, Lobos Cinéreos, Peixes-Espectrais e Abelhas Lunares estão entre os animais mais conhecidos.</p><p>As Abelhas Lunares polinizam flores noturnas e produzem Mel Sombrio, utilizado como alimento, conservante e ingrediente medicinal.</p><p>Os Peixes-Espectrais não são espíritos: seus corpos translúcidos refletem minerais presentes na água.</p></div>
       </section>
 
       <section id="ameacas" class="umbra-section">
-        <header class="umbra-section__heading" data-reveal>
-          <p class="umbra-section__number">VI</p>
-          <div>
-            <p class="umbra-section__kicker">Quando o descanso é rompido</p>
-            <h2>Ameaças de Umbra</h2>
-            <p class="umbra-section__summary">As maiores ameaças sobrenaturais surgem quando mortos, sombras ou sofrimentos permanecem presos ao mundo sem limite ou direção.</p>
-          </div>
-        </header>
-
+        <header class="umbra-section__heading" data-reveal><p class="umbra-section__number">VII</p><div><p class="umbra-section__kicker">Quando o descanso é rompido</p><h2>Ameaças de Umbra</h2><p class="umbra-section__summary">As maiores ameaças sobrenaturais surgem quando mortos, sombras ou sofrimentos permanecem presos ao mundo sem limite ou direção.</p></div></header>
         <div class="threat-grid">
-          <article class="threat-card" data-mark="I" data-reveal><h3>Retornados</h3><p>Mortos que recuperaram parte dos movimentos ou da consciência. Alguns reconhecem pessoas e lugares; outros repetem apenas as últimas ações realizadas. Cada caso é inicialmente tratado como uma manifestação espiritual, e não como um monstro.</p></article>
-          <article class="threat-card" data-mark="II" data-reveal><h3>Sombras Separadas</h3><p>Surgem quando a sombra de uma pessoa ou cadáver continua a se mover sem acompanhar o corpo. Elas apagam luzes, provocam frio e imitam gestos humanos.</p></article>
-          <article class="threat-card" data-mark="III" data-reveal><h3>Ossários Ambulantes</h3><p>Formam-se quando restos de diferentes mortos são unidos por magia ou manifestações descontroladas. Destruir a estrutura não encerra necessariamente o problema; os ossos ainda precisam ser separados e sepultados.</p></article>
-          <article class="threat-card" data-mark="IV" data-reveal><h3>Enlutados</h3><p>Nascem do sofrimento acumulado dos vivos em lugares de tragédia. Assumem formas cobertas por véus e provocam culpa, tristeza e desespero.</p></article>
+          <article class="threat-card" data-reveal><h3>Retornados</h3><p>Mortos que recuperaram movimentos ou parte da consciência. Cada caso é inicialmente tratado como manifestação espiritual, não como monstro.</p></article>
+          <article class="threat-card" data-reveal><h3>Sombras Separadas</h3><p>Sombras que continuam a mover-se sem acompanhar o corpo, apagam luzes, provocam frio e imitam gestos humanos.</p></article>
+          <article class="threat-card" data-reveal><h3>Ossários Ambulantes</h3><p>Restos de diferentes mortos unidos por magia. Destruir a estrutura não basta; os ossos precisam ser separados, registrados e sepultados.</p></article>
+          <article class="threat-card" data-reveal><h3>Enlutados</h3><p>Manifestações formadas pelo sofrimento acumulado em lugares de tragédia, capazes de provocar culpa, tristeza e desespero.</p></article>
         </div>
-
-        <div class="violations-note" data-reveal>
-          <p>Necromantes, saqueadores de tumbas e colecionadores de relíquias representam ameaças frequentes. Para os umbranos, utilizar um corpo ou espírito como propriedade é uma das maiores violações possíveis.</p>
-        </div>
+        <div class="violations-note" data-reveal><p>Necromantes, saqueadores de tumbas e colecionadores de relíquias representam ameaças frequentes. Para os umbranos, utilizar um corpo ou uma presença espiritual como propriedade é uma das maiores violações possíveis.</p></div>
       </section>
 
       <section id="economia" class="umbra-section">
-        <header class="umbra-section__heading" data-reveal>
-          <p class="umbra-section__number">VII</p>
-          <div>
-            <p class="umbra-section__kicker">Ofícios, recursos e diplomacia</p>
-            <h2>Economia e Relações</h2>
-            <p class="umbra-section__summary">Umbra exporta recursos materiais, preservação documental e serviços especializados para situações em que identificar os mortos e registrar a verdade é tão importante quanto reconstruir.</p>
-          </div>
-        </header>
-
-        <div class="economy-ledger" data-reveal>
-          <article class="economy-entry"><span class="economy-entry__sigil">◇</span><div><strong>Exportações</strong><p>Umbra exporta pedra, madeira, sal, lã, couro, velas, instrumentos, plantas medicinais, mel, cogumelos, documentos restaurados e serviços especializados.</p></div></article>
-          <article class="economy-entry"><span class="economy-entry__sigil">✦</span><div><strong>Cristais de Umbra</strong><p>Minerais raros encontrados nas Montanhas de Obsidiana. Absorvem luz e a liberam lentamente, sendo utilizados em lanternas, bibliotecas e oficinas. Precisam ser novamente expostos à luz depois de algum tempo.</p></div></article>
-          <article class="economy-entry"><span class="economy-entry__sigil">∴</span><div><strong>Sal das Cinzas</strong><p>Extraído em Belar, conserva alimentos, tecidos, pergaminhos e corpos por períodos limitados.</p></div></article>
-          <article class="economy-entry"><span class="economy-entry__sigil">◌</span><div><strong>Mel Sombrio</strong><p>Produzido pelas Abelhas Lunares, é utilizado em medicamentos, alimentos e preparados alquímicos.</p></div></article>
-          <article class="economy-entry"><span class="economy-entry__sigil">▦</span><div><strong>Economias regionais</strong><p>Valemonte fornece pedra, metal, cristais e trabalhos artesanais. Elysthia exporta arte, instrumentos, cópias de documentos e objetos memoriais. Mavra concentra serviços funerários e restauração. Torva produz ferramentas, equipamentos de escavação e cães treinados. Belar fornece sal, peixes, juncos e transporte fluvial.</p></div></article>
-          <article class="economy-entry"><span class="economy-entry__sigil">⌘</span><div><strong>Serviços de Noctis</strong><p>A capital concentra arquivos, escolas, sacerdotes, investigadores e restauradores. Equipes umbranas são contratadas depois de guerras, massacres, epidemias e catástrofes.</p></div></article>
+        <header class="umbra-section__heading" data-reveal><p class="umbra-section__number">VIII</p><div><p class="umbra-section__kicker">Recursos, trabalho e preservação</p><h2>Economia de Umbra</h2><p class="umbra-section__summary">A economia combina mineração, manejo florestal, agricultura fria, pesca, transporte, arte, preservação documental e serviços funerários.</p></div></header>
+        <div class="economy-ledger">
+          <article class="economy-entry" data-reveal><span class="economy-entry__sigil">◇</span><strong>Produção e recursos</strong><p>As Montanhas de Obsidiana fornecem pedra, metais e Cristais de Umbra. A Floresta dos Corvos fornece madeira, resinas, ervas e cogumelos sob manejo controlado.</p><p>Belar produz Sal das Cinzas, peixes, juncos e plantas aquáticas. Vales protegidos sustentam pomares, vinhas, cereais, raízes, cabras e ovelhas.</p></article>
+          <article class="economy-entry" data-reveal><span class="economy-entry__sigil">▦</span><strong>Economias regionais</strong><p>Valemonte concentra mineração, metalurgia, Cogumelos de Cinza e trabalhos artesanais. Elysthia exporta arte, instrumentos, cópias e objetos memoriais.</p><p>Mavra vive de jardinagem funerária, restauração, hospedagem e pesquisa genealógica. Torva produz ferramentas de escavação e equipamentos de recuperação. Belar sustenta pesca, sal e transporte fluvial.</p></article>
+          <article class="economy-entry" data-reveal><span class="economy-entry__sigil">≈</span><strong>Comércio e rotas</strong><p>O Rio Letheon é o principal corredor interno. Portos de Noctis e Belar movimentam alimentos, pedra, madeira, documentos, passageiros e corpos em transporte autorizado.</p><p>Estradas ligam a capital a Mavra, Valemonte, Elysthia e aos Ermos de Torva. Umbra exporta pedra, madeira, sal, lã, couro, velas, instrumentos, plantas medicinais, Mel Sombrio e serviços especializados.</p></article>
+          <article class="economy-entry" data-reveal><span class="economy-entry__sigil">⚒</span><strong>Trabalho</strong><p>Pescadores, barqueiros, mineiros, pastores, agricultores, jardineiros funerários, coveiros, restauradores, escribas, investigadores, médicos, escultores, músicos e equipes de recuperação sustentam o território.</p><p>Parte do trabalho especializado é contratada por outros territórios depois de guerras, massacres, epidemias e catástrofes.</p></article>
+          <article class="economy-entry" data-reveal><span class="economy-entry__sigil">⌘</span><strong>Tributos e obrigações</strong><p>Famílias, oficinas e assentamentos contribuem com moeda, materiais, trabalho ou produção regional para cemitérios públicos, identificação de corpos, manutenção dos arquivos, expedições históricas, reparação de memoriais, portos e equipes enviadas a catástrofes.</p></article>
+          <article class="economy-entry" data-reveal><span class="economy-entry__sigil">◈</span><strong>Desigualdade</strong><p>Famílias ricas deixam retratos, cartas, objetos e genealogias extensas. Pessoas pobres, estrangeiros e mortos em catástrofes dependem mais das instituições públicas para não desaparecer dos registros.</p><p>Mineiros e trabalhadores fluviais assumem grandes riscos, enquanto comerciantes de cristais, proprietários de embarcações e oficinas de Noctis acumulam parcelas maiores da riqueza.</p></article>
+          <article class="economy-entry" data-reveal><span class="economy-entry__sigil">↧</span><strong>Dependências externas</strong><p>Umbra importa papel, pergaminho, vidro, determinados metais, alimentos de clima quente, medicamentos especializados e ferramentas delicadas.</p><p>Guerras e epidemias aumentam a procura por serviços umbranos, mas também sobrecarregam cemitérios, arquivos, equipes de identificação e estoques de conservação.</p></article>
+          <article class="economy-entry" data-reveal><span class="economy-entry__sigil">⚖</span><strong>Limites do comércio</strong><p>A lei impede o comércio não autorizado de cadáveres, ossos identificados, objetos retirados de sepulturas, documentos pessoais e relíquias funerárias.</p><p>O valor histórico de um objeto não elimina o direito de famílias e comunidades sobre ele.</p></article>
         </div>
+      </section>
 
-        <div class="relations-ledger" data-reveal>
-          <article class="relation-entry"><span class="relation-entry__sigil">☣</span><div><strong>Rúvia</strong><p>Umbra mantém uma relação complexa com os estudiosos do Senhor das Chagas. Pesquisas sobre doenças, organismos e decomposição são aceitas desde que o morto seja identificado e tratado com dignidade.</p></div></article>
-          <article class="relation-entry"><span class="relation-entry__sigil">☼</span><div><strong>Alba</strong><p>As divergências envolvem os limites da cura. Alba procura preservar a vida enquanto houver possibilidade de recuperação; os sacerdotes de Erebus intervêm quando o tratamento apenas prolonga o sofrimento sem perspectiva de retorno.</p><p>Apesar disso, os dois territórios cooperam em hospitais, guerras e acidentes. Alba cuida daqueles que ainda podem ser salvos; Umbra recebe aqueles que não puderam ser.</p></div></article>
-          <article class="relation-entry"><span class="relation-entry__sigil">✧</span><div><strong>Tirena</strong><p>Tirena prefere a cremação e a dispersão das cinzas ao longo de suas rotas. Umbra valoriza memoriais permanentes, mas reconhece os ritos tirenos como legítimos.</p></div></article>
-          <article class="relation-entry"><span class="relation-entry__sigil">☾</span><div><strong>Névia</strong><p>Névia e Umbra trabalham juntas quando mortos aparecem em sonhos. Os sacerdotes dos Véus investigam a mente do sonhador, enquanto os seguidores do Crepúsculo procuram sinais de uma presença espiritual verdadeira.</p></div></article>
+      <section id="relacoes" class="umbra-section">
+        <header class="umbra-section__heading" data-reveal><p class="umbra-section__number">IX</p><div><p class="umbra-section__kicker">Memória, medicina e diplomacia</p><h2>Relações com Outros Territórios</h2><p class="umbra-section__summary">Umbra coopera na identificação dos mortos, na preservação de registros e na recuperação após catástrofes, mas seus limites funerários produzem disputas constantes.</p></div></header>
+        <div class="relations-ledger">
+          <article class="relation-entry" data-reveal><span class="relation-entry__sigil">☣</span><strong>Rúvia e o Senhor das Chagas</strong><p>Umbra aceita pesquisas sobre doenças, organismos e decomposição quando o morto é identificado, a finalidade é registrada e o destino dos restos está definido.</p><p>As tensões surgem quando cadáveres são tratados apenas como substrato biológico, quando famílias não são consultadas ou quando a preservação de uma amostra entra em conflito com o direito funerário.</p><p>Os dois territórios cooperam na identificação de vítimas de epidemias e na investigação de mortes coletivas.</p></article>
+          <article class="relation-entry" data-reveal><span class="relation-entry__sigil">☼</span><strong>Alba e a Senhora da Aurora</strong><p>Alba e Umbra cooperam em hospitais, guerras, acidentes e catástrofes.</p><p>As divergências surgem quando um tratamento mantém funções corporais sem oferecer possibilidade real de recuperação, consciência ou autonomia. Médicos, pacientes, famílias e sacerdotes podem discordar sobre o momento de interromper uma intervenção.</p><p>Nenhum dos territórios considera essa diferença uma licença para abandonar enfermos ou antecipar mortes por conveniência.</p></article>
+          <article class="relation-entry" data-reveal><span class="relation-entry__sigil">✧</span><strong>Tirena e a Soberana do Céu</strong><p>Tirena crema seus mortos e dispersa parte das cinzas ao longo das rotas. Umbra reconhece essa prática quando o nome, a história, os lugares importantes e as circunstâncias da despedida permanecem registrados.</p><p>Os umbranos oferecem técnicas de conservação, placas e mapas memoriais; os tirenos mostram que uma lembrança também pode sobreviver em caminhos e relatos.</p></article>
+          <article class="relation-entry" data-reveal><span class="relation-entry__sigil">☾</span><strong>Névia e o Senhor dos Véus</strong><p>Os dois territórios cooperam quando mortos aparecem em sonhos.</p><p>Estudiosos de Névia investigam a mente, o sonho e possíveis entidades oníricas. Especialistas de Umbra procuram sinais de uma presença realmente ligada ao falecido.</p><p>Luto e desejo podem produzir sonhos convincentes, entidades oníricas podem imitar mortos e uma presença espiritual verdadeira pode utilizar um sonho como meio. Nenhuma aparição é aceita automaticamente como prova.</p></article>
         </div>
-
-        <blockquote class="umbra-closing" data-reveal>
-          <p>A morte encerra uma existência. O esquecimento apaga aquilo que ela significou.</p>
-        </blockquote>
-
+        <blockquote class="umbra-closing" data-reveal><p>A morte encerra uma existência. O esquecimento apaga aquilo que ela significou.</p></blockquote>
         <nav class="umbra-navigation" aria-label="Navegação da página">
           <a href="../divindades/senhor-do-crepusculo.html">Conhecer o Senhor do Crepúsculo</a>
           <a href="../index.html#territorios">Voltar aos Territórios</a>
@@ -1570,10 +245,7 @@
     </article>
   </main>
 
-  <footer class="mobile-footer">
-    <div class="mobile-container">Harmonia Caótica · Mundo de Vaelora</div>
-  </footer>
-
+  <footer class="mobile-footer"><div class="mobile-container">Harmonia Caótica · Mundo de Vaelora</div></footer>
   <nav class="bottom-navigation" aria-label="Navegação principal">
     <ul class="bottom-navigation-list">
       <li><a href="../index.html"><span class="bottom-navigation-icon">◆</span>Início</a></li>
@@ -1584,53 +256,14 @@
   </nav>
 
   <script>
-    const progressBar = document.querySelector('.reading-progress');
-    const revealElements = document.querySelectorAll('[data-reveal]');
-    const indexLinks = Array.from(document.querySelectorAll('.umbra-index a'));
-    const indexedSections = indexLinks
-      .map((link) => document.querySelector(link.getAttribute('href')))
-      .filter(Boolean);
-
-    function updateReadingProgress() {
-      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = documentHeight > 0 ? window.scrollY / documentHeight : 0;
-      progressBar.style.width = `${Math.min(progress * 100, 100)}%`;
-    }
-
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -7% 0px' }
-    );
-
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        const current = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (!current) return;
-
-        indexLinks.forEach((link) => {
-          const active = link.getAttribute('href') === `#${current.target.id}`;
-          link.classList.toggle('active', active);
-          if (active) link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        });
-      },
-      { rootMargin: '-30% 0px -56% 0px', threshold: [0, .1, .35, .6] }
-    );
-
-    revealElements.forEach((element) => revealObserver.observe(element));
-    indexedSections.forEach((section) => sectionObserver.observe(section));
-
-    window.addEventListener('scroll', updateReadingProgress, { passive: true });
-    window.addEventListener('resize', updateReadingProgress);
-    updateReadingProgress();
+    const progressBar=document.querySelector('.reading-progress');
+    const revealElements=document.querySelectorAll('[data-reveal]');
+    const indexLinks=Array.from(document.querySelectorAll('.umbra-index a'));
+    const indexedSections=indexLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    function updateReadingProgress(){const documentHeight=document.documentElement.scrollHeight-window.innerHeight;const progress=documentHeight>0?window.scrollY/documentHeight:0;progressBar.style.width=`${Math.min(progress*100,100)}%`;}
+    const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);});},{threshold:.12,rootMargin:'0px 0px -7% 0px'});
+    const sectionObserver=new IntersectionObserver(entries=>{const current=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!current)return;indexLinks.forEach(link=>{const active=link.getAttribute('href')===`#${current.target.id}`;link.classList.toggle('active',active);if(active)link.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});});},{rootMargin:'-30% 0px -56% 0px',threshold:[0,.1,.35,.6]});
+    revealElements.forEach(element=>revealObserver.observe(element));indexedSections.forEach(section=>sectionObserver.observe(section));window.addEventListener('scroll',updateReadingProgress,{passive:true});window.addEventListener('resize',updateReadingProgress);updateReadingProgress();
   </script>
 </body>
 </html>
