@@ -9,8 +9,9 @@
   <title>Senhor das Chagas — Harmonia Caótica</title>
   <link rel="preload" href="/harmonia-caotica/imagens/divindades/senhor-das-chagas.jpg" as="image" type="image/jpeg" fetchpriority="high">
   <link rel="stylesheet" href="../css/mobile.css">
+  <link rel="stylesheet" href="../css/dominios.css">
 </head>
-<body id="topo" class="deity-page deity-page--chagas">
+<body id="topo" class="deity-page deity-page--chagas" style="--deity-accent:#9db16b;--deity-accent-soft:rgba(157,177,107,.14);--deity-accent-border:rgba(157,177,107,.36);--domain-accent:#9db16b;--domain-accent-soft:rgba(157,177,107,.14);--domain-accent-border:rgba(157,177,107,.36);">
   <div class="reading-progress" aria-hidden="true"></div>
 
   <header class="mobile-header">
@@ -33,7 +34,6 @@
     </section>
 
     <aside class="archive-record" data-auto-record aria-label="Identificação editorial"></aside>
-
     <nav id="indice-da-pagina" class="content-index" data-auto-index aria-label="Índice da página"></nav>
 
     <article class="mobile-article mobile-container">
@@ -122,21 +122,31 @@
         </div>
       </section>
 
-      <section class="sacred-section" aria-labelledby="titulo-conceitos">
-        <p class="section-kicker">Fundamentos dos milagres</p>
-        <h2 id="titulo-conceitos">Conceitos Sagrados</h2>
+      <section class="sacred-section domain-gateway-section" aria-labelledby="titulo-dominios-chagas">
+        <p class="section-kicker">Poderes da Divindade</p>
+        <h2 id="titulo-dominios-chagas">Domínios e Vertentes</h2>
+        <p>Os Domínios do Senhor das Chagas são apresentados em páginas próprias, com suas possibilidades, limites, cinco Vertentes e as Heranças que modificam seus Milagres durante o combate.</p>
 
-        <div class="sacred-grid sacred-grid--concepts">
-          <div class="sacred-item">Contaminação</div>
-          <div class="sacred-item">Infecção</div>
-          <div class="sacred-item">Pestilência</div>
-          <div class="sacred-item">Parasitismo</div>
-          <div class="sacred-item">Infestação</div>
-          <div class="sacred-item">Hospedeiro</div>
-          <div class="sacred-item">Contágio</div>
-          <div class="sacred-item">Mutação</div>
-          <div class="sacred-item">Necrose</div>
-          <div class="sacred-item">Putrefação</div>
+        <div class="domain-gateway-grid">
+          <a class="domain-gateway-card" href="../dominios/doencas.html">
+            <p class="domain-gateway-card__kicker">Domínio publicado</p>
+            <h3>Doenças</h3>
+            <p>Governa enfermidades, marcas patológicas, caminhos de transmissão, sintomas, desgaste orgânico e adaptações produzidas pela própria doença.</p>
+            <div class="domain-gateway-card__branches" aria-label="Vertentes das Doenças">
+              <span>Mácula</span><span>Contágio</span><span>Aflição</span><span>Consunção</span><span>Aberração</span>
+            </div>
+            <span class="domain-gateway-card__action">Explorar o Domínio das Doenças →</span>
+          </a>
+
+          <div class="domain-gateway-card domain-gateway-card--pending">
+            <p class="domain-gateway-card__kicker">Em desenvolvimento</p>
+            <h3>Parasitas</h3>
+            <p>Governa organismos que ocupam hospedeiros, consomem seus recursos, assumem funções, estabelecem simbioses e originam novas linhagens.</p>
+            <div class="domain-gateway-card__branches" aria-label="Vertentes dos Parasitas">
+              <span>Usurpação</span><span>Simbiose</span><span>Infestação</span><span>Metamorfose</span><span>Linhagem</span>
+            </div>
+            <span class="domain-gateway-card__action">Página em preparação</span>
+          </div>
         </div>
       </section>
 
@@ -169,6 +179,7 @@
 
       <nav class="article-navigation" aria-label="Navegação da página">
         <a href="../index.html#divindades">Voltar às Divindades</a>
+        <a href="../dominios/doencas.html">Explorar as Doenças</a>
         <a href="../territorios/ruvia.html">Conhecer Rúvia</a>
       </nav>
     </article>
