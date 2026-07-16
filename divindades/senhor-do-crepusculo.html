@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-editorial-system="vaelora">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -23,7 +23,7 @@
 
   <main class="internal-page">
     <section class="internal-hero deity-hero" aria-labelledby="titulo-crepusculo">
-      <img class="internal-hero-image" src="/harmonia-caotica/imagens/divindades/senhor-do-crepusculo.jpg" alt="Representação do Senhor do Crepúsculo" fetchpriority="high">
+      <img class="internal-hero-image" src="/harmonia-caotica/imagens/divindades/senhor-do-crepusculo.jpg" alt="Representação do Senhor do Crepúsculo" fetchpriority="high" decoding="async">
       <div class="mobile-container internal-hero-content">
         <p class="internal-kicker">Divindade de Vaelora</p>
         <h1 id="titulo-crepusculo" class="internal-title">Senhor do Crepúsculo</h1>
@@ -31,6 +31,10 @@
         <p class="internal-summary">Divindade capaz de governar a Morte, afetar corpos e presenças ligadas aos mortos e controlar trevas, escuridão e sombras.</p>
       </div>
     </section>
+
+    <aside class="archive-record" data-auto-record aria-label="Identificação editorial"></aside>
+
+    <nav id="indice-da-pagina" class="content-index" data-auto-index aria-label="Índice da página"></nav>
 
     <article class="mobile-article mobile-container">
       <p class="article-lead">O Senhor do Crepúsculo governa a <strong>Morte</strong> e as <strong>Trevas</strong>.</p>
@@ -201,5 +205,6 @@
     window.addEventListener('resize',updateReadingProgress);
     updateReadingProgress();
   </script>
+  <script src="../js/editorial.js" defer></script>
 </body>
 </html>

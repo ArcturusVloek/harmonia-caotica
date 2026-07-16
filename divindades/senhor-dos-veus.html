@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-editorial-system="vaelora">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -23,7 +23,7 @@
 
   <main class="internal-page">
     <section class="internal-hero deity-hero" aria-labelledby="titulo-veus">
-      <img class="internal-hero-image" src="/harmonia-caotica/imagens/divindades/senhor-dos-veus.jpg" alt="Representação do Senhor dos Véus" fetchpriority="high">
+      <img class="internal-hero-image" src="/harmonia-caotica/imagens/divindades/senhor-dos-veus.jpg" alt="Representação do Senhor dos Véus" fetchpriority="high" decoding="async">
       <div class="mobile-container internal-hero-content">
         <p class="internal-kicker">Divindade de Vaelora</p>
         <h1 id="titulo-veus" class="internal-title">Senhor dos Véus</h1>
@@ -31,6 +31,10 @@
         <p class="internal-summary">Divindade capaz de criar, alterar e conectar experiências oníricas, manifestar pesadelos e permitir que elementos do sonho atravessem para a vigília.</p>
       </div>
     </section>
+
+    <aside class="archive-record" data-auto-record aria-label="Identificação editorial"></aside>
+
+    <nav id="indice-da-pagina" class="content-index" data-auto-index aria-label="Índice da página"></nav>
 
     <article class="mobile-article mobile-container">
       <p class="article-lead">O Senhor dos Véus governa os <strong>Sonhos</strong> e os <strong>Pesadelos</strong>.</p>
@@ -223,5 +227,6 @@
     window.addEventListener('resize',updateReadingProgress);
     updateReadingProgress();
   </script>
+  <script src="../js/editorial.js" defer></script>
 </body>
 </html>

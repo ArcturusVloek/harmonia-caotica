@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-editorial-system="vaelora">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -23,7 +23,7 @@
 
   <main class="internal-page">
     <section class="internal-hero deity-hero" aria-labelledby="titulo-ceu">
-      <img class="internal-hero-image" src="/harmonia-caotica/imagens/divindades/soberana-do-ceu.jpg" alt="Representação da Soberana do Céu" fetchpriority="high">
+      <img class="internal-hero-image" src="/harmonia-caotica/imagens/divindades/soberana-do-ceu.jpg" alt="Representação da Soberana do Céu" fetchpriority="high" decoding="async">
       <div class="mobile-container internal-hero-content">
         <p class="internal-kicker">Divindade de Vaelora</p>
         <h1 id="titulo-ceu" class="internal-title">Soberana do Céu</h1>
@@ -31,6 +31,10 @@
         <p class="internal-summary">Divindade capaz de governar o Sol, concentrar calor e fogo solar, mover-se pelas grandes alturas e controlar ventos, nuvens, tempestades e caminhos abertos no firmamento.</p>
       </div>
     </section>
+
+    <aside class="archive-record" data-auto-record aria-label="Identificação editorial"></aside>
+
+    <nav id="indice-da-pagina" class="content-index" data-auto-index aria-label="Índice da página"></nav>
 
     <article class="mobile-article mobile-container">
       <p class="article-lead">A Soberana do Céu governa o <strong>Sol</strong> e o <strong>Céu</strong>.</p>
@@ -136,5 +140,6 @@
     function updateReadingProgress(){const documentHeight=document.documentElement.scrollHeight-window.innerHeight;const progress=documentHeight>0?window.scrollY/documentHeight:0;progressBar.style.width=`${Math.min(progress*100,100)}%`;}
     window.addEventListener('scroll',updateReadingProgress,{passive:true});window.addEventListener('resize',updateReadingProgress);updateReadingProgress();
   </script>
+  <script src="../js/editorial.js" defer></script>
 </body>
 </html>

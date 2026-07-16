@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-editorial-system="vaelora">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -22,27 +22,29 @@
   </header>
 
   <main class="internal-page">
-    <section class="ruvia-hero" aria-labelledby="titulo-ruvia">
+    <section class="ruvia-hero territory-hero" aria-labelledby="titulo-ruvia">
       <div class="ruvia-hero__image" aria-hidden="true"></div>
       <div class="ruvia-hero__veil" aria-hidden="true"></div>
-      <div class="mobile-container ruvia-hero__layout">
-        <div class="ruvia-hero__content" data-reveal>
-          <p class="ruvia-hero__index">Atlas de Vaelora · Território I</p>
-          <h1 id="titulo-ruvia" class="ruvia-hero__title">Rúvia</h1>
-          <div class="ruvia-hero__domain">Território do Senhor das Chagas</div>
-          <p class="ruvia-hero__summary">Uma vasta bacia de rios, pântanos e planícies alagáveis, onde doenças e parasitas influenciam a religião, o conhecimento, a economia e a maneira como cada habitante compreende o próprio corpo.</p>
+      <div class="mobile-container ruvia-hero__layout territory-hero__layout">
+        <div class="ruvia-hero__content territory-hero__content" data-reveal>
+          <p class="ruvia-hero__index territory-hero__index">Atlas de Vaelora · Território I</p>
+          <h1 id="titulo-ruvia" class="ruvia-hero__title territory-hero__title">Rúvia</h1>
+          <div class="ruvia-hero__domain territory-hero__domain">Território do Senhor das Chagas</div>
+          <p class="ruvia-hero__summary territory-hero__summary">Uma vasta bacia de rios, pântanos e planícies alagáveis, onde doenças e parasitas influenciam a religião, o conhecimento, a economia e a maneira como cada habitante compreende o próprio corpo.</p>
         </div>
-        <div class="ruvia-facts" data-reveal aria-label="Informações essenciais de Rúvia">
-          <div class="ruvia-fact"><span>Capital</span><strong>Leria</strong></div>
-          <div class="ruvia-fact"><span>Grande rio</span><strong>Olen</strong></div>
-          <div class="ruvia-fact"><span>Bioma</span><strong>Terras alagadas</strong></div>
-          <div class="ruvia-fact"><span>Fé predominante</span><strong>Senhor das Chagas</strong></div>
+        <div class="ruvia-facts territory-facts" data-reveal aria-label="Informações essenciais de Rúvia">
+          <div class="ruvia-fact territory-fact"><span>Capital</span><strong>Leria</strong></div>
+          <div class="ruvia-fact territory-fact"><span>Grande rio</span><strong>Olen</strong></div>
+          <div class="ruvia-fact territory-fact"><span>Bioma</span><strong>Terras alagadas</strong></div>
+          <div class="ruvia-fact territory-fact"><span>Fé predominante</span><strong>Senhor das Chagas</strong></div>
         </div>
       </div>
     </section>
 
-    <nav class="ruvia-index" aria-label="Índice de Rúvia">
-      <ul class="ruvia-index__list">
+    <aside class="archive-record" data-auto-record aria-label="Identificação editorial"></aside>
+
+    <nav class="ruvia-index territory-index content-index" aria-label="Índice de Rúvia" id="indice-da-pagina">
+      <ul class="ruvia-index__list territory-index__list content-index__list">
         <li><a class="active" href="#visao-geral">Visão geral</a></li>
         <li><a href="#geografia">Geografia</a></li>
         <li><a href="#povo">Cultura</a></li>
@@ -56,10 +58,10 @@
       </ul>
     </nav>
 
-    <article class="ruvia-content mobile-container">
-      <section id="visao-geral" class="ruvia-opening">
-        <div class="ruvia-opening__copy" data-reveal>
-          <p class="ruvia-opening__lead">Rúvia ocupa uma grande bacia cercada pela Serra de Orda e atravessada pelo Rio Olen.</p>
+    <article class="ruvia-content mobile-container territory-content">
+      <section id="visao-geral" class="ruvia-opening territory-opening">
+        <div class="ruvia-opening__copy territory-opening__copy" data-reveal>
+          <p class="ruvia-opening__lead territory-opening__lead">Rúvia ocupa uma grande bacia cercada pela Serra de Orda e atravessada pelo Rio Olen.</p>
           <p>Suas terras são quentes, úmidas e marcadas por inundações sazonais. Pântanos, brejos, lagos rasos e florestas fúngicas concentram uma variedade extraordinária de plantas, animais e organismos parasitários.</p>
           <p>A água sustenta a agricultura, a pesca e a circulação de mercadorias, mas também transporta insetos, esporos e enfermidades. Um braço contaminado do Olen pode atingir várias comunidades antes que os primeiros sintomas sejam reconhecidos.</p>
           <p>Doenças e parasitas fazem parte da religião, das profissões e das relações familiares. Algumas pessoas carregam organismos voluntariamente; outras convivem com enfermidades estáveis há gerações. Uma manifestação pode ser tratada, contida, eliminada, estudada ou incorporada ao corpo quando a relação se torna necessária ao hospedeiro.</p>
@@ -67,7 +69,7 @@
           <p>Rúvia não é a grande curandeira de Vaelora. Esse papel pertence a Alba. O território trata pessoas e pode preservar vidas, mas sua medicina não existe apenas para restaurar o corpo ao estado anterior.</p>
           <blockquote class="ruvia-quote"><p>Em Rúvia, sobreviver também pode significar aprender a viver de outra maneira.</p></blockquote>
         </div>
-        <aside class="basin-card" data-reveal aria-label="Relações geográficas da bacia de Rúvia">
+        <aside class="basin-card territory-card" data-reveal aria-label="Relações geográficas da bacia de Rúvia">
           <div class="basin-card__header"><span>Leitura territorial</span><strong>A bacia de Rúvia</strong></div>
           <ul class="basin-route">
             <li>Serra de Orda · Norte</li><li>Arquivo de Vetores</li><li>Leria · Margem norte do Olen</li><li>Floresta de Velan · Oeste</li><li>Seren · Transição florestal</li><li>Planície do Olen · Centro e leste</li><li>Distrito de Karos · Centro</li><li>Pântanos de Sarn · Sul</li>
@@ -75,19 +77,19 @@
         </aside>
       </section>
 
-      <section id="geografia" class="ruvia-section">
-        <header class="ruvia-section__heading" data-reveal><p class="ruvia-section__number">I</p><div><p class="ruvia-section__kicker">Águas, relevo e circulação</p><h2>Geografia e Regiões</h2><p class="ruvia-section__summary">A Serra de Orda, o Rio Olen e as áreas alagadas organizam a ocupação, as rotas e a produção.</p></div></header>
-        <div class="card-grid">
-          <article class="lore-card" data-mark="I" data-reveal><h3>A Serra de Orda e o Rio Olen</h3><p>A Serra de Orda circunda a bacia e forma sua principal barreira natural. Suas passagens controlam as entradas terrestres, enquanto cavernas, rios subterrâneos e áreas de extração atravessam as encostas.</p><p>Os cursos de água que descem da serra alimentam o Rio Olen. O rio cruza as terras centrais, torna-se largo e navegável diante de Leria e segue para as regiões baixas do sul.</p></article>
-          <article class="lore-card" data-mark="II" data-reveal><h3>A Planície do Olen</h3><p>A Planície do Olen ocupa o centro e o leste. Durante as chuvas, grandes áreas ficam submersas; quando as águas recuam, sedimentos férteis sustentam cereais, raízes e ervas.</p><p>Assentamentos erguem-se sobre elevações e plataformas. Canais e comportas distribuem água, mas qualquer alteração pode inundar comunidades, arruinar colheitas ou espalhar organismos.</p></article>
-          <article class="lore-card" data-mark="III" data-reveal><h3>Os Pântanos de Sarn</h3><p>No sul, o Olen divide-se em canais, ilhas, lagos rasos e extensões de lama profunda. As rotas mudam ao longo do ano, exigindo barcos estreitos e guias locais.</p><p>Sarn fornece peixes, répteis, sanguessugas, venenos e plantas aquáticas, além de concentrar vetores capazes de provocar surtos em toda a bacia.</p></article>
-          <article class="lore-card" data-mark="IV" data-reveal><h3>A Floresta de Velan</h3><p>A oeste da planície, Velan cresce sobre solos permanentemente úmidos. Árvores de raízes expostas, fungos, musgos e riachos escuros formam uma transição entre campos alagáveis e brejos.</p><p>Trilhas elevadas mantidas por Seren atravessam a floresta. Fora delas, o solo pode ceder, gases provocam desmaios e nuvens de esporos causam alterações físicas e comportamentais.</p></article>
-          <article class="lore-card" data-mark="V" data-reveal><h3>O Distrito de Karos</h3><p>Karos ocupa o centro de Rúvia, afastado das maiores áreas urbanas. Seus setores independentes podem ser isolados quando uma contenção é rompida.</p><p>Doenças desconhecidas, parasitas agressivos e criaturas contaminadas são conduzidos ao distrito quando não podem permanecer próximos às cidades. Algumas manifestações ficam em recipientes selados; outras exigem câmaras, ambientes próprios ou hospedeiros acompanhados.</p><p>Karos preserva amostras, tecidos e registros de linhagens desaparecidas ou destruídas. Pesquisadores defendem a preservação de certos materiais; autoridades civis questionam custos e riscos; comunidades próximas exigem segurança.</p></article>
+      <section id="geografia" class="ruvia-section territory-section">
+        <header class="ruvia-section__heading territory-section__heading" data-reveal><p class="ruvia-section__number territory-section__number">I</p><div><p class="ruvia-section__kicker territory-section__kicker">Águas, relevo e circulação</p><h2>Geografia e Regiões</h2><p class="ruvia-section__summary territory-section__summary">A Serra de Orda, o Rio Olen e as áreas alagadas organizam a ocupação, as rotas e a produção.</p></div></header>
+        <div class="card-grid territory-grid">
+          <article class="lore-card territory-card" data-mark="I" data-reveal><h3>A Serra de Orda e o Rio Olen</h3><p>A Serra de Orda circunda a bacia e forma sua principal barreira natural. Suas passagens controlam as entradas terrestres, enquanto cavernas, rios subterrâneos e áreas de extração atravessam as encostas.</p><p>Os cursos de água que descem da serra alimentam o Rio Olen. O rio cruza as terras centrais, torna-se largo e navegável diante de Leria e segue para as regiões baixas do sul.</p></article>
+          <article class="lore-card territory-card" data-mark="II" data-reveal><h3>A Planície do Olen</h3><p>A Planície do Olen ocupa o centro e o leste. Durante as chuvas, grandes áreas ficam submersas; quando as águas recuam, sedimentos férteis sustentam cereais, raízes e ervas.</p><p>Assentamentos erguem-se sobre elevações e plataformas. Canais e comportas distribuem água, mas qualquer alteração pode inundar comunidades, arruinar colheitas ou espalhar organismos.</p></article>
+          <article class="lore-card territory-card" data-mark="III" data-reveal><h3>Os Pântanos de Sarn</h3><p>No sul, o Olen divide-se em canais, ilhas, lagos rasos e extensões de lama profunda. As rotas mudam ao longo do ano, exigindo barcos estreitos e guias locais.</p><p>Sarn fornece peixes, répteis, sanguessugas, venenos e plantas aquáticas, além de concentrar vetores capazes de provocar surtos em toda a bacia.</p></article>
+          <article class="lore-card territory-card" data-mark="IV" data-reveal><h3>A Floresta de Velan</h3><p>A oeste da planície, Velan cresce sobre solos permanentemente úmidos. Árvores de raízes expostas, fungos, musgos e riachos escuros formam uma transição entre campos alagáveis e brejos.</p><p>Trilhas elevadas mantidas por Seren atravessam a floresta. Fora delas, o solo pode ceder, gases provocam desmaios e nuvens de esporos causam alterações físicas e comportamentais.</p></article>
+          <article class="lore-card territory-card" data-mark="V" data-reveal><h3>O Distrito de Karos</h3><p>Karos ocupa o centro de Rúvia, afastado das maiores áreas urbanas. Seus setores independentes podem ser isolados quando uma contenção é rompida.</p><p>Doenças desconhecidas, parasitas agressivos e criaturas contaminadas são conduzidos ao distrito quando não podem permanecer próximos às cidades. Algumas manifestações ficam em recipientes selados; outras exigem câmaras, ambientes próprios ou hospedeiros acompanhados.</p><p>Karos preserva amostras, tecidos e registros de linhagens desaparecidas ou destruídas. Pesquisadores defendem a preservação de certos materiais; autoridades civis questionam custos e riscos; comunidades próximas exigem segurança.</p></article>
         </div>
       </section>
 
-      <section id="povo" class="ruvia-section">
-        <header class="ruvia-section__heading" data-reveal><p class="ruvia-section__number">II</p><div><p class="ruvia-section__kicker">Higiene, costumes e convivência</p><h2>Cultura e Vida Cotidiana</h2><p class="ruvia-section__summary">A população conhece os caminhos do contágio e organiza a vida para escolher quando eles devem ser abertos ou interrompidos.</p></div></header>
+      <section id="povo" class="ruvia-section territory-section">
+        <header class="ruvia-section__heading territory-section__heading" data-reveal><p class="ruvia-section__number territory-section__number">II</p><div><p class="ruvia-section__kicker territory-section__kicker">Higiene, costumes e convivência</p><h2>Cultura e Vida Cotidiana</h2><p class="ruvia-section__summary territory-section__summary">A população conhece os caminhos do contágio e organiza a vida para escolher quando eles devem ser abertos ou interrompidos.</p></div></header>
         <div class="prose-columns" data-reveal>
           <div><p>Os habitantes de Rúvia são limpos, organizados e cuidadosos. Canais são desobstruídos, reservatórios protegidos e resíduos separados. Roupas, instrumentos e ambientes são higienizados conforme aquilo com que tiveram contato.</p><p>Essa disciplina não nasce da crença de que doenças, parasitas ou pessoas marcadas por eles sejam moralmente impuros. Alterações profundas no corpo não impedem que alguém cuide rigorosamente de si, de sua moradia e de seus instrumentos.</p></div>
           <div><p>Máscaras, luvas e véus são comuns nas estações de maior infestação e podem indicar profissão, origem ou tipo de organismo carregado. A saudação mais frequente consiste em tocar o próprio peito e inclinar a cabeça, demonstrando respeito sem contato obrigatório.</p><p>As crianças aprendem a reconhecer insetos, diferenciar água segura de água contaminada e comunicar febres, manchas ou alterações incomuns.</p></div>
@@ -98,85 +100,85 @@
         </div>
       </section>
 
-      <section id="religiao" class="ruvia-section">
-        <header class="ruvia-section__heading" data-reveal><p class="ruvia-section__number">III</p><div><p class="ruvia-section__kicker">Fé, estudo e responsabilidade</p><h2>A Fé em Rúvia</h2><p class="ruvia-section__summary">A religião dedicada ao Senhor das Chagas influencia a medicina, a pesquisa e as decisões de contenção.</p></div></header>
+      <section id="religiao" class="ruvia-section territory-section">
+        <header class="ruvia-section__heading territory-section__heading" data-reveal><p class="ruvia-section__number territory-section__number">III</p><div><p class="ruvia-section__kicker territory-section__kicker">Fé, estudo e responsabilidade</p><h2>A Fé em Rúvia</h2><p class="ruvia-section__summary territory-section__summary">A religião dedicada ao Senhor das Chagas influencia a medicina, a pesquisa e as decisões de contenção.</p></div></header>
         <div class="prose-columns" data-reveal>
           <div><p>Os fiéis não consideram doenças e parasitas simples erros da natureza. Para eles, essas manifestações possuem existência própria, transformam organismos e revelam relações que outras sociedades preferem ignorar.</p><p>Isso não significa que todas devam ser libertadas ou preservadas. Templos e centros de estudo registram enfermidades, acompanham hospedeiros e avaliam novas criações.</p></div>
           <div><p>As divergências são frequentes. Uma instituição pode desejar destruir uma linhagem, enquanto outra insiste em preservar amostras. Um hospedeiro pode ser tratado como paciente por um grupo e como responsável pela sobrevivência de uma espécie rara por outro.</p><p>Decisões capazes de ameaçar cidades, rios ou rotas envolvem sacerdotes, médicos, administradores, pesquisadores, hospedeiros e responsáveis pela contenção.</p></div>
         </div>
       </section>
 
-      <section id="leria" class="ruvia-section">
-        <header class="ruvia-section__heading" data-reveal><p class="ruvia-section__number">IV</p><div><p class="ruvia-section__kicker">Capital da bacia</p><h2>Leria</h2><p class="ruvia-section__summary">Centro político, religioso, comercial e biológico de Rúvia, construído na margem norte de um trecho largo e navegável do Olen.</p></div></header>
-        <div class="capital-panel">
+      <section id="leria" class="ruvia-section territory-section">
+        <header class="ruvia-section__heading territory-section__heading" data-reveal><p class="ruvia-section__number territory-section__number">IV</p><div><p class="ruvia-section__kicker territory-section__kicker">Capital da bacia</p><h2>Leria</h2><p class="ruvia-section__summary territory-section__summary">Centro político, religioso, comercial e biológico de Rúvia, construído na margem norte de um trecho largo e navegável do Olen.</p></div></header>
+        <div class="capital-panel territory-card">
           <div class="capital-image" data-reveal><div><span>Capital de Rúvia</span><strong>Leria</strong><p>Uma cidade de canais, pontes elevadas, setores isoláveis e instituições dedicadas ao estudo, à contenção e à transformação de doenças e parasitas.</p></div></div>
           <div data-reveal><p>Leria domina o encontro das estradas vindas de Seren, Karos e das passagens da Serra de Orda. Mercadorias, viajantes, amostras e informações passam pela capital antes de seguir pela bacia.</p><p>Seus bairros são ligados por canais e pontes elevadas. A cidade pode ser dividida em setores isoláveis durante epidemias, fugas de vetores ou manifestações desconhecidas.</p><p>O isolamento não é empregado como punição religiosa. Ele protege a população, preserva o hospedeiro e impede que uma manifestação seja destruída antes de ser compreendida.</p></div>
         </div>
-        <div class="institution-grid">
-          <article class="institution-card" data-mark="I" data-reveal><h3>Templo Maior de Leria</h3><p>O principal templo dedicado ao Senhor das Chagas reúne espaços de culto, enfermarias, salas de estudo, viveiros e arquivos.</p><p>Quando um surto ameaça ultrapassar as fronteiras de Rúvia, o templo recebe reuniões entre autoridades civis, médicos, pesquisadores e responsáveis pela contenção. Sua influência é ampla, mas não substitui as instituições públicas.</p></article>
-          <article class="institution-card" data-mark="II" data-reveal><h3>Hospital de Edras</h3><p>Edras trata habitantes e estuda doenças naturais ou milagrosas. Seus profissionais podem eliminar infecções, aliviar sintomas, interromper transformações ou adotar métodos que alteram permanentemente o corpo.</p><p>Um parasita pode assumir a função de um órgão comprometido; uma colônia pode ocupar tecidos destruídos; um organismo concorrente pode consumir outra enfermidade. Os procedimentos precisam considerar vontade do paciente, adaptação e risco coletivo.</p><p>O hospital não busca obrigatoriamente devolver cada pessoa à forma anterior, origem de muitos conflitos com os curadores de Alba.</p></article>
-          <article class="institution-card" data-mark="III" data-reveal><h3>Arquivo de Vetores</h3><p>Ao norte de Leria, o Arquivo preserva animais, insetos, amostras, mapas e registros de transmissão. Cada entrada procura identificar hospedeiros, rotas, mutações e métodos de interrupção ou reprodução do contágio.</p><p>Água, objetos, embarcações, estradas, mercados e hábitos sociais também são estudados como vetores.</p></article>
+        <div class="institution-grid territory-grid">
+          <article class="institution-card territory-card" data-mark="I" data-reveal><h3>Templo Maior de Leria</h3><p>O principal templo dedicado ao Senhor das Chagas reúne espaços de culto, enfermarias, salas de estudo, viveiros e arquivos.</p><p>Quando um surto ameaça ultrapassar as fronteiras de Rúvia, o templo recebe reuniões entre autoridades civis, médicos, pesquisadores e responsáveis pela contenção. Sua influência é ampla, mas não substitui as instituições públicas.</p></article>
+          <article class="institution-card territory-card" data-mark="II" data-reveal><h3>Hospital de Edras</h3><p>Edras trata habitantes e estuda doenças naturais ou milagrosas. Seus profissionais podem eliminar infecções, aliviar sintomas, interromper transformações ou adotar métodos que alteram permanentemente o corpo.</p><p>Um parasita pode assumir a função de um órgão comprometido; uma colônia pode ocupar tecidos destruídos; um organismo concorrente pode consumir outra enfermidade. Os procedimentos precisam considerar vontade do paciente, adaptação e risco coletivo.</p><p>O hospital não busca obrigatoriamente devolver cada pessoa à forma anterior, origem de muitos conflitos com os curadores de Alba.</p></article>
+          <article class="institution-card territory-card" data-mark="III" data-reveal><h3>Arquivo de Vetores</h3><p>Ao norte de Leria, o Arquivo preserva animais, insetos, amostras, mapas e registros de transmissão. Cada entrada procura identificar hospedeiros, rotas, mutações e métodos de interrupção ou reprodução do contágio.</p><p>Água, objetos, embarcações, estradas, mercados e hábitos sociais também são estudados como vetores.</p></article>
         </div>
       </section>
 
-      <section id="vilas" class="ruvia-section">
-        <header class="ruvia-section__heading" data-reveal><p class="ruvia-section__number">V</p><div><p class="ruvia-section__kicker">Assentamentos da bacia</p><h2>As Cinco Vilas</h2><p class="ruvia-section__summary">Cada vila ocupa uma posição estratégica nas rotas, na produção e na ecologia de Rúvia.</p></div></header>
-        <div class="settlement-grid">
-          <article class="settlement-card" data-reveal><p class="settlement-card__meta">Floresta de Velan · Oeste</p><h3>Seren</h3><p>Seren ocupa a margem oriental de Velan. Coletores, estudiosos e comerciantes de fungos dominam sua economia.</p><p>Sob a vila, uma antiga colônia fúngica parece reagir à presença de pessoas e animais, dividindo estudiosos sobre sua verdadeira natureza.</p></article>
-          <article class="settlement-card" data-reveal><p class="settlement-card__meta">Rio Olen · Leste</p><h3>Darsa</h3><p>Darsa é o principal porto do interior. Produz barcos de fundo raso, redes, velas impermeabilizadas e recipientes selados para cargas sensíveis.</p><p>Quando as chuvas cobrem as estradas, seus cais abastecem as comunidades do sul.</p></article>
-          <article class="settlement-card" data-reveal><p class="settlement-card__meta">Pântanos de Sarn · Sul</p><h3>Maren</h3><p>Maren foi erguida sobre estacas e plataformas. Seus habitantes coletam sanguessugas, plantas aquáticas, venenos e substâncias repelentes.</p><p>Campos de lírios atraem vetores para áreas controladas e precisam ser queimados e replantados periodicamente.</p></article>
-          <article class="settlement-card" data-reveal><p class="settlement-card__meta">Serra de Orda · Norte</p><h3>Ordel</h3><p>Ordel controla nascentes, rotas montanhosas e o trânsito de mineiros, exploradores e estudiosos das cavernas. Toda carga destinada a Leria passa por inspeção.</p></article>
-          <article class="settlement-card" data-reveal><p class="settlement-card__meta">Planície do Olen · Centro</p><h3>Rinal</h3><p>Rinal produz grande parte dos grãos, raízes e ervas consumidos em Leria. Canais e comportas permitem alternar cultivos conforme as cheias.</p><p>A vila depende das decisões tomadas rio acima: alterações no Olen podem enriquecer uma comunidade e arruinar outra.</p></article>
+      <section id="vilas" class="ruvia-section territory-section">
+        <header class="ruvia-section__heading territory-section__heading" data-reveal><p class="ruvia-section__number territory-section__number">V</p><div><p class="ruvia-section__kicker territory-section__kicker">Assentamentos da bacia</p><h2>As Cinco Vilas</h2><p class="ruvia-section__summary territory-section__summary">Cada vila ocupa uma posição estratégica nas rotas, na produção e na ecologia de Rúvia.</p></div></header>
+        <div class="settlement-grid territory-grid">
+          <article class="settlement-card territory-card" data-reveal><p class="settlement-card__meta">Floresta de Velan · Oeste</p><h3>Seren</h3><p>Seren ocupa a margem oriental de Velan. Coletores, estudiosos e comerciantes de fungos dominam sua economia.</p><p>Sob a vila, uma antiga colônia fúngica parece reagir à presença de pessoas e animais, dividindo estudiosos sobre sua verdadeira natureza.</p></article>
+          <article class="settlement-card territory-card" data-reveal><p class="settlement-card__meta">Rio Olen · Leste</p><h3>Darsa</h3><p>Darsa é o principal porto do interior. Produz barcos de fundo raso, redes, velas impermeabilizadas e recipientes selados para cargas sensíveis.</p><p>Quando as chuvas cobrem as estradas, seus cais abastecem as comunidades do sul.</p></article>
+          <article class="settlement-card territory-card" data-reveal><p class="settlement-card__meta">Pântanos de Sarn · Sul</p><h3>Maren</h3><p>Maren foi erguida sobre estacas e plataformas. Seus habitantes coletam sanguessugas, plantas aquáticas, venenos e substâncias repelentes.</p><p>Campos de lírios atraem vetores para áreas controladas e precisam ser queimados e replantados periodicamente.</p></article>
+          <article class="settlement-card territory-card" data-reveal><p class="settlement-card__meta">Serra de Orda · Norte</p><h3>Ordel</h3><p>Ordel controla nascentes, rotas montanhosas e o trânsito de mineiros, exploradores e estudiosos das cavernas. Toda carga destinada a Leria passa por inspeção.</p></article>
+          <article class="settlement-card territory-card" data-reveal><p class="settlement-card__meta">Planície do Olen · Centro</p><h3>Rinal</h3><p>Rinal produz grande parte dos grãos, raízes e ervas consumidos em Leria. Canais e comportas permitem alternar cultivos conforme as cheias.</p><p>A vila depende das decisões tomadas rio acima: alterações no Olen podem enriquecer uma comunidade e arruinar outra.</p></article>
         </div>
       </section>
 
-      <section id="natureza" class="ruvia-section">
-        <header class="ruvia-section__heading" data-reveal><p class="ruvia-section__number">VI</p><div><p class="ruvia-section__kicker">Ecologia da bacia</p><h2>Fauna e Flora</h2><p class="ruvia-section__summary">Plantas, fungos, animais e parasitas formam relações de defesa, alimentação, contágio e dependência.</p></div></header>
-        <div class="nature-grid">
-          <article class="nature-card" data-reveal><h3>Árvore de Varo</h3><p>Seu tronco oco abriga insetos que defendem a planta e se alimentam de sua seiva.</p></article>
-          <article class="nature-card" data-reveal><h3>Flor Febril</h3><p>Preparações de suas folhas alteram a temperatura do corpo e podem induzir febres úteis ou perigosas.</p></article>
-          <article class="nature-card" data-reveal><h3>Musgo Vermelho</h3><p>Pode conter sangramentos, mas tende a penetrar em feridas e formar colônias quando mal aplicado.</p></article>
-          <article class="nature-card" data-reveal><h3>Lírio de Sarn</h3><p>Atrai moscas e outros insetos, sendo cultivado para concentrar vetores em áreas conhecidas.</p></article>
-          <article class="nature-card" data-reveal><h3>Animais da bacia</h3><p>Garças alimentam-se de vermes; cervos carregam fungos nos chifres; ratos farejadores identificam cargas contaminadas.</p></article>
-          <article class="nature-card" data-reveal><h3>Relações cultivadas</h3><p>Lagartos convivem com ácaros que removem tecidos mortos, enquanto criadores selecionam organismos para tarefas específicas.</p></article>
+      <section id="natureza" class="ruvia-section territory-section">
+        <header class="ruvia-section__heading territory-section__heading" data-reveal><p class="ruvia-section__number territory-section__number">VI</p><div><p class="ruvia-section__kicker territory-section__kicker">Ecologia da bacia</p><h2>Fauna e Flora</h2><p class="ruvia-section__summary territory-section__summary">Plantas, fungos, animais e parasitas formam relações de defesa, alimentação, contágio e dependência.</p></div></header>
+        <div class="nature-grid territory-grid">
+          <article class="nature-card territory-card" data-reveal><h3>Árvore de Varo</h3><p>Seu tronco oco abriga insetos que defendem a planta e se alimentam de sua seiva.</p></article>
+          <article class="nature-card territory-card" data-reveal><h3>Flor Febril</h3><p>Preparações de suas folhas alteram a temperatura do corpo e podem induzir febres úteis ou perigosas.</p></article>
+          <article class="nature-card territory-card" data-reveal><h3>Musgo Vermelho</h3><p>Pode conter sangramentos, mas tende a penetrar em feridas e formar colônias quando mal aplicado.</p></article>
+          <article class="nature-card territory-card" data-reveal><h3>Lírio de Sarn</h3><p>Atrai moscas e outros insetos, sendo cultivado para concentrar vetores em áreas conhecidas.</p></article>
+          <article class="nature-card territory-card" data-reveal><h3>Animais da bacia</h3><p>Garças alimentam-se de vermes; cervos carregam fungos nos chifres; ratos farejadores identificam cargas contaminadas.</p></article>
+          <article class="nature-card territory-card" data-reveal><h3>Relações cultivadas</h3><p>Lagartos convivem com ácaros que removem tecidos mortos, enquanto criadores selecionam organismos para tarefas específicas.</p></article>
         </div>
       </section>
 
-      <section id="ameacas" class="ruvia-section">
-        <header class="ruvia-section__heading" data-reveal><p class="ruvia-section__number">VII</p><div><p class="ruvia-section__kicker">Criaturas e riscos biológicos</p><h2>Ameaças de Rúvia</h2><p class="ruvia-section__summary">Nem toda criação pode ser mantida com segurança, e as instituições discordam sobre quando preservar, conter ou destruir.</p></div></header>
-        <div class="threat-grid">
-          <article class="threat-card" data-reveal><h3>Enxames-Carcaça</h3><p>Colônias que ocupam cadáveres, armaduras e estruturas abandonadas como abrigo e meio de locomoção.</p></article>
-          <article class="threat-card" data-reveal><h3>Mosca-Rainha</h3><p>Inseto capaz de produzir milhares de descendentes em poucos dias e obrigar vilas a abandonar uma região.</p></article>
-          <article class="threat-card" data-reveal><h3>Hospedeiro Composto</h3><p>Corpo humanoide ocupado por várias espécies, sem que se saiba se alguma vontade permanece dominante.</p></article>
-          <article class="threat-card" data-reveal><h3>O Grande Verme</h3><p>Criatura que abre túneis sob Orda, altera rios subterrâneos e provoca secas, inundações ou deslizamentos.</p></article>
+      <section id="ameacas" class="ruvia-section territory-section">
+        <header class="ruvia-section__heading territory-section__heading" data-reveal><p class="ruvia-section__number territory-section__number">VII</p><div><p class="ruvia-section__kicker territory-section__kicker">Criaturas e riscos biológicos</p><h2>Ameaças de Rúvia</h2><p class="ruvia-section__summary territory-section__summary">Nem toda criação pode ser mantida com segurança, e as instituições discordam sobre quando preservar, conter ou destruir.</p></div></header>
+        <div class="threat-grid territory-grid">
+          <article class="threat-card territory-card" data-reveal><h3>Enxames-Carcaça</h3><p>Colônias que ocupam cadáveres, armaduras e estruturas abandonadas como abrigo e meio de locomoção.</p></article>
+          <article class="threat-card territory-card" data-reveal><h3>Mosca-Rainha</h3><p>Inseto capaz de produzir milhares de descendentes em poucos dias e obrigar vilas a abandonar uma região.</p></article>
+          <article class="threat-card territory-card" data-reveal><h3>Hospedeiro Composto</h3><p>Corpo humanoide ocupado por várias espécies, sem que se saiba se alguma vontade permanece dominante.</p></article>
+          <article class="threat-card territory-card" data-reveal><h3>O Grande Verme</h3><p>Criatura que abre túneis sob Orda, altera rios subterrâneos e provoca secas, inundações ou deslizamentos.</p></article>
         </div>
-        <div class="warning-note" data-reveal><p>Os ruvianos não consideram essas criaturas malignas por natureza. A disputa começa quando sua preservação ameaça comunidades, uma contenção falha ou alguém decide libertá-las para demonstrar poder.</p></div>
+        <div class="warning-note territory-card" data-reveal><p>Os ruvianos não consideram essas criaturas malignas por natureza. A disputa começa quando sua preservação ameaça comunidades, uma contenção falha ou alguém decide libertá-las para demonstrar poder.</p></div>
       </section>
 
-      <section id="economia" class="ruvia-section">
-        <header class="ruvia-section__heading" data-reveal><p class="ruvia-section__number">VIII</p><div><p class="ruvia-section__kicker">Produção, trabalho e desigualdade</p><h2>Economia da Bacia do Olen</h2><p class="ruvia-section__summary">A economia transforma a abundância biológica em alimento, materiais, transporte e conhecimento.</p></div></header>
-        <div class="economy-ledger">
+      <section id="economia" class="ruvia-section territory-section">
+        <header class="ruvia-section__heading territory-section__heading" data-reveal><p class="ruvia-section__number territory-section__number">VIII</p><div><p class="ruvia-section__kicker territory-section__kicker">Produção, trabalho e desigualdade</p><h2>Economia da Bacia do Olen</h2><p class="ruvia-section__summary territory-section__summary">A economia transforma a abundância biológica em alimento, materiais, transporte e conhecimento.</p></div></header>
+        <div class="economy-ledger territory-grid">
           <div class="economy-highlight" data-reveal><p>Rinal fornece grãos, raízes e ervas; Maren sustenta pesca e coleta de venenos e repelentes; Seren concentra fungos, musgos e madeira; Darsa constrói embarcações; Ordel controla materiais e entradas terrestres. Leria reúne e redistribui grande parte dessa produção.</p></div>
-          <div class="economy-grid">
-            <article class="economy-card" data-mark="I" data-reveal><p class="economy-card__meta">Produtos</p><h3>Comércio da bacia</h3><p>Alimentos fermentados, fungos, venenos, toxinas, repelentes, antídotos, reagentes, tecidos resistentes à umidade, embarcações e recipientes especializados.</p></article>
-            <article class="economy-card" data-mark="II" data-reveal><p class="economy-card__meta">Conhecimento</p><h3>Pesquisa e circulação</h3><p>Instituições negociam conhecimento sobre vetores, contenção, mutações e organismos. Cargas vivas exigem registro, identificação e destino conhecido.</p></article>
-            <article class="economy-card" data-mark="III" data-reveal><p class="economy-card__meta">Profissões</p><h3>Trabalho especializado</h3><p>Agricultores, pescadores, coletores, cultivadores de fungos, fermentadores, construtores, responsáveis por diques, guias, especialistas em vetores, registradores de sintomas, inspetores e guardiões de contenção.</p></article>
-            <article class="economy-card" data-mark="IV" data-reveal><p class="economy-card__meta">Tributos</p><h3>Portos e manutenção</h3><p>Taxas sobre portos, pontes, mercados e passagens sustentam canais, diques, inspeções, Edras, o Arquivo e Karos.</p></article>
-            <article class="economy-card" data-mark="V" data-reveal><p class="economy-card__meta">Desigualdade</p><h3>Capital e interior</h3><p>Leria concentra mercados e instituições. Vilas afastadas dependem dos canais e sofrem perdas maiores quando enchentes ou quarentenas interrompem rotas.</p></article>
-            <article class="economy-card" data-mark="VI" data-reveal><p class="economy-card__meta">Dependências</p><h3>Importações e crises</h3><p>Rúvia importa metais refinados, vidro, tecidos, papel de conservação e produtos difíceis de produzir ou armazenar na umidade.</p></article>
+          <div class="economy-grid territory-grid">
+            <article class="economy-card territory-card" data-mark="I" data-reveal><p class="economy-card__meta">Produtos</p><h3>Comércio da bacia</h3><p>Alimentos fermentados, fungos, venenos, toxinas, repelentes, antídotos, reagentes, tecidos resistentes à umidade, embarcações e recipientes especializados.</p></article>
+            <article class="economy-card territory-card" data-mark="II" data-reveal><p class="economy-card__meta">Conhecimento</p><h3>Pesquisa e circulação</h3><p>Instituições negociam conhecimento sobre vetores, contenção, mutações e organismos. Cargas vivas exigem registro, identificação e destino conhecido.</p></article>
+            <article class="economy-card territory-card" data-mark="III" data-reveal><p class="economy-card__meta">Profissões</p><h3>Trabalho especializado</h3><p>Agricultores, pescadores, coletores, cultivadores de fungos, fermentadores, construtores, responsáveis por diques, guias, especialistas em vetores, registradores de sintomas, inspetores e guardiões de contenção.</p></article>
+            <article class="economy-card territory-card" data-mark="IV" data-reveal><p class="economy-card__meta">Tributos</p><h3>Portos e manutenção</h3><p>Taxas sobre portos, pontes, mercados e passagens sustentam canais, diques, inspeções, Edras, o Arquivo e Karos.</p></article>
+            <article class="economy-card territory-card" data-mark="V" data-reveal><p class="economy-card__meta">Desigualdade</p><h3>Capital e interior</h3><p>Leria concentra mercados e instituições. Vilas afastadas dependem dos canais e sofrem perdas maiores quando enchentes ou quarentenas interrompem rotas.</p></article>
+            <article class="economy-card territory-card" data-mark="VI" data-reveal><p class="economy-card__meta">Dependências</p><h3>Importações e crises</h3><p>Rúvia importa metais refinados, vidro, tecidos, papel de conservação e produtos difíceis de produzir ou armazenar na umidade.</p></article>
           </div>
         </div>
       </section>
 
-      <section id="mundo" class="ruvia-section">
-        <header class="ruvia-section__heading" data-reveal><p class="ruvia-section__number">IX</p><div><p class="ruvia-section__kicker">Religião, política e intercâmbio</p><h2>Relações com Outros Territórios</h2><p class="ruvia-section__summary">Outros povos dependem dos recursos e do conhecimento de Rúvia, mas discordam do que seus habitantes estão dispostos a preservar ou transformar.</p></div></header>
-        <div class="relation-grid">
-          <article class="relation-card relation-card--aurora" data-reveal><span class="relation-card__sigil">☼</span><div><h3>Alba e a Senhora da Aurora</h3><p>Alba e Rúvia combinam cooperação, rivalidade e desconfiança. Alba prioriza restauração e cuidado; Rúvia rejeita a ideia de que toda enfermidade seja apenas uma falha a desaparecer.</p><p>Edras recebe profissionais de Alba durante crises, mas os lados discordam quando um parasita já assumiu funções essenciais ou quando uma linhagem perigosa deve ser eliminada ou preservada.</p><p>Parte dos albanos considera os ruvianos imprudentes e profanadores. Parte dos ruvianos considera Alba autoritária e incapaz de aceitar corpos diferentes. Nenhuma visão representa todos, mas ambas alimentam conflitos.</p></div></article>
-          <article class="relation-card" data-reveal><span class="relation-card__sigil">●</span><div><h3>Umbra e o Senhor do Crepúsculo</h3><p>Os territórios cooperam na identificação de mortos e na investigação de epidemias. O conflito envolve cadáveres e tecidos: Umbra exige dignidade, registro e respeito funerário; pesquisadores ruvianos podem utilizar matéria morta em estudos e cultivos.</p><p>Instituições reconhecidas não tomam corpos identificados contra a vontade das famílias nem impedem funerais sem necessidade comprovada.</p></div></article>
-          <article class="relation-card" data-reveal><span class="relation-card__sigil">✦</span><div><h3>Tirena e a Soberana do Céu</h3><p>Observadores de Tirena ajudam a prever chuvas, enchentes e migrações de insetos. Caravanas também podem transportar doenças por grandes distâncias e passam por inspeções ao entrar nos principais portos e mercados.</p></div></article>
-          <article class="relation-card relation-card--veus" data-reveal><span class="relation-card__sigil">◇</span><div><h3>Névia e o Senhor dos Véus</h3><p>Rúvia e Névia estudam enfermidades, fungos, toxinas e parasitas que alteram sono e percepção. Especialistas distinguem fenômenos oníricos de delírios causados por febre ou substâncias.</p></div></article>
-          <article class="relation-card" data-reveal><span class="relation-card__sigil">≈</span><div><h3>Rotas exteriores</h3><p>Cargas vivas e amostras exigem origem, destino e condições de transporte registradas. Nenhuma manifestação guardada em Karos pode ser comercializada livremente.</p></div></article>
-          <article class="relation-card" data-reveal><span class="relation-card__sigil">◉</span><div><h3>Memória das epidemias</h3><p>As comunidades registram origem, sintomas, rotas de transmissão, mutações e métodos de contenção. Os nomes das vítimas também são preservados, para que a experiência não seja reduzida a dados clínicos.</p></div></article>
+      <section id="mundo" class="ruvia-section territory-section">
+        <header class="ruvia-section__heading territory-section__heading" data-reveal><p class="ruvia-section__number territory-section__number">IX</p><div><p class="ruvia-section__kicker territory-section__kicker">Religião, política e intercâmbio</p><h2>Relações com Outros Territórios</h2><p class="ruvia-section__summary territory-section__summary">Outros povos dependem dos recursos e do conhecimento de Rúvia, mas discordam do que seus habitantes estão dispostos a preservar ou transformar.</p></div></header>
+        <div class="relation-grid territory-grid">
+          <article class="relation-card relation-card--aurora territory-card" data-reveal><span class="relation-card__sigil">☼</span><div><h3>Alba e a Senhora da Aurora</h3><p>Alba e Rúvia combinam cooperação, rivalidade e desconfiança. Alba prioriza restauração e cuidado; Rúvia rejeita a ideia de que toda enfermidade seja apenas uma falha a desaparecer.</p><p>Edras recebe profissionais de Alba durante crises, mas os lados discordam quando um parasita já assumiu funções essenciais ou quando uma linhagem perigosa deve ser eliminada ou preservada.</p><p>Parte dos albanos considera os ruvianos imprudentes e profanadores. Parte dos ruvianos considera Alba autoritária e incapaz de aceitar corpos diferentes. Nenhuma visão representa todos, mas ambas alimentam conflitos.</p></div></article>
+          <article class="relation-card territory-card" data-reveal><span class="relation-card__sigil">●</span><div><h3>Umbra e o Senhor do Crepúsculo</h3><p>Os territórios cooperam na identificação de mortos e na investigação de epidemias. O conflito envolve cadáveres e tecidos: Umbra exige dignidade, registro e respeito funerário; pesquisadores ruvianos podem utilizar matéria morta em estudos e cultivos.</p><p>Instituições reconhecidas não tomam corpos identificados contra a vontade das famílias nem impedem funerais sem necessidade comprovada.</p></div></article>
+          <article class="relation-card territory-card" data-reveal><span class="relation-card__sigil">✦</span><div><h3>Tirena e a Soberana do Céu</h3><p>Observadores de Tirena ajudam a prever chuvas, enchentes e migrações de insetos. Caravanas também podem transportar doenças por grandes distâncias e passam por inspeções ao entrar nos principais portos e mercados.</p></div></article>
+          <article class="relation-card relation-card--veus territory-card" data-reveal><span class="relation-card__sigil">◇</span><div><h3>Névia e o Senhor dos Véus</h3><p>Rúvia e Névia estudam enfermidades, fungos, toxinas e parasitas que alteram sono e percepção. Especialistas distinguem fenômenos oníricos de delírios causados por febre ou substâncias.</p></div></article>
+          <article class="relation-card territory-card" data-reveal><span class="relation-card__sigil">≈</span><div><h3>Rotas exteriores</h3><p>Cargas vivas e amostras exigem origem, destino e condições de transporte registradas. Nenhuma manifestação guardada em Karos pode ser comercializada livremente.</p></div></article>
+          <article class="relation-card territory-card" data-reveal><span class="relation-card__sigil">◉</span><div><h3>Memória das epidemias</h3><p>As comunidades registram origem, sintomas, rotas de transmissão, mutações e métodos de contenção. Os nomes das vítimas também são preservados, para que a experiência não seja reduzida a dados clínicos.</p></div></article>
         </div>
         <blockquote class="ruvia-quote" data-reveal><p>Em Rúvia, sobreviver a uma enfermidade transforma aquilo que foi aprendido em responsabilidade.</p></blockquote>
         <nav class="ruvia-navigation" aria-label="Navegação da página"><a href="../divindades/senhor-das-chagas.html">Conhecer o Senhor das Chagas</a><a href="../index.html#territorios">Voltar aos Territórios</a></nav>
@@ -197,5 +199,6 @@
     const sectionObserver=new IntersectionObserver(entries=>{const current=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!current)return;indexLinks.forEach(link=>{const active=link.getAttribute('href')===`#${current.target.id}`;link.classList.toggle('active',active);if(active)link.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});});},{rootMargin:'-30% 0px -56% 0px',threshold:[0,.1,.35,.6]});
     revealElements.forEach(element=>revealObserver.observe(element));indexedSections.forEach(section=>sectionObserver.observe(section));window.addEventListener('scroll',updateReadingProgress,{passive:true});window.addEventListener('resize',updateReadingProgress);updateReadingProgress();
   </script>
+  <script src="../js/editorial.js" defer></script>
 </body>
 </html>

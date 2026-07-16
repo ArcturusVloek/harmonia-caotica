@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-editorial-system="vaelora">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -22,7 +22,7 @@
 
   <main class="internal-page">
     <section class="internal-hero deity-hero" aria-labelledby="titulo-chagas">
-      <img class="internal-hero-image" src="/harmonia-caotica/imagens/divindades/senhor-das-chagas.jpg" alt="Representação do Senhor das Chagas" fetchpriority="high">
+      <img class="internal-hero-image" src="/harmonia-caotica/imagens/divindades/senhor-das-chagas.jpg" alt="Representação do Senhor das Chagas" fetchpriority="high" decoding="async">
 
       <div class="mobile-container internal-hero-content">
         <p class="internal-kicker">Divindade de Vaelora</p>
@@ -31,6 +31,10 @@
         <p class="internal-summary">Uma Divindade capaz de espalhar enfermidades, criar organismos parasitários e transformar corpos vivos em hospedeiros de existências que não poderiam surgir sozinhas.</p>
       </div>
     </section>
+
+    <aside class="archive-record" data-auto-record aria-label="Identificação editorial"></aside>
+
+    <nav id="indice-da-pagina" class="content-index" data-auto-index aria-label="Índice da página"></nav>
 
     <article class="mobile-article mobile-container">
       <p class="article-lead">O Senhor das Chagas governa as <strong>Doenças</strong> e os <strong>Parasitas</strong>.</p>
@@ -192,5 +196,6 @@
     window.addEventListener('resize', updateReadingProgress);
     updateReadingProgress();
   </script>
+  <script src="../js/editorial.js" defer></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-editorial-system="vaelora">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -121,5 +121,6 @@
     const navigationObserver=new IntersectionObserver(entries=>{const currentEntry=entries.filter(entry=>entry.isIntersecting).sort((first,second)=>second.intersectionRatio-first.intersectionRatio)[0];if(!currentEntry)return;navigationLinks.forEach(link=>{const isCurrent=link.getAttribute('href')===`#${currentEntry.target.id}`;link.classList.toggle('active',isCurrent);if(isCurrent)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});},{rootMargin:'-36% 0px -52% 0px',threshold:[0,.1,.35,.6]});
     observedSections.forEach(section=>navigationObserver.observe(section));
   </script>
+  <script src="js/editorial.js" defer></script>
 </body>
 </html>

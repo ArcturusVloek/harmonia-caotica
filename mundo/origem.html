@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-editorial-system="vaelora">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -228,6 +228,10 @@
       </div>
     </section>
 
+    <aside class="archive-record" data-auto-record aria-label="Identificação editorial"></aside>
+
+    <nav id="indice-da-pagina" class="content-index" data-auto-index aria-label="Índice da página"></nav>
+
     <article class="mobile-article mobile-container">
       <p class="article-lead">
         Houve um tempo em que os Deuses não existiam. Antes deles, não havia reinos, povos ou mundos como os mortais conhecem.
@@ -252,7 +256,7 @@
           width="512"
           height="341"
           fetchpriority="high"
-        >
+         decoding="async">
         <figcaption>
           <span>Registro I · Antes da consciência</span>
           O Vazio Primordial e os conceitos que existiam sem forma, vontade ou limites.
@@ -546,5 +550,6 @@
     window.addEventListener('resize', updateReadingProgress);
     updateReadingProgress();
   </script>
+  <script src="../js/editorial.js" defer></script>
 </body>
 </html>
