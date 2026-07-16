@@ -9,7 +9,26 @@
     if (branch) branch.open = true;
   };
 
+  const removeCrossDomainLinks = () => {
+    const currentPath = window.location.pathname;
+    const domainPagePattern = /\/dominios\/[^/]+\.html$/;
+
+    document.querySelectorAll('a[href]').forEach((link) => {
+      const rawHref = link.getAttribute('href');
+      if (!rawHref) return;
+
+      const destination = new URL(rawHref, window.location.href);
+      const linksToAnotherDomain =
+        destination.origin === window.location.origin &&
+        domainPagePattern.test(destination.pathname) &&
+        destination.pathname !== currentPath;
+
+      if (linksToAnotherDomain) link.remove();
+    });
+  };
+
   document.addEventListener('DOMContentLoaded', () => {
+    removeCrossDomainLinks();
     openTargetBranch();
 
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
