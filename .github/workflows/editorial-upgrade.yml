@@ -1,0 +1,36 @@
+name: Aplicar padrão editorial
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/apply-editorial-upgrade.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Aplicar estrutura editorial
+        run: python3 scripts/apply-editorial-upgrade.py
+
+      - name: Registrar alterações
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "Nenhuma alteração adicional foi necessária."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Aplica estrutura editorial compartilhada às páginas"
+          git push
