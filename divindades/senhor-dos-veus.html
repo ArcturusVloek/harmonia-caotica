@@ -9,9 +9,10 @@
   <title>Senhor dos Véus — Harmonia Caótica</title>
   <link rel="preload" href="/harmonia-caotica/imagens/divindades/senhor-dos-veus.jpg" as="image" type="image/jpeg" fetchpriority="high">
   <link rel="stylesheet" href="../css/mobile.css">
+  <link rel="stylesheet" href="../css/dominios.css">
 </head>
 
-<body id="topo" class="deity-page deity-page--veus" style="--deity-accent:#9d7dc2;--deity-accent-soft:rgba(157,125,194,.14);--deity-accent-border:rgba(157,125,194,.36);">
+<body id="topo" class="deity-page deity-page--veus" style="--deity-accent:#9d7dc2;--deity-accent-soft:rgba(157,125,194,.14);--deity-accent-border:rgba(157,125,194,.36);--domain-accent:#9d7dc2;--domain-accent-soft:rgba(157,125,194,.14);--domain-accent-border:rgba(157,125,194,.36);">
   <div class="reading-progress" aria-hidden="true"></div>
 
   <header class="mobile-header">
@@ -177,11 +178,31 @@
         </div>
       </section>
 
-      <section class="sacred-section" aria-labelledby="titulo-conceitos-veus">
-        <p class="section-kicker">Fundamentos dos milagres</p>
-        <h2 id="titulo-conceitos-veus">Conceitos Sagrados</h2>
-        <div class="sacred-grid sacred-grid--concepts">
-          <div class="sacred-item">Sonho</div><div class="sacred-item">Pesadelo</div><div class="sacred-item">Sono</div><div class="sacred-item">Onírico</div><div class="sacred-item">Devaneio</div><div class="sacred-item">Sonambulismo</div><div class="sacred-item">Terror Noturno</div><div class="sacred-item">Delírio</div><div class="sacred-item">Premonição/Revelação</div><div class="sacred-item">Desejo</div>
+      <section class="sacred-section domain-gateway-section" aria-labelledby="titulo-dominios-veus">
+        <p class="section-kicker">Poderes da Divindade</p>
+        <h2 id="titulo-dominios-veus">Domínios e Vertentes</h2>
+        <p>Os Domínios do Senhor dos Véus são apresentados em páginas próprias, com suas possibilidades, limites, cinco Vertentes e as Heranças que modificam seus Milagres durante o Combate.</p>
+
+        <div class="domain-gateway-grid">
+          <a class="domain-gateway-card" href="../dominios/sonhos.html">
+            <p class="domain-gateway-card__kicker">Domínio publicado</p>
+            <h3>Sonhos</h3>
+            <p>Governa o sono, a criação onírica, as memórias sonhadas, os desejos manifestados e os sinais de possibilidades futuras.</p>
+            <div class="domain-gateway-card__branches" aria-label="Vertentes dos Sonhos">
+              <span>Sono</span><span>Imaginação</span><span>Memória</span><span>Desejo</span><span>Presságio</span>
+            </div>
+            <span class="domain-gateway-card__action">Explorar o Domínio dos Sonhos →</span>
+          </a>
+
+          <div class="domain-gateway-card domain-gateway-card--pending">
+            <p class="domain-gateway-card__kicker">Em desenvolvimento</p>
+            <h3>Pesadelos</h3>
+            <p>Governa experiências oníricas estruturadas pelo terror, pela perseguição, pela impotência, pela distorção e pela repetição.</p>
+            <div class="domain-gateway-card__branches" aria-label="Vertentes dos Pesadelos">
+              <span>Terror</span><span>Perseguição</span><span>Impotência</span><span>Distorção</span><span>Repetição</span>
+            </div>
+            <span class="domain-gateway-card__action">Página em preparação</span>
+          </div>
         </div>
       </section>
 
@@ -204,6 +225,7 @@
 
       <nav class="article-navigation" aria-label="Navegação da página">
         <a href="../index.html#divindades">Voltar às Divindades</a>
+        <a href="../dominios/sonhos.html">Explorar os Sonhos</a>
         <a href="../territorios/nevia.html">Conhecer Névia</a>
       </nav>
     </article>
