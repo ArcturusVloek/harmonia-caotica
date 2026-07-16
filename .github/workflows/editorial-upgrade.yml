@@ -20,7 +20,12 @@ jobs:
           fetch-depth: 0
 
       - name: Validar o migrador
-        run: python3 -m py_compile scripts/apply-editorial-upgrade.py
+        run: |
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          ast.parse(Path('scripts/apply-editorial-upgrade.py').read_text(encoding='utf-8'))
+          PY
 
       - name: Aplicar estrutura editorial
         run: python3 scripts/apply-editorial-upgrade.py
@@ -34,6 +39,9 @@ jobs:
             echo 'Ainda existem blocos de estilo embutidos.'
             exit 1
           fi
+
+      - name: Limpar arquivos temporários
+        run: find scripts -type d -name '__pycache__' -prune -exec rm -rf {} +
 
       - name: Registrar alterações
         run: |
