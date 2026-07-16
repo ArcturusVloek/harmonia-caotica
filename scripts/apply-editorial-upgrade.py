@@ -236,6 +236,41 @@ def patch_shared_assets() -> list[Path]:
             "/(?:card|entry|panel|note)$/.test(name)",
             "/(?:card|entry|panel)$/.test(name)",
         )
+
+        if "const enhanceReveals = () =>" not in updated:
+            reveal_function = """  const enhanceReveals = () => {
+    const elements = [...document.querySelectorAll('[data-reveal]')];
+    if (!elements.length) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      elements.forEach((element) => element.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -7% 0px' });
+
+    elements.forEach((element) => observer.observe(element));
+  };
+
+"""
+            updated = updated.replace(
+                "  const enhanceExistingReadingProgress = () => {",
+                reveal_function + "  const enhanceExistingReadingProgress = () => {",
+            )
+
+        if "    enhanceReveals();" not in updated:
+            updated = updated.replace(
+                "    normalizeImages();\n    const record = ensureArchiveRecord();",
+                "    normalizeImages();\n    enhanceReveals();\n    const record = ensureArchiveRecord();",
+            )
+
         if updated != js:
             js_path.write_text(updated, encoding="utf-8")
             changed.append(js_path)
