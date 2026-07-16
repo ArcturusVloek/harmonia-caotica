@@ -30,9 +30,9 @@ def normalize_class_attributes(html: str, is_territory: bool) -> str:
     def replace(match: re.Match[str]) -> str:
         quote = match.group(1)
         classes = match.group(2).split()
-        original = list(classes)
+        source_classes = [name for name in classes if not name.startswith("territory-")]
 
-        for token in original:
+        for token in source_classes:
             if re.fullmatch(rf"(?:{territory_prefixes})-hero", token):
                 add_class(classes, "territory-hero")
             elif token.endswith("-hero__layout"):
@@ -76,10 +76,18 @@ def normalize_class_attributes(html: str, is_territory: bool) -> str:
             elif token.endswith("-section__summary"):
                 add_class(classes, "territory-section__summary")
 
-            if re.search(r"(?:card|entry|panel|note)$", token):
-                add_class(classes, "territory-card")
-            if re.search(r"(?:grid|ledger)$", token):
-                add_class(classes, "territory-grid")
+        should_be_card = any(re.search(r"(?:card|entry|panel)$", token) for token in source_classes)
+        should_be_grid = any(re.search(r"(?:grid|ledger)$", token) for token in source_classes)
+
+        if should_be_card:
+            add_class(classes, "territory-card")
+        else:
+            classes = [name for name in classes if name != "territory-card"]
+
+        if should_be_grid:
+            add_class(classes, "territory-grid")
+        else:
+            classes = [name for name in classes if name != "territory-grid"]
 
         return f'class={quote}{" ".join(classes)}{quote}'
 
@@ -110,30 +118,42 @@ def normalize_images(html: str) -> str:
     return re.sub(r"<img\b[^>]*>", replace, html, flags=re.IGNORECASE)
 
 
-def extract_inline_territory_css(path: Path, html: str) -> str:
-    if path.parent.name != "territorios":
-        return html
+def css_target_for(path: Path) -> Path:
+    parent = path.parent.name
+    if parent == "territorios":
+        name = path.stem
+    elif parent == "mundo":
+        name = f"mundo-{path.stem}"
+    elif parent == "sistemas":
+        name = "sistemas" if path.stem == "index" else f"sistemas-{path.stem}"
+    elif parent == "divindades":
+        name = f"divindade-{path.stem}"
+    else:
+        name = path.stem
+    return ROOT / "css" / f"{name}.css"
 
+
+def extract_inline_css(path: Path, html: str) -> str:
     blocks = re.findall(r"\s*<style>(.*?)</style>\s*", html, flags=re.DOTALL | re.IGNORECASE)
     if not blocks:
         return html
 
-    slug = path.stem
-    css_path = ROOT / "css" / f"{slug}.css"
+    css_path = css_target_for(path)
     existing = css_path.read_text(encoding="utf-8") if css_path.exists() else ""
     extracted = "\n\n".join(block.strip() for block in blocks if block.strip())
 
     if extracted and extracted not in existing:
-        header = f"/* Estilos territoriais de {slug.title()} — extraídos do HTML */\n"
+        label = path.stem.replace("-", " ").title()
+        header = f"/* Estilos específicos de {label} — extraídos do HTML */\n"
         combined = existing.rstrip() + ("\n\n" if existing.strip() else header) + extracted + "\n"
         css_path.write_text(combined, encoding="utf-8")
 
     html = re.sub(r"\s*<style>.*?</style>\s*", "\n", html, flags=re.DOTALL | re.IGNORECASE)
-    href = f'../css/{slug}.css'
+    href = f'../css/{css_path.name}'
     if href not in html:
         mobile_link = '<link rel="stylesheet" href="../css/mobile.css">'
-        territory_link = f'  <link rel="stylesheet" href="{href}">'
-        html = html.replace(mobile_link, mobile_link + "\n" + territory_link, 1)
+        page_link = f'  <link rel="stylesheet" href="{href}">'
+        html = html.replace(mobile_link, mobile_link + "\n" + page_link, 1)
 
     return html
 
@@ -193,17 +213,62 @@ def mark_document(html: str) -> str:
     return html
 
 
+def remove_redundant_progress_script(html: str) -> str:
+    pattern = re.compile(
+        r"\n?\s*<script>\s*const progressBar\s*=.*?"
+        r"function updateReadingProgress\(\).*?"
+        r"updateReadingProgress\(\);\s*</script>",
+        flags=re.DOTALL,
+    )
+    return pattern.sub("", html)
+
+
+def patch_shared_assets() -> list[Path]:
+    changed: list[Path] = []
+
+    js_path = ROOT / "js" / "editorial.js"
+    if js_path.exists():
+        js = js_path.read_text(encoding="utf-8")
+        updated = js.replace(
+            "return heading ? heading.textContent.replace(/\\s+/g, ' ').trim() : document.title.split('—')[0].trim();",
+            "return heading ? (heading.innerText || heading.textContent).replace(/\\s+/g, ' ').trim() : document.title.split('—')[0].trim();",
+        ).replace(
+            "/(?:card|entry|panel|note)$/.test(name)",
+            "/(?:card|entry|panel)$/.test(name)",
+        )
+        if updated != js:
+            js_path.write_text(updated, encoding="utf-8")
+            changed.append(js_path)
+
+    css_path = ROOT / "css" / "editorial.css"
+    if css_path.exists():
+        css = css_path.read_text(encoding="utf-8")
+        marker = "/* Correção de espaçamento para índices territoriais legados */"
+        if marker not in css:
+            css += (
+                "\n\n" + marker + "\n"
+                ".content-index > .mobile-container > .content-index__list {\n"
+                "  padding: 0 !important;\n"
+                "}\n"
+            )
+            css_path.write_text(css, encoding="utf-8")
+            changed.append(css_path)
+
+    return changed
+
+
 def process_html(path: Path) -> bool:
     original = path.read_text(encoding="utf-8")
     html = original
     is_territory = path.parent.name == "territorios"
 
-    html = extract_inline_territory_css(path, html)
+    html = extract_inline_css(path, html)
     html = normalize_class_attributes(html, is_territory)
     html = normalize_images(html)
     html = add_editorial_placeholders(path, html)
     html = add_editorial_script(path, html)
     html = mark_document(html)
+    html = remove_redundant_progress_script(html)
 
     if html != original:
         path.write_text(html, encoding="utf-8")
@@ -212,7 +277,7 @@ def process_html(path: Path) -> bool:
 
 
 def main() -> int:
-    changed: list[Path] = []
+    changed: list[Path] = patch_shared_assets()
 
     root_index = ROOT / "index.html"
     if root_index.exists() and process_html(root_index):
@@ -228,7 +293,11 @@ def main() -> int:
 
     if changed:
         print("Padrão editorial aplicado a:")
+        seen: set[Path] = set()
         for path in changed:
+            if path in seen:
+                continue
+            seen.add(path)
             print(f"- {path.relative_to(ROOT)}")
     else:
         print("Nenhuma alteração necessária; o padrão editorial já está aplicado.")
