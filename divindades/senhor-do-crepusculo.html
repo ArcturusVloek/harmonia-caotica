@@ -193,18 +193,6 @@
       <li><a href="../territorios/umbra.html"><span class="bottom-navigation-icon">◇</span>Umbra</a></li>
     </ul>
   </nav>
-
-  <script>
-    const progressBar=document.querySelector('.reading-progress');
-    function updateReadingProgress(){
-      const documentHeight=document.documentElement.scrollHeight-window.innerHeight;
-      const progress=documentHeight>0?window.scrollY/documentHeight:0;
-      progressBar.style.width=`${Math.min(progress*100,100)}%`;
-    }
-    window.addEventListener('scroll',updateReadingProgress,{passive:true});
-    window.addEventListener('resize',updateReadingProgress);
-    updateReadingProgress();
-  </script>
   <script src="../js/editorial.js" defer></script>
 </body>
 </html>

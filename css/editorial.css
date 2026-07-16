@@ -597,3 +597,9 @@ img[loading="lazy"] {
     transition: none;
   }
 }
+
+
+/* Correção de espaçamento para índices territoriais legados */
+.content-index > .mobile-container > .content-index__list {
+  padding: 0 !important;
+}

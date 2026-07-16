@@ -77,7 +77,7 @@
         <aside class="memory-seal" data-reveal aria-label="Princípios da memória em Umbra">
           <div class="memory-seal__header"><span>Fundamento civilizacional</span><strong>O ciclo da memória</strong></div>
           <span class="memory-seal__word">Nome</span><span class="memory-seal__word">Vida</span><span class="memory-seal__word">Verdade</span><span class="memory-seal__word">Descanso</span><span class="memory-seal__word">Memória</span><span class="memory-seal__word">Testemunho</span>
-          <small class="memory-seal__note territory-card">O fim não exige o apagamento</small>
+          <small class="memory-seal__note">O fim não exige o apagamento</small>
         </aside>
       </section>
 
@@ -170,7 +170,7 @@
           <article class="species-card territory-card" data-reveal><h3>Lótus do Véu</h3><p>Suas pétalas fornecem sedativos e analgésicos; doses elevadas podem causar perda de consciência.</p></article>
           <article class="species-card territory-card" data-reveal><h3>Madeira Ébona</h3><p>Retirada de árvores cultivadas e manejadas, é valiosa para bibliotecas, embarcações e objetos cerimoniais.</p></article>
         </div>
-        <div class="resource-note territory-card" data-reveal><p>Corvos do Véu, Mariposas do Luto, Corujas Cinzentas, Cervos de Ônix, Lobos Cinéreos, Peixes-Espectrais e Abelhas Lunares estão entre os animais mais conhecidos.</p><p>As Abelhas Lunares polinizam flores noturnas e produzem Mel Sombrio, utilizado como alimento, conservante e ingrediente medicinal.</p><p>Os Peixes-Espectrais não são espíritos: seus corpos translúcidos refletem minerais presentes na água.</p></div>
+        <div class="resource-note" data-reveal><p>Corvos do Véu, Mariposas do Luto, Corujas Cinzentas, Cervos de Ônix, Lobos Cinéreos, Peixes-Espectrais e Abelhas Lunares estão entre os animais mais conhecidos.</p><p>As Abelhas Lunares polinizam flores noturnas e produzem Mel Sombrio, utilizado como alimento, conservante e ingrediente medicinal.</p><p>Os Peixes-Espectrais não são espíritos: seus corpos translúcidos refletem minerais presentes na água.</p></div>
       </section>
 
       <section id="ameacas" class="umbra-section territory-section">
@@ -181,7 +181,7 @@
           <article class="threat-card territory-card" data-reveal><h3>Ossários Ambulantes</h3><p>Restos de diferentes mortos unidos por magia. Destruir a estrutura não basta; os ossos precisam ser separados, registrados e sepultados.</p></article>
           <article class="threat-card territory-card" data-reveal><h3>Enlutados</h3><p>Manifestações formadas pelo sofrimento acumulado em lugares de tragédia, capazes de provocar culpa, tristeza e desespero.</p></article>
         </div>
-        <div class="violations-note territory-card" data-reveal><p>Necromantes, saqueadores de tumbas e colecionadores de relíquias representam ameaças frequentes. Para os umbranos, utilizar um corpo ou uma presença espiritual como propriedade é uma das maiores violações possíveis.</p></div>
+        <div class="violations-note" data-reveal><p>Necromantes, saqueadores de tumbas e colecionadores de relíquias representam ameaças frequentes. Para os umbranos, utilizar um corpo ou uma presença espiritual como propriedade é uma das maiores violações possíveis.</p></div>
       </section>
 
       <section id="economia" class="umbra-section territory-section">
@@ -224,17 +224,6 @@
       <li><a class="active" href="#topo" aria-current="page"><span class="bottom-navigation-icon">◇</span>Umbra</a></li>
     </ul>
   </nav>
-
-  <script>
-    const progressBar=document.querySelector('.reading-progress');
-    const revealElements=document.querySelectorAll('[data-reveal]');
-    const indexLinks=Array.from(document.querySelectorAll('.umbra-index a'));
-    const indexedSections=indexLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
-    function updateReadingProgress(){const documentHeight=document.documentElement.scrollHeight-window.innerHeight;const progress=documentHeight>0?window.scrollY/documentHeight:0;progressBar.style.width=`${Math.min(progress*100,100)}%`;}
-    const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);});},{threshold:.12,rootMargin:'0px 0px -7% 0px'});
-    const sectionObserver=new IntersectionObserver(entries=>{const current=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!current)return;indexLinks.forEach(link=>{const active=link.getAttribute('href')===`#${current.target.id}`;link.classList.toggle('active',active);if(active)link.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});});},{rootMargin:'-30% 0px -56% 0px',threshold:[0,.1,.35,.6]});
-    revealElements.forEach(element=>revealObserver.observe(element));indexedSections.forEach(section=>sectionObserver.observe(section));window.addEventListener('scroll',updateReadingProgress,{passive:true});window.addEventListener('resize',updateReadingProgress);updateReadingProgress();
-  </script>
   <script src="../js/editorial.js" defer></script>
 </body>
 </html>

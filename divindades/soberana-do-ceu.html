@@ -134,12 +134,6 @@
 
   <footer class="mobile-footer"><div class="mobile-container">Harmonia Caótica · Mundo de Vaelora</div></footer>
   <nav class="bottom-navigation" aria-label="Navegação principal"><ul class="bottom-navigation-list"><li><a href="../index.html"><span class="bottom-navigation-icon">◆</span>Início</a></li><li><a href="../mundo/origem.html"><span class="bottom-navigation-icon">◉</span>Mundo</a></li><li><a class="active" href="#topo" aria-current="page"><span class="bottom-navigation-icon">✦</span>Divindade</a></li><li><a href="../territorios/tirena.html"><span class="bottom-navigation-icon">◇</span>Tirena</a></li></ul></nav>
-
-  <script>
-    const progressBar=document.querySelector('.reading-progress');
-    function updateReadingProgress(){const documentHeight=document.documentElement.scrollHeight-window.innerHeight;const progress=documentHeight>0?window.scrollY/documentHeight:0;progressBar.style.width=`${Math.min(progress*100,100)}%`;}
-    window.addEventListener('scroll',updateReadingProgress,{passive:true});window.addEventListener('resize',updateReadingProgress);updateReadingProgress();
-  </script>
   <script src="../js/editorial.js" defer></script>
 </body>
 </html>

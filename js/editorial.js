@@ -75,7 +75,7 @@
 
   const pageTitle = () => {
     const heading = document.querySelector('main h1');
-    return heading ? heading.textContent.replace(/\s+/g, ' ').trim() : document.title.split('—')[0].trim();
+    return heading ? (heading.innerText || heading.textContent).replace(/\s+/g, ' ').trim() : document.title.split('—')[0].trim();
   };
 
   const readingRoot = () => document.querySelector('main article, main .territory-content, main [class$="-content"], main') || document.body;
@@ -119,7 +119,7 @@
     });
 
     document.querySelectorAll('article :is(article, div, aside)').forEach((node) => {
-      if ([...node.classList].some((name) => /(?:card|entry|panel|note)$/.test(name))) {
+      if ([...node.classList].some((name) => /(?:card|entry|panel)$/.test(name))) {
         node.classList.add('territory-card');
       }
       if ([...node.classList].some((name) => /(?:grid|ledger)$/.test(name))) {
