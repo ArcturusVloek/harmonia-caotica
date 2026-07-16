@@ -9,9 +9,10 @@
   <title>Senhora da Aurora — Harmonia Caótica</title>
   <link rel="preload" href="/harmonia-caotica/imagens/divindades/senhora-da-aurora.jpg" as="image" type="image/jpeg" fetchpriority="high">
   <link rel="stylesheet" href="../css/mobile.css">
+  <link rel="stylesheet" href="../css/dominios.css">
 </head>
 
-<body id="topo" class="deity-page deity-page--aurora" style="--deity-accent:#edc574;--deity-accent-soft:rgba(237,197,116,.15);--deity-accent-border:rgba(237,197,116,.38);">
+<body id="topo" class="deity-page deity-page--aurora" style="--deity-accent:#edc574;--deity-accent-soft:rgba(237,197,116,.15);--deity-accent-border:rgba(237,197,116,.38);--domain-accent:#edc574;--domain-accent-soft:rgba(237,197,116,.15);--domain-accent-border:rgba(237,197,116,.38);">
   <div class="reading-progress" aria-hidden="true"></div>
   <header class="mobile-header">
     <div class="mobile-header-inner mobile-container">
@@ -32,7 +33,6 @@
     </section>
 
     <aside class="archive-record" data-auto-record aria-label="Identificação editorial"></aside>
-
     <nav id="indice-da-pagina" class="content-index" data-auto-index aria-label="Índice da página"></nav>
 
     <article class="mobile-article mobile-container">
@@ -134,20 +134,31 @@
         </div>
       </section>
 
-      <section class="sacred-section" aria-labelledby="titulo-conceitos-aurora">
-        <p class="section-kicker">Fundamentos dos milagres</p>
-        <h2 id="titulo-conceitos-aurora">Conceitos Sagrados</h2>
-        <div class="sacred-grid sacred-grid--concepts">
-          <div class="sacred-item">Luz</div>
-          <div class="sacred-item">Vida</div>
-          <div class="sacred-item">Sangue</div>
-          <div class="sacred-item">Regeneração</div>
-          <div class="sacred-item">Cura</div>
-          <div class="sacred-item">Purificação</div>
-          <div class="sacred-item">Vitalidade</div>
-          <div class="sacred-item">Renascimento</div>
-          <div class="sacred-item">Fertilidade</div>
-          <div class="sacred-item">Proteção</div>
+      <section class="sacred-section domain-gateway-section" aria-labelledby="titulo-dominios-aurora">
+        <p class="section-kicker">Poderes da Divindade</p>
+        <h2 id="titulo-dominios-aurora">Domínios e Vertentes</h2>
+        <p>Os Domínios da Senhora da Aurora são apresentados em páginas próprias, com suas possibilidades, limites, cinco Vertentes e as Heranças que modificam seus Milagres durante o Combate.</p>
+
+        <div class="domain-gateway-grid">
+          <a class="domain-gateway-card" href="../dominios/vida.html">
+            <p class="domain-gateway-card__kicker">Domínio publicado</p>
+            <h3>Vida</h3>
+            <p>Governa recuperação, sangue, desenvolvimento, geração de novas existências e a força que sustenta organismos vivos.</p>
+            <div class="domain-gateway-card__branches" aria-label="Vertentes da Vida">
+              <span>Cura</span><span>Sangue</span><span>Crescimento</span><span>Fecundidade</span><span>Vigor</span>
+            </div>
+            <span class="domain-gateway-card__action">Explorar o Domínio da Vida →</span>
+          </a>
+
+          <div class="domain-gateway-card domain-gateway-card--pending">
+            <p class="domain-gateway-card__kicker">Em desenvolvimento</p>
+            <h3>Luz</h3>
+            <p>Governa claridade, revelação, refração, purificação luminosa e formas construídas a partir do brilho.</p>
+            <div class="domain-gateway-card__branches" aria-label="Vertentes da Luz">
+              <span>Revelação</span><span>Refração</span><span>Purificação</span><span>Esplendor</span><span>Prisma</span>
+            </div>
+            <span class="domain-gateway-card__action">Página em preparação</span>
+          </div>
         </div>
       </section>
 
@@ -179,6 +190,7 @@
 
       <nav class="article-navigation" aria-label="Navegação da página">
         <a href="../index.html#divindades">Voltar às Divindades</a>
+        <a href="../dominios/vida.html">Explorar a Vida</a>
         <a href="../territorios/alba.html">Conhecer Alba</a>
       </nav>
     </article>
