@@ -1,2 +1,7 @@
 @import url("./mobile-base.css");
 @import url("./editorial.css");
+
+.deity-page {
+  --domain-panel: rgba(16, 14, 21, .9);
+  --domain-panel-strong: rgba(10, 9, 14, .97);
+}
