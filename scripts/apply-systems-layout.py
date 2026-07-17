@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SYSTEMS_DIR = ROOT / "sistemas"
 STYLE_HREF = "../css/sistemas.css"
 SCRIPT_SRC = "../js/sistemas.js"
+LAYOUT_VERSION = 1
 
 
 def apply_to_page(path: Path) -> bool:
@@ -49,11 +50,11 @@ def main() -> int:
             changed.append(path)
 
     if changed:
-        print("Layout de Sistemas aplicado a:")
+        print(f"Layout de Sistemas v{LAYOUT_VERSION} aplicado a:")
         for path in changed:
             print(f"- {path.relative_to(ROOT)}")
     else:
-        print("Todas as páginas de Sistemas já utilizam o layout compartilhado.")
+        print(f"Todas as páginas de Sistemas já utilizam o layout compartilhado v{LAYOUT_VERSION}.")
 
     return 0
 
