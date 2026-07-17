@@ -3,6 +3,66 @@
 
   const cleanText = (value) => (value || '').replace(/\s+/g, ' ').trim();
 
+  const installTableLayoutFix = () => {
+    if (document.getElementById('systems-table-layout-fix')) return;
+
+    const style = document.createElement('style');
+    style.id = 'systems-table-layout-fix';
+    style.textContent = `
+      .systems-page .table-wrap table {
+        margin: 0 !important;
+      }
+
+      .systems-page .table-wrap caption {
+        display: none !important;
+      }
+
+      .systems-page .table-wrap thead,
+      .systems-page .table-wrap tbody,
+      .systems-page .table-wrap tr {
+        position: static !important;
+        inset: auto !important;
+        transform: none !important;
+      }
+
+      .systems-page .table-wrap th {
+        position: static !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        z-index: auto !important;
+        transform: none !important;
+      }
+
+      @media (min-width: 761px) {
+        .systems-page .table-wrap thead {
+          display: table-header-group !important;
+          width: auto !important;
+          height: auto !important;
+          overflow: visible !important;
+          clip: auto !important;
+          clip-path: none !important;
+        }
+
+        .systems-page .table-wrap tbody {
+          display: table-row-group !important;
+        }
+
+        .systems-page .table-wrap tr {
+          display: table-row !important;
+        }
+
+        .systems-page .table-wrap th,
+        .systems-page .table-wrap td {
+          display: table-cell !important;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+  };
+
   const closestHeadingText = (wrapper) => {
     let node = wrapper.previousElementSibling;
 
@@ -50,10 +110,13 @@
       table.prepend(caption);
     }
 
-    const toolbar = document.createElement('div');
-    toolbar.className = 'system-table-toolbar';
-    toolbar.innerHTML = `<span>Tabela de consulta</span><strong>${title}</strong>`;
-    wrapper.prepend(toolbar);
+    if (!wrapper.querySelector(':scope > .system-table-toolbar')) {
+      const toolbar = document.createElement('div');
+      toolbar.className = 'system-table-toolbar';
+      toolbar.innerHTML = `<span>Tabela de consulta</span><strong>${title}</strong>`;
+      wrapper.prepend(toolbar);
+    }
+
     wrapper.setAttribute('aria-label', `Tabela: ${title}`);
 
     table.querySelectorAll('tbody tr').forEach((row) => {
@@ -89,6 +152,7 @@
   const start = () => {
     if (!document.body.classList.contains('systems-page')) return;
 
+    installTableLayoutFix();
     improveSystemSections();
     document.querySelectorAll('.systems-page .table-wrap table').forEach(enhanceTable);
     document.documentElement.classList.add('systems-layout-ready');
