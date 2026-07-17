@@ -1,0 +1,94 @@
+/* Fallback para páginas de Sistemas que ainda não carregam sistemas.js. */
+
+@media (max-width: 760px) {
+  html:not(.systems-layout-ready) .systems-page .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--system-line);
+    border-radius: 18px;
+    background: var(--system-panel-strong);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .24);
+    scrollbar-width: thin;
+    scrollbar-color: var(--system-accent-deep) transparent;
+  }
+
+  html:not(.systems-layout-ready) .systems-page .table-wrap::after {
+    content: "Deslize para consultar a tabela completa →";
+    position: sticky;
+    left: 0;
+    display: block;
+    width: fit-content;
+    padding: 10px 16px 12px;
+    color: var(--muted);
+    font-family: var(--ui);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+  }
+
+  html:not(.systems-layout-ready) .systems-page .table-wrap table {
+    display: table;
+    width: max-content;
+    min-width: 100%;
+    max-width: none;
+  }
+
+  html:not(.systems-layout-ready) .systems-page .table-wrap thead {
+    position: static;
+    display: table-header-group;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+  }
+
+  html:not(.systems-layout-ready) .systems-page .table-wrap tbody {
+    display: table-row-group;
+  }
+
+  html:not(.systems-layout-ready) .systems-page .table-wrap tr {
+    display: table-row;
+    width: auto;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  html:not(.systems-layout-ready) .systems-page .table-wrap th,
+  html:not(.systems-layout-ready) .systems-page .table-wrap td {
+    display: table-cell;
+    width: auto;
+    min-width: 118px;
+    padding: 14px 16px;
+    border-right: 1px solid rgba(184, 154, 231, .09);
+    border-bottom: 1px solid rgba(184, 154, 231, .09);
+    background: transparent;
+    white-space: normal;
+  }
+
+  html:not(.systems-layout-ready) .systems-page .table-wrap th {
+    position: static;
+    background: #151020;
+  }
+
+  html:not(.systems-layout-ready) .systems-page .table-wrap th:last-child,
+  html:not(.systems-layout-ready) .systems-page .table-wrap td:last-child {
+    min-width: 220px;
+    border-right: 0;
+  }
+
+  html:not(.systems-layout-ready) .systems-page .table-wrap td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    min-width: 104px;
+    background: #110d19 !important;
+    box-shadow: 10px 0 20px rgba(0, 0, 0, .16);
+  }
+
+  html:not(.systems-layout-ready) .systems-page .table-wrap td::before {
+    display: none;
+  }
+}
