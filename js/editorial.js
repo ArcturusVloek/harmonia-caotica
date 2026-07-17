@@ -6,9 +6,11 @@
     ? new URL('.', currentScript.src)
     : new URL('./js/', document.baseURI);
 
-  const loadScript = (name) => new Promise((resolve, reject) => {
+  const loadScript = (name, version = '') => new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = new URL(name, baseUrl).href;
+    const url = new URL(name, baseUrl);
+    if (version) url.searchParams.set('v', version);
+    script.src = url.href;
     script.async = false;
     script.onload = resolve;
     script.onerror = reject;
@@ -22,7 +24,7 @@
   loadScript('editorial-core.js')
     .then(() => {
       if (document.body.classList.contains('systems-page') && !systemsScriptAlreadyLoaded()) {
-        return loadScript('sistemas.js');
+        return loadScript('sistemas.js', '20260717c');
       }
       return undefined;
     })
