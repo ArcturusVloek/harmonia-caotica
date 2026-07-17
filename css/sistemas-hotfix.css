@@ -1,0 +1,9 @@
+/* Correção: evita que o cabeçalho das tabelas cubra linhas durante a rolagem. */
+
+@media (min-width: 761px) {
+  .systems-page .table-wrap th {
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+  }
+}
