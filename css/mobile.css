@@ -1,5 +1,7 @@
 @import url("./mobile-base.css");
 @import url("./editorial.css");
+@import url("./sistemas.css");
+@import url("./sistemas-fallback.css");
 
 .deity-page {
   --domain-panel: rgba(16, 14, 21, .9);
