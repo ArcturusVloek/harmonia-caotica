@@ -1,0 +1,289 @@
+/* ==========================================================
+   SISTEMAS NA PÁGINA INICIAL — HARMONIA CAÓTICA
+   Acesso imediato para novos jogadores e consulta experiente
+   ========================================================== */
+
+.home-page .site-header__nav .site-header__systems {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 8px 13px;
+  border: 1px solid rgba(239, 213, 141, .42);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(239, 213, 141, .12), rgba(199, 164, 92, .035)),
+    rgba(12, 10, 16, .68);
+  color: var(--gold-light);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .22);
+}
+
+.home-play-section {
+  position: relative;
+  overflow: hidden;
+  padding: 76px 0;
+  border-top: 1px solid rgba(184, 154, 231, .12);
+  border-bottom: 1px solid rgba(184, 154, 231, .12);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(184, 154, 231, .14), transparent 27rem),
+    radial-gradient(circle at 88% 82%, rgba(199, 164, 92, .08), transparent 30rem),
+    linear-gradient(180deg, #0a0810, #0e0a15 52%, #09080d);
+}
+
+.home-play-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 79px, rgba(184, 154, 231, .018) 80px),
+    repeating-linear-gradient(0deg, transparent 0 79px, rgba(184, 154, 231, .014) 80px);
+}
+
+.home-play-section .home-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.home-play__intro {
+  max-width: 760px;
+  margin-bottom: 34px;
+}
+
+.home-play__intro h2 {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: clamp(48px, 13vw, 78px);
+  font-weight: 600;
+  line-height: .92;
+  letter-spacing: -1.3px;
+  text-wrap: balance;
+}
+
+.home-play__intro > p:last-child {
+  max-width: 670px;
+  margin: 21px 0 0;
+  color: var(--paper-soft);
+  font-size: 14px;
+  line-height: 1.78;
+}
+
+.home-play__assurance {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 21px;
+  padding: 8px 12px;
+  border: 1px solid rgba(184, 154, 231, .25);
+  border-radius: 999px;
+  background: rgba(184, 154, 231, .065);
+  color: #dfd0fa;
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .85px;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.home-play__assurance::before {
+  content: "✦";
+  color: #b89ae7;
+  font-family: var(--display);
+  font-size: 13px;
+}
+
+.home-play__routes {
+  display: grid;
+  gap: 15px;
+}
+
+.home-play-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+  padding: 25px 23px;
+  overflow: hidden;
+  border: 1px solid rgba(184, 154, 231, .24);
+  border-radius: 25px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(184, 154, 231, .14), transparent 45%),
+    linear-gradient(145deg, rgba(184, 154, 231, .06), transparent 62%),
+    rgba(17, 14, 24, .92);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 22px 52px rgba(0, 0, 0, .27);
+  transition: transform var(--ease), border-color var(--ease), box-shadow var(--ease);
+}
+
+.home-play-card--primary {
+  border-color: rgba(239, 213, 141, .48);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(239, 213, 141, .18), transparent 44%),
+    linear-gradient(145deg, rgba(199, 164, 92, .1), transparent 62%),
+    rgba(18, 15, 22, .96);
+}
+
+.home-play-card::after {
+  content: "";
+  position: absolute;
+  right: -54px;
+  bottom: -62px;
+  width: 164px;
+  height: 164px;
+  border: 1px solid rgba(184, 154, 231, .1);
+  border-radius: 50%;
+  box-shadow: 0 0 0 22px rgba(184, 154, 231, .022);
+}
+
+.home-play-card--primary::after {
+  border-color: rgba(239, 213, 141, .13);
+  box-shadow: 0 0 0 22px rgba(199, 164, 92, .025);
+}
+
+.home-play-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-play-card__eyebrow {
+  margin: 0 0 14px;
+  color: #b89ae7;
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.15px;
+  text-transform: uppercase;
+}
+
+.home-play-card--primary .home-play-card__eyebrow {
+  color: var(--gold);
+}
+
+.home-play-card h3 {
+  margin: 0;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: clamp(31px, 8vw, 42px);
+  font-weight: 600;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.home-play-card p:not(.home-play-card__eyebrow) {
+  margin: 15px 0 0;
+  color: var(--paper-soft);
+  font-size: 13px;
+  line-height: 1.68;
+}
+
+.home-play-card__action {
+  display: inline-flex;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 24px;
+  color: var(--gold-light);
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .9px;
+  text-transform: uppercase;
+}
+
+.home-play__portal {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  margin-top: 24px;
+  padding: 22px 23px;
+  border: 1px solid rgba(184, 154, 231, .2);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, .02);
+}
+
+.home-play__portal p {
+  max-width: 650px;
+  margin: 0;
+  color: var(--paper-soft);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.home-play__portal a {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 17px;
+  border: 1px solid rgba(184, 154, 231, .42);
+  border-radius: 999px;
+  background: rgba(184, 154, 231, .075);
+  color: #dfd0fa;
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .9px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+@media (min-width: 700px) {
+  .home-play__routes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .home-play-card {
+    min-height: 310px;
+  }
+
+  .home-play__portal {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 900px) {
+  .home-play-section {
+    padding: 104px 0;
+  }
+
+  .home-play__intro {
+    margin-bottom: 46px;
+  }
+
+  .home-play__intro h2 {
+    font-size: 82px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-page .site-header__nav .site-header__systems:hover {
+    border-color: rgba(239, 213, 141, .74);
+    background: rgba(199, 164, 92, .12);
+  }
+
+  .home-play-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(184, 154, 231, .52);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, .38);
+  }
+
+  .home-play-card--primary:hover {
+    border-color: rgba(239, 213, 141, .76);
+  }
+
+  .home-play__portal a:hover {
+    border-color: rgba(184, 154, 231, .72);
+    background: rgba(184, 154, 231, .12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-play-card {
+    transition: none;
+  }
+}
