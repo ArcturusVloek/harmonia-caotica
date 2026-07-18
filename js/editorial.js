@@ -21,8 +21,28 @@
     document.documentElement.classList.contains('systems-layout-ready') ||
     [...document.scripts].some((script) => /\/sistemas\.js(?:$|\?)/.test(script.src));
 
-  loadScript('editorial-core.js')
+  /*
+   * O índice editorial apenas destaca a seção atual. A versão anterior usava
+   * scrollIntoView() em cada mudança de seção, o que podia mover o documento
+   * principal e devolver o leitor ao topo. Mantemos somente uma centralização
+   * horizontal local quando o índice móvel realmente possui overflow.
+   */
+  const stabilizeIndexNavigation = () => {
+    document.querySelectorAll('.content-index a[href^="#"]').forEach((link) => {
+      link.scrollIntoView = () => {
+        const list = link.closest('.content-index__list, .territory-index__list');
+        if (!list || list.scrollWidth <= list.clientWidth) return;
+
+        const left = link.offsetLeft - ((list.clientWidth - link.clientWidth) / 2);
+        list.scrollTo({ left: Math.max(0, left), behavior: 'auto' });
+      };
+    });
+  };
+
+  loadScript('editorial-core.js', '20260718b')
     .then(() => {
+      stabilizeIndexNavigation();
+
       if (document.body.classList.contains('systems-page') && !systemsScriptAlreadyLoaded()) {
         return loadScript('sistemas.js', '20260718a');
       }
