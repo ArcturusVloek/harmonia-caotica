@@ -1,0 +1,898 @@
+/* ==========================================================
+   LAYOUT ESTÁVEL V2 — HARMONIA CAÓTICA
+   Camada final de responsividade, proporção e compatibilidade.
+   Mobile first: o modo amplo só é ativado pela classe ui-desktop.
+   ========================================================== */
+
+:root {
+  --ui-header-height: 72px;
+  --ui-content-width: 1180px;
+  --ui-reading-width: 76ch;
+  --ui-card-radius: 18px;
+  --ui-gap: clamp(16px, 2vw, 28px);
+}
+
+html {
+  min-width: 320px;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-gutter: stable;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body.atlas-site {
+  width: 100%;
+  min-width: 0 !important;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+.atlas-site :is(main, section, article, aside, header, footer, nav, div, figure) {
+  min-width: 0;
+}
+
+.atlas-site :is(img, svg, video, canvas, iframe) {
+  max-width: 100%;
+}
+
+.atlas-site img {
+  height: auto;
+}
+
+.atlas-site :is(a, button, summary, input, select, textarea) {
+  touch-action: manipulation;
+}
+
+.atlas-site :is(button, a, summary) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.atlas-site .home-shell,
+.atlas-site .mobile-container {
+  width: min(100%, var(--atlas-shell, 1440px)) !important;
+  max-width: var(--atlas-shell, 1440px) !important;
+  min-width: 0 !important;
+  margin-inline: auto !important;
+}
+
+/* ==========================================================
+   TÍTULOS E TEXTO — nenhum título pode escapar do contêiner
+   ========================================================== */
+
+.atlas-site :is(
+  .home-hero__title,
+  .internal-title,
+  .territory-hero__title,
+  [class$="-hero__title"],
+  .home-play__intro h2,
+  .editorial-heading h2,
+  .archive-section__intro h2,
+  .domain-section > h2,
+  .territory-section__heading h2,
+  [class$="-section__heading"] h2,
+  .deity-entry h3,
+  .realm-entry h3,
+  .system-category-card h3,
+  .system-entry-card h3,
+  .system-route-card h3
+) {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  white-space: normal !important;
+  text-wrap: balance;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.atlas-site :is(.internal-title, .territory-hero__title, [class$="-hero__title"]) {
+  width: min(100%, 14ch) !important;
+  font-size: clamp(54px, 8vw, 118px) !important;
+  line-height: .86 !important;
+  letter-spacing: -.045em !important;
+}
+
+.atlas-site :is(.internal-title, .territory-hero__title, [class$="-hero__title"]).title-is-long {
+  width: min(100%, 18ch) !important;
+  font-size: clamp(46px, 6.3vw, 88px) !important;
+  line-height: .9 !important;
+}
+
+.atlas-site :is(.internal-title, .territory-hero__title, [class$="-hero__title"]).title-is-very-long {
+  width: min(100%, 23ch) !important;
+  font-size: clamp(38px, 5.2vw, 70px) !important;
+  line-height: .94 !important;
+  letter-spacing: -.025em !important;
+}
+
+.atlas-site :is(.home-play__intro h2, .editorial-heading h2, .archive-section__intro h2) {
+  font-size: clamp(46px, 6.4vw, 86px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.04em !important;
+}
+
+.atlas-site :is(.domain-section > h2, .territory-section__heading h2, [class$="-section__heading"] h2) {
+  font-size: clamp(38px, 5vw, 66px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.025em !important;
+}
+
+.atlas-site :is(.domain-badge, .deity-domain-badge, .territory-hero__domain, [class$="-hero__domain"]) {
+  width: fit-content;
+  max-width: 100%;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================================
+   NAVEGAÇÃO — estado compacto é a base segura
+   ========================================================== */
+
+.atlas-site .site-header__inner,
+.atlas-site .mobile-header-inner {
+  position: relative;
+  width: min(100%, var(--atlas-shell, 1440px));
+  min-width: 0;
+  min-height: var(--ui-header-height) !important;
+  flex-wrap: nowrap !important;
+}
+
+.atlas-site .site-brand,
+.atlas-site .mobile-logo {
+  min-width: 0;
+  max-width: calc(100vw - 150px);
+  flex: 0 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.atlas-site .atlas-menu-toggle,
+.atlas-site .atlas-index-toggle,
+.atlas-site .atlas-index-close {
+  position: relative;
+  z-index: 2;
+  min-width: 44px;
+  min-height: 44px;
+  flex: 0 0 auto;
+}
+
+.atlas-site .atlas-menu-toggle {
+  order: 3;
+  display: inline-flex !important;
+}
+
+.atlas-site .atlas-index-toggle {
+  order: 2;
+  display: inline-flex !important;
+}
+
+.atlas-site .atlas-global-nav,
+.atlas-site .site-header__nav {
+  position: fixed !important;
+  top: calc(var(--ui-header-height) + env(safe-area-inset-top) + 10px) !important;
+  right: max(12px, env(safe-area-inset-right)) !important;
+  left: auto !important;
+  bottom: auto !important;
+  z-index: 560 !important;
+  width: min(360px, calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right))) !important;
+  max-width: calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)) !important;
+  max-height: calc(100vh - var(--ui-header-height) - 34px) !important;
+  max-height: calc(100dvh - var(--ui-header-height) - env(safe-area-inset-top) - 34px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  align-content: start !important;
+  gap: 5px !important;
+  margin: 0 !important;
+  padding: 12px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid rgba(185, 157, 214, .3) !important;
+  border-radius: 18px !important;
+  background: rgba(7, 9, 12, .985) !important;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .58) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(-10px) scale(.985) !important;
+  transform-origin: top right;
+  transition: opacity 180ms ease, transform 220ms cubic-bezier(.2, .72, .2, 1), visibility 0s linear 220ms;
+}
+
+.atlas-site.menu-open .atlas-global-nav,
+.atlas-site.menu-open .site-header__nav {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  transition-delay: 0s;
+}
+
+.atlas-site .atlas-global-nav a,
+.atlas-site .site-header__nav a {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 44px;
+  display: flex !important;
+  align-items: center !important;
+  padding: 14px 16px !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+.atlas-site .atlas-scrim {
+  display: block !important;
+  visibility: hidden;
+  z-index: 540 !important;
+}
+
+.atlas-site.menu-open .atlas-scrim,
+.atlas-site.index-open .atlas-scrim {
+  visibility: visible;
+}
+
+.atlas-site .content-index {
+  position: fixed !important;
+  inset: auto max(10px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left)) !important;
+  z-index: 570 !important;
+  width: auto !important;
+  max-width: none !important;
+  max-height: min(78vh, 760px) !important;
+  max-height: min(78dvh, 760px) !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border-radius: 22px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(calc(100% + 24px)) !important;
+  transition: opacity 180ms ease, transform 280ms cubic-bezier(.2, .72, .2, 1), visibility 0s linear 280ms;
+}
+
+.atlas-site.index-open .content-index {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  transition-delay: 0s;
+}
+
+.atlas-site .content-index > .mobile-container {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 10px !important;
+  padding: 16px !important;
+}
+
+.atlas-site .content-index__list,
+.atlas-site .territory-index__list {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  max-height: min(54vh, 520px) !important;
+  max-height: min(54dvh, 520px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 4px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+.atlas-site .content-index a,
+.atlas-site .territory-index a {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 42px;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* ==========================================================
+   CAPA E SEÇÕES DA PÁGINA INICIAL
+   ========================================================== */
+
+.atlas-site .home-hero,
+.atlas-site .home-hero__layout,
+.atlas-site .home-hero__content {
+  min-width: 0 !important;
+  max-width: 100%;
+}
+
+.atlas-site .home-hero__title {
+  width: min(100%, 9ch) !important;
+  max-width: 100% !important;
+  font-size: clamp(66px, 9vw, 138px) !important;
+  line-height: .78 !important;
+  letter-spacing: -.055em !important;
+}
+
+.atlas-site .home-hero__title span {
+  max-width: 100%;
+}
+
+.atlas-site .home-play__routes {
+  align-items: start;
+}
+
+.atlas-site .home-play-card {
+  height: auto !important;
+  min-height: 300px !important;
+  max-height: none !important;
+}
+
+.atlas-site .chapter-gateway {
+  height: auto !important;
+  min-height: clamp(380px, 42vw, 520px) !important;
+  max-height: 560px !important;
+}
+
+/* Panteão: cinco capas proporcionais, sem altura baseada na largura total. */
+.atlas-site .pantheon-ledger {
+  align-items: start !important;
+}
+
+.atlas-site .deity-entry,
+.atlas-site .deity-entry:nth-child(4),
+.atlas-site .deity-entry:nth-child(5),
+.atlas-site .deity-entry:last-child {
+  height: clamp(480px, 38vw, 620px) !important;
+  min-height: 0 !important;
+  max-height: 620px !important;
+}
+
+.atlas-site .deity-entry__portrait {
+  min-height: 0 !important;
+}
+
+.atlas-site .deity-entry__content {
+  max-height: 62%;
+  overflow: hidden;
+}
+
+.atlas-site .deity-entry h3 {
+  font-size: clamp(34px, 3.2vw, 52px) !important;
+  line-height: .98 !important;
+}
+
+/* Atlas territorial: uma capa larga e quatro cartões em duas colunas. */
+.atlas-site .atlas-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  grid-auto-flow: row !important;
+  grid-auto-rows: auto !important;
+  align-items: start !important;
+  gap: var(--ui-gap) !important;
+}
+
+.atlas-site .realm-entry,
+.atlas-site .realm-entry--featured,
+.atlas-site .realm-entry--umbra,
+.atlas-site .realm-entry--alba,
+.atlas-site .realm-entry--tirena,
+.atlas-site .realm-entry:last-child {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  width: 100% !important;
+  height: clamp(320px, 31vw, 470px) !important;
+  min-height: 0 !important;
+  max-height: 470px !important;
+  aspect-ratio: auto !important;
+  align-self: start !important;
+}
+
+.atlas-site .realm-entry--featured {
+  grid-column: 1 / -1 !important;
+  height: clamp(390px, 38vw, 560px) !important;
+  max-height: 560px !important;
+}
+
+.atlas-site .realm-entry img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.atlas-site .realm-entry__content {
+  max-width: min(100%, 760px);
+  padding: clamp(24px, 3vw, 42px) !important;
+}
+
+.atlas-site .realm-entry__content h3 {
+  font-size: clamp(42px, 5vw, 72px) !important;
+  line-height: .88 !important;
+}
+
+.atlas-site .archive-routes a {
+  height: auto !important;
+  min-height: 118px !important;
+}
+
+/* ==========================================================
+   PÁGINAS INTERNAS, TERRITÓRIOS E DOMÍNIOS
+   ========================================================== */
+
+.atlas-site .internal-page {
+  min-width: 0;
+}
+
+.atlas-site .internal-hero,
+.atlas-site .territory-hero,
+.atlas-site.territory-page [class$="-hero"] {
+  min-height: clamp(520px, 72svh, 760px) !important;
+  max-height: none !important;
+}
+
+.atlas-site .internal-hero-content,
+.atlas-site .territory-hero__content,
+.atlas-site.territory-page [class$="-hero__content"] {
+  width: min(100%, 920px) !important;
+  max-width: 920px !important;
+  min-width: 0 !important;
+}
+
+.atlas-site .internal-hero-content > *,
+.atlas-site .territory-hero__content > *,
+.atlas-site.territory-page [class$="-hero__content"] > * {
+  max-width: 100% !important;
+}
+
+.atlas-site .mobile-article.mobile-container,
+.atlas-site .territory-content {
+  width: min(100% - 32px, 1040px) !important;
+  max-width: 1040px !important;
+  min-width: 0 !important;
+  margin-inline: auto !important;
+}
+
+.atlas-site .mobile-article > :is(p, ul, ol, blockquote),
+.atlas-site .domain-section > :is(p, ul, ol, blockquote),
+.atlas-site .territory-section > :is(p, ul, ol, blockquote) {
+  max-width: var(--ui-reading-width);
+}
+
+.atlas-site :is(.territory-grid, [class$="-grid"], [class$="-ledger"], .domain-capabilities, .domain-guide, .system-entry-grid, .system-category-grid, .system-route-grid) {
+  min-width: 0;
+  align-items: start !important;
+}
+
+.atlas-site :is(.territory-card, .domain-capability, .domain-guide > *, .system-entry-card, .system-category-card, .system-route-card) {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  align-self: start !important;
+}
+
+.atlas-site .territory-grid,
+.atlas-site.territory-page [class$="-grid"],
+.atlas-site.territory-page [class$="-ledger"] {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)) !important;
+  gap: clamp(14px, 2vw, 24px) !important;
+}
+
+.atlas-site .territory-opening {
+  align-items: start !important;
+}
+
+/* ==========================================================
+   SISTEMAS E TABELAS
+   ========================================================== */
+
+.atlas-site.systems-page .system-entry-grid,
+.atlas-site.systems-page .system-category-grid,
+.atlas-site.systems-page .system-route-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)) !important;
+  gap: clamp(14px, 2vw, 22px) !important;
+}
+
+.atlas-site.systems-page :is(.system-entry-card, .system-category-card, .system-route-card) {
+  min-height: 0 !important;
+  padding: clamp(22px, 3vw, 32px) !important;
+}
+
+.atlas-site .table-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.atlas-site .table-wrap table {
+  width: 100% !important;
+  max-width: none !important;
+  border-collapse: collapse !important;
+}
+
+.atlas-site .table-wrap :is(thead, tbody, tr, th, td) {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+}
+
+.atlas-site .table-wrap th,
+.atlas-site .table-wrap td {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* ==========================================================
+   INTERFACE COMPACTA — Android, iOS, tablets e toque
+   ========================================================== */
+
+html.ui-compact .atlas-site .internal-page {
+  display: block !important;
+}
+
+html.ui-compact .atlas-site .home-hero {
+  min-height: auto !important;
+  padding-top: calc(var(--ui-header-height) + env(safe-area-inset-top) + 44px) !important;
+  padding-bottom: 64px !important;
+}
+
+html.ui-compact .atlas-site .home-hero__layout {
+  min-height: auto !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 36px !important;
+}
+
+html.ui-compact .atlas-site .home-hero__content {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 18px 0 18px clamp(18px, 5vw, 28px) !important;
+}
+
+html.ui-compact .atlas-site .home-hero__title {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 12px 0 22px !important;
+  font-size: clamp(42px, 12vw, 68px) !important;
+  line-height: .88 !important;
+  letter-spacing: -.04em !important;
+}
+
+html.ui-compact .atlas-site .home-hero__title span {
+  width: 100% !important;
+  display: block !important;
+  margin: .08em 0 0 .02em !important;
+  font-size: .92em !important;
+}
+
+html.ui-compact .atlas-site .cosmology-panel {
+  width: min(100%, 480px) !important;
+  max-width: 100% !important;
+}
+
+html.ui-compact .atlas-site :is(.home-play__routes, .world-prologue__grid, .archive-section__layout) {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+html.ui-compact .atlas-site .pantheon-ledger {
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 18px !important;
+}
+
+html.ui-compact .atlas-site .deity-entry,
+html.ui-compact .atlas-site .deity-entry:nth-child(4),
+html.ui-compact .atlas-site .deity-entry:nth-child(5),
+html.ui-compact .atlas-site .deity-entry:last-child {
+  grid-column: auto !important;
+  width: 100% !important;
+  height: clamp(440px, 118vw, 600px) !important;
+  max-height: 600px !important;
+}
+
+html.ui-compact .atlas-site .atlas-grid {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+html.ui-compact .atlas-site .realm-entry,
+html.ui-compact .atlas-site .realm-entry--featured,
+html.ui-compact .atlas-site .realm-entry:last-child {
+  grid-column: auto !important;
+  height: clamp(300px, 72vw, 500px) !important;
+  max-height: 500px !important;
+}
+
+html.ui-compact .atlas-site .realm-entry__content h3 {
+  font-size: clamp(38px, 12vw, 58px) !important;
+}
+
+html.ui-compact .atlas-site .internal-hero,
+html.ui-compact .atlas-site .territory-hero,
+html.ui-compact .atlas-site.territory-page [class$="-hero"] {
+  min-height: clamp(480px, 70svh, 650px) !important;
+  padding-top: calc(var(--ui-header-height) + env(safe-area-inset-top) + 34px) !important;
+  padding-bottom: 46px !important;
+}
+
+html.ui-compact .atlas-site .internal-hero-content,
+html.ui-compact .atlas-site .territory-hero__content,
+html.ui-compact .atlas-site.territory-page [class$="-hero__content"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: clamp(16px, 5vw, 28px) !important;
+  padding-right: 0 !important;
+}
+
+html.ui-compact .atlas-site :is(.internal-title, .territory-hero__title, [class$="-hero__title"]) {
+  width: 100% !important;
+  max-width: 100% !important;
+  font-size: clamp(38px, 10.8vw, 64px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.03em !important;
+}
+
+html.ui-compact .atlas-site :is(.internal-title, .territory-hero__title, [class$="-hero__title"]).title-is-long {
+  font-size: clamp(34px, 9.5vw, 56px) !important;
+}
+
+html.ui-compact .atlas-site :is(.internal-title, .territory-hero__title, [class$="-hero__title"]).title-is-very-long {
+  font-size: clamp(30px, 8.4vw, 48px) !important;
+  line-height: .98 !important;
+}
+
+html.ui-compact .atlas-site :is(.internal-title, .territory-hero__title, [class$="-hero__title"]) br {
+  display: none !important;
+}
+
+html.ui-compact .atlas-site :is(.home-play__intro h2, .editorial-heading h2, .archive-section__intro h2) {
+  font-size: clamp(40px, 11vw, 62px) !important;
+}
+
+html.ui-compact .atlas-site :is(.domain-section > h2, .territory-section__heading h2, [class$="-section__heading"] h2) {
+  font-size: clamp(32px, 8.8vw, 50px) !important;
+}
+
+html.ui-compact .atlas-site .mobile-article.mobile-container,
+html.ui-compact .atlas-site .territory-content {
+  width: min(calc(100% - 24px), 920px) !important;
+  margin: 24px auto 0 !important;
+  padding-inline: clamp(18px, 5vw, 32px) !important;
+}
+
+html.ui-compact .atlas-site .territory-opening {
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 28px !important;
+}
+
+html.ui-compact .atlas-site :is(.territory-grid, [class$="-grid"], [class$="-ledger"], .domain-capabilities, .system-entry-grid, .system-category-grid, .system-route-grid) {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+html.ui-compact .atlas-site .table-wrap {
+  margin-inline: 0 !important;
+  border-radius: 14px !important;
+}
+
+html.ui-compact .atlas-site .table-wrap table:not(.systems-table-enhanced) {
+  min-width: 620px !important;
+}
+
+html.ui-compact .atlas-site .archive-section__intro {
+  position: static !important;
+}
+
+html.ui-compact .atlas-site .mobile-footer,
+html.ui-compact .atlas-site .site-footer {
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+}
+
+/* Tablets de toque: duas colunas apenas onde há espaço real. */
+@media (min-width: 700px) {
+  html.ui-compact .atlas-site .pantheon-ledger,
+  html.ui-compact .atlas-site .atlas-grid,
+  html.ui-compact .atlas-site .system-entry-grid,
+  html.ui-compact .atlas-site .system-category-grid,
+  html.ui-compact .atlas-site .system-route-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  html.ui-compact .atlas-site .realm-entry--featured {
+    grid-column: 1 / -1 !important;
+  }
+
+  html.ui-compact .atlas-site .deity-entry:last-child {
+    grid-column: 1 / -1 !important;
+    width: min(100%, 620px) !important;
+    justify-self: center;
+  }
+}
+
+/* ==========================================================
+   INTERFACE AMPLA — apenas computador classificado pelo JS
+   ========================================================== */
+
+@media (min-width: 1024px) {
+  html.ui-desktop .atlas-site .atlas-global-nav,
+  html.ui-desktop .atlas-site .site-header__nav {
+    position: static !important;
+    inset: auto !important;
+    z-index: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    display: flex !important;
+    align-items: center !important;
+    align-content: normal !important;
+    gap: 4px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+  }
+
+  html.ui-desktop .atlas-site .atlas-global-nav a,
+  html.ui-desktop .atlas-site .site-header__nav a {
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 40px;
+    padding: 11px 12px !important;
+    white-space: nowrap !important;
+    overflow-wrap: normal !important;
+  }
+
+  html.ui-desktop .atlas-site .atlas-menu-toggle,
+  html.ui-desktop .atlas-site .atlas-index-toggle,
+  html.ui-desktop .atlas-site .atlas-index-close,
+  html.ui-desktop .atlas-site .atlas-scrim {
+    display: none !important;
+  }
+
+  html.ui-desktop .atlas-site .internal-page {
+    display: grid !important;
+    grid-template-columns: minmax(210px, 250px) minmax(0, 960px) !important;
+    grid-template-rows: auto auto auto !important;
+    justify-content: center !important;
+    align-items: start !important;
+    column-gap: clamp(32px, 4vw, 64px) !important;
+  }
+
+  html.ui-desktop .atlas-site :is(.internal-hero, .territory-hero, [class$="-hero"], .archive-record) {
+    grid-column: 1 / -1 !important;
+  }
+
+  html.ui-desktop .atlas-site .content-index {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+    position: sticky !important;
+    inset: auto !important;
+    top: calc(var(--ui-header-height) + 28px) !important;
+    width: 100% !important;
+    max-width: 250px !important;
+    max-height: calc(100vh - var(--ui-header-height) - 56px) !important;
+    margin: 48px 0 80px !important;
+    overflow: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+  }
+
+  html.ui-desktop .atlas-site .content-index > .mobile-container {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding: 0 !important;
+  }
+
+  html.ui-desktop .atlas-site .content-index__list,
+  html.ui-desktop .atlas-site .territory-index__list {
+    max-height: none !important;
+  }
+
+  html.ui-desktop .atlas-site .mobile-article.mobile-container,
+  html.ui-desktop .atlas-site .territory-content {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+    width: 100% !important;
+    max-width: 960px !important;
+    margin: 48px 0 80px !important;
+  }
+
+  html.ui-desktop .atlas-site .pantheon-ledger {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  }
+
+  html.ui-desktop .atlas-site .deity-entry,
+  html.ui-desktop .atlas-site .deity-entry:nth-child(4),
+  html.ui-desktop .atlas-site .deity-entry:nth-child(5),
+  html.ui-desktop .atlas-site .deity-entry:last-child {
+    grid-column: span 2 !important;
+  }
+
+  html.ui-desktop .atlas-site .deity-entry:nth-child(4) {
+    grid-column: 2 / span 2 !important;
+  }
+
+  html.ui-desktop .atlas-site .deity-entry:nth-child(5) {
+    grid-column: 4 / span 2 !important;
+  }
+
+  html.ui-desktop .atlas-site :is(.home-play-card, .deity-entry, .realm-entry, .chapter-gateway, .archive-routes a) {
+    transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+  }
+}
+
+/* ==========================================================
+   AJUSTES ESPECÍFICOS PARA WEBKIT / iOS
+   ========================================================== */
+
+@supports (-webkit-touch-callout: none) {
+  html.ui-compact,
+  html.ui-compact body {
+    min-height: -webkit-fill-available;
+  }
+
+  html.ui-compact .atlas-site .site-header,
+  html.ui-compact .atlas-site .mobile-header,
+  html.ui-compact .atlas-site .atlas-global-nav,
+  html.ui-compact .atlas-site .content-index {
+    -webkit-transform: translateZ(0);
+  }
+
+  html.ui-compact .atlas-site :is(input, textarea, select) {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .atlas-site .site-brand,
+  .atlas-site .mobile-logo {
+    max-width: calc(100vw - 132px);
+    font-size: 9px !important;
+    letter-spacing: 1px !important;
+  }
+
+  html.ui-compact .atlas-site .home-hero__title {
+    font-size: clamp(38px, 11.2vw, 46px) !important;
+  }
+
+  html.ui-compact .atlas-site :is(.internal-title, .territory-hero__title, [class$="-hero__title"]) {
+    font-size: clamp(34px, 10.2vw, 46px) !important;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .atlas-site :is(.home-play-card, .deity-entry, .realm-entry, .chapter-gateway, .archive-routes a):hover {
+    transform: none !important;
+  }
+
+  .atlas-site :is(.deity-entry, .realm-entry):hover img {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-site *,
+  .atlas-site *::before,
+  .atlas-site *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
