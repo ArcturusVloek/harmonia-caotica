@@ -1,0 +1,523 @@
+/* ==========================================================
+   LEITURA IMERSIVA — HARMONIA CAÓTICA
+   Ritmo editorial, contraste e conforto para textos longos
+   ========================================================== */
+
+:root {
+  --reading-measure: 64ch;
+  --reading-size: clamp(16px, 1.04vw, 17.5px);
+  --reading-line: 1.92;
+  --reader-paper: #f7f0e5;
+  --reader-copy: #ddd3c7;
+  --reader-muted: #aca0ad;
+  --reader-plum: rgba(112, 79, 139, .1);
+  --reader-amber: rgba(199, 164, 92, .09);
+  --reader-moss: rgba(145, 163, 91, .07);
+  --reader-border: rgba(228, 201, 145, .14);
+  --reader-border-soft: rgba(255, 255, 255, .055);
+}
+
+body:not(.home-page) {
+  --paper: var(--reader-paper);
+  --paper-soft: var(--reader-copy);
+  --muted: var(--reader-muted);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(112, 79, 139, .13), transparent 29rem),
+    radial-gradient(circle at 88% 52%, rgba(199, 164, 92, .065), transparent 34rem),
+    radial-gradient(circle at 28% 88%, rgba(116, 138, 84, .045), transparent 30rem),
+    linear-gradient(180deg, #09070d 0%, #100c15 44%, #0b0910 100%);
+}
+
+body:not(.home-page)::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 0 9%, rgba(255, 255, 255, .012) 9.1%, transparent 9.2% 90%, rgba(255, 255, 255, .01) 90.1%, transparent 90.2%),
+    radial-gradient(circle at 50% 20%, rgba(255, 255, 255, .018), transparent 40rem);
+}
+
+body:not(.home-page) .internal-page {
+  background:
+    linear-gradient(180deg, transparent 0 48vh, rgba(255, 255, 255, .009) 48vh 49vh, transparent 49vh),
+    transparent;
+}
+
+/* ==========================================================
+   CABEÇALHO E ENTRADA DA LEITURA
+   ========================================================== */
+
+body:not(.home-page) .mobile-header {
+  background: rgba(9, 7, 13, .78);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, .24);
+}
+
+body:not(.home-page) .internal-hero {
+  min-height: min(72svh, 720px);
+}
+
+body:not(.home-page) .internal-hero::after {
+  height: 150px;
+  background: linear-gradient(transparent, #0c0911 88%);
+}
+
+body:not(.home-page) .internal-title {
+  color: #fff5e8;
+  text-shadow:
+    0 4px 16px rgba(0, 0, 0, .72),
+    0 20px 50px rgba(0, 0, 0, .48);
+}
+
+body:not(.home-page) .internal-summary {
+  color: rgba(247, 240, 229, .9);
+}
+
+.archive-record {
+  background:
+    linear-gradient(90deg, rgba(199, 164, 92, .055), transparent 34%, rgba(112, 79, 139, .035)),
+    rgba(12, 9, 16, .94);
+  border-bottom-color: rgba(228, 201, 145, .2);
+}
+
+.archive-record__title {
+  color: #fff2df;
+}
+
+.content-index {
+  border-bottom-color: rgba(228, 201, 145, .17);
+  background:
+    linear-gradient(90deg, rgba(112, 79, 139, .05), transparent 45%, rgba(199, 164, 92, .035)),
+    rgba(10, 8, 14, .9);
+}
+
+.content-index a,
+.territory-index a {
+  border-color: rgba(228, 201, 145, .13);
+  background: rgba(255, 255, 255, .025);
+}
+
+.content-index a.active,
+.content-index a[aria-current="true"],
+.territory-index a.active,
+.territory-index a[aria-current="true"] {
+  border-color: rgba(239, 213, 141, .44);
+  background:
+    linear-gradient(100deg, rgba(199, 164, 92, .12), rgba(112, 79, 139, .075));
+  color: #ffe4a5;
+  box-shadow: inset 0 0 20px rgba(199, 164, 92, .035);
+}
+
+/* ==========================================================
+   COLUNA DE LEITURA
+   ========================================================== */
+
+.mobile-article.mobile-container {
+  max-width: 900px !important;
+  padding-top: clamp(58px, 8vw, 86px) !important;
+  padding-bottom: 136px !important;
+}
+
+.mobile-article.mobile-container::before {
+  display: none !important;
+}
+
+.mobile-article.mobile-container::after {
+  content: "";
+  position: absolute;
+  top: 90px;
+  bottom: 138px;
+  left: clamp(10px, 2vw, 24px);
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(239, 213, 141, .26) 12%,
+    rgba(112, 79, 139, .2) 56%,
+    transparent
+  );
+  opacity: .7;
+  pointer-events: none;
+}
+
+.mobile-article > p:not(.article-lead),
+.world-prologue__copy > p:not(.world-prologue__opening),
+body.territory-page article .territory-opening__copy > p:not(.territory-opening__lead),
+body.territory-page article [class$="-opening__copy"] > p:not([class$="-opening__lead"]),
+body.territory-page article .prose-columns p,
+body.territory-page article [class$="-copy"]:not([class*="card"]) > p {
+  max-width: var(--reading-measure);
+  color: var(--reader-copy) !important;
+  font-size: var(--reading-size) !important;
+  line-height: var(--reading-line) !important;
+  letter-spacing: .004em;
+}
+
+.mobile-article > p:not(.article-lead) {
+  margin-bottom: 1.45em !important;
+}
+
+.article-lead,
+.territory-opening__lead,
+body.territory-page [class$="-opening__lead"] {
+  position: relative;
+  max-width: 58ch;
+  margin-bottom: clamp(46px, 7vw, 68px) !important;
+  padding: clamp(24px, 4vw, 34px) clamp(24px, 5vw, 40px) !important;
+  border: 1px solid rgba(239, 213, 141, .16) !important;
+  border-left: 3px solid var(--gold) !important;
+  border-radius: 0 28px 28px 0;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(112, 79, 139, .12), transparent 46%),
+    linear-gradient(90deg, rgba(199, 164, 92, .09), transparent 72%),
+    rgba(255, 255, 255, .018);
+  color: #fff3e2 !important;
+  box-shadow: 0 24px 54px rgba(0, 0, 0, .18);
+}
+
+.article-lead::after,
+.territory-opening__lead::after,
+body.territory-page [class$="-opening__lead"]::after {
+  content: "✦";
+  position: absolute;
+  right: 22px;
+  bottom: 15px;
+  color: rgba(239, 213, 141, .24);
+  font-family: var(--display);
+  font-size: 22px;
+}
+
+/* ==========================================================
+   RITMO DOS CAPÍTULOS
+   ========================================================== */
+
+body:not(.territory-page):not(.systems-page) .mobile-article {
+  counter-reset: reading-chapter;
+}
+
+body:not(.territory-page):not(.systems-page) .mobile-article > h2 {
+  counter-increment: reading-chapter;
+  margin-top: clamp(80px, 11vw, 118px) !important;
+  padding-top: 18px;
+  padding-bottom: 20px !important;
+  border-top: 1px solid rgba(228, 201, 145, .14);
+  color: #fff1dc;
+}
+
+body:not(.territory-page):not(.systems-page) .mobile-article > h2::before {
+  content: "Capítulo " counter(reading-chapter, decimal-leading-zero);
+  display: block;
+  margin-bottom: 13px;
+  color: var(--gold);
+  font-family: var(--ui);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+body:not(.territory-page):not(.systems-page) .mobile-article > h2::after {
+  width: min(150px, 38%) !important;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold-light), rgba(112, 79, 139, .52), transparent);
+}
+
+.mobile-article > h3,
+.domain-section > h3,
+.territory-section h3 {
+  position: relative;
+  padding-left: 19px;
+  color: #f2d89b !important;
+}
+
+.mobile-article > h3::before,
+.domain-section > h3::before,
+.territory-section h3::before {
+  content: "";
+  position: absolute;
+  top: .22em;
+  bottom: .12em;
+  left: 0;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--gold-light), rgba(112, 79, 139, .48));
+}
+
+.article-divider {
+  gap: 18px;
+  margin: clamp(58px, 8vw, 82px) 0;
+  color: #e4be70;
+}
+
+.article-divider::before,
+.article-divider::after {
+  background: linear-gradient(90deg, transparent, rgba(239, 213, 141, .34));
+}
+
+.article-divider::after {
+  background: linear-gradient(90deg, rgba(112, 79, 139, .34), transparent);
+}
+
+.article-divider span {
+  padding: 8px 11px;
+  border: 1px solid rgba(228, 201, 145, .13);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .018);
+}
+
+/* Primeira letra editorial nos capítulos narrativos */
+@media (min-width: 760px) {
+  body:not(.territory-page):not(.systems-page) .mobile-article > h2 + p::first-letter {
+    float: left;
+    margin: .05em .12em 0 0;
+    color: #f0cb7c;
+    font-family: var(--display);
+    font-size: 4.1em;
+    font-weight: 600;
+    line-height: .72;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, .32);
+  }
+}
+
+/* ==========================================================
+   PAINÉIS E TRECHOS DE DESTAQUE
+   ========================================================== */
+
+.lore-box,
+.domain-guide,
+.domain-boundary,
+.domain-intro-panel {
+  border-color: rgba(228, 201, 145, .16) !important;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(112, 79, 139, .095), transparent 44%),
+    linear-gradient(100deg, rgba(199, 164, 92, .07), transparent 68%),
+    rgba(18, 14, 24, .82) !important;
+  box-shadow: 0 22px 48px rgba(0, 0, 0, .18);
+}
+
+.lore-box {
+  border-left-color: #d8b66a !important;
+}
+
+.lore-box p,
+.domain-guide p,
+.domain-boundary p,
+.domain-intro-panel p {
+  color: #d9cfc4 !important;
+}
+
+.lore-quote {
+  margin: clamp(52px, 8vw, 78px) 0;
+  padding: clamp(34px, 6vw, 52px);
+  border-color: rgba(239, 213, 141, .22);
+  background:
+    radial-gradient(circle at 88% 10%, rgba(199, 164, 92, .16), transparent 38%),
+    radial-gradient(circle at 12% 100%, rgba(112, 79, 139, .13), transparent 44%),
+    linear-gradient(145deg, rgba(31, 23, 38, .96), rgba(15, 12, 20, .98));
+}
+
+.lore-quote p {
+  max-width: 54ch;
+  color: #fff0c5 !important;
+  font-size: clamp(23px, 4vw, 30px) !important;
+  line-height: 1.48 !important;
+}
+
+.blessing-section,
+.sacred-section {
+  position: relative;
+  margin-top: clamp(76px, 10vw, 108px);
+  padding: clamp(28px, 5vw, 44px);
+  border: 1px solid rgba(228, 201, 145, .12);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 100% 0%, var(--deity-accent-soft, rgba(112, 79, 139, .11)), transparent 42%),
+    rgba(255, 255, 255, .014);
+}
+
+.blessing-section:nth-of-type(even),
+.sacred-section:nth-of-type(even) {
+  background:
+    radial-gradient(circle at 0% 100%, rgba(199, 164, 92, .085), transparent 46%),
+    rgba(255, 255, 255, .012);
+}
+
+.sacred-item,
+.domain-capability,
+.territory-card {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, .035), transparent 58%),
+    rgba(23, 18, 29, .78);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .12);
+}
+
+/* ==========================================================
+   TERRITÓRIOS: VARIAÇÃO ENTRE SEÇÕES
+   ========================================================== */
+
+body.territory-page .territory-content {
+  position: relative;
+}
+
+body.territory-page article .territory-section {
+  position: relative;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  padding-right: clamp(18px, 4vw, 42px) !important;
+  padding-left: clamp(18px, 4vw, 42px) !important;
+  border: 1px solid transparent;
+  border-radius: 34px;
+}
+
+body.territory-page article .territory-section:nth-of-type(even) {
+  border-color: rgba(228, 201, 145, .09);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(112, 79, 139, .08), transparent 42%),
+    linear-gradient(145deg, rgba(255, 255, 255, .018), transparent 72%);
+}
+
+body.territory-page article .territory-section:nth-of-type(odd) {
+  background:
+    radial-gradient(circle at 0% 100%, rgba(199, 164, 92, .055), transparent 44%);
+}
+
+body.territory-page article .territory-section__number,
+body.territory-page article [class$="-section__number"] {
+  color: rgba(239, 213, 141, .62) !important;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, .24);
+}
+
+body.territory-page article .territory-section__heading h2,
+body.territory-page article [class$="-section__heading"] h2 {
+  color: #fff0db;
+}
+
+/* ==========================================================
+   SISTEMAS: QUEBRA DA MONOTONIA SEM PREJUDICAR CONSULTA
+   ========================================================== */
+
+body.systems-page .domain-section {
+  border-radius: 30px;
+  padding-right: clamp(18px, 4vw, 38px);
+  padding-left: clamp(18px, 4vw, 38px);
+}
+
+body.systems-page .domain-section:nth-of-type(even) {
+  border: 1px solid rgba(184, 154, 231, .1);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(184, 154, 231, .09), transparent 40%),
+    rgba(255, 255, 255, .012);
+}
+
+body.systems-page .domain-section:nth-of-type(odd) {
+  background:
+    radial-gradient(circle at 0% 100%, rgba(199, 164, 92, .045), transparent 44%);
+}
+
+body.systems-page .domain-section > h2 {
+  color: #f9e9ff !important;
+}
+
+/* ==========================================================
+   NAVEGAÇÃO E ENCERRAMENTO
+   ========================================================== */
+
+.back-to-index {
+  border-color: rgba(228, 201, 145, .16);
+  background: rgba(255, 255, 255, .025);
+}
+
+.article-navigation {
+  margin-top: clamp(82px, 11vw, 118px);
+  padding-top: 30px;
+  border-top: 1px solid rgba(228, 201, 145, .13);
+}
+
+/* ==========================================================
+   MOBILE: LEITURA NATURAL E SEM BLOCOS APERTADOS
+   ========================================================== */
+
+@media (max-width: 759px) {
+  :root {
+    --reading-measure: 100%;
+    --reading-size: 16px;
+    --reading-line: 1.86;
+  }
+
+  .mobile-article.mobile-container {
+    padding-right: 22px !important;
+    padding-left: 22px !important;
+  }
+
+  .mobile-article.mobile-container::after {
+    display: none;
+  }
+
+  .mobile-article > p:not(.article-lead),
+  .world-prologue__copy > p:not(.world-prologue__opening),
+  body.territory-page article .territory-opening__copy > p:not(.territory-opening__lead),
+  body.territory-page article [class$="-opening__copy"] > p:not([class$="-opening__lead"]),
+  body.territory-page article .prose-columns p,
+  body.territory-page article [class$="-copy"]:not([class*="card"]) > p {
+    text-align: left !important;
+    text-align-last: auto !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+  }
+
+  .article-lead,
+  .territory-opening__lead,
+  body.territory-page [class$="-opening__lead"] {
+    padding: 22px 22px 24px !important;
+    border-radius: 0 22px 22px 0;
+    font-size: clamp(21px, 6vw, 26px) !important;
+  }
+
+  body:not(.territory-page):not(.systems-page) .mobile-article > h2 {
+    margin-top: 76px !important;
+  }
+
+  .mobile-article > h3,
+  .domain-section > h3,
+  .territory-section h3 {
+    padding-left: 15px;
+  }
+
+  .blessing-section,
+  .sacred-section {
+    margin-right: -6px;
+    margin-left: -6px;
+    padding: 24px 20px;
+    border-radius: 24px;
+  }
+
+  body.territory-page article .territory-section,
+  body.systems-page .domain-section {
+    margin-right: -8px;
+    margin-left: -8px;
+    padding-right: 18px !important;
+    padding-left: 18px !important;
+    border-radius: 26px;
+  }
+}
+
+@media (max-width: 420px) {
+  .mobile-article.mobile-container {
+    padding-right: 19px !important;
+    padding-left: 19px !important;
+  }
+
+  .lore-quote {
+    padding: 31px 23px 27px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-article,
+  .territory-section,
+  .domain-section {
+    scroll-behavior: auto;
+  }
+}
