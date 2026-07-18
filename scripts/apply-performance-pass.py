@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 HTML_ROOTS = ("divindades", "dominios", "territorios", "mundo", "sistemas", "templates")
-VERSION = "20260718a"
+VERSION = "20260718b"
 FONT_URL = (
     "https://fonts.googleapis.com/css2?"
     "family=Cormorant+Garamond:wght@500;600;700&"
@@ -52,6 +52,7 @@ def build_css() -> None:
     apotheosis = read("css/apoteose.css")
     stable = read("css/layout-estavel-v2.css")
     systems_colors = read("css/sistemas-cores-v2.css")
+    responsive_polish = read("css/polimento-responsivo.css")
 
     compact_gpu = """
 /* Reduz custo de composição em aparelhos de toque sem mudar o layout. */
@@ -84,12 +85,14 @@ html.ui-compact :is(.site-header, .mobile-header, .content-index) {
         section("ATLAS", atlas),
         section("APOTEOSE", apotheosis),
         section("LAYOUT ESTÁVEL", stable),
+        section("POLIMENTO RESPONSIVO", responsive_polish),
     ])
     final_systems = "".join([
         section("ATLAS", atlas),
         section("APOTEOSE", apotheosis),
         section("CORES DOS SISTEMAS", systems_colors),
         section("LAYOUT ESTÁVEL", stable),
+        section("POLIMENTO RESPONSIVO", responsive_polish),
     ])
 
     write("css/site-core.css", core)
@@ -157,8 +160,8 @@ def remove_resource_links(html: str, systems_page: bool) -> str:
         "mobile.css", "mobile-base.css", "editorial.css", "leitura-imersiva.css",
         "sistemas.css", "sistemas-fallback.css", "sistemas-hotfix.css",
         "sistemas-arquitetura.css", "atlas-novo.css", "apoteose.css",
-        "layout-estavel-v2.css", "site-core.css", "site-core-systems.css",
-        "site-final.css", "site-final-systems.css",
+        "layout-estavel-v2.css", "polimento-responsivo.css", "site-core.css",
+        "site-core-systems.css", "site-final.css", "site-final-systems.css",
     ]
     if systems_page:
         names.append("sistemas-cores-v2.css")
