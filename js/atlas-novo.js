@@ -19,9 +19,15 @@
     document.head.appendChild(link);
   };
 
-  /* Estas folhas são carregadas por último para encerrar a cascata visual. */
-  ensureStylesheet('atlas-interface-stable', 'css/interface-estavel.css?v=20260718a');
-  if (systemsPage) {
+  const rootStyles = window.getComputedStyle(document.documentElement);
+  const bodyStyles = window.getComputedStyle(body);
+
+  /* Fallback para páginas que ainda estejam usando uma versão antiga do CSS em cache. */
+  if (rootStyles.getPropertyValue('--interface-menu-breakpoint').trim() !== '900px') {
+    ensureStylesheet('atlas-interface-stable', 'css/interface-estavel.css?v=20260718a');
+  }
+
+  if (systemsPage && !bodyStyles.getPropertyValue('--block-1-accent').trim()) {
     ensureStylesheet('systems-block-colors', 'css/sistemas-cores-v2.css?v=20260718a');
   }
 
