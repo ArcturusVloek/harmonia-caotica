@@ -1,0 +1,496 @@
+/* ==========================================================
+   HOME CINEMATICA - HARMONIA CAOTICA
+   Camada exclusiva da entrada de Vaelora.
+   ========================================================== */
+
+.home-page {
+  --home-gold: #d8b66b;
+  --home-gold-light: #f7dfa0;
+  --home-violet: #9b78bd;
+  --home-violet-soft: rgba(155, 120, 189, .12);
+  --home-line: rgba(239, 213, 141, .24);
+  --home-line-strong: rgba(239, 213, 141, .5);
+}
+
+/* Primeiro contato */
+.home-page .home-hero {
+  min-height: 100svh;
+  border-bottom: 1px solid var(--home-line);
+  box-shadow:
+    inset 0 -90px 110px rgba(0, 0, 0, .38),
+    0 28px 80px rgba(0, 0, 0, .32);
+}
+
+.home-page .home-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, transparent 0 47%, rgba(239, 213, 141, .055) 47.1% 47.2%, transparent 47.3%),
+    linear-gradient(65deg, transparent 0 72%, rgba(155, 120, 189, .045) 72.1% 72.2%, transparent 72.3%),
+    radial-gradient(circle at 72% 22%, rgba(239, 213, 141, .11), transparent 18rem);
+}
+
+.home-page .home-hero__content {
+  padding: 24px 0 28px 22px;
+  border-left: 1px solid rgba(239, 213, 141, .26);
+  background:
+    linear-gradient(90deg, rgba(5, 5, 8, .3), transparent 82%);
+}
+
+.home-page .home-hero__content::before {
+  width: 92px;
+  margin-left: -22px;
+  box-shadow: 0 0 18px rgba(239, 213, 141, .28);
+}
+
+.home-page .home-hero__content::after {
+  content: "";
+  display: block;
+  width: min(240px, 62vw);
+  height: 1px;
+  margin-top: 32px;
+  background: linear-gradient(90deg, var(--home-gold-light), rgba(155, 120, 189, .45), transparent);
+  box-shadow: 0 0 18px rgba(239, 213, 141, .2);
+}
+
+.home-page .home-hero__title {
+  max-width: 8ch;
+  font-size: clamp(64px, 18vw, 106px);
+  line-height: .76;
+  letter-spacing: -2.8px;
+}
+
+.home-page .home-hero__lead {
+  max-width: 56ch;
+  color: rgba(255, 248, 238, .94);
+  font-size: clamp(15px, 2vw, 17px);
+  line-height: 1.82;
+}
+
+.home-page .home-hero__actions {
+  gap: 12px;
+  max-width: 570px;
+}
+
+.home-page .button {
+  position: relative;
+  overflow: hidden;
+  min-height: 58px;
+  letter-spacing: 1.2px;
+}
+
+.home-page .button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, .18) 48%, transparent 76%);
+  opacity: 0;
+  transform: translateX(-58%);
+  transition: opacity var(--ease), transform 650ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.home-page .cosmology-panel {
+  isolation: isolate;
+}
+
+.home-page .cosmology-panel::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    conic-gradient(from 10deg, transparent, rgba(239, 213, 141, .07), transparent 28%, rgba(155, 120, 189, .08), transparent 62%);
+  filter: blur(28px);
+  opacity: .72;
+  animation: home-aura 24s linear infinite;
+}
+
+.home-page .cosmology-panel__number,
+.home-page .cosmology-orbit__core {
+  box-shadow:
+    0 0 24px rgba(239, 213, 141, .16),
+    inset 0 1px rgba(255, 255, 255, .08);
+}
+
+.home-page .cosmology-orbit__seal {
+  border-color: rgba(239, 213, 141, .36);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, .36),
+    0 0 14px rgba(239, 213, 141, .08);
+}
+
+.home-page .scroll-mark {
+  width: 44px;
+  border: 1px solid rgba(239, 213, 141, .18);
+  border-radius: 999px;
+  background: rgba(6, 6, 9, .28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.home-page .scroll-mark span {
+  animation: home-scroll-pulse 2.4s ease-in-out infinite;
+}
+
+/* Transicoes entre os grandes capitulos */
+.home-page :is(
+  .world-prologue,
+  .pantheon-section,
+  .atlas-section,
+  .archive-section
+) {
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: clamp(84px, 10vw, 128px);
+  padding-bottom: clamp(84px, 10vw, 128px);
+}
+
+.home-page :is(
+  .world-prologue,
+  .pantheon-section,
+  .atlas-section,
+  .archive-section
+)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 0 12%, rgba(255, 255, 255, .018) 12.1% 12.2%, transparent 12.3%),
+    linear-gradient(90deg, transparent 0 88%, rgba(255, 255, 255, .014) 88.1% 88.2%, transparent 88.3%);
+}
+
+.home-page .world-prologue {
+  background:
+    radial-gradient(circle at 88% 18%, rgba(199, 164, 92, .11), transparent 28rem),
+    radial-gradient(circle at 12% 82%, rgba(155, 120, 189, .055), transparent 34rem),
+    linear-gradient(180deg, #09080d, #0b0910 54%, #08070b);
+}
+
+.home-page .pantheon-section {
+  background:
+    radial-gradient(circle at 9% 15%, rgba(134, 95, 168, .14), transparent 32rem),
+    radial-gradient(circle at 92% 84%, rgba(199, 164, 92, .07), transparent 34rem),
+    linear-gradient(180deg, #08070c, #0c0911 50%, #07070a);
+}
+
+.home-page .atlas-section {
+  background:
+    radial-gradient(circle at 91% 10%, rgba(112, 143, 86, .12), transparent 30rem),
+    radial-gradient(circle at 7% 90%, rgba(117, 101, 160, .08), transparent 34rem),
+    linear-gradient(180deg, #08080a, #080b09 52%, #07070a);
+}
+
+.home-page .archive-section {
+  background:
+    radial-gradient(circle at 14% 100%, rgba(128, 88, 164, .16), transparent 32rem),
+    radial-gradient(circle at 88% 8%, rgba(199, 164, 92, .08), transparent 30rem),
+    linear-gradient(180deg, #09080d, #07070a);
+}
+
+.home-page .editorial-heading {
+  position: relative;
+  padding-bottom: 26px;
+}
+
+.home-page .editorial-heading::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--home-line-strong), transparent 72%);
+}
+
+.home-page .editorial-heading__index {
+  color: var(--home-gold);
+  text-shadow: 0 0 28px rgba(239, 213, 141, .14);
+}
+
+.home-page .editorial-heading__index::after {
+  background: linear-gradient(var(--home-gold), rgba(155, 120, 189, .28), transparent);
+  box-shadow: 0 0 14px rgba(239, 213, 141, .12);
+}
+
+.home-page .editorial-heading__summary {
+  max-width: 62ch;
+  color: rgba(226, 217, 207, .86);
+}
+
+/* Mundo */
+.home-page .world-prologue__copy {
+  position: relative;
+  align-self: center;
+}
+
+.home-page .world-prologue__opening::first-letter {
+  float: left;
+  margin: .02em .12em 0 0;
+  color: var(--home-gold-light);
+  font-size: 3.25em;
+  line-height: .72;
+  text-shadow: 0 0 24px rgba(239, 213, 141, .16);
+}
+
+.home-page .world-prologue blockquote {
+  overflow: hidden;
+  border: 1px solid var(--home-line);
+  border-left: 3px solid var(--home-gold);
+  border-radius: 0 22px 22px 0;
+  background:
+    radial-gradient(circle at 100% 0, rgba(155, 120, 189, .11), transparent 48%),
+    linear-gradient(90deg, rgba(199, 164, 92, .1), rgba(255, 255, 255, .012));
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, .3),
+    inset 0 1px rgba(255, 255, 255, .04);
+}
+
+.home-page .chapter-gateway {
+  border-color: rgba(239, 213, 141, .36);
+}
+
+.home-page .chapter-gateway__content {
+  width: 100%;
+  padding: 34px 28px;
+  background: linear-gradient(90deg, rgba(6, 6, 9, .7), transparent);
+}
+
+.home-page .chapter-gateway__content h3 {
+  text-shadow:
+    0 10px 34px rgba(0, 0, 0, .7),
+    0 0 30px rgba(239, 213, 141, .08);
+}
+
+/* Panteao */
+.home-page .pantheon-ledger {
+  counter-reset: pantheon-entry;
+}
+
+.home-page .deity-entry {
+  counter-increment: pantheon-entry;
+  border-color: rgba(var(--accent), .36);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(var(--accent), .14), transparent 24rem),
+    linear-gradient(145deg, rgba(29, 23, 35, .96), rgba(10, 9, 14, .98));
+}
+
+.home-page .deity-entry__content::after {
+  content: "";
+  position: absolute;
+  inset: auto 22px 18px auto;
+  width: 52px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(var(--accent), .75), transparent);
+  box-shadow: 0 0 16px rgba(var(--accent), .25);
+}
+
+.home-page .deity-entry__roman {
+  font-size: clamp(38px, 8vw, 68px);
+  color: rgba(var(--accent), .88);
+  text-shadow:
+    0 5px 18px rgba(0, 0, 0, .78),
+    0 0 26px rgba(var(--accent), .2);
+}
+
+.home-page .deity-entry h3 {
+  color: #fff7ed;
+  text-shadow: 0 10px 34px rgba(0, 0, 0, .36);
+}
+
+/* Atlas */
+.home-page .atlas-grid {
+  gap: 20px;
+}
+
+.home-page .realm-entry {
+  border-color: rgba(var(--realm), .42);
+}
+
+.home-page .realm-entry__veil {
+  background:
+    linear-gradient(180deg, transparent 14%, rgba(7, 7, 10, .08) 36%, rgba(7, 7, 10, .96) 100%),
+    radial-gradient(circle at 50% 108%, rgba(var(--realm), .24), transparent 52%);
+}
+
+.home-page .realm-entry__content {
+  padding: 30px 26px;
+}
+
+.home-page .realm-entry__content h3 {
+  font-size: clamp(42px, 10vw, 58px);
+  text-shadow:
+    0 10px 30px rgba(0, 0, 0, .78),
+    0 0 26px rgba(var(--realm), .14);
+}
+
+.home-page .realm-entry__content strong {
+  width: fit-content;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(var(--realm), .58);
+}
+
+/* Arquivo final */
+.home-page .archive-section__intro {
+  position: sticky;
+  top: calc(var(--header) + 36px);
+}
+
+.home-page .archive-routes {
+  gap: 14px;
+}
+
+.home-page .archive-routes a {
+  position: relative;
+  overflow: hidden;
+  border-color: var(--home-line);
+  background:
+    linear-gradient(115deg, rgba(199, 164, 92, .07), transparent 44%),
+    rgba(255, 255, 255, .018);
+}
+
+.home-page .archive-routes a::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: linear-gradient(transparent, var(--home-gold), transparent);
+  box-shadow: 0 0 18px rgba(239, 213, 141, .28);
+}
+
+.home-page .archive-routes > a > span {
+  color: var(--home-gold);
+  text-shadow: 0 0 18px rgba(239, 213, 141, .12);
+}
+
+.home-page .archive-routes strong {
+  color: var(--home-gold-light);
+}
+
+.home-page .site-footer {
+  border-top-color: var(--home-line);
+  background:
+    linear-gradient(90deg, rgba(199, 164, 92, .05), transparent 48%),
+    #060608;
+}
+
+@media (min-width: 560px) {
+  .home-page .home-hero__actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .home-page .home-hero {
+    min-height: 96vh;
+  }
+
+  .home-page .home-hero__layout {
+    grid-template-columns: minmax(0, 1.35fr) minmax(350px, .65fr);
+    gap: clamp(64px, 8vw, 110px);
+  }
+
+  .home-page .home-hero__content {
+    padding: 36px 0 40px 34px;
+  }
+
+  .home-page .home-hero__content::before {
+    margin-left: -34px;
+  }
+
+  .home-page .cosmology-panel {
+    transform: translateY(20px);
+  }
+
+  .home-page .deity-entry:nth-child(even) {
+    grid-template-columns: 1.05fr minmax(360px, .95fr);
+  }
+
+  .home-page .deity-entry:nth-child(even) .deity-entry__portrait {
+    order: 2;
+  }
+
+  .home-page .deity-entry:nth-child(even) .deity-entry__content {
+    order: 1;
+  }
+
+  .home-page .realm-entry--featured .realm-entry__content,
+  .home-page .realm-entry--umbra .realm-entry__content {
+    padding: 38px 34px;
+  }
+}
+
+@media (max-width: 899px) {
+  .home-page .archive-section__intro {
+    position: static;
+  }
+}
+
+@media (max-width: 559px) {
+  .home-page .home-hero__content {
+    margin-left: -4px;
+    padding-left: 18px;
+  }
+
+  .home-page .home-hero__content::before {
+    margin-left: -18px;
+  }
+
+  .home-page .home-hero__title {
+    font-size: clamp(62px, 19vw, 84px);
+  }
+
+  .home-page :is(
+    .world-prologue,
+    .pantheon-section,
+    .atlas-section,
+    .archive-section
+  ) {
+    padding-top: 82px;
+    padding-bottom: 82px;
+  }
+
+  .home-page .world-prologue blockquote {
+    padding: 26px 21px;
+  }
+
+  .home-page .chapter-gateway__content,
+  .home-page .realm-entry__content {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-page .button:hover::after {
+    opacity: 1;
+    transform: translateX(58%);
+  }
+
+  .home-page .archive-routes a:hover {
+    border-color: var(--home-line-strong);
+    background:
+      linear-gradient(115deg, rgba(199, 164, 92, .11), transparent 52%),
+      rgba(255, 255, 255, .026);
+  }
+}
+
+@keyframes home-aura {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes home-scroll-pulse {
+  0%, 100% { opacity: .35; transform: scaleY(.62); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .cosmology-panel::before,
+  .home-page .scroll-mark span {
+    animation: none;
+  }
+}
