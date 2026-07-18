@@ -9,6 +9,7 @@
   <title>Harmonia Caótica — Vaelora</title>
   <link rel="preload" href="/harmonia-caotica/imagens/hero-harmonia-mobile.jpg" as="image" type="image/jpeg" fetchpriority="high">
   <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/home-systems.css">
 </head>
 
 <body class="home-page">
@@ -22,7 +23,7 @@
         <a href="#mundo">Mundo</a>
         <a href="#divindades">Divindades</a>
         <a href="#territorios">Territórios</a>
-        <a href="sistemas/index.html">Sistemas</a>
+        <a class="site-header__systems" href="sistemas/index.html">Sistemas</a>
       </nav>
     </div>
   </header>
@@ -37,8 +38,8 @@
           <h1 id="home-title" class="home-hero__title">Harmonia <span>Caótica</span></h1>
           <p class="home-hero__lead">Divindades governam Domínios, religiões interpretam seus poderes e mortais podem ascender para ocupar um lugar entre os Deuses.</p>
           <div class="home-hero__actions">
-            <a class="button button--primary" href="#mundo">Entrar em Vaelora</a>
-            <a class="button button--ghost" href="#divindades">Conhecer o Panteão</a>
+            <a class="button button--primary" href="sistemas/primeiros-passos.html">Começar a jogar</a>
+            <a class="button button--ghost" href="#mundo">Explorar Vaelora</a>
           </div>
         </div>
         <aside class="cosmology-panel" data-reveal>
@@ -50,7 +51,46 @@
           <p class="cosmology-panel__text">Cinco Divindades e dez Domínios sustentam um equilíbrio que nunca permanece imóvel.</p>
         </aside>
       </div>
-      <a class="scroll-mark" href="#mundo" aria-label="Ir para a próxima seção"><span></span></a>
+      <a class="scroll-mark" href="#jogar" aria-label="Ir para as opções de jogo"><span></span></a>
+    </section>
+
+    <section id="jogar" class="home-play-section" aria-labelledby="home-play-title">
+      <div class="home-shell">
+        <header class="home-play__intro" data-reveal>
+          <p class="eyebrow">O RPG</p>
+          <h2 id="home-play-title">Jogue Harmonia Caótica</h2>
+          <p>As regras possuem profundidade para construções avançadas, mas você não precisa compreender tudo antes de começar. Escolha a entrada adequada ao seu momento.</p>
+          <span class="home-play__assurance">Uma regra canônica, diferentes profundidades</span>
+        </header>
+
+        <div class="home-play__routes">
+          <a class="home-play-card home-play-card--primary" href="sistemas/primeiros-passos.html" data-reveal>
+            <p class="home-play-card__eyebrow">Nunca joguei</p>
+            <h3>Primeiros Passos</h3>
+            <p>Entenda personagens, Milagres e Ranks sem começar pelas construções mais complexas.</p>
+            <span class="home-play-card__action">Começar a aprender →</span>
+          </a>
+
+          <a class="home-play-card" href="sistemas/construcao-guiada.html" data-reveal>
+            <p class="home-play-card__eyebrow">Quero criar um poder</p>
+            <h3>Construção Guiada</h3>
+            <p>Transforme uma ideia em um Milagre e descubra apenas as regras que ela realmente utiliza.</p>
+            <span class="home-play-card__action">Construir um Milagre →</span>
+          </a>
+
+          <a class="home-play-card" href="sistemas/consulta-rapida.html" data-reveal>
+            <p class="home-play-card__eyebrow">Já conheço as regras</p>
+            <h3>Consulta Rápida</h3>
+            <p>Acesse custos, tabelas e limites oficiais para construção e uso durante as partidas.</p>
+            <span class="home-play-card__action">Abrir as tabelas →</span>
+          </a>
+        </div>
+
+        <div class="home-play__portal" data-reveal>
+          <p>Jogadores antigos, narradores e leitores que desejam explorar todos os capítulos podem acessar o Portal dos Sistemas.</p>
+          <a href="sistemas/index.html">Abrir todos os Sistemas →</a>
+        </div>
+      </div>
     </section>
 
     <section id="mundo" class="world-prologue">
