@@ -1481,14 +1481,86 @@ body.atlas-site::after {
       #080a0d;
   }
 
+  .atlas-global-nav a,
+  .atlas-site .site-header__nav a {
+    width: 100%;
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
   .atlas-site .content-index {
     inset: auto 8px 8px;
+    width: auto;
+    max-width: none;
     max-height: min(78vh, 760px);
+    padding: 18px;
+    overflow: hidden;
     border-color: color-mix(in srgb, var(--atlas-accent) 36%, transparent);
     border-radius: 0;
     background:
       radial-gradient(circle at 100% 0, var(--apo-glow), transparent 50%),
       #080a0d;
+  }
+
+  /*
+   * editorial.css transforma o indice em duas colunas a partir de 760px.
+   * A gaveta continua sendo movel ate 1023px, portanto anulamos essa grade
+   * dentro do painel para impedir que os links sejam comprimidos e cortados.
+   */
+  .atlas-site .content-index > .mobile-container {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-items: stretch;
+    gap: 12px;
+    padding: 0 !important;
+  }
+
+  .atlas-site .content-index__label {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .atlas-site .content-index__list,
+  .atlas-site .territory-index__list {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    max-height: min(54vh, 520px);
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .atlas-site .content-index__list > li,
+  .atlas-site .territory-index__list > li {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .atlas-site .content-index a,
+  .atlas-site .territory-index a {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    padding: 13px 14px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .atlas-site .atlas-index-close {
+    width: 100%;
+    min-width: 0;
+    margin: 0 0 4px;
   }
 
   .atlas-site .home-hero__layout {
