@@ -1,11 +1,12 @@
 /* ==========================================================
-   INTERFACE ESTÁVEL — HARMONIA CAÓTICA
-   Uma única definição para navegação, sumário e capa mobile.
-   Carregado depois das camadas visuais do Atlas.
+   INTERFACE RESPONSIVA CONSOLIDADA — HARMONIA CAÓTICA
+   O modo amplo exige largura e um dispositivo apontador preciso.
+   Celulares e tablets permanecem na interface compacta mesmo
+   quando relatam uma viewport larga ou estão em orientação horizontal.
    ========================================================== */
 
 :root {
-  --interface-menu-breakpoint: 900px;
+  --interface-desktop-query: 1024px;
 }
 
 .atlas-site .site-header__inner,
@@ -22,9 +23,23 @@
   flex: 0 1 auto;
 }
 
-.atlas-site .atlas-global-nav,
-.atlas-site .site-header__nav {
-  min-width: 0;
+.atlas-site :is(
+  .home-hero__title,
+  .internal-title,
+  .territory-hero__title,
+  [class$="-hero__title"],
+  .editorial-heading h2,
+  .domain-section > h2,
+  .territory-section__heading h2,
+  [class$="-section__heading"] h2
+) {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  text-wrap: balance;
+  hyphens: auto;
+  -webkit-hyphens: auto;
 }
 
 .atlas-site .atlas-menu-toggle,
@@ -36,6 +51,7 @@
 }
 
 .atlas-site .atlas-scrim {
+  display: block !important;
   visibility: hidden;
 }
 
@@ -44,11 +60,144 @@
   visibility: visible;
 }
 
-/* ----------------------------------------------------------
-   Navegação principal em computadores e notebooks
-   ---------------------------------------------------------- */
+/* ==========================================================
+   INTERFACE COMPACTA — padrão seguro para toque
+   ========================================================== */
 
-@media (min-width: 900px) {
+.atlas-site .atlas-menu-toggle {
+  order: 3;
+  display: inline-flex !important;
+}
+
+.atlas-site .atlas-global-nav,
+.atlas-site .site-header__nav {
+  position: fixed !important;
+  top: calc(var(--atlas-header, 64px) + env(safe-area-inset-top) + 10px) !important;
+  right: 12px !important;
+  left: auto !important;
+  bottom: auto !important;
+  z-index: 560 !important;
+  width: min(360px, calc(100vw - 24px)) !important;
+  max-width: calc(100vw - 24px) !important;
+  max-height: calc(100dvh - var(--atlas-header, 64px) - env(safe-area-inset-top) - 24px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  align-content: start !important;
+  gap: 5px !important;
+  margin: 0 !important;
+  padding: 12px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  border: 1px solid rgba(185, 157, 214, .3) !important;
+  border-radius: 18px !important;
+  background: rgba(7, 9, 12, .985) !important;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .58) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(-10px) scale(.985) !important;
+  transform-origin: top right;
+  transition:
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(.2, .72, .2, 1),
+    visibility 0s linear 220ms;
+}
+
+.atlas-site.menu-open .atlas-global-nav,
+.atlas-site.menu-open .site-header__nav {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  transition-delay: 0s;
+}
+
+.atlas-site .atlas-global-nav a,
+.atlas-site .site-header__nav a {
+  width: 100% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 15px 16px !important;
+  border-radius: 11px !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+.atlas-site .atlas-index-toggle {
+  order: 2;
+  display: inline-flex !important;
+}
+
+.atlas-site .atlas-index-close {
+  display: inline-flex !important;
+}
+
+.atlas-site .content-index {
+  position: fixed !important;
+  inset: auto 10px 10px !important;
+  z-index: 570 !important;
+  width: auto !important;
+  max-width: none !important;
+  max-height: min(78dvh, 760px) !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border-radius: 22px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(calc(100% + 24px)) !important;
+  transition:
+    opacity 180ms ease,
+    transform 280ms cubic-bezier(.2, .72, .2, 1),
+    visibility 0s linear 280ms;
+}
+
+.atlas-site.index-open .content-index {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  transition-delay: 0s;
+}
+
+.atlas-site .content-index > .mobile-container {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 10px !important;
+  padding: 16px !important;
+}
+
+.atlas-site .content-index__list,
+.atlas-site .territory-index__list {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  max-height: min(54dvh, 520px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 4px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+.atlas-site .content-index a,
+.atlas-site .territory-index a {
+  width: 100% !important;
+  min-width: 0 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* ==========================================================
+   INTERFACE AMPLA — somente computador real
+   ========================================================== */
+
+@media (min-width: 1024px) and (any-hover: hover) and (any-pointer: fine) {
   .atlas-site .atlas-global-nav,
   .atlas-site .site-header__nav {
     position: static !important;
@@ -83,87 +232,7 @@
     overflow-wrap: normal !important;
   }
 
-  .atlas-site .atlas-menu-toggle {
-    display: none !important;
-  }
-
-  .atlas-site.menu-open {
-    overflow: auto !important;
-  }
-}
-
-/* ----------------------------------------------------------
-   Menu recolhível somente quando a largura realmente exige
-   ---------------------------------------------------------- */
-
-@media (max-width: 899px) {
-  .atlas-site .atlas-menu-toggle {
-    order: 3;
-    display: inline-flex !important;
-  }
-
-  .atlas-site .atlas-global-nav,
-  .atlas-site .site-header__nav {
-    position: fixed !important;
-    top: calc(var(--atlas-header, 64px) + env(safe-area-inset-top) + 10px) !important;
-    right: 12px !important;
-    left: auto !important;
-    bottom: auto !important;
-    z-index: 560 !important;
-    width: min(360px, calc(100vw - 24px)) !important;
-    max-width: calc(100vw - 24px) !important;
-    max-height: calc(100dvh - var(--atlas-header, 64px) - env(safe-area-inset-top) - 24px) !important;
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) !important;
-    align-content: start !important;
-    gap: 5px !important;
-    margin: 0 !important;
-    padding: 12px !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    overscroll-behavior: contain;
-    border: 1px solid color-mix(in srgb, var(--atlas-accent) 36%, transparent) !important;
-    border-radius: 18px !important;
-    background: rgba(7, 9, 12, .985) !important;
-    box-shadow: 0 28px 80px rgba(0, 0, 0, .58) !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-    transform: translateY(-10px) scale(.985) !important;
-    transform-origin: top right;
-    transition:
-      opacity 180ms ease,
-      transform 220ms cubic-bezier(.2, .72, .2, 1),
-      visibility 0s linear 220ms;
-  }
-
-  .atlas-site.menu-open .atlas-global-nav,
-  .atlas-site.menu-open .site-header__nav {
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-    transform: none !important;
-    transition-delay: 0s;
-  }
-
-  .atlas-site .atlas-global-nav a,
-  .atlas-site .site-header__nav a {
-    width: 100% !important;
-    min-width: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    padding: 15px 16px !important;
-    border-radius: 11px !important;
-    white-space: normal !important;
-    overflow-wrap: anywhere !important;
-  }
-}
-
-/* ----------------------------------------------------------
-   Sumário: coluna lateral no desktop, gaveta nas demais telas
-   ---------------------------------------------------------- */
-
-@media (min-width: 1024px) {
+  .atlas-site .atlas-menu-toggle,
   .atlas-site .atlas-index-toggle,
   .atlas-site .atlas-index-close,
   .atlas-site .atlas-scrim {
@@ -177,136 +246,107 @@
     transform: none !important;
   }
 
+  .atlas-site.menu-open,
   .atlas-site.index-open {
     overflow: auto !important;
   }
 }
 
+/* ==========================================================
+   TÍTULOS — encaixe natural em telas estreitas
+   ========================================================== */
+
 @media (max-width: 1023px) {
-  .atlas-site .atlas-index-toggle {
-    order: 2;
-    display: inline-flex !important;
-  }
-
-  .atlas-site .atlas-index-close {
-    display: inline-flex !important;
-  }
-
-  .atlas-site .content-index {
-    position: fixed !important;
-    inset: auto 10px 10px !important;
-    z-index: 570 !important;
-    width: auto !important;
-    max-width: none !important;
-    max-height: min(78dvh, 760px) !important;
-    margin: 0 !important;
-    overflow: hidden !important;
-    border-radius: 22px !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-    transform: translateY(calc(100% + 24px)) !important;
-    transition:
-      opacity 180ms ease,
-      transform 280ms cubic-bezier(.2, .72, .2, 1),
-      visibility 0s linear 280ms;
-  }
-
-  .atlas-site.index-open .content-index {
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-    transform: none !important;
-    transition-delay: 0s;
-  }
-
-  .atlas-site .content-index > .mobile-container {
+  .atlas-site :is(
+    .internal-title,
+    .territory-hero__title,
+    [class$="-hero__title"]
+  ) {
     width: 100% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 10px !important;
-    padding: 16px !important;
-  }
-
-  .atlas-site .content-index__list,
-  .atlas-site .territory-index__list {
-    width: 100% !important;
-    min-width: 0 !important;
     max-width: 100% !important;
-    max-height: min(54dvh, 520px) !important;
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 4px !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-  }
-
-  .atlas-site .content-index a,
-  .atlas-site .territory-index a {
-    width: 100% !important;
-    min-width: 0 !important;
+    font-size: clamp(40px, 10.8vw, 68px) !important;
+    line-height: .9 !important;
+    letter-spacing: -.035em !important;
     white-space: normal !important;
-    overflow-wrap: anywhere !important;
   }
 
-  .atlas-site .atlas-scrim {
-    display: block !important;
-    z-index: 540 !important;
+  .atlas-site :is(
+    .internal-title,
+    .territory-hero__title,
+    [class$="-hero__title"]
+  ) br {
+    display: none !important;
+  }
+
+  .atlas-site :is(
+    .editorial-heading h2,
+    .domain-section > h2,
+    .territory-section__heading h2,
+    [class$="-section__heading"] h2
+  ) {
+    max-width: 100% !important;
+    font-size: clamp(34px, 8.8vw, 56px) !important;
+    line-height: .98 !important;
   }
 }
 
-/* ----------------------------------------------------------
-   Capa da página inicial em celulares
-   ---------------------------------------------------------- */
-
 @media (max-width: 760px) {
-  body.atlas-site.home-page .home-hero__layout {
+  body.atlas-site.home-page .home-hero__layout,
+  body.atlas-site.home-page .home-hero__content {
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
   }
 
   body.atlas-site.home-page .home-hero__content {
-    width: auto !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
     padding-right: 0 !important;
     box-sizing: border-box;
   }
 
   body.atlas-site.home-page .home-hero__title {
-    width: fit-content !important;
-    max-width: calc(100vw - 76px) !important;
+    width: 100% !important;
+    max-width: 100% !important;
     margin: 12px 0 22px !important;
-    font-size: clamp(42px, 12.2vw, 64px) !important;
-    line-height: .86 !important;
-    letter-spacing: -.045em !important;
-    white-space: nowrap !important;
-    overflow: visible !important;
+    font-size: clamp(42px, 11.7vw, 62px) !important;
+    line-height: .88 !important;
+    letter-spacing: -.04em !important;
+    white-space: normal !important;
   }
 
   body.atlas-site.home-page .home-hero__title span {
-    width: auto !important;
+    width: 100% !important;
     max-width: 100% !important;
     display: block !important;
-    margin: .09em 0 0 .04em !important;
-    font-size: .94em !important;
-    white-space: nowrap !important;
+    margin: .08em 0 0 .025em !important;
+    font-size: .92em !important;
+    white-space: normal !important;
+  }
+
+  .atlas-site .site-brand,
+  .atlas-site .mobile-logo {
+    max-width: calc(100vw - 120px);
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 390px) {
   .atlas-site .site-brand,
   .atlas-site .mobile-logo {
     font-size: 9px !important;
-    letter-spacing: 1.15px !important;
+    letter-spacing: 1.05px !important;
   }
 
   body.atlas-site.home-page .home-hero__title {
-    max-width: calc(100vw - 68px) !important;
-    font-size: clamp(40px, 12.4vw, 47px) !important;
+    font-size: clamp(38px, 11.4vw, 46px) !important;
+  }
+
+  .atlas-site :is(
+    .internal-title,
+    .territory-hero__title,
+    [class$="-hero__title"]
+  ) {
+    font-size: clamp(36px, 10.4vw, 48px) !important;
   }
 }
 
