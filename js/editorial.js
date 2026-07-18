@@ -24,7 +24,7 @@
   loadScript('editorial-core.js')
     .then(() => {
       if (document.body.classList.contains('systems-page') && !systemsScriptAlreadyLoaded()) {
-        return loadScript('sistemas.js', '20260717c');
+        return loadScript('sistemas.js', '20260718a');
       }
       return undefined;
     })
