@@ -1,0 +1,287 @@
+/* ==========================================================
+   POLIMENTO RESPONSIVO — HARMONIA CAÓTICA
+   Camada final para cabeçalhos compactos e tabelas móveis legíveis.
+   ========================================================== */
+
+/* Cabeçalho interno: mais compacto e menos dominante em telas pequenas. */
+html.ui-compact .atlas-site .mobile-header {
+  background: rgba(7, 11, 11, .96) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .2) !important;
+}
+
+html.ui-compact .atlas-site .mobile-header-inner {
+  min-height: 60px !important;
+  padding-inline: max(14px, env(safe-area-inset-left)) max(14px, env(safe-area-inset-right)) !important;
+  gap: 8px !important;
+}
+
+html.ui-compact .atlas-site .mobile-logo {
+  max-width: calc(100% - 104px) !important;
+  gap: 7px !important;
+  font-size: 9px !important;
+  letter-spacing: 1px !important;
+  line-height: 1.15 !important;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+html.ui-compact .atlas-site .mobile-logo::before {
+  flex: 0 0 auto;
+  font-size: 13px !important;
+}
+
+html.ui-compact .atlas-site :is(.atlas-menu-toggle, .atlas-index-toggle, .header-action) {
+  width: 40px !important;
+  min-width: 40px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  flex: 0 0 40px !important;
+  padding: 0 !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, .035) !important;
+  box-shadow: none !important;
+}
+
+html.ui-compact .atlas-site .atlas-index-toggle {
+  font-size: 0 !important;
+}
+
+html.ui-compact .atlas-site .atlas-index-toggle::before {
+  font-size: 16px !important;
+}
+
+html.ui-compact .atlas-site .internal-page {
+  padding-top: calc(60px + env(safe-area-inset-top)) !important;
+}
+
+html.ui-compact .atlas-site .reading-progress {
+  top: calc(60px + env(safe-area-inset-top)) !important;
+  height: 2px !important;
+}
+
+/* Sistemas: remove o padrão de cartões gigantes e restaura tabelas compactas. */
+@media (max-width: 760px) {
+  .systems-page .mobile-article.mobile-container {
+    width: min(calc(100% - 20px), 920px) !important;
+    padding-inline: 14px !important;
+  }
+
+  .systems-page .domain-section {
+    margin-top: 52px !important;
+    padding-top: 26px !important;
+  }
+
+  .systems-page .article-lead {
+    margin-bottom: 38px !important;
+    padding: 18px 18px 18px 20px !important;
+    border-radius: 0 14px 14px 0 !important;
+    box-shadow: none !important;
+  }
+
+  .systems-page .lore-box,
+  .systems-page .domain-boundary {
+    padding: 18px !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+  }
+
+  .systems-page .lore-box::after,
+  .systems-page .domain-boundary::after {
+    display: none !important;
+  }
+
+  .systems-page .table-wrap {
+    position: relative !important;
+    width: 100% !important;
+    margin: 24px 0 32px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    border: 1px solid rgba(255, 255, 255, .09) !important;
+    border-radius: 14px !important;
+    background: #0d1012 !important;
+    box-shadow: none !important;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--system-accent) rgba(255, 255, 255, .04);
+  }
+
+  .systems-page .table-wrap::-webkit-scrollbar {
+    height: 7px;
+  }
+
+  .systems-page .table-wrap::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, .035);
+  }
+
+  .systems-page .table-wrap::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--system-accent) 62%, #777);
+  }
+
+  .systems-page .system-table-toolbar {
+    position: sticky;
+    left: 0;
+    width: min(100vw - 48px, 100%);
+    min-width: min(100vw - 48px, 100%);
+    display: grid !important;
+    gap: 2px !important;
+    margin: 0 !important;
+    padding: 13px 15px 12px !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .08) !important;
+    border-radius: 0 !important;
+    background: #111518 !important;
+  }
+
+  .systems-page .system-table-toolbar span {
+    font-size: 7px !important;
+    letter-spacing: 1.15px !important;
+  }
+
+  .systems-page .system-table-toolbar strong {
+    font-size: 20px !important;
+    line-height: 1.08 !important;
+  }
+
+  .systems-page .table-wrap table,
+  .systems-page .table-wrap thead,
+  .systems-page .table-wrap tbody,
+  .systems-page .table-wrap tr,
+  .systems-page .table-wrap th,
+  .systems-page .table-wrap td {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+  }
+
+  .systems-page .table-wrap table {
+    display: table !important;
+    width: max-content !important;
+    min-width: 100% !important;
+    margin: 0 !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    table-layout: auto !important;
+    background: #0d1012 !important;
+  }
+
+  .systems-page .table-wrap table:has(thead th:nth-child(2)) {
+    min-width: max(100%, 430px) !important;
+  }
+
+  .systems-page .table-wrap table:has(thead th:nth-child(3)) {
+    min-width: max(100%, 570px) !important;
+  }
+
+  .systems-page .table-wrap table:has(thead th:nth-child(4)) {
+    min-width: max(100%, 700px) !important;
+  }
+
+  .systems-page .table-wrap table:has(thead th:nth-child(5)) {
+    min-width: max(100%, 820px) !important;
+  }
+
+  .systems-page .table-wrap thead {
+    display: table-header-group !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip: auto !important;
+    clip-path: none !important;
+  }
+
+  .systems-page .table-wrap tbody {
+    display: table-row-group !important;
+  }
+
+  .systems-page .table-wrap tr {
+    display: table-row !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .systems-page .table-wrap th,
+  .systems-page .table-wrap td {
+    display: table-cell !important;
+    width: auto !important;
+    padding: 12px 14px !important;
+    border: 0 !important;
+    border-right: 1px solid rgba(255, 255, 255, .055) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .065) !important;
+    background: transparent !important;
+    vertical-align: middle !important;
+    white-space: normal !important;
+  }
+
+  .systems-page .table-wrap th:last-child,
+  .systems-page .table-wrap td:last-child {
+    border-right: 0 !important;
+  }
+
+  .systems-page .table-wrap thead th {
+    position: static !important;
+    background: color-mix(in srgb, var(--system-accent) 14%, #14171b) !important;
+    color: #f3efe8 !important;
+    font-size: 8px !important;
+    letter-spacing: .75px !important;
+    line-height: 1.35 !important;
+    text-align: left !important;
+  }
+
+  .systems-page .table-wrap tbody td {
+    color: #d7d1c8 !important;
+    font-size: 13px !important;
+    line-height: 1.48 !important;
+    text-align: left !important;
+  }
+
+  .systems-page .table-wrap tbody td:first-child {
+    color: #f2ede4 !important;
+    font-family: var(--body) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    background: rgba(255, 255, 255, .018) !important;
+  }
+
+  .systems-page .table-wrap tbody tr:nth-child(even) td {
+    background: rgba(255, 255, 255, .018) !important;
+  }
+
+  .systems-page .table-wrap tbody tr:last-child td {
+    border-bottom: 0 !important;
+  }
+
+  .systems-page .table-wrap td::before {
+    display: none !important;
+    content: none !important;
+  }
+
+  .systems-page .table-wrap :is(td.is-numeric, th.is-numeric) {
+    text-align: center !important;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (max-width: 390px) {
+  html.ui-compact .atlas-site .mobile-logo {
+    max-width: calc(100% - 96px) !important;
+    font-size: 8.5px !important;
+    letter-spacing: .75px !important;
+  }
+
+  html.ui-compact .atlas-site :is(.atlas-menu-toggle, .atlas-index-toggle, .header-action) {
+    width: 38px !important;
+    min-width: 38px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    flex-basis: 38px !important;
+  }
+
+  .systems-page .mobile-article.mobile-container {
+    width: min(calc(100% - 14px), 920px) !important;
+    padding-inline: 10px !important;
+  }
+}
