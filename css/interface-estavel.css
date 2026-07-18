@@ -1,0 +1,315 @@
+/* ==========================================================
+   INTERFACE ESTÁVEL — HARMONIA CAÓTICA
+   Uma única definição para navegação, sumário e capa mobile.
+   Carregado depois das camadas visuais do Atlas.
+   ========================================================== */
+
+:root {
+  --interface-menu-breakpoint: 900px;
+}
+
+.atlas-site .site-header__inner,
+.atlas-site .mobile-header-inner {
+  position: relative;
+  width: min(100%, var(--atlas-shell, 1440px));
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+
+.atlas-site .site-brand,
+.atlas-site .mobile-logo {
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.atlas-site .atlas-global-nav,
+.atlas-site .site-header__nav {
+  min-width: 0;
+}
+
+.atlas-site .atlas-menu-toggle,
+.atlas-site .atlas-index-toggle,
+.atlas-site .atlas-index-close {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+}
+
+.atlas-site .atlas-scrim {
+  visibility: hidden;
+}
+
+.atlas-site.menu-open .atlas-scrim,
+.atlas-site.index-open .atlas-scrim {
+  visibility: visible;
+}
+
+/* ----------------------------------------------------------
+   Navegação principal em computadores e notebooks
+   ---------------------------------------------------------- */
+
+@media (min-width: 900px) {
+  .atlas-site .atlas-global-nav,
+  .atlas-site .site-header__nav {
+    position: static !important;
+    inset: auto !important;
+    z-index: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    display: flex !important;
+    align-items: center !important;
+    align-content: normal !important;
+    gap: 4px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+  }
+
+  .atlas-site .atlas-global-nav a,
+  .atlas-site .site-header__nav a {
+    width: auto !important;
+    min-width: 0 !important;
+    padding: 11px 12px !important;
+    white-space: nowrap !important;
+    overflow-wrap: normal !important;
+  }
+
+  .atlas-site .atlas-menu-toggle {
+    display: none !important;
+  }
+
+  .atlas-site.menu-open {
+    overflow: auto !important;
+  }
+}
+
+/* ----------------------------------------------------------
+   Menu recolhível somente quando a largura realmente exige
+   ---------------------------------------------------------- */
+
+@media (max-width: 899px) {
+  .atlas-site .atlas-menu-toggle {
+    order: 3;
+    display: inline-flex !important;
+  }
+
+  .atlas-site .atlas-global-nav,
+  .atlas-site .site-header__nav {
+    position: fixed !important;
+    top: calc(var(--atlas-header, 64px) + env(safe-area-inset-top) + 10px) !important;
+    right: 12px !important;
+    left: auto !important;
+    bottom: auto !important;
+    z-index: 560 !important;
+    width: min(360px, calc(100vw - 24px)) !important;
+    max-width: calc(100vw - 24px) !important;
+    max-height: calc(100dvh - var(--atlas-header, 64px) - env(safe-area-inset-top) - 24px) !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-content: start !important;
+    gap: 5px !important;
+    margin: 0 !important;
+    padding: 12px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    border: 1px solid color-mix(in srgb, var(--atlas-accent) 36%, transparent) !important;
+    border-radius: 18px !important;
+    background: rgba(7, 9, 12, .985) !important;
+    box-shadow: 0 28px 80px rgba(0, 0, 0, .58) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(-10px) scale(.985) !important;
+    transform-origin: top right;
+    transition:
+      opacity 180ms ease,
+      transform 220ms cubic-bezier(.2, .72, .2, 1),
+      visibility 0s linear 220ms;
+  }
+
+  .atlas-site.menu-open .atlas-global-nav,
+  .atlas-site.menu-open .site-header__nav {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    transition-delay: 0s;
+  }
+
+  .atlas-site .atlas-global-nav a,
+  .atlas-site .site-header__nav a {
+    width: 100% !important;
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 15px 16px !important;
+    border-radius: 11px !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+}
+
+/* ----------------------------------------------------------
+   Sumário: coluna lateral no desktop, gaveta nas demais telas
+   ---------------------------------------------------------- */
+
+@media (min-width: 1024px) {
+  .atlas-site .atlas-index-toggle,
+  .atlas-site .atlas-index-close,
+  .atlas-site .atlas-scrim {
+    display: none !important;
+  }
+
+  .atlas-site .content-index {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+  }
+
+  .atlas-site.index-open {
+    overflow: auto !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .atlas-site .atlas-index-toggle {
+    order: 2;
+    display: inline-flex !important;
+  }
+
+  .atlas-site .atlas-index-close {
+    display: inline-flex !important;
+  }
+
+  .atlas-site .content-index {
+    position: fixed !important;
+    inset: auto 10px 10px !important;
+    z-index: 570 !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: min(78dvh, 760px) !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    border-radius: 22px !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(calc(100% + 24px)) !important;
+    transition:
+      opacity 180ms ease,
+      transform 280ms cubic-bezier(.2, .72, .2, 1),
+      visibility 0s linear 280ms;
+  }
+
+  .atlas-site.index-open .content-index {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    transition-delay: 0s;
+  }
+
+  .atlas-site .content-index > .mobile-container {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px !important;
+    padding: 16px !important;
+  }
+
+  .atlas-site .content-index__list,
+  .atlas-site .territory-index__list {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    max-height: min(54dvh, 520px) !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 4px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  .atlas-site .content-index a,
+  .atlas-site .territory-index a {
+    width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .atlas-site .atlas-scrim {
+    display: block !important;
+    z-index: 540 !important;
+  }
+}
+
+/* ----------------------------------------------------------
+   Capa da página inicial em celulares
+   ---------------------------------------------------------- */
+
+@media (max-width: 760px) {
+  body.atlas-site.home-page .home-hero__layout,
+  body.atlas-site.home-page .home-hero__content {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  body.atlas-site.home-page .home-hero__content {
+    padding-right: 0 !important;
+  }
+
+  body.atlas-site.home-page .home-hero__title {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 12px 0 22px !important;
+    font-size: clamp(44px, 13vw, 68px) !important;
+    line-height: .86 !important;
+    letter-spacing: -.045em !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+
+  body.atlas-site.home-page .home-hero__title span {
+    width: 100% !important;
+    display: block !important;
+    margin: .09em 0 0 .04em !important;
+    font-size: .94em !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .atlas-site .site-brand,
+  .atlas-site .mobile-logo {
+    font-size: 9px !important;
+    letter-spacing: 1.15px !important;
+  }
+
+  body.atlas-site.home-page .home-hero__title {
+    font-size: clamp(42px, 13vw, 50px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-site .atlas-global-nav,
+  .atlas-site .site-header__nav,
+  .atlas-site .content-index,
+  .atlas-site .atlas-scrim {
+    transition: none !important;
+  }
+}
