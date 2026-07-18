@@ -1,0 +1,58 @@
+name: Otimizar carregamento do site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/apply-performance-pass.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validar o otimizador
+        run: |
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          ast.parse(Path('scripts/apply-performance-pass.py').read_text(encoding='utf-8'))
+          PY
+
+      - name: Consolidar CSS e JavaScript
+        run: python3 scripts/apply-performance-pass.py
+
+      - name: Validar os bundles JavaScript
+        run: |
+          node --check js/site.js
+          node --check js/site-systems.js
+
+      - name: Verificar recursos antigos nas páginas
+        run: |
+          if grep -R --include='*.html' -nE '(mobile\.css|atlas-novo\.css|apoteose\.css|layout-estavel-v2\.css|editorial\.js|atlas-novo\.js)' index.html divindades dominios territorios mundo sistemas templates; then
+            echo 'Ainda existem recursos antigos carregados diretamente.'
+            exit 1
+          fi
+
+      - name: Registrar os recursos otimizados
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo 'Nenhuma alteração adicional foi necessária.'
+            exit 0
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m 'Consolida recursos e acelera o carregamento do site'
+          git push
