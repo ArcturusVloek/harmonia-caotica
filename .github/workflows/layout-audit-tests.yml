@@ -1,0 +1,72 @@
+name: Auditoria visual multiplataforma
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  layout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Instalar Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium webkit
+
+      - name: Validar arquivos compartilhados
+        run: |
+          node --check js/device-mode.js
+          node --check js/atlas-novo.js
+          node --check tests/layout-audit.mjs
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          ast.parse(Path('scripts/apply-layout-audit.py').read_text(encoding='utf-8'))
+          PY
+
+      - name: Normalizar páginas antes da auditoria
+        run: |
+          python3 scripts/apply-layout-audit.py
+          if ! git diff --quiet; then
+            echo 'A cópia de teste recebeu normalizações adicionais:'
+            git diff --stat
+          fi
+
+      - name: Iniciar o site local
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/harmonia-http.log 2>&1 &
+          echo $! > /tmp/harmonia-http.pid
+          for attempt in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/index.html > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/harmonia-http.log
+          exit 1
+
+      - name: Executar auditoria em desktop, laptop, Android, iPhone e iPad
+        run: node tests/layout-audit.mjs
+
+      - name: Publicar relatório e capturas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: layout-audit-report
+          path: artifacts/layout-audit
+          if-no-files-found: warn
+          retention-days: 14
