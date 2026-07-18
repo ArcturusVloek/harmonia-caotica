@@ -3,7 +3,7 @@
 @import url("./sistemas.css");
 @import url("./sistemas-fallback.css");
 @import url("./sistemas-hotfix.css");
-@import url("./leitura-imersiva.css");
+@import url("./leitura-imersiva.css?v=20260718b");
 
 .deity-page {
   --domain-panel: rgba(16, 14, 21, .9);
