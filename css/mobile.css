@@ -4,6 +4,8 @@
 @import url("./sistemas-fallback.css");
 @import url("./sistemas-hotfix.css");
 @import url("./leitura-imersiva.css?v=20260718b");
+@import url("./sistemas-cores.css?v=20260718a");
+@import url("./home-mobile-fix.css?v=20260718a");
 
 .deity-page {
   --domain-panel: rgba(16, 14, 21, .9);
