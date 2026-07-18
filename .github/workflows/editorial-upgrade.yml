@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - scripts/apply-editorial-upgrade.py
+      - scripts/apply-layout-audit.py
   workflow_dispatch:
 
 permissions:
@@ -19,19 +20,30 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Validar o migrador
+      - name: Validar os migradores
         run: |
           python3 - <<'PY'
           import ast
           from pathlib import Path
-          ast.parse(Path('scripts/apply-editorial-upgrade.py').read_text(encoding='utf-8'))
+          for path in (
+              'scripts/apply-editorial-upgrade.py',
+              'scripts/apply-layout-audit.py',
+          ):
+              ast.parse(Path(path).read_text(encoding='utf-8'))
           PY
 
       - name: Aplicar estrutura editorial
         run: python3 scripts/apply-editorial-upgrade.py
 
+      - name: Aplicar arquitetura responsiva
+        run: python3 scripts/apply-layout-audit.py
+
       - name: Validar o JavaScript compartilhado
-        run: node --check js/editorial.js
+        run: |
+          node --check js/editorial.js
+          node --check js/editorial-core.js
+          node --check js/device-mode.js
+          node --check js/atlas-novo.js
 
       - name: Verificar estilos embutidos nas páginas internas
         run: |
@@ -53,5 +65,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Refina e valida o sistema editorial compartilhado"
+          git commit -m "Atualiza recursos editoriais e responsivos"
           git push
