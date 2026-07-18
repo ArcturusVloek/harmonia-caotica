@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - scripts/apply-performance-pass.py
+      - .github/workflows/performance-pass.yml
   workflow_dispatch:
 
 permissions:
