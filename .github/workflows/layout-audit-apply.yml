@@ -1,0 +1,54 @@
+name: Aplicar auditoria de layout
+
+on:
+  push:
+    branches:
+      - auditoria/layout-multiplataforma-20260718
+    paths:
+      - scripts/apply-layout-audit.py
+      - js/device-mode.js
+      - js/atlas-novo.js
+      - css/layout-estavel-v2.css
+      - '.github/workflows/layout-audit-apply.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validar o migrador
+        run: |
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          ast.parse(Path('scripts/apply-layout-audit.py').read_text(encoding='utf-8'))
+          PY
+
+      - name: Aplicar a arquitetura responsiva
+        run: python3 scripts/apply-layout-audit.py
+
+      - name: Validar o JavaScript
+        run: |
+          node --check js/device-mode.js
+          node --check js/atlas-novo.js
+
+      - name: Registrar as páginas atualizadas
+        run: |
+          if git diff --quiet; then
+            echo "As páginas já estavam sincronizadas."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Aplica arquitetura responsiva a todas as páginas"
+          git push
