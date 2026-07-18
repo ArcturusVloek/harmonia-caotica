@@ -15,6 +15,7 @@ HTML_ROOTS = ("divindades", "dominios", "territorios", "mundo", "sistemas", "tem
 DEVICE_VERSION = "20260718a"
 LAYOUT_VERSION = "20260718a"
 ATLAS_VERSION = "20260718e"
+EDITORIAL_VERSION = "20260718b"
 SYSTEM_COLORS_VERSION = "20260718e"
 
 
@@ -87,6 +88,11 @@ def normalize_resources(path: Path, html: str) -> str:
     html = re.sub(
         r'atlas-novo\.js(?:\?v=[^"\']+)?',
         f'atlas-novo.js?v={ATLAS_VERSION}',
+        html,
+    )
+    html = re.sub(
+        r'editorial\.js(?:\?v=[^"\']+)?',
+        f'editorial.js?v={EDITORIAL_VERSION}',
         html,
     )
     html = re.sub(
