@@ -10,27 +10,6 @@
   const home = body.classList.contains('home-page');
   const systemsPage = body.classList.contains('systems-page');
 
-  const ensureStylesheet = (id, path) => {
-    if (document.getElementById(id)) return;
-    const link = document.createElement('link');
-    link.id = id;
-    link.rel = 'stylesheet';
-    link.href = href(path);
-    document.head.appendChild(link);
-  };
-
-  const rootStyles = window.getComputedStyle(document.documentElement);
-  const bodyStyles = window.getComputedStyle(body);
-
-  /* Fallback para páginas que ainda estejam usando uma versão antiga do CSS em cache. */
-  if (rootStyles.getPropertyValue('--interface-menu-breakpoint').trim() !== '900px') {
-    ensureStylesheet('atlas-interface-stable', 'css/interface-estavel.css?v=20260718a');
-  }
-
-  if (systemsPage && !bodyStyles.getPropertyValue('--block-1-accent').trim()) {
-    ensureStylesheet('systems-block-colors', 'css/sistemas-cores-v2.css?v=20260718a');
-  }
-
   body.classList.add('atlas-site');
   document.documentElement.classList.add('atlas-interface');
 
@@ -102,8 +81,14 @@
   const index = document.querySelector('.content-index');
   if (index) index.id ||= 'indice-da-pagina';
 
-  const menuDesktop = window.matchMedia('(min-width: 900px)');
-  const indexDesktop = window.matchMedia('(min-width: 1024px)');
+  /*
+   * O modo amplo exige largura, hover e ponteiro preciso.
+   * Assim, celulares em paisagem ou com viewport ampliada continuam
+   * usando a interface compacta em vez de receber o layout de computador.
+   */
+  const desktopUi = window.matchMedia(
+    '(min-width: 1024px) and (any-hover: hover) and (any-pointer: fine)'
+  );
 
   let menuButton = headerInner?.querySelector('.atlas-menu-toggle') || null;
   if (headerInner && navigation && !menuButton) {
@@ -162,11 +147,11 @@
   };
 
   const setMenuOpen = (open, focusFirst = false) => {
-    const mayOpen = Boolean(open && !menuDesktop.matches && navigation);
+    const mayOpen = Boolean(open && !desktopUi.matches && navigation);
     body.classList.toggle('menu-open', mayOpen);
     menuButton?.setAttribute('aria-expanded', String(mayOpen));
     menuButton?.setAttribute('aria-label', mayOpen ? 'Fechar navegação' : 'Abrir navegação');
-    setInert(navigation, !menuDesktop.matches && !mayOpen);
+    setInert(navigation, !desktopUi.matches && !mayOpen);
 
     if (mayOpen && focusFirst) {
       window.requestAnimationFrame(() => navigation?.querySelector('a')?.focus());
@@ -174,10 +159,10 @@
   };
 
   const setIndexOpen = (open, focusFirst = false) => {
-    const mayOpen = Boolean(open && !indexDesktop.matches && index);
+    const mayOpen = Boolean(open && !desktopUi.matches && index);
     body.classList.toggle('index-open', mayOpen);
     indexButton?.setAttribute('aria-expanded', String(mayOpen));
-    setInert(index, !indexDesktop.matches && !mayOpen);
+    setInert(index, !desktopUi.matches && !mayOpen);
 
     if (mayOpen && focusFirst) {
       window.requestAnimationFrame(() => {
@@ -228,22 +213,39 @@
     if (event.key === 'Escape') closePanels({ restoreFocus: true });
   });
 
-  const syncResponsiveState = () => {
-    if (menuDesktop.matches) setMenuOpen(false);
-    else setInert(navigation, !body.classList.contains('menu-open'));
-
-    if (indexDesktop.matches) setIndexOpen(false);
-    else setInert(index, !body.classList.contains('index-open'));
+  const classifyTitles = () => {
+    document.querySelectorAll(
+      '.home-hero__title, .internal-title, .territory-hero__title, [class$="-hero__title"]'
+    ).forEach((title) => {
+      const length = (title.innerText || title.textContent || '').replace(/\s+/g, ' ').trim().length;
+      title.classList.toggle('title-is-long', length > 34);
+      title.classList.toggle('title-is-very-long', length > 52);
+    });
   };
 
-  if (menuDesktop.addEventListener) menuDesktop.addEventListener('change', syncResponsiveState);
-  else menuDesktop.addListener(syncResponsiveState);
+  const syncResponsiveState = () => {
+    body.classList.toggle('ui-desktop', desktopUi.matches);
+    body.classList.toggle('ui-compact', !desktopUi.matches);
+    closePanels();
 
-  if (indexDesktop.addEventListener) indexDesktop.addEventListener('change', syncResponsiveState);
-  else indexDesktop.addListener(syncResponsiveState);
+    if (desktopUi.matches) {
+      setInert(navigation, false);
+      setInert(index, false);
+    } else {
+      setInert(navigation, true);
+      setInert(index, true);
+    }
+  };
 
+  if (desktopUi.addEventListener) desktopUi.addEventListener('change', syncResponsiveState);
+  else desktopUi.addListener(syncResponsiveState);
+
+  window.addEventListener('orientationchange', syncResponsiveState);
   window.addEventListener('pageshow', syncResponsiveState);
+
+  classifyTitles();
   syncResponsiveState();
 
+  document.fonts?.ready.then(classifyTitles).catch(() => {});
   document.documentElement.classList.add('atlas-ready');
 })();
