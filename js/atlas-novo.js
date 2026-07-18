@@ -7,11 +7,12 @@
     : new URL('/harmonia-caotica/', window.location.origin);
   const href = (path) => new URL(path, siteRoot).href;
   const body = document.body;
+  const root = document.documentElement;
   const home = body.classList.contains('home-page');
   const systemsPage = body.classList.contains('systems-page');
 
   body.classList.add('atlas-site');
-  document.documentElement.classList.add('atlas-interface');
+  root.classList.add('atlas-interface');
 
   const currentFile = window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
   const systemBlocks = {
@@ -81,14 +82,10 @@
   const index = document.querySelector('.content-index');
   if (index) index.id ||= 'indice-da-pagina';
 
-  /*
-   * O modo amplo exige largura, hover e ponteiro preciso.
-   * Assim, celulares em paisagem ou com viewport ampliada continuam
-   * usando a interface compacta em vez de receber o layout de computador.
-   */
-  const desktopUi = window.matchMedia(
-    '(min-width: 1024px) and (any-hover: hover) and (any-pointer: fine)'
-  );
+  const isDesktop = () => {
+    window.HarmoniaDeviceMode?.detect?.();
+    return root.classList.contains('ui-desktop');
+  };
 
   let menuButton = headerInner?.querySelector('.atlas-menu-toggle') || null;
   if (headerInner && navigation && !menuButton) {
@@ -117,6 +114,7 @@
   if (indexButton && index) {
     indexButton.setAttribute('aria-controls', index.id);
     indexButton.setAttribute('aria-expanded', 'false');
+    indexButton.setAttribute('aria-label', 'Abrir sumário');
   }
 
   if (index && !home) {
@@ -147,11 +145,11 @@
   };
 
   const setMenuOpen = (open, focusFirst = false) => {
-    const mayOpen = Boolean(open && !desktopUi.matches && navigation);
+    const mayOpen = Boolean(open && !isDesktop() && navigation);
     body.classList.toggle('menu-open', mayOpen);
     menuButton?.setAttribute('aria-expanded', String(mayOpen));
     menuButton?.setAttribute('aria-label', mayOpen ? 'Fechar navegação' : 'Abrir navegação');
-    setInert(navigation, !desktopUi.matches && !mayOpen);
+    setInert(navigation, !isDesktop() && !mayOpen);
 
     if (mayOpen && focusFirst) {
       window.requestAnimationFrame(() => navigation?.querySelector('a')?.focus());
@@ -159,10 +157,11 @@
   };
 
   const setIndexOpen = (open, focusFirst = false) => {
-    const mayOpen = Boolean(open && !desktopUi.matches && index);
+    const mayOpen = Boolean(open && !isDesktop() && index);
     body.classList.toggle('index-open', mayOpen);
     indexButton?.setAttribute('aria-expanded', String(mayOpen));
-    setInert(index, !desktopUi.matches && !mayOpen);
+    indexButton?.setAttribute('aria-label', mayOpen ? 'Fechar sumário' : 'Abrir sumário');
+    setInert(index, !isDesktop() && !mayOpen);
 
     if (mayOpen && focusFirst) {
       window.requestAnimationFrame(() => {
@@ -217,35 +216,57 @@
     document.querySelectorAll(
       '.home-hero__title, .internal-title, .territory-hero__title, [class$="-hero__title"]'
     ).forEach((title) => {
-      const length = (title.innerText || title.textContent || '').replace(/\s+/g, ' ').trim().length;
-      title.classList.toggle('title-is-long', length > 34);
-      title.classList.toggle('title-is-very-long', length > 52);
+      const text = (title.innerText || title.textContent || '').replace(/\s+/g, ' ').trim();
+      const length = text.length;
+      const words = text.split(/\s+/).filter(Boolean);
+      const longestWord = words.reduce((max, word) => Math.max(max, word.length), 0);
+
+      title.classList.toggle('title-is-long', length > 30 || longestWord > 16);
+      title.classList.toggle('title-is-very-long', length > 48 || longestWord > 23);
     });
   };
 
   const syncResponsiveState = () => {
-    body.classList.toggle('ui-desktop', desktopUi.matches);
-    body.classList.toggle('ui-compact', !desktopUi.matches);
+    const desktop = isDesktop();
+    body.classList.toggle('ui-desktop', desktop);
+    body.classList.toggle('ui-compact', !desktop);
     closePanels();
 
-    if (desktopUi.matches) {
+    if (desktop) {
       setInert(navigation, false);
       setInert(index, false);
     } else {
       setInert(navigation, true);
       setInert(index, true);
     }
+
+    classifyTitles();
   };
 
-  if (desktopUi.addEventListener) desktopUi.addEventListener('change', syncResponsiveState);
-  else desktopUi.addListener(syncResponsiveState);
+  let syncFrame = 0;
+  const scheduleSync = () => {
+    window.cancelAnimationFrame(syncFrame);
+    syncFrame = window.requestAnimationFrame(syncResponsiveState);
+  };
 
-  window.addEventListener('orientationchange', syncResponsiveState);
-  window.addEventListener('pageshow', syncResponsiveState);
+  window.addEventListener('resize', scheduleSync, { passive: true });
+  window.addEventListener('orientationchange', scheduleSync, { passive: true });
+  window.addEventListener('pageshow', scheduleSync);
+  window.visualViewport?.addEventListener('resize', scheduleSync, { passive: true });
+
+  if ('ResizeObserver' in window) {
+    const titleObserver = new ResizeObserver(classifyTitles);
+    document.querySelectorAll('.home-hero__content, .internal-hero-content, .territory-hero__content')
+      .forEach((element) => titleObserver.observe(element));
+  }
 
   classifyTitles();
   syncResponsiveState();
 
-  document.fonts?.ready.then(classifyTitles).catch(() => {});
-  document.documentElement.classList.add('atlas-ready');
+  document.fonts?.ready.then(() => {
+    classifyTitles();
+    scheduleSync();
+  }).catch(() => {});
+
+  root.classList.add('atlas-ready');
 })();
