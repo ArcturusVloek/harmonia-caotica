@@ -12,12 +12,12 @@
   <meta name="description" content="Harmonia Caótica, um RPG ambientado no mundo de Vaelora.">
   <title>Harmonia Caótica — Vaelora</title>
   <link rel="preload" href="/harmonia-caotica/imagens/hero-harmonia-mobile.jpg" as="image" type="image/jpeg" fetchpriority="high">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
   <link rel="stylesheet" href="css/site-core.css?v=20260718a">
 <link rel="stylesheet" href="css/home-systems.css?v=20260718b">
-
   <link rel="stylesheet" href="css/site-final.css?v=20260718a">
 </head>
 
@@ -170,7 +170,6 @@
     const navigationObserver=new IntersectionObserver(entries=>{const currentEntry=entries.filter(entry=>entry.isIntersecting).sort((first,second)=>second.intersectionRatio-first.intersectionRatio)[0];if(!currentEntry)return;navigationLinks.forEach(link=>{const isCurrent=link.getAttribute('href')===`#${currentEntry.target.id}`;link.classList.toggle('active',isCurrent);if(isCurrent)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});},{rootMargin:'-36% 0px -52% 0px',threshold:[0,.1,.35,.6]});
     observedSections.forEach(section=>navigationObserver.observe(section));
   </script>
-
   <script src="js/site.js?v=20260718a" defer></script>
 </body>
 </html>
