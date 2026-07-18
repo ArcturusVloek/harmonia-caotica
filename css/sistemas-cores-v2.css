@@ -1,0 +1,229 @@
+/* ==========================================================
+   BLOCOS DE SISTEMAS — PALETA FUNCIONAL CONSOLIDADA
+   Aplicada por classes semânticas adicionadas por atlas-novo.js.
+   ========================================================== */
+
+.systems-page {
+  --block-1-accent: #9d83c9;
+  --block-1-light: #ded2f2;
+  --block-1-deep: #674d88;
+  --block-1-soft: rgba(157, 131, 201, .15);
+  --block-1-border: rgba(157, 131, 201, .5);
+
+  --block-2-accent: #6093bd;
+  --block-2-light: #c8dff1;
+  --block-2-deep: #3f6484;
+  --block-2-soft: rgba(96, 147, 189, .15);
+  --block-2-border: rgba(96, 147, 189, .5);
+
+  --block-3-accent: #6f9d7b;
+  --block-3-light: #cbe3d1;
+  --block-3-deep: #496c53;
+  --block-3-soft: rgba(111, 157, 123, .15);
+  --block-3-border: rgba(111, 157, 123, .5);
+
+  --block-4-accent: #bc8754;
+  --block-4-light: #edcaa7;
+  --block-4-deep: #7e5938;
+  --block-4-soft: rgba(188, 135, 84, .15);
+  --block-4-border: rgba(188, 135, 84, .52);
+
+  --block-5-accent: #aa7192;
+  --block-5-light: #e3bfd4;
+  --block-5-deep: #734a61;
+  --block-5-soft: rgba(170, 113, 146, .15);
+  --block-5-border: rgba(170, 113, 146, .52);
+}
+
+body.atlas-site.systems-page.system-block-1 {
+  --system-block-accent: var(--block-1-accent);
+  --system-block-light: var(--block-1-light);
+  --system-block-deep: var(--block-1-deep);
+  --system-block-soft: var(--block-1-soft);
+  --system-block-border: var(--block-1-border);
+}
+
+body.atlas-site.systems-page.system-block-2 {
+  --system-block-accent: var(--block-2-accent);
+  --system-block-light: var(--block-2-light);
+  --system-block-deep: var(--block-2-deep);
+  --system-block-soft: var(--block-2-soft);
+  --system-block-border: var(--block-2-border);
+}
+
+body.atlas-site.systems-page.system-block-3 {
+  --system-block-accent: var(--block-3-accent);
+  --system-block-light: var(--block-3-light);
+  --system-block-deep: var(--block-3-deep);
+  --system-block-soft: var(--block-3-soft);
+  --system-block-border: var(--block-3-border);
+}
+
+body.atlas-site.systems-page.system-block-4 {
+  --system-block-accent: var(--block-4-accent);
+  --system-block-light: var(--block-4-light);
+  --system-block-deep: var(--block-4-deep);
+  --system-block-soft: var(--block-4-soft);
+  --system-block-border: var(--block-4-border);
+}
+
+body.atlas-site.systems-page.system-block-5 {
+  --system-block-accent: var(--block-5-accent);
+  --system-block-light: var(--block-5-light);
+  --system-block-deep: var(--block-5-deep);
+  --system-block-soft: var(--block-5-soft);
+  --system-block-border: var(--block-5-border);
+}
+
+body.atlas-site.systems-page[class*="system-block-"] {
+  --atlas-accent: var(--system-block-accent);
+  --atlas-accent-strong: var(--system-block-deep);
+  --atlas-accent-soft: var(--system-block-soft);
+  --system-accent: var(--system-block-accent);
+  --system-accent-light: var(--system-block-light);
+  --system-accent-deep: var(--system-block-deep);
+  --system-line: var(--system-block-soft);
+  --system-line-strong: var(--system-block-border);
+  --domain-accent: var(--system-block-accent) !important;
+  --domain-accent-soft: var(--system-block-soft) !important;
+  --domain-accent-border: var(--system-block-border) !important;
+}
+
+body.atlas-site.systems-page[class*="system-block-"] :is(
+  .internal-kicker,
+  .system-breadcrumb a,
+  .system-level,
+  .section-kicker,
+  .system-card-action,
+  .content-index__label
+) {
+  color: var(--system-block-light) !important;
+}
+
+body.atlas-site.systems-page[class*="system-block-"] :is(
+  .domain-badge,
+  .system-orientation,
+  .system-status-note,
+  .table-wrap,
+  .content-index
+) {
+  border-color: var(--system-block-border) !important;
+}
+
+body.atlas-site.systems-page[class*="system-block-"] .system-table-toolbar,
+body.atlas-site.systems-page[class*="system-block-"] .table-wrap th {
+  background:
+    linear-gradient(90deg, var(--system-block-soft), transparent 72%),
+    #0a0d11 !important;
+}
+
+/* Cartões dos cinco capítulos no Portal e na Biblioteca */
+body.atlas-site.systems-page .system-category-card[href$="fundamentos-dos-milagres.html"] {
+  --card-block-accent: var(--block-1-accent);
+  --card-block-light: var(--block-1-light);
+  --card-block-soft: var(--block-1-soft);
+  --card-block-border: var(--block-1-border);
+}
+
+body.atlas-site.systems-page .system-category-card[href$="alcance-alvos-area-e-movimento.html"] {
+  --card-block-accent: var(--block-2-accent);
+  --card-block-light: var(--block-2-light);
+  --card-block-soft: var(--block-2-soft);
+  --card-block-border: var(--block-2-border);
+}
+
+body.atlas-site.systems-page .system-category-card[href$="criacoes-invocacoes-e-manifestacoes-separadas.html"] {
+  --card-block-accent: var(--block-3-accent);
+  --card-block-light: var(--block-3-light);
+  --card-block-soft: var(--block-3-soft);
+  --card-block-border: var(--block-3-border);
+}
+
+body.atlas-site.systems-page .system-category-card[href$="propagacao-reproducao-e-crescimento.html"] {
+  --card-block-accent: var(--block-4-accent);
+  --card-block-light: var(--block-4-light);
+  --card-block-soft: var(--block-4-soft);
+  --card-block-border: var(--block-4-border);
+}
+
+body.atlas-site.systems-page .system-category-card[href$="travessias-e-caminhos-sobrenaturais.html"] {
+  --card-block-accent: var(--block-5-accent);
+  --card-block-light: var(--block-5-light);
+  --card-block-soft: var(--block-5-soft);
+  --card-block-border: var(--block-5-border);
+}
+
+body.atlas-site.systems-page .system-category-card:is(
+  [href$="fundamentos-dos-milagres.html"],
+  [href$="alcance-alvos-area-e-movimento.html"],
+  [href$="criacoes-invocacoes-e-manifestacoes-separadas.html"],
+  [href$="propagacao-reproducao-e-crescimento.html"],
+  [href$="travessias-e-caminhos-sobrenaturais.html"]
+) {
+  border-color: var(--card-block-border) !important;
+  border-left: 4px solid var(--card-block-accent) !important;
+  background:
+    linear-gradient(132deg, var(--card-block-soft), transparent 58%),
+    #0a0d11 !important;
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, .24),
+    inset 0 0 0 1px rgba(255, 255, 255, .018) !important;
+}
+
+body.atlas-site.systems-page .system-category-card:is(
+  [href$="fundamentos-dos-milagres.html"],
+  [href$="alcance-alvos-area-e-movimento.html"],
+  [href$="criacoes-invocacoes-e-manifestacoes-separadas.html"],
+  [href$="propagacao-reproducao-e-crescimento.html"],
+  [href$="travessias-e-caminhos-sobrenaturais.html"]
+)::before {
+  background: var(--card-block-accent) !important;
+  box-shadow: 0 0 18px var(--card-block-soft) !important;
+}
+
+body.atlas-site.systems-page .system-category-card:is(
+  [href$="fundamentos-dos-milagres.html"],
+  [href$="alcance-alvos-area-e-movimento.html"],
+  [href$="criacoes-invocacoes-e-manifestacoes-separadas.html"],
+  [href$="propagacao-reproducao-e-crescimento.html"],
+  [href$="travessias-e-caminhos-sobrenaturais.html"]
+) :is(.system-level, .system-category-card__eyebrow, .system-card-action) {
+  color: var(--card-block-light) !important;
+}
+
+body.atlas-site.systems-page .system-category-card:is(
+  [href$="fundamentos-dos-milagres.html"],
+  [href$="alcance-alvos-area-e-movimento.html"],
+  [href$="criacoes-invocacoes-e-manifestacoes-separadas.html"],
+  [href$="propagacao-reproducao-e-crescimento.html"],
+  [href$="travessias-e-caminhos-sobrenaturais.html"]
+) h3 {
+  color: #fff8ef !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.atlas-site.systems-page .system-category-card:is(
+    [href$="fundamentos-dos-milagres.html"],
+    [href$="alcance-alvos-area-e-movimento.html"],
+    [href$="criacoes-invocacoes-e-manifestacoes-separadas.html"],
+    [href$="propagacao-reproducao-e-crescimento.html"],
+    [href$="travessias-e-caminhos-sobrenaturais.html"]
+  ):hover {
+    border-color: var(--card-block-accent) !important;
+    box-shadow:
+      0 26px 64px rgba(0, 0, 0, .34),
+      0 0 28px var(--card-block-soft) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  body.atlas-site.systems-page .system-category-card:is(
+    [href$="fundamentos-dos-milagres.html"],
+    [href$="alcance-alvos-area-e-movimento.html"],
+    [href$="criacoes-invocacoes-e-manifestacoes-separadas.html"],
+    [href$="propagacao-reproducao-e-crescimento.html"],
+    [href$="travessias-e-caminhos-sobrenaturais.html"]
+  ) {
+    border-left-width: 3px !important;
+  }
+}
