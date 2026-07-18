@@ -1,0 +1,37 @@
+name: Atualizar recursos responsivos
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/bump-responsive-assets.py
+      - .github/workflows/bump-responsive-assets.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar-versoes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Atualizar referências dos recursos
+        run: python3 scripts/bump-responsive-assets.py
+
+      - name: Registrar alterações
+        run: |
+          if git diff --quiet; then
+            echo "Nenhuma alteração necessária."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html' '**/*.html'
+          git commit -m "Atualiza o cache dos recursos responsivos"
+          git push
