@@ -79,6 +79,15 @@
     document.head.appendChild(script);
   });
 
+  const currentPage = () => window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
+
+  const loadMiracleStudio = () => {
+    if (currentPage() !== 'construcao-guiada.html') return Promise.resolve();
+
+    return loadScript('estudio-milagres-data.js', '20260720a')
+      .then(() => loadScript('estudio-milagres.js', '20260720a'));
+  };
+
   const loadContextualSystemGuide = () => {
     if (!document.body?.classList.contains('systems-page')) return;
     if (root.dataset.systemGuideBoot === 'true') return;
@@ -87,6 +96,7 @@
     loadScript('base-regras-sistemas.js', '20260720a')
       .then(() => loadScript('sistema-guiado-core.js', '20260720a'))
       .then(() => loadScript('sistema-guiado-secoes.js', '20260720a'))
+      .then(loadMiracleStudio)
       .catch((error) => {
         root.dataset.systemGuideBoot = 'error';
         console.error('Falha ao carregar a camada didática dos Sistemas.', error);
