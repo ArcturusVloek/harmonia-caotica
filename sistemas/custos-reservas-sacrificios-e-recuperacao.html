@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-editorial-system="vaelora">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <script src="../js/device-mode.js?v=20260718a"></script>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#030405">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Regras oficiais de custos, Reservas, Recarga, Conversão, Sacrifícios e Recuperação em Harmonia Caótica.">
+  <title>Custos, Reservas, Sacrifícios e Recuperação — Harmonia Caótica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="../css/site-core-systems.css?v=20260718b">
+  <link rel="stylesheet" href="../css/dominios.css">
+  <link rel="stylesheet" href="../css/site-final-systems.css?v=20260718b">
+</head>
+<body id="topo" class="systems-page atlas-site system-block-14" style="--domain-accent:#b89ae7;--domain-accent-soft:rgba(184,154,231,.15);--domain-accent-border:rgba(184,154,231,.4);">
+  <div class="reading-progress" aria-hidden="true"></div>
+  <header class="mobile-header"><div class="mobile-header-inner mobile-container"><a class="mobile-logo" href="../index.html" aria-label="Voltar à página inicial">Harmonia Caótica</a><a class="header-action" href="index.html" aria-label="Voltar aos Sistemas">‹</a></div></header>
+  <main class="internal-page">
+    <section class="internal-hero" aria-labelledby="titulo-custos" style="--internal-image:radial-gradient(circle at 50% 22%,#59446c,#211827 52%,#09080d 100%);">
+      <div class="mobile-container internal-hero-content">
+        <p class="internal-kicker">Sistema dos Milagres</p>
+        <h1 id="titulo-custos" class="internal-title">Custos, Reservas,<br>Sacrifícios e Recuperação</h1>
+        <div class="domain-badge">Pagamento, armazenamento, Recarga, Conversão e bloqueios de recuperação</div>
+        <p class="internal-summary">As regras para perder recursos, sustentar aplicações, armazenar capacidades, recuperar Usos e transformar Sacrifícios em combustível.</p>
+      </div>
+    </section>
+    <aside class="archive-record" data-auto-record aria-label="Identificação editorial"></aside>
+    <nav id="indice-da-pagina" class="content-index" data-auto-index aria-label="Índice da página"></nav>
+    <article class="mobile-article mobile-container domain-article">
+      <nav class="system-breadcrumb" aria-label="Localização"><a href="index.html">Sistemas</a><span aria-hidden="true">›</span><a href="biblioteca.html#construcao-de-milagres">Construção de Milagres</a><span aria-hidden="true">›</span><span>Custos e Reservas</span></nav>
+      <aside class="system-orientation" aria-label="Orientação de leitura">
+        <div class="system-orientation__top"><span class="system-level" data-level="construction-advanced">Construção avançada</span><span class="system-orientation__record">Registro editorial: Bloco 14</span></div>
+        <div class="system-orientation__grid">
+          <div class="system-orientation__item"><strong>Leia esta página quando</strong><p>Um Milagre paga Vida, Resistência ou Reserva, exige manutenção, recupera Usos, converte recursos ou utiliza Sacrifícios.</p></div>
+          <div class="system-orientation__item"><strong>Você provavelmente não precisa dela quando</strong><p>O Milagre utiliza apenas seu Uso comum, não armazena recursos e não possui pagamento ou Recuperação próprios.</p></div>
+          <div class="system-orientation__item"><strong>Pré-requisitos recomendados</strong><p>Fundamentos; Recursos; Combate; Dano e Derrota; Cura e Retorno.</p></div>
+          <div class="system-orientation__item"><strong>Tempo de leitura</strong><p>Leitura orientada: aproximadamente 55 a 70 minutos.</p></div>
+        </div>
+      </aside>
+      <p class="article-lead">Uma função determina o que o Milagre realiza. Um custo determina o que precisa ser perdido. Uma Reserva determina quanto pode ser armazenado. Recuperação determina como aquilo que foi consumido volta a ficar disponível.</p>
+
+      <section class="domain-section" aria-labelledby="visao-rapida">
+        <p class="section-kicker">Visão rápida</p><h2 id="visao-rapida">Os fundamentos do Bloco 14</h2>
+        <div class="domain-capabilities" aria-label="Fundamentos de custos e recuperação">
+          <div class="domain-capability"><strong>Custo</strong><span>Perda obrigatória vinculada a ativação, execução ou manutenção.</span></div>
+          <div class="domain-capability"><strong>Reserva</strong><span>Capacidade numérica finita com categoria e máximo próprios.</span></div>
+          <div class="domain-capability"><strong>Recuperação</strong><span>Devolve recursos consumidos até o máximo atual.</span></div>
+          <div class="domain-capability"><strong>Recarga</strong><span>Operação ativa que exige fonte e não cria recurso gratuito.</span></div>
+          <div class="domain-capability"><strong>Conversão</strong><span>Muda a categoria de um recurso na proporção comum de um para um.</span></div>
+          <div class="domain-capability"><strong>Sacrifício</strong><span>Reduz o recurso atual e bloqueia parte de seu máximo recuperável.</span></div>
+        </div>
+      </section>
+
+      <section class="domain-section" aria-labelledby="estrutura">
+        <p class="section-kicker">Elementos distintos</p><h2 id="estrutura">Estrutura dos recursos</h2>
+        <div class="table-wrap"><table><thead><tr><th>Elemento</th><th>Função</th></tr></thead><tbody><tr><td>Custo</td><td>Recurso obrigatório perdido por uma operação.</td></tr><tr><td>Reserva</td><td>Capacidade numérica armazenada.</td></tr><tr><td>Capacidade discreta</td><td>Quantidade de Usos, Passos ou Mudanças.</td></tr><tr><td>Recuperação</td><td>Processo passivo que devolve recurso.</td></tr><tr><td>Recarga</td><td>Operação ativa que devolve recurso.</td></tr><tr><td>Conversão</td><td>Alteração da categoria de recurso existente.</td></tr><tr><td>Sacrifício</td><td>Perda acompanhada de bloqueio de recuperação.</td></tr><tr><td>Alimentação Sacrificial</td><td>Uso do Sacrifício como combustível.</td></tr></tbody></table></div>
+        <p>Nenhum desses elementos substitui Potência, Alcance, Dano, Cura, Duração, quantidade ou qualquer função que produza o resultado do Milagre.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="recursos-validos">
+        <p class="section-kicker">Disponibilidade</p><h2 id="recursos-validos">Recursos válidos e elementos indisponíveis</h2>
+        <p>Podem ser utilizados como custo quando registrados: Vida atual, Resistência atual, pontos de Reserva, Usos, Passos, Mudanças, recursos de pool, componentes consumíveis, recursos especiais e Resistência de Criação própria.</p>
+        <p>Não podem ser gastos ou armazenados como recurso: Potência, Rank, Pontos de construção, Duração, Cadência, Alcance, Alvos, Ação, Movimento, Reação, Turno, posição, identidade ou informação.</p>
+        <p>Um recurso precisa estar presente, acessível, disponível, não comprometido e compatível. Recurso futuro ou ainda não recebido não pode ser usado antecipadamente.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="compromisso">
+        <p class="section-kicker">Momento do pagamento</p><h2 id="compromisso">Compromisso, invalidade e interrupção</h2>
+        <div class="domain-guide"><p>Declaração da operação.</p><p>Verificação pública.</p><p>Declaração dos valores variáveis.</p><p>Compromisso dos custos.</p><p>Janela antecipada.</p><p>Reações e nova verificação.</p><p>Resolução.</p></div>
+        <p>Depois do compromisso, o recurso está gasto. Neutralização, Redirecionamento inválido, perda do alvo, perda de Alcance ou outra interrupção não devolvem custo, Uso ou oportunidade.</p>
+        <p>Quando a invalidade é pública antes do compromisso, nada é gasto. Quando depende de informação oculta, custo, Uso e oportunidade são consumidos e nenhum resultado válido ocorre.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="custos-fixos-variaveis">
+        <p class="section-kicker">Quantidade</p><h2 id="custos-fixos-variaveis">Custos fixos e variáveis</h2>
+        <p>Custos fixos possuem valor determinado. Custos variáveis utilizam fórmula registrada e seu valor é declarado antes da janela antecipada.</p>
+        <p>Pagar mais nunca ultrapassa Potência, Alcance, Alvos, Área, Escala, Usos, Cadência ou resultado máximo.</p>
+        <div class="domain-boundary"><p><strong>Nenhum recurso fica negativo. Sem pagamento integral, a operação não começa e não produz parcela do resultado.</strong></p></div>
+      </section>
+
+      <section class="domain-section" aria-labelledby="momentos-custo">
+        <p class="section-kicker">Frequência</p><h2 id="momentos-custo">Ativação, execução e manutenção</h2>
+        <div class="domain-guide"><p><strong>Ativação:</strong> pago quando uma aplicação é estabelecida.</p><p><strong>Execução:</strong> pago em cada nova operação da aplicação.</p><p><strong>Manutenção:</strong> pago em marco objetivo registrado.</p></div>
+        <p>Duração não cobre execuções futuras e não paga manutenção.</p>
+        <p>Uma manutenção pode ocorrer no Início ou Final do Turno, na abertura da Rodada, no início de cada hora ou em outro marco preciso. Sem pagamento integral, a aplicação é suspensa ou encerrada antes de produzir novo resultado.</p>
+        <p>Quando várias manutenções coincidem, o responsável declara a prioridade antes de resultados ocultos.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="uma-finalidade">
+        <p class="section-kicker">Conservação</p><h2 id="uma-finalidade">Uma parcela, uma finalidade</h2>
+        <p>A mesma parcela de recurso participa uma vez na mesma cadeia. Ela não pode pagar ativação, alimentar Reserva, recuperar Uso, ampliar Potência, pagar manutenção e ser convertida simultaneamente.</p>
+        <p>Em operações ligadas, todos os custos são comprometidos antes da resolução. A insuficiência de uma parte impede o conjunto, salvo quando as funções forem registradas como operações separadas.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="pagadores">
+        <p class="section-kicker">Fontes</p><h2 id="pagadores">Pagador, divisão e alternativas</h2>
+        <p>O responsável pela operação é o pagador padrão. Outra existência só fornece recurso por consentimento, Transferência, Canal, Fusão, vínculo específico ou pagamento compartilhado.</p>
+        <div class="table-wrap"><table><thead><tr><th>Função</th><th>Custo</th><th>Resultado</th></tr></thead><tbody><tr><td>Pagamento dividido</td><td>1</td><td>Divide o custo entre fontes compatíveis registradas.</td></tr><tr><td>Recurso alternativo</td><td>1 por alternativa</td><td>Permite escolher outra categoria no momento da declaração.</td></tr></tbody></table></div>
+        <p>Escolher Vida ou Reserva como alternativas não converte uma na outra.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="vida-resistencia">
+        <p class="section-kicker">Valores ativos</p><h2 id="vida-resistencia">Custos em Vida e Resistência</h2>
+        <p>Pagar Vida ou Resistência reduz o valor atual, mas não é Dano, não enfrenta Mitigação, não cria Ferimento, não produz dano residual e não abastece Absorção.</p>
+        <div class="domain-boundary"><p><strong>Sem Pagamento Terminal, o custo máximo em Vida é Vida atual − 1.</strong></p></div>
+        <p>Vida temporária e Resistência armazenada são Reservas. Um custo que declare Vida ou Resistência ativa não utiliza essas Reservas sem alternativa registrada.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="pagamento-terminal">
+        <p class="section-kicker">Chegar a 0</p><h2 id="pagamento-terminal">Pagamento Terminal</h2>
+        <p><strong>Pagamento Terminal custa 5 pontos.</strong> Permite que um custo voluntário reduza Vida ou Resistência a 0.</p>
+        <p>Vida 0 produz Derrota. Resistência 0 produz destruição. Nenhum desses resultados produz Morte automaticamente.</p>
+        <p>Quando o pagamento remove a própria origem, uma aplicação ainda não estabelecida falha por padrão. Funções já separadas, autônomas ou autossustentadas podem continuar quando sua independência estiver registrada.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="capacidades-discretas">
+        <p class="section-kicker">Usos, Passos e Mudanças</p><h2 id="capacidades-discretas">Capacidades discretas</h2>
+        <p>Somente unidades disponíveis podem ser gastas ou sacrificadas. Uma unidade já consumida não pode ser paga, transferida, convertida ou sacrificada novamente.</p>
+        <p>Usos, Passos e Mudanças pertencem ao registro do Milagre. Nova ativação e encerramento de Duração não restauram essas capacidades.</p>
+        <p>Gastar Passo não realiza Propagação. Gastar Mudança não realiza Transformação. Um Uso adicional como custo precisa ser distinguido do Uso normal da execução.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="reservas">
+        <p class="section-kicker">Armazenamento</p><h2 id="reservas">Reservas</h2>
+        <p>Toda Reserva declara nome, categoria, capacidade, valor atual, origem, consumo, Duração, Recuperação e encerramento.</p>
+        <div class="table-wrap"><table><thead><tr><th>Grau</th><th>Capacidade comum</th></tr></thead><tbody><tr><td>1</td><td>4</td></tr><tr><td>2</td><td>8</td></tr><tr><td>3</td><td>12</td></tr><tr><td>4</td><td>16</td></tr><tr><td>5</td><td>20</td></tr><tr><td>6</td><td>24</td></tr><tr><td>7</td><td>28</td></tr></tbody></table></div>
+        <p>Quando Potência usa o modelo Reserva, sua capacidade comum é igual ao Valor da Potência.</p>
+        <p>Uma Reserva nunca ultrapassa o máximo. O excedente é perdido e não busca outro destino.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="tipos-reserva">
+        <p class="section-kicker">Vínculo</p><h2 id="tipos-reserva">Reserva de Aplicação e Reserva pessoal</h2>
+        <div class="domain-guide"><p><strong>Reserva de Aplicação:</strong> nasce com a ativação, pertence à aplicação e termina com ela.</p><p><strong>Reserva pessoal:</strong> permanece por sua Duração e não é preenchida novamente apenas porque outra função a utiliza.</p></div>
+        <p>Uma nova ativação pode substituir Reserva de Aplicação quando Cadência, Uso, oportunidade e custos permitirem. O conteúdo anterior não se soma ao novo.</p>
+        <p>Reserva vazia pode continuar registrada, mas não produz resultados dependentes de conteúdo.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="categoria-reserva">
+        <p class="section-kicker">Compatibilidade</p><h2 id="categoria-reserva">Categoria e natureza da Reserva</h2>
+        <p>A categoria precisa ser específica: luz solar, sangue, essência onírica, matéria parasitária, carga elétrica, sombra ou força espiritual são exemplos válidos.</p>
+        <p>Vida armazenada não aumenta Vida ativa, não impede Derrota e não altera Limiar ou Limite de Recuperação. Resistência armazenada não protege ou funciona como barreira.</p>
+        <p>Reservas distintas só interagem por recurso alternativo, Conversão, Transferência ou função compatível. Um pool compartilhado exige Fusão.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="recuperacao">
+        <p class="section-kicker">Retorno passivo</p><h2 id="recuperacao">Recuperação longa e acelerada</h2>
+        <p>Por padrão, Usos, Passos e Mudanças são completamente recuperados depois de 8 horas de relativa inatividade.</p>
+        <div class="table-wrap"><table><thead><tr><th>Recuperação completa</th><th>Custo</th></tr></thead><tbody><tr><td>Após 8 horas</td><td>0</td></tr><tr><td>Após 1 hora</td><td>1</td></tr><tr><td>Após 10 minutos</td><td>3</td></tr><tr><td>Após 1 minuto</td><td>5</td></tr></tbody></table></div>
+        <p>Cada compra afeta uma categoria específica: Usos, Passos, Mudanças ou uma Reserva determinada. Perfis não se somam; utiliza-se o mais rápido.</p>
+        <p>Conflito, esforço intenso, execução repetida, deslocamento extenuante ou manutenção incompatível interrompem o intervalo. Não existe progresso parcial por padrão.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="aplicacao-ativa">
+        <p class="section-kicker">Elegibilidade</p><h2 id="aplicacao-ativa">Aplicação ativa e Recuperação</h2>
+        <p>Uma capacidade não inicia Recuperação passiva enquanto o mesmo Milagre mantiver aplicação capaz de executar novamente, consumir aquela capacidade, produzir gatilhos futuros ou sustentar função dependente dela.</p>
+        <p>A aplicação precisa terminar ou tornar-se mecanicamente independente. Intervalos passivos não avançam durante a estrutura detalhada do conflito.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="recarga-reserva">
+        <p class="section-kicker">Operação ativa</p><h2 id="recarga-reserva">Recarga de Reserva</h2>
+        <p><strong>Recarga de Reserva custa 1 ponto.</strong> Ela exige fonte, Potência, oportunidade ou gatilho, Uso, Alcance e destino válido.</p>
+        <div class="domain-boundary"><p><strong>Quantidade máxima recarregada = Valor da Potência.</strong></p></div>
+        <p>Quando a fonte possui quantidade numérica, 1 ponto removido produz até 1 ponto restaurado. Potência limita a operação, mas não cria recurso.</p>
+        <p>Fontes ambientais podem recarregar Reservas numéricas quando categoria, acesso, exposição, Cadência e quantidade por execução estiverem registrados.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="recarga-discreta">
+        <p class="section-kicker">Uma unidade</p><h2 id="recarga-discreta">Recarga de capacidade discreta</h2>
+        <p><strong>Recarga de capacidade discreta custa 5 pontos.</strong> Cada operação recupera um Uso, Passo ou Mudança.</p>
+        <div class="domain-boundary"><p><strong>Potência da Recarga precisa alcançar a Potência do Milagre recuperado.</strong></p></div>
+        <p>Recuperar uma unidade exige consumir recurso numérico igual ao Valor de Potência do Milagre recuperado. Fonte ambiental não quantificada não é suficiente.</p>
+        <p>Potência excedente não recupera unidades adicionais.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="recarga-condicionada">
+        <p class="section-kicker">Gatilhos</p><h2 id="recarga-condicionada">Recarga Condicionada</h2>
+        <p><strong>Recarga Condicionada custa 3 pontos adicionais.</strong> Permite que a Recarga responda automaticamente a gatilho objetivo.</p>
+        <p>Cada resposta consome Uso, respeita Cadência, utiliza fonte, ocorre uma vez por gatilho e não ultrapassa o máximo.</p>
+        <p>A Recuperação não ativa novamente o gatilho que a produziu.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="ciclos">
+        <p class="section-kicker">Segurança</p><h2 id="ciclos">Autorecarga e circuitos fechados</h2>
+        <p>Uma Recarga não recupera o Uso consumido por sua própria execução, o recurso que a ativou ou a unidade que sustentou seu gatilho na mesma cadeia.</p>
+        <p>Dois Milagres não recuperam indefinidamente os Usos um do outro. Cada unidade recuperada exige entrada numérica externa válida.</p>
+        <div class="domain-boundary"><p><strong>Uma cadeia de Recarga, Transferência, Conversão, Fusão e Sacrifício não termina com mais recurso do que recebeu.</strong></p></div>
+        <p>O recurso gasto como custo também não pode ser restaurado pela mesma operação.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="conversao">
+        <p class="section-kicker">Mudança de categoria</p><h2 id="conversao">Conversão</h2>
+        <p><strong>Conversão custa 3 pontos.</strong> Ela altera a categoria de recurso existente na taxa comum de 1 ponto consumido para 1 ponto produzido.</p>
+        <p>A Conversão comum afeta Reservas, pools e recursos numéricos armazenados. Não converte diretamente Vida ativa, Resistência ativa, Usos, Passos ou Mudanças.</p>
+        <p>A quantidade é limitada pelo recurso disponível, pelo espaço no destino, pelo Valor da Potência e pela quantidade declarada.</p>
+        <p>Conversão muda categoria; Transferência muda localização ou proprietário. Converter em Vida ou Resistência armazenada não restaura valores ativos.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="sacrificio">
+        <p class="section-kicker">Bloqueio de recuperação</p><h2 id="sacrificio">Sacrifício</h2>
+        <p>Sacrifício é perda voluntária que reduz o recurso atual e seu máximo recuperável correspondente.</p>
+        <p>Todo Sacrifício registra pagador, recurso, quantidade, função alimentada, vínculo, condição de liberação e possibilidade de Pagamento Terminal.</p>
+        <p>O valor é fixado no momento da perda. Alterações posteriores do máximo não modificam o bloqueio retroativamente.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="sacrificio-vida">
+        <p class="section-kicker">Vida e Ferimentos</p><h2 id="sacrificio-vida">Sacrifício de Vida</h2>
+        <p>Sacrificar Vida reduz Vida atual e Limite de Recuperação, mas não é Dano, não cria Ferimento, não enfrenta Mitigação e não pode ser Curado enquanto o bloqueio existir.</p>
+        <div class="domain-boundary"><p><strong>Limite de Recuperação = Vida máxima atual − Ferimentos − Sacrifícios de Vida ativos.</strong></p></div>
+        <p>Sacrifício não ocupa espaço de Ferimento, não é removido por Tratamento e não produz Condição.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="outros-sacrificios">
+        <p class="section-kicker">Outras categorias</p><h2 id="outros-sacrificios">Resistência, Reserva e capacidades discretas</h2>
+        <p>Sacrificar Resistência reduz o valor atual e o máximo reparável. Sacrificar Reserva exige pontos disponíveis, consome o atual e reduz temporariamente a capacidade máxima.</p>
+        <p>Sacrificar Uso, Passo ou Mudança exige unidade disponível, reduz o atual e o máximo em uma unidade e impede sua Recuperação.</p>
+        <p>Capacidade vazia ou unidade já consumida não pode ser sacrificada.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="liberacao">
+        <p class="section-kicker">Fim do bloqueio</p><h2 id="liberacao">Liberação do Sacrifício</h2>
+        <p>A condição de liberação precisa ser objetiva: final do conflito, uma hora, um dia, Recuperação longa, conclusão de ritual, destruição de âncora ou encerramento de vínculo.</p>
+        <p>Quando o bloqueio termina, o máximo recuperável aumenta, mas o recurso atual não. Cura, Reparo ou Recarga posteriores podem preencher o espaço.</p>
+        <p>Sem condição de liberação, o bloqueio permanece enquanto a aplicação existir. Perda irreversível depende de Permanência Verdadeira.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="sacrificio-vinculo">
+        <p class="section-kicker">Corpo, identidade ou aplicação</p><h2 id="sacrificio-vinculo">Transferência, Fusão e Retorno</h2>
+        <p>Transferência e Fusão não movem ou apagam o bloqueio. A parcela sacrificada não pode entrar em pool ou ser oferecida como recurso disponível.</p>
+        <p>Todo Sacrifício declara vínculo com corpo, identidade ou aplicação. Sacrifício de identidade acompanha o Retorno; um bloqueio exclusivamente corporal pode permanecer no corpo anterior quando o perfil declarar isso.</p>
+        <p>Retorno não remove Sacrifícios, não recupera capacidades consumidas e não restaura Reservas.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="autoridade-sacrificio">
+        <p class="section-kicker">Controle</p><h2 id="autoridade-sacrificio">Autoridade sobre Sacrifício</h2>
+        <p>Influência, Compulsão e Dominação comuns não obrigam Sacrifício ou Pagamento Terminal.</p>
+        <p><strong>Autoridade sobre Sacrifício custa 7 pontos adicionais.</strong> Ela ainda exige Controle compatível, Potência, Uso, oportunidade existente, instrução válida e recurso disponível.</p>
+        <p>Retirar recurso involuntariamente por Dano, Absorção, Transferência ou destruição não é Sacrifício voluntário.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="alimentacao">
+        <p class="section-kicker">Combustível</p><h2 id="alimentacao">Alimentação Sacrificial</h2>
+        <p><strong>Alimentação Sacrificial custa 3 pontos.</strong> Permite usar um Sacrifício como fonte de Reserva, Recarga, Conversão, manutenção, ativação ou execução.</p>
+        <div class="domain-boundary"><p><strong>1 ponto sacrificado produz até 1 ponto de recurso compatível.</strong></p></div>
+        <p>Sem essa função, o Sacrifício é apenas custo. A mesma parcela não alimenta vários resultados.</p>
+        <p>Recuperar capacidade discreta por Sacrifício também exige Recarga discreta e recurso numérico igual ao Valor de Potência do Milagre recuperado.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="integracoes">
+        <p class="section-kicker">Outros capítulos</p><h2 id="integracoes">Integrações principais</h2>
+        <div class="domain-guide"><p><strong>Criações:</strong> possuem recursos próprios e não usam automaticamente os do criador.</p><p><strong>Fusão:</strong> pode permitir pagamento por pool conforme autoridade e prioridade registradas.</p><p><strong>Transferência:</strong> precisa fornecer o recurso antes do compromisso.</p><p><strong>Absorção:</strong> pode alimentar operação ligada quando a ordem de recebimento e pagamento estiver declarada.</p><p><strong>Proteção:</strong> não reduz pagamento voluntário próprio.</p><p><strong>Neutralização:</strong> não devolve custos comprometidos.</p><p><strong>Dissipação:</strong> não restaura recursos gastos.</p><p><strong>Derrota:</strong> impede Recarga voluntária por Ação.</p><p><strong>Morte e Retorno:</strong> não recuperam Usos, Passos, Mudanças, Reservas, Cadência ou Sacrifícios.</p></div>
+      </section>
+
+      <section class="domain-section" aria-labelledby="registro">
+        <p class="section-kicker">Perfil do Milagre</p><h2 id="registro">Registros obrigatórios</h2>
+        <div class="table-wrap"><table><thead><tr><th>Registro</th><th>Campos principais</th></tr></thead><tbody><tr><td>Custo</td><td>Pagador, recurso, quantidade, momento, frequência, alternativas, divisão, falha, Recuperação e Sacrifício.</td></tr><tr><td>Reserva</td><td>Nome, tipo, categoria, capacidade, atual, origem, consumo, Duração, Recuperação e encerramento.</td></tr><tr><td>Sacrifício</td><td>Pagador, recurso, quantidade, máximo bloqueado, função alimentada, vínculo, liberação e Terminal.</td></tr></tbody></table></div>
+      </section>
+
+      <section class="domain-section" aria-labelledby="custos">
+        <p class="section-kicker">Consulta rápida</p><h2 id="custos">Custos principais</h2>
+        <div class="table-wrap"><table><thead><tr><th>Função</th><th>Custo</th></tr></thead><tbody><tr><td>Pagamento dividido</td><td>1</td></tr><tr><td>Recurso alternativo</td><td>1 por alternativa</td></tr><tr><td>Pagamento Terminal</td><td>5</td></tr><tr><td>Recuperação após 8 horas</td><td>0</td></tr><tr><td>Recuperação após 1 hora</td><td>1</td></tr><tr><td>Recuperação após 10 minutos</td><td>3</td></tr><tr><td>Recuperação após 1 minuto</td><td>5</td></tr><tr><td>Recarga de Reserva</td><td>1</td></tr><tr><td>Recarga de capacidade discreta</td><td>5</td></tr><tr><td>Recarga Condicionada</td><td>3</td></tr><tr><td>Conversão</td><td>3</td></tr><tr><td>Alimentação Sacrificial</td><td>3</td></tr><tr><td>Autoridade sobre Sacrifício</td><td>7</td></tr></tbody></table></div>
+      </section>
+
+      <section class="domain-section" aria-labelledby="exemplos">
+        <p class="section-kicker">Construções</p><h2 id="exemplos">Exemplos resumidos</h2>
+        <div class="domain-guide"><p><strong>Reserva pessoal de luz:</strong> Potência 8 e Recuperação após 1 hora; armazena até 8 pontos e não é preenchida por funções que apenas a consomem.</p><p><strong>Recarga solar:</strong> Potência 8, Recarga de Reserva e Recarga Condicionada; cada execução sob exposição válida recupera até 8 pontos.</p><p><strong>Sangue como combustível:</strong> Sacrifício de Vida, Alimentação Sacrificial e Recarga; a parcela sacrificada reduz o Limite de Recuperação.</p><p><strong>Recuperar um Uso:</strong> Recarga discreta consome fonte numérica igual à Potência do Milagre recuperado e restaura uma unidade.</p></div>
+      </section>
+
+      <section class="domain-section" aria-labelledby="principios">
+        <p class="section-kicker">Consulta final</p><h2 id="principios">Princípios fundamentais</h2>
+        <div class="domain-guide"><p>Custos comprometidos não retornam.</p><p>Custos não reduzem Pontos de construção.</p><p>Nenhum recurso fica negativo.</p><p>Uma parcela cumpre uma finalidade por cadeia.</p><p>Vida e Resistência pagas não são Dano.</p><p>Pagamento Terminal não produz Morte.</p><p>Duração não paga manutenção.</p><p>Nova ativação não recupera Usos, Passos ou Mudanças.</p><p>Reserva de Aplicação e Reserva pessoal são diferentes.</p><p>Recuperação acelerada é comprada por categoria.</p><p>Recarga exige fonte válida.</p><p>Recarga não restaura o próprio Uso na mesma cadeia.</p><p>Circuitos fechados não produzem ganho líquido.</p><p>Conversão comum funciona de um para um.</p><p>Sacrifício bloqueia parte do máximo recuperável.</p><p>Cura, Reparo e Recarga não alcançam parcela sacrificada.</p><p>Transferência, Fusão, Morte e Retorno não apagam Sacrifícios.</p><p>Controle comum não obriga Sacrifício.</p></div>
+      </section>
+
+      <div class="lore-box"><p><strong>Princípio central:</strong> todo recurso precisa de origem, todo pagamento precisa de finalidade e nenhuma cadeia pode criar mais do que recebeu.</p></div>
+      <nav class="article-navigation" aria-label="Navegação da página"><a href="cura-regeneracao-morte-e-retorno.html">Bloco 13: Cura e Retorno</a><a href="index.html">Voltar aos Sistemas</a></nav>
+    </article>
+  </main>
+  <footer class="mobile-footer"><div class="mobile-container">Harmonia Caótica · Mundo de Vaelora</div></footer>
+  <nav class="bottom-navigation" aria-label="Navegação principal"><ul class="bottom-navigation-list" style="grid-template-columns:repeat(5,1fr)"><li><a href="../index.html#inicio"><span class="bottom-navigation-icon">◆</span>Início</a></li><li><a href="../index.html#mundo"><span class="bottom-navigation-icon">◉</span>Mundo</a></li><li><a href="../index.html#divindades"><span class="bottom-navigation-icon">✦</span>Deuses</a></li><li><a href="../index.html#territorios"><span class="bottom-navigation-icon">◇</span>Terras</a></li><li><a class="active" href="index.html" aria-current="page"><span class="bottom-navigation-icon">▤</span>Sistemas</a></li></ul></nav>
+  <script src="../js/site-systems.js?v=20260718b" defer></script>
+</body>
+</html>
