@@ -1,21 +1,22 @@
 name: Publicar Bloco 14
-# segundo-disparo
 
 on:
-  push:
-    paths:
-      - '.github/workflows/publicar-bloco-14.yml'
+  workflow_run:
+    workflows: ["Otimizar carregamento do site"]
+    types: [completed]
 
 permissions:
   contents: write
 
 jobs:
   publicar:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
 
       - name: Integrar Bloco 14
         run: |
@@ -29,7 +30,6 @@ jobs:
                   raise SystemExit(f'Trecho não encontrado em {path}: {old[:120]}')
               p.write_text(text.replace(old, new, 1), encoding='utf-8')
 
-          # Portal dos Sistemas
           patch(
               'sistemas/index.html',
               '<div class="system-journey__step"><div><strong>Consulte regras específicas</strong><p>Abra Criações, Propagação, Travessias, Transformações, Controle, Recursos, Informação, Proteção, Dano ou Cura somente quando forem relevantes.</p></div></div>',
@@ -39,7 +39,6 @@ jobs:
           bloco14_portal = bloco10_portal + '\n          <a class="system-category-card" href="custos-reservas-sacrificios-e-recuperacao.html"><span class="system-level" data-level="construction-advanced">Construção avançada</span><p class="system-category-card__eyebrow">Registro editorial: Bloco 14</p><h3>Custos, Reservas, Sacrifícios e Recuperação</h3><p>Para pagamentos, manutenção, armazenamento, Recarga, Conversão e bloqueios sacrificiais.</p><span class="system-card-action">Ler Custos e Reservas →</span></a>'
           patch('sistemas/index.html', bloco10_portal, bloco14_portal)
 
-          # Biblioteca
           bloco10_biblioteca = '<a class="system-category-card" href="protecao-neutralizacao-e-interacao-entre-milagres.html"><span class="system-level" data-level="construction-advanced">Construção avançada</span><p class="system-category-card__eyebrow">Registro editorial: Bloco 10</p><h3>Proteção, Neutralização e Interação entre Milagres</h3><p>Para Redução, Supressão, Dissipação, Redirecionamento, Reflexão e proteção de funções.</p><span class="system-card-action">Ler capítulo →</span></a>'
           bloco14_biblioteca = bloco10_biblioteca + '\n          <a class="system-category-card" href="custos-reservas-sacrificios-e-recuperacao.html"><span class="system-level" data-level="construction-advanced">Construção avançada</span><p class="system-category-card__eyebrow">Registro editorial: Bloco 14</p><h3>Custos, Reservas, Sacrifícios e Recuperação</h3><p>Para custos em Vida ou Resistência, manutenção, Reservas, Recarga, Conversão e Sacrifícios.</p><span class="system-card-action">Ler capítulo →</span></a>'
           patch('sistemas/biblioteca.html', bloco10_biblioteca, bloco14_biblioteca)
@@ -53,7 +52,6 @@ jobs:
           <tr><td>Utilizar Sacrifício</td><td>Custos e Reservas, com vínculo, liberação e Alimentação Sacrificial quando houver combustível.</td></tr>'''
           patch('sistemas/biblioteca.html', matriz_anchor, matriz_nova)
 
-          # Consulta Rápida
           patch(
               'sistemas/consulta-rapida.html',
               'Encontre custos, valores e limites dos treze capítulos publicados sem reler toda a explicação.',
@@ -72,7 +70,6 @@ jobs:
 '''
           patch('sistemas/consulta-rapida.html', quick_nav, quick_section + quick_nav)
 
-          # Construção Guiada
           patch(
               'sistemas/construcao-guiada.html',
               'Somente capacidades cobertas pelos treze blocos publicados podem ser finalizadas como regra oficial.',
@@ -104,18 +101,20 @@ jobs:
           checklist_new = '<p>Retorno não duplica identidade nem cria corpo gratuito.</p><p>Custos possuem recurso, pagador, quantidade e momento.</p><p>Manutenção possui marco objetivo.</p><p>Reservas possuem categoria e capacidade.</p><p>Recarga não recupera o próprio Uso na mesma cadeia.</p><p>Conversão não cria recurso.</p><p>Sacrifícios bloqueiam o máximo recuperável correspondente.</p><p>O custo total respeita o Rank.</p>'
           patch('sistemas/construcao-guiada.html', checklist_old, checklist_new)
 
-          # Navegação do Bloco 13
           nav13 = '<nav class="article-navigation" aria-label="Navegação da página"><a href="dano-ferimentos-condicoes-e-derrota.html">Bloco 12: Dano e Derrota</a><a href="index.html">Voltar aos Sistemas</a></nav>'
           nav14 = '<nav class="article-navigation" aria-label="Navegação da página"><a href="dano-ferimentos-condicoes-e-derrota.html">Bloco 12: Dano e Derrota</a><a href="custos-reservas-sacrificios-e-recuperacao.html">Bloco 14: Custos e Reservas</a><a href="index.html">Voltar aos Sistemas</a></nav>'
           patch('sistemas/cura-regeneracao-morte-e-retorno.html', nav13, nav14)
 
-          Path('.github/workflows/publicar-bloco-14.yml').unlink()
+          for temporary in ('.github/workflows/publicar-bloco-14.yml', 'sistemas/.bloco-14-trigger.html'):
+              p = Path(temporary)
+              if p.exists():
+                  p.unlink()
           PY
 
       - name: Publicar integração
         run: |
           git config user.name "Harmonia Caótica"
           git config user.email "actions@users.noreply.github.com"
-          git add sistemas/index.html sistemas/biblioteca.html sistemas/consulta-rapida.html sistemas/construcao-guiada.html sistemas/cura-regeneracao-morte-e-retorno.html .github/workflows/publicar-bloco-14.yml
+          git add -A
           git commit -m "Integra Bloco 14 aos sistemas publicados"
           git push
