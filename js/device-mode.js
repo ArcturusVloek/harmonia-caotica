@@ -84,8 +84,9 @@
   const loadMiracleStudio = () => {
     if (currentPage() !== 'construcao-guiada.html') return Promise.resolve();
 
-    return loadScript('estudio-milagres-data.js', '20260720a')
-      .then(() => loadScript('estudio-milagres.js', '20260720a'));
+    return loadScript('estudio-milagres-data.js', '20260720b')
+      .then(() => loadScript('estudio-milagres.js', '20260720b'))
+      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720b'));
   };
 
   const loadContextualSystemGuide = () => {
