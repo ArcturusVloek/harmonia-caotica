@@ -4,7 +4,18 @@
   if (window.location.pathname.split('/').pop() !== 'construcao-guiada.html') return;
 
   const root = document.documentElement;
+  const currentScript = document.currentScript;
+  const scriptBase = currentScript?.src ? new URL('.', currentScript.src) : new URL('../js/', document.baseURI);
   let frame = 0;
+
+  const ensureStylesheet = () => {
+    if (document.getElementById('miracle-studio-desktop-style')) return;
+    const link = document.createElement('link');
+    link.id = 'miracle-studio-desktop-style';
+    link.rel = 'stylesheet';
+    link.href = new URL('../css/estudio-desktop.css?v=20260720c', scriptBase).href;
+    document.head.appendChild(link);
+  };
 
   const isDesktop = () => root.classList.contains('ui-desktop') || window.matchMedia('(min-width: 1180px) and (pointer: fine)').matches;
 
@@ -30,6 +41,7 @@
   };
 
   const start = () => {
+    ensureStylesheet();
     const host = document.querySelector('.miracle-studio-host');
     if (!host) {
       window.setTimeout(start, 80);
