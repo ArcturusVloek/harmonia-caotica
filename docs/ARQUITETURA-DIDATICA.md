@@ -13,12 +13,12 @@ A camada didática não substitui o conteúdo canônico. Ela reorganiza as infor
 3. **A aparência não define a classificação.** Domínio e Vertente são determinados pelo princípio sobrenatural responsável pelo efeito.
 4. **Toda regra precisa ser resolvível.** O texto deve informar aplicação, resistência, sucesso, falha, consumo e encerramento quando esses elementos forem necessários.
 5. **A ajuda deve existir no ponto da dúvida.** O leitor não deve abandonar a página para descobrir o significado de um termo ou o critério usado por um administrador.
-6. **A leitura deve acompanhar uma tarefa.** Entender, aplicar e avaliar exigem recortes diferentes da mesma regra.
-7. **Uma marcação só representa informação explícita.** Listas de verificação não validam intenções que ainda não foram registradas no texto da criação.
+6. **Criar um Milagre não pode exigir navegação entre capítulos.** A Construção Guiada precisa reunir escolhas, explicações, custos, validação e ficha final em um único espaço.
+7. **O manual completo é referência, não fluxo obrigatório.** Jogadores começam por perguntas simples e só abrem o texto canônico quando surge uma dúvida específica.
 
-## Etapa 1 — Domínios e Vertentes
+## Primeira implementação — Domínios e Vertentes
 
-A primeira implementação foi aplicada às páginas de Domínios e Vertentes por meio dos arquivos:
+A camada inicial é aplicada às páginas de Domínios e Vertentes por meio dos arquivos:
 
 - `js/regra-guiada.js`
 - `css/regra-guiada.css`
@@ -47,114 +47,116 @@ Conduz o leitor por uma sequência de decisões: resultado, princípio, destino,
 
 Apresenta uma lista comum de verificação para administradores, evitando que cada avaliação dependa apenas da memória ou interpretação individual.
 
-### Leitura rápida das Vertentes
+## Segunda implementação — Capítulos de Sistemas
 
-Cada Vertente recebe um quadro gerado a partir do próprio conteúdo publicado:
-
-- princípio;
-- possibilidades;
-- limite decisivo;
-- acesso ao modo de avaliação.
-
-Essa leitura não cria uma regra nova. Ela resume os trechos canônicos que continuam disponíveis logo abaixo.
-
-## Etapa 2 — Capítulos dos Sistemas
-
-A segunda implementação leva a arquitetura contextual para as páginas mecânicas por meio dos arquivos:
+Os capítulos mecânicos recebem uma camada contextual comum por meio dos arquivos:
 
 - `js/base-regras-sistemas.js`
 - `js/sistema-guiado-core.js`
 - `js/sistema-guiado-secoes.js`
 - `css/sistema-guiado.css`
-- `js/device-mode.js`
 
-Todas as páginas com a classe `systems-page` recebem a camada automaticamente. Não é necessário inserir manualmente o componente em cada capítulo.
+A interface apresenta quatro modos:
 
-### Base estruturada inicial
+### Entender
 
-`base-regras-sistemas.js` reúne definições curtas, orientações de aplicação, perguntas, procedimentos, campos obrigatórios, erros comuns e critérios de avaliação.
+Explica a pergunta central do capítulo, o princípio decisivo e as decisões que precisam ser tomadas.
 
-Os capítulos centrais possuem perfis específicos:
+### Aplicar
 
-- Fundamentos dos Milagres;
-- Alcance, Alvos, Área e Movimento;
-- Controle, Influência e Posse;
-- Ações, Reações e Estrutura do Combate;
-- Custos, Reservas, Sacrifícios e Recuperação.
+Transforma o conteúdo em uma sequência marcável. O progresso é salvo no navegador.
 
-Os demais capítulos recebem uma leitura contextual extraída de seus resumos, capacidades, termos e navegação, até que ganhem perfis editoriais próprios.
+### Avaliar
 
-### Quatro modos de consulta
+Apresenta critérios administrativos e campos obrigatórios relacionados ao capítulo atual.
 
-#### Entender
+### Termos
 
-Apresenta a definição curta, a pergunta central, o princípio decisivo, as decisões que organizam a regra e os campos que precisam ser declarados.
+Reúne definições curtas dos conceitos utilizados naquela página.
 
-#### Aplicar
+Cada seção também recebe um quadro recolhível com:
 
-Transforma o capítulo em uma sequência verificável. As marcações ficam registradas no navegador para permitir que o usuário retome a análise.
+- finalidade do trecho;
+- perguntas que o leitor deve conseguir responder;
+- erro de interpretação mais provável;
+- termos relevantes.
 
-#### Avaliar
+## Terceira implementação — Estúdio de Milagres
 
-Fornece critérios administrativos e destaca erros que a página precisa impedir.
+A página `sistemas/construcao-guiada.html` deixa de funcionar como uma lista de capítulos que o usuário precisa visitar e passa a receber uma área integrada de construção.
 
-#### Termos
+Arquivos principais:
 
-Explica conceitos técnicos sem retirar o leitor da página. Cada entrada apresenta uma definição simples e sua consequência na aplicação.
+- `js/estudio-milagres-data.js`
+- `js/estudio-milagres.js`
+- `css/estudio-milagres.css`
 
-### Explicação por seção
+### Fluxo único
 
-Cada seção do capítulo recebe um quadro recolhível chamado **Entender esta seção**. Ele apresenta:
+O Estúdio organiza a criação em seis etapas dentro da mesma página:
 
-- a pergunta que aquela parte responde;
-- a explicação direta do primeiro princípio;
-- o limite destacado, quando houver;
-- uma orientação prática de aplicação.
+1. Ideia;
+2. Origem divina;
+3. Funções;
+4. Escala;
+5. Resolução;
+6. Revisão.
 
-A finalidade é impedir que o usuário precise concluir sozinho qual parte de um parágrafo produz uma regra concreta.
+### Origem divina integrada
 
-### Persistência e acessibilidade
+Divindade, Domínio e Vertente são escolhidos em sequência. A explicação curta da Vertente aparece imediatamente, sem abrir outra página.
 
-- a aba atual é mantida durante a sessão;
-- listas de aplicação e avaliação são armazenadas localmente no navegador;
-- todas as marcações podem ser apagadas;
-- a interface possui foco visível e controles próprios para telas compactas;
-- movimentos visuais respeitam a preferência de redução de animações.
+### Funções condicionais
 
-## Dicionário contextual
+O jogador marca aquilo que o poder realmente faz. Somente os módulos relacionados às funções selecionadas aparecem depois.
 
-A base atual inclui conceitos de classificação, construção, espaço, tempo, combate, Controle, Criações, recursos, dano, Cura e Retorno.
+Exemplos:
 
-Entre os termos registrados estão:
+- Controle abre Autoridade, Via, Usos e ordem;
+- Criações abrem Resistência, atuação e limite de manifestações;
+- Informação abre função e Profundidade;
+- Cura abre Cura, Tratamento, Regeneração, Preservação ou Retorno.
 
-- Domínio e Vertente;
-- Rank, Pontos, Potência e Valor;
-- Alcance, Alvo, Área, Escala e Movimento;
-- Duração, Cadência, Uso, Reserva e Sustentação;
-- Ação, Reação, Atuação e Gatilho;
-- Via, Autoridade, Influência, Compulsão e Dominação;
-- Criação, Propagação, Travessia e Transformação;
-- Neutralização, Ferimento, Condição, Derrota, Cura e Retorno.
+### Custos visíveis
 
-O dicionário deverá continuar crescendo a partir das dúvidas reais encontradas durante a criação e a avaliação de Milagres.
+Rank, Potência, Ativação, Alcance, Alvos, Área, Duração e compras específicas atualizam o custo em tempo real. O resumo compara o total com o orçamento do Rank.
 
-## Próximas etapas
+### Consulta sem sair da ficha
 
-### Etapa 3 — Ampliação da base estruturada
+As regras completas continuam canônicas, mas são carregadas dentro de um painel lateral no computador e de uma gaveta em tela cheia no celular.
 
-Criar perfis específicos para todos os capítulos mecânicos e retirar gradualmente a dependência de extrações genéricas. A página, a busca, o construtor e a avaliação administrativa deverão consultar a mesma informação.
+Links existentes dentro do manual também são interceptados e abertos nesse painel, evitando que o usuário perca o rascunho ou a etapa atual.
 
-### Etapa 4 — Construção guiada interativa
+### Validação
 
-Transformar o roteiro atual em uma ferramenta que mostre apenas as perguntas necessárias à ideia apresentada, calcule custos e detecte campos ausentes.
+O Estúdio detecta informações ausentes ou incompatíveis, como:
 
-### Etapa 5 — Consulta de combate
+- Área sem tamanho;
+- Duração Persistente sem limite ou encerramento;
+- Controle sem Autoridade, Via, ordem ou Usos;
+- Criação sem limite de manifestações;
+- custo acima do Rank;
+- ausência de resistência, sucesso, falha ou limites.
 
-Gerar versões curtas das regras e dos Milagres com ordem de resolução, resistência e limites relevantes para a rodada atual.
+### Persistência e exportação
 
-### Etapa 6 — Auditoria editorial contínua
+O rascunho é salvo automaticamente no navegador. A etapa final produz uma ficha copiável com identidade, parâmetros, regras específicas, descrição, efeito, resistência, sucesso, falha, limites, encerramento e custos.
 
-Registrar dúvidas recorrentes, páginas mais consultadas, campos frequentemente omitidos e conflitos encontrados pelos administradores. Esses dados devem orientar a reescrita das regras, não apenas novos componentes visuais.
+### Manual canônico
+
+O roteiro textual anterior permanece disponível em um bloco recolhível. Ele não é removido, mas deixa de ser o caminho obrigatório para construir um Milagre.
+
+## Base estruturada
+
+A camada de Domínios ainda extrai informações do HTML existente. O Estúdio utiliza uma base própria para opções, custos e relações. A evolução seguinte deve unificar essas fontes para que:
+
+- páginas;
+- busca;
+- Estúdio;
+- consulta em combate;
+- avaliação administrativa
+
+consultem os mesmos registros estruturados.
 
 ## Critério de conclusão de uma regra
 
@@ -173,3 +175,12 @@ Uma regra só está pronta quando responde, conforme sua natureza:
 11. Com quais regras interage?
 
 A ausência de uma resposta necessária deve gerar revisão editorial ou aviso contextual na interface.
+
+## Próximas etapas
+
+1. Revisar visualmente o Estúdio em celulares e computadores.
+2. Conferir cada custo da base integrada contra os capítulos canônicos.
+3. Adicionar módulos ainda não representados integralmente, como Propagação avançada e modelos completos de Reservas.
+4. Criar sugestões automáticas de Vertente e função a partir da frase inicial.
+5. Criar uma ficha de combate reduzida derivada do mesmo rascunho.
+6. Unificar a base estruturada do Estúdio com as páginas canônicas.
