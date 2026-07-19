@@ -1,268 +1,144 @@
 #!/usr/bin/env python3
-"""Consolida CSS e JavaScript para reduzir o tempo de carregamento.
-
-Preserva o conteúdo canônico e a ordem efetiva da cascata. O script gera dois
-conjuntos de recursos: páginas gerais e páginas de Sistemas.
-"""
-
 from __future__ import annotations
 
-import re
+import runpy
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-HTML_ROOTS = ("divindades", "dominios", "territorios", "mundo", "sistemas", "templates")
-VERSION = "20260718b"
-FONT_URL = (
-    "https://fonts.googleapis.com/css2?"
-    "family=Cormorant+Garamond:wght@500;600;700&"
-    "family=Inter:wght@400;500;600;700&"
-    "family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-)
+CORE = ROOT / "scripts/apply-performance-pass-core.py"
+SELF = ROOT / "scripts/apply-performance-pass.py"
 
 
-def read(path: str) -> str:
-    return (ROOT / path).read_text(encoding="utf-8")
-
-
-def write(path: str, content: str) -> None:
+def patch(path: str, old: str, new: str) -> None:
     target = ROOT / path
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(content.rstrip() + "\n", encoding="utf-8")
+    text = target.read_text(encoding="utf-8")
+    if old not in text:
+        raise SystemExit(f"Trecho não encontrado em {path}: {old[:120]}")
+    target.write_text(text.replace(old, new, 1), encoding="utf-8")
 
 
-def section(label: str, content: str) -> str:
-    return f"\n/* ===== {label} ===== */\n{content.strip()}\n"
-
-
-def strip_css_imports(content: str) -> str:
-    return re.sub(r"^\s*@import\s+url\([^;]+;\s*", "", content, flags=re.I | re.M)
-
-
-def build_css() -> None:
-    base = strip_css_imports(read("css/mobile-base.css"))
-    editorial = read("css/editorial.css")
-    reading = read("css/leitura-imersiva.css")
-    mobile = strip_css_imports(read("css/mobile.css"))
-    systems = read("css/sistemas.css")
-    systems_fallback = read("css/sistemas-fallback.css")
-    systems_hotfix = read("css/sistemas-hotfix.css")
-    systems_architecture = read("css/sistemas-arquitetura.css")
-    atlas = read("css/atlas-novo.css")
-    apotheosis = read("css/apoteose.css")
-    stable = read("css/layout-estavel-v2.css")
-    systems_colors = read("css/sistemas-cores-v2.css")
-    responsive_polish = read("css/polimento-responsivo.css")
-
-    compact_gpu = """
-/* Reduz custo de composição em aparelhos de toque sem mudar o layout. */
-html.ui-compact body::before { display: none !important; }
-html.ui-compact :is(.site-header, .mobile-header, .content-index) {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-"""
-
-    core = "".join([
-        section("BASE", base),
-        section("EDITORIAL", editorial),
-        section("LEITURA", reading),
-        section("AJUSTES MOBILE", mobile),
-        section("DESEMPENHO COMPACTO", compact_gpu),
-    ])
-    core_systems = "".join([
-        section("BASE", base),
-        section("EDITORIAL", editorial),
-        section("SISTEMAS", systems),
-        section("SISTEMAS FALLBACK", systems_fallback),
-        section("SISTEMAS HOTFIX", systems_hotfix),
-        section("SISTEMAS ARQUITETURA", systems_architecture),
-        section("LEITURA", reading),
-        section("AJUSTES MOBILE", mobile),
-        section("DESEMPENHO COMPACTO", compact_gpu),
-    ])
-    final = "".join([
-        section("ATLAS", atlas),
-        section("APOTEOSE", apotheosis),
-        section("LAYOUT ESTÁVEL", stable),
-        section("POLIMENTO RESPONSIVO", responsive_polish),
-    ])
-    final_systems = "".join([
-        section("ATLAS", atlas),
-        section("APOTEOSE", apotheosis),
-        section("CORES DOS SISTEMAS", systems_colors),
-        section("LAYOUT ESTÁVEL", stable),
-        section("POLIMENTO RESPONSIVO", responsive_polish),
-    ])
-
-    write("css/site-core.css", core)
-    write("css/site-core-systems.css", core_systems)
-    write("css/site-final.css", final)
-    write("css/site-final-systems.css", final_systems)
-
-
-def build_js() -> None:
-    editorial_path = ROOT / "js/editorial-core.js"
-    editorial = editorial_path.read_text(encoding="utf-8")
-    editorial = re.sub(
-        r"\s*link\.scrollIntoView\(\{\s*block:\s*'nearest',\s*inline:\s*'center',\s*behavior:\s*'smooth'\s*\}\);",
-        "",
-        editorial,
+def integrate() -> None:
+    patch(
+        "sistemas/index.html",
+        '<div class="system-journey__step"><div><strong>Consulte regras específicas</strong><p>Abra Criações, Propagação, Travessias, Transformações, Controle, Recursos, Informação, Proteção, Dano ou Cura somente quando forem relevantes.</p></div></div>',
+        '<div class="system-journey__step"><div><strong>Consulte regras específicas</strong><p>Abra Criações, Propagação, Travessias, Transformações, Controle, Recursos, Informação, Proteção, Dano, Cura ou Custos e Reservas somente quando forem relevantes.</p></div></div>',
     )
-    editorial_path.write_text(editorial.rstrip() + "\n", encoding="utf-8")
-
-    systems = read("js/sistemas.js")
-    systems = re.sub(
-        r"\s*ensureStylesheet\('systems-base-style',\s*'\.\./css/sistemas\.css'\);",
-        "",
-        systems,
-    )
-    systems = re.sub(
-        r"\s*ensureStylesheet\('systems-architecture-style',\s*'\.\./css/sistemas-arquitetura\.css'\);",
-        "",
-        systems,
-    )
-    atlas = read("js/atlas-novo.js")
-
-    write("js/site.js", section("EDITORIAL", editorial) + section("INTERFACE", atlas))
-    write(
-        "js/site-systems.js",
-        section("EDITORIAL", editorial)
-        + section("SISTEMAS", systems)
-        + section("INTERFACE", atlas),
+    bloco10_portal = '<a class="system-category-card" href="protecao-neutralizacao-e-interacao-entre-milagres.html"><span class="system-level" data-level="construction-advanced">Construção avançada</span><p class="system-category-card__eyebrow">Registro editorial: Bloco 10</p><h3>Proteção, Neutralização e Interação</h3><p>Para defesas sobrenaturais, Supressão, Dissipação, Redirecionamento, Reflexão e disputas.</p><span class="system-card-action">Ler Proteção →</span></a>'
+    patch(
+        "sistemas/index.html",
+        bloco10_portal,
+        bloco10_portal + '\n          <a class="system-category-card" href="custos-reservas-sacrificios-e-recuperacao.html"><span class="system-level" data-level="construction-advanced">Construção avançada</span><p class="system-category-card__eyebrow">Registro editorial: Bloco 14</p><h3>Custos, Reservas, Sacrifícios e Recuperação</h3><p>Para pagamentos, manutenção, armazenamento, Recarga, Conversão e bloqueios sacrificiais.</p><span class="system-card-action">Ler Custos e Reservas →</span></a>',
     )
 
-
-def relative_prefix(path: Path) -> str:
-    depth = len(path.relative_to(ROOT).parents) - 1
-    return "../" * depth
-
-
-def is_system_page(path: Path) -> bool:
-    return path.parent.name == "sistemas"
-
-
-def optimize_images(html: str) -> str:
-    def replace(match: re.Match[str]) -> str:
-        tag = match.group(0)
-        hero = "fetchpriority=\"high\"" in tag or "fetchpriority='high'" in tag or "internal-hero-image" in tag
-        if not re.search(r"\sdecoding=", tag, flags=re.I):
-            tag = tag[:-1] + ' decoding="async">'
-        if not hero and not re.search(r"\sloading=", tag, flags=re.I):
-            tag = tag[:-1] + ' loading="lazy">'
-        return tag
-
-    return re.sub(r"<img\b[^>]*>", replace, html, flags=re.I)
-
-
-def remove_resource_links(html: str, systems_page: bool) -> str:
-    names = [
-        "mobile.css", "mobile-base.css", "editorial.css", "leitura-imersiva.css",
-        "sistemas.css", "sistemas-fallback.css", "sistemas-hotfix.css",
-        "sistemas-arquitetura.css", "atlas-novo.css", "apoteose.css",
-        "layout-estavel-v2.css", "polimento-responsivo.css", "site-core.css",
-        "site-core-systems.css", "site-final.css", "site-final-systems.css",
-    ]
-    if systems_page:
-        names.append("sistemas-cores-v2.css")
-
-    pattern = "|".join(re.escape(name) for name in names)
-    return re.sub(
-        rf"\s*<link\b[^>]*href=[\"'][^\"']*(?:{pattern})(?:\?[^\"']*)?[\"'][^>]*>\s*",
-        "\n",
-        html,
-        flags=re.I,
+    bloco10_biblioteca = '<a class="system-category-card" href="protecao-neutralizacao-e-interacao-entre-milagres.html"><span class="system-level" data-level="construction-advanced">Construção avançada</span><p class="system-category-card__eyebrow">Registro editorial: Bloco 10</p><h3>Proteção, Neutralização e Interação entre Milagres</h3><p>Para Redução, Supressão, Dissipação, Redirecionamento, Reflexão e proteção de funções.</p><span class="system-card-action">Ler capítulo →</span></a>'
+    patch(
+        "sistemas/biblioteca.html",
+        bloco10_biblioteca,
+        bloco10_biblioteca + '\n          <a class="system-category-card" href="custos-reservas-sacrificios-e-recuperacao.html"><span class="system-level" data-level="construction-advanced">Construção avançada</span><p class="system-category-card__eyebrow">Registro editorial: Bloco 14</p><h3>Custos, Reservas, Sacrifícios e Recuperação</h3><p>Para custos em Vida ou Resistência, manutenção, Reservas, Recarga, Conversão e Sacrifícios.</p><span class="system-card-action">Ler capítulo →</span></a>',
+    )
+    matriz_anchor = '<tr><td>Compartilhar um pool</td><td>Fundamentos + Alcance + Fusão de Recursos.</td></tr>'
+    patch(
+        "sistemas/biblioteca.html",
+        matriz_anchor,
+        matriz_anchor + '''
+          <tr><td>Pagar Vida, Resistência ou Reserva</td><td>Custos e Reservas, com pagador, quantidade e momento registrados.</td></tr>
+          <tr><td>Manter uma aplicação com combustível</td><td>Custos e Reservas, com manutenção e marco objetivo.</td></tr>
+          <tr><td>Criar ou recarregar Reserva</td><td>Fundamentos + Custos e Reservas; adicione fonte e Potência à Recarga.</td></tr>
+          <tr><td>Recuperar Uso, Passo ou Mudança</td><td>Custos e Reservas, com Recarga discreta e fonte numérica suficiente.</td></tr>
+          <tr><td>Converter recurso armazenado</td><td>Custos e Reservas, na função Conversão.</td></tr>
+          <tr><td>Utilizar Sacrifício</td><td>Custos e Reservas, com vínculo, liberação e Alimentação Sacrificial quando houver combustível.</td></tr>''',
     )
 
+    patch(
+        "sistemas/consulta-rapida.html",
+        "Encontre custos, valores e limites dos treze capítulos publicados sem reler toda a explicação.",
+        "Encontre custos, valores e limites dos quatorze capítulos publicados sem reler toda a explicação.",
+    )
+    quick_nav = '      <nav class="article-navigation" aria-label="Navegação da página"><a href="index.html">Voltar ao Portal</a><a href="biblioteca.html">Abrir Biblioteca</a></nav>'
+    quick_section = '''      <section class="domain-section" id="custos-reservas-sacrificios" aria-labelledby="titulo-custos-consulta">
+        <p class="section-kicker">Pagamento e recuperação</p><h2 id="titulo-custos-consulta">Custos, Reservas, Sacrifícios e Recuperação</h2>
+        <details class="system-quick-group" open><summary>Funções principais</summary><div class="system-quick-group__content"><div class="table-wrap"><table><thead><tr><th>Função</th><th>Custo</th></tr></thead><tbody><tr><td>Pagamento dividido</td><td>1</td></tr><tr><td>Recurso alternativo</td><td>1 por alternativa</td></tr><tr><td>Pagamento Terminal</td><td>5</td></tr><tr><td>Recarga de Reserva</td><td>1</td></tr><tr><td>Recarga de capacidade discreta</td><td>5</td></tr><tr><td>Recarga Condicionada</td><td>3</td></tr><tr><td>Conversão</td><td>3</td></tr><tr><td>Alimentação Sacrificial</td><td>3</td></tr><tr><td>Autoridade sobre Sacrifício</td><td>7</td></tr></tbody></table></div></div></details>
+        <details class="system-quick-group" open><summary>Recuperação passiva</summary><div class="system-quick-group__content"><div class="table-wrap"><table><thead><tr><th>Recuperação completa</th><th>Custo</th></tr></thead><tbody><tr><td>Após 8 horas</td><td>0</td></tr><tr><td>Após 1 hora</td><td>1</td></tr><tr><td>Após 10 minutos</td><td>3</td></tr><tr><td>Após 1 minuto</td><td>5</td></tr></tbody></table></div><p>Cada compra afeta uma categoria específica: Usos, Passos, Mudanças ou uma Reserva determinada.</p></div></details>
+        <details class="system-quick-group"><summary>Capacidade comum de Reserva</summary><div class="system-quick-group__content"><div class="table-wrap"><table><thead><tr><th>Grau</th><th>Capacidade</th></tr></thead><tbody><tr><td>1</td><td>4</td></tr><tr><td>2</td><td>8</td></tr><tr><td>3</td><td>12</td></tr><tr><td>4</td><td>16</td></tr><tr><td>5</td><td>20</td></tr><tr><td>6</td><td>24</td></tr><tr><td>7</td><td>28</td></tr></tbody></table></div></div></details>
+        <div class="domain-guide"><p>Custos comprometidos não retornam.</p><p>Nenhum recurso fica negativo.</p><p>Duração não paga manutenção.</p><p>Nova ativação não recupera capacidades discretas.</p><p>Recarga exige fonte válida.</p><p>Conversão comum funciona de um para um.</p><p>Sacrifício bloqueia parte do máximo recuperável.</p><p>Retorno não remove Sacrifícios.</p></div>
+        <div class="system-inline-actions"><a href="custos-reservas-sacrificios-e-recuperacao.html">Entender Custos e Reservas por completo</a></div>
+      </section>
 
-def remove_script_links(html: str) -> str:
-    pattern = "|".join(map(re.escape, [
-        "editorial.js", "editorial-core.js", "atlas-novo.js", "sistemas.js",
-        "site.js", "site-systems.js",
-    ]))
-    return re.sub(
-        rf"\s*<script\b[^>]*src=[\"'][^\"']*(?:{pattern})(?:\?[^\"']*)?[\"'][^>]*></script>\s*",
-        "\n",
-        html,
-        flags=re.I,
+'''
+    patch("sistemas/consulta-rapida.html", quick_nav, quick_section + quick_nav)
+
+    patch(
+        "sistemas/construcao-guiada.html",
+        "Somente capacidades cobertas pelos treze blocos publicados podem ser finalizadas como regra oficial.",
+        "Somente capacidades cobertas pelos quatorze blocos publicados podem ser finalizadas como regra oficial.",
+    )
+    patch(
+        "sistemas/construcao-guiada.html",
+        "Permanência verdadeira, alteração direta de memória e conversão entre recursos ainda dependem de capítulos futuros.",
+        "Permanência verdadeira e alteração direta de memória ainda dependem de capítulos futuros.",
+    )
+    recovery_card = '<div class="system-category-card"><p class="system-category-card__eyebrow">Recuperação</p><h3>Curar, restaurar ou retornar</h3><p>Restaurar Vida ou Resistência, tratar Ferimentos, encerrar Condições, regenerar estruturas ou realizar Retorno.</p></div>'
+    patch(
+        "sistemas/construcao-guiada.html",
+        recovery_card,
+        recovery_card + '\n          <div class="system-category-card"><p class="system-category-card__eyebrow">Preço e combustível</p><h3>Pagar, armazenar ou sacrificar</h3><p>Definir custos, manutenção, Reservas, Recarga, Conversão, Recuperação e Sacrifícios.</p></div>',
+    )
+    cure_link = '<a href="cura-regeneracao-morte-e-retorno.html">Ler Cura e Retorno</a>'
+    patch(
+        "sistemas/construcao-guiada.html",
+        cure_link,
+        cure_link + '<a href="custos-reservas-sacrificios-e-recuperacao.html">Ler Custos e Reservas</a>',
+    )
+    memory_row = '<tr><td>Apaga ou reescreve memória?</td><td>Aguarde o capítulo especializado.</td></tr>'
+    patch(
+        "sistemas/construcao-guiada.html",
+        memory_row,
+        '''<tr><td>Paga Vida, Resistência, Reserva ou capacidade?</td><td>Consulte Custos e registre pagador, quantidade e momento.</td></tr>
+          <tr><td>Exige manutenção?</td><td>Registre o marco, a prioridade e o resultado da falta de pagamento.</td></tr>
+          <tr><td>Armazena recurso?</td><td>Registre Reserva, categoria, capacidade, origem, consumo e Duração.</td></tr>
+          <tr><td>Recupera Uso, Passo ou Mudança?</td><td>Adicione Recarga discreta, Potência e fonte numérica suficiente.</td></tr>
+          <tr><td>Converte recurso?</td><td>Adicione Conversão; mover o recurso também exige Transferência.</td></tr>
+          <tr><td>Utiliza Sacrifício?</td><td>Registre bloqueio, vínculo, liberação e Alimentação Sacrificial quando houver combustível.</td></tr>
+          ''' + memory_row,
+    )
+    patch(
+        "sistemas/construcao-guiada.html",
+        '<p>Retorno possui identidade, receptáculo e janela?</p><p>Qual é o custo total?</p>',
+        '<p>Retorno possui identidade, receptáculo e janela?</p><p>Quem paga cada custo e em qual momento?</p><p>A Reserva declara categoria, capacidade e fonte?</p><p>A Recarga consome fonte válida?</p><p>O Sacrifício declara vínculo e liberação?</p><p>Qual é o custo total?</p>',
+    )
+    patch(
+        "sistemas/construcao-guiada.html",
+        '<p>Retorno não duplica identidade nem cria corpo gratuito.</p><p>O custo total respeita o Rank.</p>',
+        '<p>Retorno não duplica identidade nem cria corpo gratuito.</p><p>Custos possuem recurso, pagador, quantidade e momento.</p><p>Manutenção possui marco objetivo.</p><p>Reservas possuem categoria e capacidade.</p><p>Recarga não recupera o próprio Uso na mesma cadeia.</p><p>Conversão não cria recurso.</p><p>Sacrifícios bloqueiam o máximo recuperável correspondente.</p><p>O custo total respeita o Rank.</p>',
     )
 
-
-def remove_font_hints(html: str) -> str:
-    html = re.sub(
-        r"\s*<link\b[^>]*(?:fonts\.googleapis\.com|fonts\.gstatic\.com)[^>]*>\s*",
-        "\n",
-        html,
-        flags=re.I,
-    )
-    return html
+    old_nav = '<nav class="article-navigation" aria-label="Navegação da página"><a href="dano-ferimentos-condicoes-e-derrota.html">Bloco 12: Dano e Derrota</a><a href="index.html">Voltar aos Sistemas</a></nav>'
+    new_nav = '<nav class="article-navigation" aria-label="Navegação da página"><a href="dano-ferimentos-condicoes-e-derrota.html">Bloco 12: Dano e Derrota</a><a href="custos-reservas-sacrificios-e-recuperacao.html">Bloco 14: Custos e Reservas</a><a href="index.html">Voltar aos Sistemas</a></nav>'
+    patch("sistemas/cura-regeneracao-morte-e-retorno.html", old_nav, new_nav)
 
 
-def insert_styles(path: Path, html: str) -> str:
-    systems_page = is_system_page(path)
-    prefix = relative_prefix(path)
-    core = "site-core-systems.css" if systems_page else "site-core.css"
-    final = "site-final-systems.css" if systems_page else "site-final.css"
-
-    early = (
-        '  <link rel="preconnect" href="https://fonts.googleapis.com">\n'
-        '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-        f'  <link rel="stylesheet" href="{FONT_URL}">\n'
-        f'  <link rel="stylesheet" href="{prefix}css/{core}?v={VERSION}">\n'
-    )
-    late = f'  <link rel="stylesheet" href="{prefix}css/{final}?v={VERSION}">\n'
-
-    first_stylesheet = re.search(r"^[ \t]*<link\b[^>]*rel=[\"']stylesheet[\"'][^>]*>", html, flags=re.I | re.M)
-    if first_stylesheet:
-        html = html[:first_stylesheet.start()] + early + html[first_stylesheet.start():]
-    else:
-        html = html.replace("</head>", early + "</head>", 1)
-
-    html = html.replace("</head>", late + "</head>", 1)
-    return html
-
-
-def insert_script(path: Path, html: str) -> str:
-    prefix = relative_prefix(path)
-    bundle = "site-systems.js" if is_system_page(path) else "site.js"
-    tag = f'  <script src="{prefix}js/{bundle}?v={VERSION}" defer></script>\n'
-    return html.replace("</body>", tag + "</body>", 1)
-
-
-def process_html(path: Path) -> bool:
-    original = path.read_text(encoding="utf-8")
-    systems_page = is_system_page(path)
-    html = remove_resource_links(original, systems_page)
-    html = remove_script_links(html)
-    html = remove_font_hints(html)
-    html = optimize_images(html)
-    html = insert_styles(path, html)
-    html = insert_script(path, html)
-    html = re.sub(r"\n{3,}", "\n\n", html)
-
-    if html == original:
-        return False
-    path.write_text(html, encoding="utf-8")
-    return True
-
-
-def html_files() -> list[Path]:
-    files = [ROOT / "index.html"]
-    for directory in HTML_ROOTS:
-        root = ROOT / directory
-        if root.exists():
-            files.extend(sorted(root.rglob("*.html")))
-    return [path for path in files if path.exists()]
+def remove_temporaries() -> None:
+    for relative in (
+        ".github/workflows/publicar-bloco-14.yml",
+        "sistemas/.bloco-14-trigger.html",
+        "sistemas/bloco-14-trigger.html",
+        "sistemas/bloco-14-trigger-2.html",
+        "scripts/publish-block-14.py",
+    ):
+        target = ROOT / relative
+        if target.exists():
+            target.unlink()
 
 
 def main() -> int:
-    build_css()
-    build_js()
-    changed = [path for path in html_files() if process_html(path)]
-    print(f"Bundles gerados e {len(changed)} páginas atualizadas.")
-    for path in changed:
-        print(f"- {path.relative_to(ROOT)}")
-    return 0
+    core_text = CORE.read_text(encoding="utf-8")
+    integrate()
+    remove_temporaries()
+    namespace = runpy.run_path(str(CORE), run_name="performance_core")
+    result = int(namespace["main"]())
+    SELF.write_text(core_text, encoding="utf-8")
+    CORE.unlink()
+    return result
 
 
 if __name__ == "__main__":

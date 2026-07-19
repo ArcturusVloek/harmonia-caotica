@@ -52,9 +52,6 @@ jobs:
           ast.parse(Path('scripts/apply-performance-pass.py').read_text(encoding='utf-8'))
           PY
 
-      - name: Integrar Bloco 14
-        run: python3 scripts/publish-block-14.py
-
       - name: Consolidar CSS e JavaScript
         run: python3 scripts/apply-performance-pass.py
 
