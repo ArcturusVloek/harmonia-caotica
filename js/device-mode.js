@@ -2,6 +2,10 @@
   'use strict';
 
   const root = document.documentElement;
+  const currentScript = document.currentScript;
+  const scriptBaseUrl = currentScript?.src
+    ? new URL('.', currentScript.src)
+    : new URL('./js/', document.baseURI);
 
   const detect = () => {
     const ua = navigator.userAgent || '';
@@ -51,7 +55,51 @@
     });
   };
 
+  const loadScript = (name, version) => new Promise((resolve, reject) => {
+    const existing = [...document.scripts].find((script) => script.src.includes(`/${name}`));
+    if (existing) {
+      if (existing.dataset.loaded === 'true') resolve();
+      else {
+        existing.addEventListener('load', resolve, { once: true });
+        existing.addEventListener('error', reject, { once: true });
+      }
+      return;
+    }
+
+    const script = document.createElement('script');
+    const url = new URL(name, scriptBaseUrl);
+    url.searchParams.set('v', version);
+    script.src = url.href;
+    script.async = false;
+    script.addEventListener('load', () => {
+      script.dataset.loaded = 'true';
+      resolve();
+    }, { once: true });
+    script.addEventListener('error', reject, { once: true });
+    document.head.appendChild(script);
+  });
+
+  const loadContextualSystemGuide = () => {
+    if (!document.body?.classList.contains('systems-page')) return;
+    if (root.dataset.systemGuideBoot === 'true') return;
+    root.dataset.systemGuideBoot = 'true';
+
+    loadScript('base-regras-sistemas.js', '20260720a')
+      .then(() => loadScript('sistema-guiado-core.js', '20260720a'))
+      .then(() => loadScript('sistema-guiado-secoes.js', '20260720a'))
+      .catch((error) => {
+        root.dataset.systemGuideBoot = 'error';
+        console.error('Falha ao carregar a camada didática dos Sistemas.', error);
+      });
+  };
+
   window.addEventListener('resize', schedule, { passive: true });
   window.addEventListener('orientationchange', schedule, { passive: true });
   window.visualViewport?.addEventListener('resize', schedule, { passive: true });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadContextualSystemGuide, { once: true });
+  } else {
+    loadContextualSystemGuide();
+  }
 })();
