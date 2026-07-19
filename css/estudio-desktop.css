@@ -1,0 +1,247 @@
+/* ==========================================================
+   ESTÚDIO DE MILAGRES — COMPOSIÇÃO EXCLUSIVA PARA COMPUTADOR
+   ========================================================== */
+
+@media (min-width: 1024px) and (pointer: fine) {
+  body.miracle-studio-page.ui-desktop .internal-hero {
+    display: none !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .internal-page {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 86px 0 0 !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .domain-article.mobile-container,
+  body.miracle-studio-page.ui-desktop .domain-article {
+    display: block !important;
+    width: min(1680px, calc(100vw - 64px)) !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .system-breadcrumb {
+    width: 100%;
+    margin: 0 0 16px !important;
+    padding: 0 4px !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .miracle-studio-host {
+    width: 100%;
+    margin: 0 !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .miracle-studio {
+    min-height: calc(100vh - 126px);
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    border-radius: 24px;
+  }
+
+  body.miracle-studio-page.ui-desktop .miracle-studio__header {
+    min-height: 104px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 28px;
+    padding: 22px 30px !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .miracle-studio__header h1 {
+    margin: 2px 0 4px !important;
+    font-size: clamp(40px, 4vw, 58px) !important;
+    line-height: .94 !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .miracle-studio__header div > span {
+    max-width: 760px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  body.miracle-studio-page.ui-desktop .miracle-studio__header > button {
+    align-self: center;
+    white-space: nowrap;
+  }
+
+  body.miracle-studio-page.ui-desktop .miracle-studio__layout {
+    min-width: 0;
+    display: grid !important;
+    grid-template-columns: 210px minmax(0, 1fr) 320px !important;
+    align-items: stretch;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-progress {
+    min-width: 0;
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
+    overflow: visible;
+    padding: 24px 16px !important;
+    border-right: 1px solid var(--studio-border);
+    border-bottom: 0 !important;
+    background: rgba(255, 255, 255, .012);
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-progress::before {
+    content: "Etapas da construção";
+    display: block;
+    margin: 0 8px 8px;
+    color: var(--studio-muted);
+    font: 700 9px/1.4 var(--ui, Inter, sans-serif);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-progress button {
+    width: 100%;
+    min-width: 0;
+    min-height: 54px;
+    grid-template-columns: 34px minmax(0, 1fr);
+    padding: 9px 10px;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-progress button span {
+    width: 34px;
+    height: 34px;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-progress button small {
+    font-size: 11px;
+  }
+
+  body.miracle-studio-page.ui-desktop .miracle-studio__workspace {
+    min-width: 0;
+    padding: 34px clamp(30px, 3vw, 50px) 44px !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-step {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-step h2 {
+    max-width: 760px;
+    font-size: clamp(40px, 3.3vw, 54px) !important;
+    line-height: .98 !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-step__lead {
+    max-width: 760px;
+    margin-bottom: 24px !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-form-grid {
+    gap: 18px;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-form-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-function-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-function {
+    min-height: 182px;
+    padding: 18px;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-module {
+    padding: 26px 28px;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-summary {
+    min-width: 0;
+    border-top: 0 !important;
+    border-left: 1px solid var(--studio-border);
+    background: rgba(255, 255, 255, .012);
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-summary__body {
+    position: sticky;
+    top: 78px;
+    max-height: calc(100vh - 102px);
+    overflow: auto;
+    padding: 26px 24px !important;
+    scrollbar-width: thin;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-summary__identity strong {
+    font-size: 30px;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-navigation {
+    position: sticky !important;
+    bottom: 0;
+    z-index: 8;
+    min-height: 66px;
+    padding: 11px 24px !important;
+    border-top: 1px solid var(--studio-border);
+    background: rgba(8, 7, 11, .96);
+    backdrop-filter: blur(18px);
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-navigation button {
+    max-width: 260px;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-navigation button:first-child {
+    justify-self: start;
+    width: 100%;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-navigation button:last-child {
+    justify-self: end;
+    width: 100%;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-manual {
+    width: 100%;
+    margin: 24px 0 84px !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-drawer__panel {
+    width: min(760px, 48vw) !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) and (pointer: fine) {
+  body.miracle-studio-page.ui-desktop .domain-article.mobile-container,
+  body.miracle-studio-page.ui-desktop .domain-article {
+    width: calc(100vw - 36px) !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .miracle-studio__layout {
+    grid-template-columns: 170px minmax(0, 1fr) 270px !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-progress {
+    padding-inline: 10px !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .miracle-studio__workspace {
+    padding-inline: 26px !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-form-grid--three {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 1600px) and (pointer: fine) {
+  body.miracle-studio-page.ui-desktop .miracle-studio__layout {
+    grid-template-columns: 230px minmax(0, 1fr) 360px !important;
+  }
+
+  body.miracle-studio-page.ui-desktop .studio-function-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
