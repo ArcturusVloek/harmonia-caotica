@@ -1,0 +1,298 @@
+name: Publicar Bloco 12
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/publicar-bloco-12.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Publicar e integrar o Bloco 12
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def read(path):
+              return Path(path).read_text(encoding='utf-8')
+
+          def write(path, content):
+              Path(path).parent.mkdir(parents=True, exist_ok=True)
+              Path(path).write_text(content, encoding='utf-8')
+
+          def insert_after(path, marker, addition, unique):
+              text = read(path)
+              if unique in text:
+                  return
+              if marker not in text:
+                  raise RuntimeError(f'Marcador não encontrado em {path}: {marker[:80]}')
+              write(path, text.replace(marker, marker + addition, 1))
+
+          def insert_before(path, marker, addition, unique):
+              text = read(path)
+              if unique in text:
+                  return
+              if marker not in text:
+                  raise RuntimeError(f'Marcador não encontrado em {path}: {marker[:80]}')
+              write(path, text.replace(marker, addition + marker, 1))
+
+          def replace_once(path, old, new):
+              text = read(path)
+              if new in text:
+                  return
+              if old not in text:
+                  raise RuntimeError(f'Texto não encontrado em {path}: {old[:80]}')
+              write(path, text.replace(old, new, 1))
+
+          page = '''<!DOCTYPE html>
+          <html lang="pt-BR" data-editorial-system="vaelora">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+            <script src="../js/device-mode.js?v=20260718a"></script>
+            <meta name="format-detection" content="telephone=no">
+            <meta name="mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="theme-color" content="#030405">
+            <meta name="color-scheme" content="dark">
+            <meta name="description" content="Regras oficiais de Dano, Mitigação, Ferimentos, Condições, Derrota e destruição em Harmonia Caótica.">
+            <title>Dano, Ferimentos, Condições e Derrota — Harmonia Caótica</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
+            <link rel="stylesheet" href="../css/site-core-systems.css?v=20260718b">
+            <link rel="stylesheet" href="../css/dominios.css">
+            <link rel="stylesheet" href="../css/site-final-systems.css?v=20260718b">
+          </head>
+          <body id="topo" class="systems-page atlas-site system-block-12" style="--domain-accent:#b89ae7;--domain-accent-soft:rgba(184,154,231,.15);--domain-accent-border:rgba(184,154,231,.4);">
+            <div class="reading-progress" aria-hidden="true"></div>
+            <header class="mobile-header"><div class="mobile-header-inner mobile-container"><a class="mobile-logo" href="../index.html" aria-label="Voltar à página inicial">Harmonia Caótica</a><a class="header-action" href="index.html" aria-label="Voltar aos Sistemas">‹</a></div></header>
+            <main class="internal-page">
+              <section class="internal-hero" aria-labelledby="titulo-dano" style="--internal-image:radial-gradient(circle at 50% 22%,#59446c,#211827 52%,#09080d 100%);">
+                <div class="mobile-container internal-hero-content">
+                  <p class="internal-kicker">Sistema dos Milagres</p>
+                  <h1 id="titulo-dano" class="internal-title">Dano, Ferimentos,<br>Condições e Derrota</h1>
+                  <div class="domain-badge">Vida, Resistência, Mitigação, trauma e perda de oportunidades</div>
+                  <p class="internal-summary">As regras para reduzir valores, atravessar barreiras, limitar recuperação, impor restrições e resolver Vida ou Resistência em 0.</p>
+                </div>
+              </section>
+              <aside class="archive-record" data-auto-record aria-label="Identificação editorial"></aside>
+              <nav id="indice-da-pagina" class="content-index" data-auto-index aria-label="Índice da página"></nav>
+              <article class="mobile-article mobile-container domain-article">
+                <nav class="system-breadcrumb" aria-label="Localização"><a href="index.html">Sistemas</a><span aria-hidden="true">›</span><a href="biblioteca.html#fundamentos-essenciais">Fundamentos essenciais</a><span aria-hidden="true">›</span><span>Dano e Derrota</span></nav>
+                <aside class="system-orientation" aria-label="Orientação de leitura">
+                  <div class="system-orientation__top"><span class="system-level" data-level="essential">Essencial</span><span class="system-orientation__record">Registro editorial: Bloco 12</span></div>
+                  <div class="system-orientation__grid">
+                    <div class="system-orientation__item"><strong>Leia esta página quando</strong><p>Uma operação reduz Vida ou Resistência, cria Ferimentos, impõe Condições, destrói Criações ou leva alguém à Derrota.</p></div>
+                    <div class="system-orientation__item"><strong>Você provavelmente não precisa dela quando</strong><p>A função apenas move recursos, altera forma, produz informação ou protege contra uma aplicação sem causar perda numérica.</p></div>
+                    <div class="system-orientation__item"><strong>Pré-requisitos recomendados</strong><p>Fundamentos; Alcance, Alvos e Área; Ações, Reações e Estrutura do Combate.</p></div>
+                    <div class="system-orientation__item"><strong>Tempo de leitura</strong><p>Leitura orientada: aproximadamente 45 a 60 minutos.</p></div>
+                  </div>
+                </aside>
+                <p class="article-lead">Dano reduz Vida ou Resistência atual. Ferimento limita a recuperação de Vida. Condição torna uma capacidade ou oportunidade indisponível. Derrota ocorre quando a Vida chega a 0.</p>
+
+                <section class="domain-section" aria-labelledby="visao-rapida">
+                  <p class="section-kicker">Visão rápida</p><h2 id="visao-rapida">Os fundamentos do Bloco 12</h2>
+                  <div class="domain-capabilities" aria-label="Fundamentos de dano e derrota">
+                    <div class="domain-capability"><strong>Dano</strong><span>Reduz Vida ou Resistência e precisa estar registrado.</span></div>
+                    <div class="domain-capability"><strong>Mitigação</strong><span>Reduz apenas dano compatível antes da perda.</span></div>
+                    <div class="domain-capability"><strong>Ferimento</strong><span>Surge de trauma intenso e limita recuperação.</span></div>
+                    <div class="domain-capability"><strong>Condição</strong><span>Torna capacidade ou oportunidade indisponível.</span></div>
+                    <div class="domain-capability"><strong>Derrota</strong><span>Ocorre quando a Vida chega a 0.</span></div>
+                    <div class="domain-capability"><strong>Destruição</strong><span>Ocorre quando a Resistência chega a 0.</span></div>
+                  </div>
+                </section>
+
+                <section class="domain-section" aria-labelledby="dano-direto">
+                  <p class="section-kicker">Perda numérica</p><h2 id="dano-direto">Dano Direto e Potência</h2>
+                  <p><strong>Dano Direto custa 0 pontos</strong>, mas precisa estar declarado. Possuir Potência não concede dano automaticamente.</p>
+                  <div class="domain-boundary"><p><strong>Dano bruto máximo por operação = Valor da Potência.</strong></p></div>
+                  <div class="table-wrap"><table><thead><tr><th>Grau</th><th>Dano máximo</th></tr></thead><tbody><tr><td>1</td><td>4</td></tr><tr><td>2</td><td>8</td></tr><tr><td>3</td><td>12</td></tr><tr><td>4</td><td>16</td></tr><tr><td>5</td><td>20</td></tr><tr><td>6</td><td>24</td></tr><tr><td>7</td><td>28</td></tr></tbody></table></div>
+                  <p>Cada operação declara Vida ou Resistência. O valor não pode ser alterado depois da janela antecipada.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="valores-do-dano">
+                  <p class="section-kicker">Cálculo</p><h2 id="valores-do-dano">Dano bruto, residual e perda efetiva</h2>
+                  <div class="domain-guide"><p><strong>Bruto:</strong> valor declarado antes das defesas.</p><p><strong>Residual:</strong> valor restante depois de Proteção, interceptação e Mitigação.</p><p><strong>Perda efetiva:</strong> quantidade realmente retirada do valor atual.</p></div>
+                  <p>Vida e Resistência nunca ficam negativas. O excedente comum não cria recurso, não busca outro destino e não causa uma segunda aplicação.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="categorias">
+                  <p class="section-kicker">Compatibilidade</p><h2 id="categorias">Categorias de dano</h2>
+                  <p>Cada aplicação possui uma categoria principal, como corte, perfuração, impacto, calor, frio, eletricidade, corrosão, decomposição, mental ou espiritual.</p>
+                  <p><strong>Categoria alternativa custa 1 ponto.</strong> Ela é escolhida antes da resolução e não se soma à categoria principal.</p>
+                  <p>O Domínio funciona como filtro: calor do Sol ou decomposição da Morte são válidos; o Domínio sozinho não substitui a categoria.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="mitigacao">
+                  <p class="section-kicker">Defesa contra dano</p><h2 id="mitigacao">Mitigação</h2>
+                  <p><strong>Mitigação custa 1 ponto.</strong> Ela reduz somente dano compatível.</p>
+                  <div class="table-wrap"><table><thead><tr><th>Abrangência</th><th>Custo</th></tr></thead><tbody><tr><td>Fonte específica conhecida</td><td>0</td></tr><tr><td>Categoria estreita</td><td>1</td></tr><tr><td>Família ampla</td><td>3</td></tr><tr><td>Todas as categorias de dano</td><td>5</td></tr></tbody></table></div>
+                  <div class="domain-boundary"><p><strong>Dano depois da Mitigação = dano atual − Valor mitigado.</strong></p></div>
+                  <p>Mitigação universal continua limitada por Potência e não concede invulnerabilidade.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="modelos">
+                  <p class="section-kicker">Forma da defesa</p><h2 id="modelos">Aplicação Direta, Intensidade e Reserva</h2>
+                  <div class="table-wrap"><table><thead><tr><th>Modelo</th><th>Funcionamento</th></tr></thead><tbody><tr><td>Aplicação Direta</td><td>Reduz uma operação e termina.</td></tr><tr><td>Intensidade</td><td>Mantém Valor constante contra cada operação durante a Duração.</td></tr><tr><td>Reserva</td><td>Cada ponto impedido consome um ponto da capacidade.</td></tr></tbody></table></div>
+                  <p>Mitigações semelhantes usam o maior Valor por padrão. Somá-las exige Acumulação compatível.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="barreiras">
+                  <p class="section-kicker">Interceptação física</p><h2 id="barreiras">Barreiras e dano residual</h2>
+                  <p>Uma barreira utiliza Criação, posição, forma, Escala, Resistência, Duração e Sustentação. Ela intercepta apenas aplicações cujo caminho realmente ocupa.</p>
+                  <p>Quando possui Mitigação própria, ela reduz o dano antes de perder Resistência. Apenas o excedente depois da Resistência pode continuar até o destino original.</p>
+                  <div class="domain-boundary"><p><strong>Dano que continua = dano após as defesas da barreira − Resistência que ela possuía.</strong></p></div>
+                  <p>Várias barreiras consomem sucessivamente o mesmo dano residual. Funções sem Percurso não são bloqueadas por uma parede intermediária comum.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="multiplos-destinos">
+                  <p class="section-kicker">Distribuição</p><h2 id="multiplos-destinos">Alvos e Área</h2>
+                  <p>Alvos Compartilhados e Área dividem a Potência antes das defesas individuais. Alvos Completos recebem o Valor integral.</p>
+                  <p>Uma mesma Área afeta cada existência uma vez; corpos maiores e várias partes do mesmo corpo não multiplicam aplicações. A prioridade precisa ser objetiva.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="dano-recorrente">
+                  <p class="section-kicker">Execuções posteriores</p><h2 id="dano-recorrente">Dano recorrente</h2>
+                  <p>Duração não repete dano. Cada nova execução exige Uso e oportunidade ou gatilho Condicionado válido.</p>
+                  <p>Descrições como “queima continuamente” ou “corrói sem parar” não concedem execuções ilimitadas.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="ferimentos">
+                  <p class="section-kicker">Trauma estrutural</p><h2 id="ferimentos">Ferimentos e Limiar</h2>
+                  <div class="table-wrap"><table><thead><tr><th>Rank</th><th>Vida estrutural</th><th>Limiar</th></tr></thead><tbody><tr><td>I</td><td>40</td><td>10</td></tr><tr><td>II</td><td>60</td><td>15</td></tr><tr><td>III</td><td>80</td><td>20</td></tr></tbody></table></div>
+                  <div class="domain-boundary"><p><strong>Ferimentos gerados = dano residual que alcançou a Vida ÷ Limiar, desprezando a fração.</strong></p></div>
+                  <p>O Limiar utiliza Vida máxima estrutural. Alterações temporárias não o modificam. Cada operação gera no máximo três Ferimentos e uma existência possui até três Ferimentos ativos.</p>
+                  <p>Danos inferiores ao Limiar não se acumulam retroativamente.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="limite-recuperacao">
+                  <p class="section-kicker">Recuperação limitada</p><h2 id="limite-recuperacao">Limite de Recuperação</h2>
+                  <div class="domain-boundary"><p><strong>Limite de Recuperação = Vida máxima atual − soma dos valores dos Ferimentos.</strong></p></div>
+                  <p>Ferimento não causa nova perda, não reduz Vida retroativamente e não impõe Condição. Cura, Transferência, Fusão e regeneração respeitam esse limite.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="condicoes">
+                  <p class="section-kicker">Capacidades indisponíveis</p><h2 id="condicoes">Imposição de Condição</h2>
+                  <p><strong>Imposição de Condição custa 1 ponto.</strong> A restrição produzida é comprada separadamente e uma imposição involuntária exige Potência.</p>
+                  <div class="table-wrap"><table><thead><tr><th>Restrição</th><th>Custo</th></tr></thead><tbody><tr><td>Capacidade estreita</td><td>1</td></tr><tr><td>Família ampla de capacidades</td><td>3</td></tr><tr><td>Ação</td><td>3</td></tr><tr><td>Movimento</td><td>3</td></tr><tr><td>Reação</td><td>3</td></tr><tr><td>Ação Própria</td><td>3</td></tr></tbody></table></div>
+                  <p>Condições são binárias: Potência residual acima de 0 aplica a restrição integralmente; em 0, ela não se aplica.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="limites-condicoes">
+                  <p class="section-kicker">Separação mecânica</p><h2 id="limites-condicoes">Condição, Controle, Supressão e Transformação</h2>
+                  <div class="domain-guide"><p><strong>Condição:</strong> torna capacidade comum ou oportunidade indisponível.</p><p><strong>Controle:</strong> dirige uma oportunidade existente.</p><p><strong>Supressão:</strong> reduz função sobrenatural ativa.</p><p><strong>Transformação:</strong> altera a estrutura da existência.</p></div>
+                  <p>Nomes como paralisia, sono, petrificação ou atordoamento não concedem efeitos não comprados.</p>
+                  <p>Retirar Movimento não impede automaticamente Travessia por Ação, Movimento forçado ou outras mudanças de posição.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="retorno-oportunidades">
+                  <p class="section-kicker">Encerramento</p><h2 id="retorno-oportunidades">Retorno de oportunidades</h2>
+                  <p>Uma oportunidade indisponível não é considerada consumida. Quando a Condição termina, ela retorna apenas se o período normal ainda estiver em andamento e a oportunidade não tiver sido utilizada.</p>
+                  <p>Oportunidades já consumidas ou perdidas pelo Final do Turno ou da Rodada não retornam retroativamente.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="derrota">
+                  <p class="section-kicker">Vida em 0</p><h2 id="derrota">Derrota</h2>
+                  <p>Uma existência fica Derrotada quando a Vida chega a 0. Derrota não é Condição, inconsciência ou morte.</p>
+                  <p>Ela perde Ação, Movimento e Reação disponíveis, não recebe novas oportunidades comuns e conserva somente funções válidas que não dependam de sua atuação.</p>
+                  <p>Seus marcos de Início e Final do Turno continuam sendo resolvidos para Durações, Sustentações e funções automáticas.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="retorno-derrota">
+                  <p class="section-kicker">Vida acima de 0</p><h2 id="retorno-derrota">Retorno após Derrota</h2>
+                  <p>Elevar validamente a Vida acima de 0 encerra Derrota, mas não remove Ferimentos ou Condições e não devolve oportunidades perdidas.</p>
+                  <p>Quando a recuperação ocorre antes do próximo Início do Turno, Ação e Movimento são disponibilizados normalmente. Depois desse marco, a existência aguarda o próximo Turno.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="destruicao">
+                  <p class="section-kicker">Resistência em 0</p><h2 id="destruicao">Destruição de Criações</h2>
+                  <p>Resistência 0 produz destruição; Vida 0 produz Derrota. Destruição não é Dissipação.</p>
+                  <p>Uma Criação destruída deixa de utilizar Ação Própria, pode perder Sustentações e segue suas regras para recursos armazenados. Conteúdos não recebem dano automaticamente.</p>
+                </section>
+
+                <section class="domain-section" aria-labelledby="custos">
+                  <p class="section-kicker">Consulta rápida</p><h2 id="custos">Custos principais</h2>
+                  <div class="table-wrap"><table><thead><tr><th>Função</th><th>Custo</th></tr></thead><tbody><tr><td>Dano Direto</td><td>0</td></tr><tr><td>Categoria alternativa</td><td>1</td></tr><tr><td>Mitigação</td><td>1</td></tr><tr><td>Imposição de Condição</td><td>1</td></tr><tr><td>Restrição estreita</td><td>1</td></tr><tr><td>Restrição ampla</td><td>3</td></tr><tr><td>Restrição de Ação</td><td>3</td></tr><tr><td>Restrição de Movimento</td><td>3</td></tr><tr><td>Restrição de Reação</td><td>3</td></tr><tr><td>Restrição de Ação Própria</td><td>3</td></tr></tbody></table></div>
+                </section>
+
+                <section class="domain-section" aria-labelledby="principios">
+                  <p class="section-kicker">Consulta final</p><h2 id="principios">Princípios fundamentais</h2>
+                  <div class="domain-guide"><p>Dano Direto precisa estar registrado.</p><p>Dano bruto, residual e perda efetiva são valores diferentes.</p><p>Mitigação reduz apenas dano.</p><p>Barreiras consomem sucessivamente o mesmo dano residual.</p><p>Área compartilha Potência.</p><p>Duração não repete dano.</p><p>Ferimentos limitam recuperação e não causam nova perda.</p><p>Condições tornam capacidades ou oportunidades indisponíveis.</p><p>Derrota não é morte.</p><p>Resistência 0 produz destruição; Vida 0 produz Derrota.</p></div>
+                </section>
+
+                <div class="lore-box"><p><strong>Princípio central:</strong> o dano determina a perda; a Mitigação reduz o que alcança o destino; o Ferimento limita a recuperação; a Condição restringe capacidades; Vida ou Resistência em 0 definem resultados diferentes.</p></div>
+                <nav class="article-navigation" aria-label="Navegação da página"><a href="acoes-reacoes-e-estrutura-do-combate.html">Bloco 11: Combate</a><a href="index.html">Voltar aos Sistemas</a></nav>
+              </article>
+            </main>
+            <footer class="mobile-footer"><div class="mobile-container">Harmonia Caótica · Mundo de Vaelora</div></footer>
+            <nav class="bottom-navigation" aria-label="Navegação principal"><ul class="bottom-navigation-list" style="grid-template-columns:repeat(5,1fr)"><li><a href="../index.html#inicio"><span class="bottom-navigation-icon">◆</span>Início</a></li><li><a href="../index.html#mundo"><span class="bottom-navigation-icon">◉</span>Mundo</a></li><li><a href="../index.html#divindades"><span class="bottom-navigation-icon">✦</span>Deuses</a></li><li><a href="../index.html#territorios"><span class="bottom-navigation-icon">◇</span>Terras</a></li><li><a class="active" href="index.html" aria-current="page"><span class="bottom-navigation-icon">▤</span>Sistemas</a></li></ul></nav>
+            <script src="../js/site-systems.js?v=20260718b" defer></script>
+          </body>
+          </html>
+          '''
+          page = '\n'.join(line[10:] if line.startswith('          ') else line for line in page.splitlines()) + '\n'
+          write('sistemas/dano-ferimentos-condicoes-e-derrota.html', page)
+
+          index_marker = '          <a class="system-category-card" href="acoes-reacoes-e-estrutura-do-combate.html"><span class="system-level" data-level="essential">Essencial</span><p class="system-category-card__eyebrow">Registro editorial: Bloco 11</p><h3>Ações, Reações e Estrutura do Combate</h3><p>Rodadas, Turnos, oportunidades, janelas reativas, Criações e resolução sob pressão.</p><span class="system-card-action">Ler Combate →</span></a>'
+          index_add = '\n          <a class="system-category-card" href="dano-ferimentos-condicoes-e-derrota.html"><span class="system-level" data-level="essential">Essencial</span><p class="system-category-card__eyebrow">Registro editorial: Bloco 12</p><h3>Dano, Ferimentos, Condições e Derrota</h3><p>Vida, Resistência, Mitigação, barreiras, Ferimentos, restrições e Derrota.</p><span class="system-card-action">Ler Dano e Derrota →</span></a>'
+          insert_after('sistemas/index.html', index_marker, index_add, 'Registro editorial: Bloco 12')
+          replace_once('sistemas/index.html', 'Abra Criações, Propagação, Travessias, Transformações, Controle, Recursos, Informação ou Proteção apenas quando forem relevantes.', 'Abra Criações, Propagação, Travessias, Transformações, Controle, Recursos, Informação, Proteção ou Dano apenas quando forem relevantes.')
+
+          bib_marker = '          <a class="system-category-card" href="acoes-reacoes-e-estrutura-do-combate.html"><span class="system-level" data-level="essential">Essencial</span><p class="system-category-card__eyebrow">Registro editorial: Bloco 11</p><h3>Ações, Reações e Estrutura do Combate</h3><p>Rodadas, Turnos, oportunidades, janelas reativas, Ação Própria e resolução de operações.</p><span class="system-card-action">Ler capítulo →</span></a>'
+          bib_add = '\n          <a class="system-category-card" href="dano-ferimentos-condicoes-e-derrota.html"><span class="system-level" data-level="essential">Essencial</span><p class="system-category-card__eyebrow">Registro editorial: Bloco 12</p><h3>Dano, Ferimentos, Condições e Derrota</h3><p>Para perda de Vida ou Resistência, Mitigação, barreiras, Ferimentos, Condições e Derrota.</p><span class="system-card-action">Ler capítulo →</span></a>'
+          insert_after('sistemas/biblioteca.html', bib_marker, bib_add, 'Registro editorial: Bloco 12')
+          matrix_marker = '          <tr><td>Organizar um conflito</td><td>Fundamentos + Combate.</td></tr>'
+          matrix_add = '\n          <tr><td>Causar ou mitigar dano</td><td>Fundamentos + Alcance + Dano e Derrota.</td></tr>\n          <tr><td>Aplicar Ferimento ou limitar recuperação</td><td>Dano e Derrota, com Potência e Limiar adequados.</td></tr>\n          <tr><td>Impor cegueira, Imobilização ou Paralisia</td><td>Dano e Derrota, com Imposição de Condição e restrições compradas.</td></tr>\n          <tr><td>Resolver Vida ou Resistência em 0</td><td>Dano e Derrota.</td></tr>'
+          insert_after('sistemas/biblioteca.html', matrix_marker, matrix_add, 'Causar ou mitigar dano')
+          replace_once('sistemas/biblioteca.html', 'Dano, Ferimentos, Condições, Permanência Verdadeira e Escala Territorial serão adicionados somente depois de revisão e aprovação.', 'Permanência Verdadeira e Escala Territorial serão adicionadas somente depois de revisão e aprovação.')
+
+          consulta_section = '''
+
+                <section class="domain-section" id="dano-ferimentos-condicoes" aria-labelledby="titulo-dano-consulta">
+                  <p class="section-kicker">Perda, trauma e restrição</p><h2 id="titulo-dano-consulta">Dano, Ferimentos, Condições e Derrota</h2>
+                  <details class="system-quick-group" open><summary>Dano por Potência</summary><div class="system-quick-group__content"><div class="table-wrap"><table><thead><tr><th>Grau</th><th>Dano máximo</th></tr></thead><tbody><tr><td>1</td><td>4</td></tr><tr><td>2</td><td>8</td></tr><tr><td>3</td><td>12</td></tr><tr><td>4</td><td>16</td></tr><tr><td>5</td><td>20</td></tr><tr><td>6</td><td>24</td></tr><tr><td>7</td><td>28</td></tr></tbody></table></div><p>Dano Direto custa 0, mas precisa estar registrado.</p></div></details>
+                  <details class="system-quick-group" open><summary>Mitigação e Condições</summary><div class="system-quick-group__content"><div class="table-wrap"><table><thead><tr><th>Função</th><th>Custo</th></tr></thead><tbody><tr><td>Mitigação</td><td>1</td></tr><tr><td>Categoria estreita de Mitigação</td><td>1</td></tr><tr><td>Família ampla de Mitigação</td><td>3</td></tr><tr><td>Todas as categorias de dano</td><td>5</td></tr><tr><td>Imposição de Condição</td><td>1</td></tr><tr><td>Restrição estreita</td><td>1</td></tr><tr><td>Restrição ampla</td><td>3</td></tr><tr><td>Restrição de oportunidade</td><td>3 por oportunidade</td></tr></tbody></table></div></div></details>
+                  <details class="system-quick-group"><summary>Ferimentos e resultados em 0</summary><div class="system-quick-group__content"><p>Limiar: Rank I 10; Rank II 15; Rank III 20. Cada aplicação gera no máximo três Ferimentos.</p><p>Limite de Recuperação = Vida máxima atual − valores dos Ferimentos.</p><p>Vida 0 produz Derrota. Resistência 0 produz destruição.</p></div></details>
+                  <div class="system-inline-actions"><a href="dano-ferimentos-condicoes-e-derrota.html">Entender Dano e Derrota por completo</a></div>
+                </section>
+          '''
+          insert_before('sistemas/consulta-rapida.html', '      <nav class="article-navigation" aria-label="Navegação da página">', consulta_section, 'id="dano-ferimentos-condicoes"')
+
+          replace_once('sistemas/construcao-guiada.html', 'Somente capacidades cobertas pelos onze blocos publicados podem ser finalizadas como regra oficial.', 'Somente capacidades cobertas pelos doze blocos publicados podem ser finalizadas como regra oficial.')
+          constr_marker = '          <div class="system-category-card"><p class="system-category-card__eyebrow">Atuação</p><h3>Agir ou reagir</h3><p>Definir Ação, Movimento, Reação, gatilhos, janelas e operações posteriores.</p></div>'
+          constr_add = '\n          <div class="system-category-card"><p class="system-category-card__eyebrow">Conflito</p><h3>Causar dano ou impor restrição</h3><p>Reduzir Vida ou Resistência, mitigar dano, criar Ferimentos, impor Condições ou produzir Derrota.</p></div>'
+          insert_after('sistemas/construcao-guiada.html', constr_marker, constr_add, 'Causar dano ou impor restrição')
+          link_marker = '<a href="acoes-reacoes-e-estrutura-do-combate.html">Ler Combate</a>'
+          insert_after('sistemas/construcao-guiada.html', link_marker, '<a href="dano-ferimentos-condicoes-e-derrota.html">Ler Dano e Derrota</a>', 'Ler Dano e Derrota')
+          step_marker = '          <tr><td>Controla Ação, Movimento ou Reação?</td><td>Consulte Controle e Combate; a oportunidade precisa existir.</td></tr>'
+          step_add = '\n          <tr><td>Reduz Vida ou Resistência?</td><td>Registre Dano Direto, categoria e valor afetado.</td></tr>\n          <tr><td>Reduz dano recebido?</td><td>Consulte Mitigação, abrangência e modelo.</td></tr>\n          <tr><td>Limita recuperação após trauma?</td><td>Consulte Ferimentos e Limiar estrutural.</td></tr>\n          <tr><td>Retira capacidade ou oportunidade?</td><td>Adicione Imposição de Condição e cada restrição necessária.</td></tr>'
+          insert_after('sistemas/construcao-guiada.html', step_marker, step_add, 'Reduz Vida ou Resistência?')
+
+          old_nav = '      <nav class="article-navigation" aria-label="Navegação da página"><a href="protecao-neutralizacao-e-interacao-entre-milagres.html">Bloco 10: Proteção</a><a href="index.html">Voltar aos Sistemas</a></nav>'
+          new_nav = '      <nav class="article-navigation" aria-label="Navegação da página"><a href="protecao-neutralizacao-e-interacao-entre-milagres.html">Bloco 10: Proteção</a><a href="dano-ferimentos-condicoes-e-derrota.html">Bloco 12: Dano e Derrota</a><a href="index.html">Voltar aos Sistemas</a></nav>'
+          replace_once('sistemas/acoes-reacoes-e-estrutura-do-combate.html', old_nav, new_nav)
+
+          workflow = Path('.github/workflows/publicar-bloco-12.yml')
+          if workflow.exists():
+              workflow.unlink()
+          PY
+
+      - name: Registrar publicação
+        shell: bash
+        run: |
+          git config user.name "Harmonia Caótica"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Publica Bloco 12 e integra sistemas [skip ci]"
+          git push
