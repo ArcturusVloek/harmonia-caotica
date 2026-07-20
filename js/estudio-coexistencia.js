@@ -12,8 +12,10 @@
     try {
       const steps = host.querySelectorAll('.studio-step');
       steps.forEach((step) => {
-        const workshop = step.querySelector('.writing-workshop');
+        const workshops = [...step.querySelectorAll('.writing-workshop')];
+        const workshop = workshops.at(-1);
         if (workshop) workshop.classList.add('complex-builder');
+        workshops.slice(0, -1).forEach((panel) => panel.remove());
 
         const architecturePanels = [...step.querySelectorAll('.complex-builder:not(.writing-workshop)')];
         architecturePanels.slice(1).forEach((panel) => panel.remove());
