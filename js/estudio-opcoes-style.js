@@ -7,6 +7,6 @@
   const link = document.createElement('link');
   link.id = 'miracle-studio-options-style';
   link.rel = 'stylesheet';
-  link.href = new URL('../css/estudio-opcoes.css?v=20260720d', base).href;
+  link.href = new URL('../css/estudio-opcoes.css?v=20260720f', base).href;
   document.head.appendChild(link);
 })();
