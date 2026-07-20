@@ -20,11 +20,6 @@
     const touch = maxTouchPoints > 0 || coarse;
     const width = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
-    /*
-     * O modo amplo só é liberado para uma janela larga com mouse ou touchpad.
-     * Android, iOS e tablets continuam compactos mesmo quando solicitam a
-     * versão para computador do navegador.
-     */
     const desktop = width >= 1024
       && fine
       && hover
@@ -84,12 +79,14 @@
   const loadMiracleStudio = () => {
     if (currentPage() !== 'construcao-guiada.html') return Promise.resolve();
 
-    return loadScript('estudio-milagres-data.js', '20260720d')
-      .then(() => loadScript('estudio-definitivo-data.js', '20260720d'))
-      .then(() => loadScript('estudio-milagres.js', '20260720d'))
-      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720d'))
-      .then(() => loadScript('estudio-definitivo-ui.js', '20260720d'))
-      .then(() => loadScript('estudio-desktop-layout.js', '20260720d'));
+    return loadScript('estudio-milagres-data.js', '20260720e')
+      .then(() => loadScript('estudio-definitivo-data.js', '20260720e'))
+      .then(() => loadScript('estudio-milagres.js', '20260720e'))
+      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720e'))
+      .then(() => loadScript('estudio-definitivo-ui.js', '20260720e'))
+      .then(() => loadScript('estudio-opcoes-style.js', '20260720e'))
+      .then(() => loadScript('estudio-definitivo-ajustes.js', '20260720e'))
+      .then(() => loadScript('estudio-desktop-layout.js', '20260720e'));
   };
 
   const loadContextualSystemGuide = () => {
