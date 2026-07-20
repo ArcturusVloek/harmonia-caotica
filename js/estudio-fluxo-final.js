@@ -9,6 +9,7 @@
   const DETAIL_KEY = 'harmonia-caotica:estudio-redacao-enxuta:v1';
   const CREATION_KEY = 'harmonia-caotica:estudio-criacao:v2';
   const COMPLEX_KEY = 'harmonia-caotica:estudio-composicao:v1';
+
   let host;
   let frame = 0;
   let replacing = false;
@@ -30,7 +31,11 @@
   };
 
   const writeJson = (key, value) => {
-    try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* opcional */ }
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch {
+      // O Estúdio continua funcional sem persistência local.
+    }
   };
 
   const state = () => readJson(MAIN_KEY, {});
@@ -41,6 +46,7 @@
   };
 
   const find = (options = [], value) => options.find((item) => String(item.value) === String(value));
+
   const sentence = (value = '') => {
     const clean = String(value).trim();
     if (!clean) return '';
@@ -62,30 +68,31 @@
 
   const potencyLabel = (current) => find(DATA.core.potency, current.potency)?.label || 'Potência não definida';
 
-  const selectedFunctionNames = (current) => (current.functions || [])
-    .map((id) => DATA.functions.find((item) => item.id === id)?.name || id);
-
   const creationSummary = () => {
     const creation = readJson(CREATION_KEY, null);
     if (!creation) return '';
+
     const parts = [];
     const form = creation.form || 'A Criação';
     const body = creation.bodyModel === 'distributed'
       ? `ocupa uma Área corporal de ${creation.bodyArea || 'tamanho não definido'} metros`
       : `possui Escala ${creation.scale || 'Comum'}`;
+
     parts.push(`${form} ${body}`);
-    if (creation.activeLimit) parts.push(`Limite ativo: ${creation.activeLimit}`);
+    if (creation.activeLimit) parts.push(`limite ativo: ${creation.activeLimit}`);
     if (creation.mobility === 'own') parts.push(`Movimento próprio de ${creation.movement || 0} metros`);
     if (creation.mobility === 'follows' && creation.follows) parts.push(`acompanha ${creation.follows}`);
+
     const abilities = (creation.abilities || []).map((ability) => ability.name).filter(Boolean);
     if (abilities.length) parts.push(`capacidades: ${abilities.join(', ')}`);
+
     return sentence(parts.join('. '));
   };
 
   const propagationSummary = () => {
-    const complex = readJson(COMPLEX_KEY, {});
-    const propagation = complex.propagation;
+    const propagation = readJson(COMPLEX_KEY, {}).propagation;
     if (!propagation?.enabled) return '';
+
     const form = {
       transfer: 'Transferência',
       reproduction: 'Reprodução',
@@ -94,6 +101,7 @@
     const model = propagation.model === 'complete' ? 'Passos Completos' : 'Passos Compartilhados';
     const source = propagation.source || 'uma Fonte válida';
     const destination = propagation.destination || 'um Destino válido';
+
     return sentence(`${form} utiliza ${propagation.steps || 1} ${model}, partindo de ${source} e alcançando ${destination}`);
   };
 
@@ -104,8 +112,10 @@
     if (has('control')) {
       const authority = current.controlAuthority || 'Autoridade não definida';
       const way = current.controlWay || 'Via não definida';
-      const order = current.controlOrder ? ` A instrução registrada é “${current.controlOrder}”.` : '';
-      const uses = current.controlUses ? ` Possui ${current.controlUses} Uso${String(current.controlUses) === '1' ? '' : 's'} para novas decisões controladas.` : '';
+      const order = current.controlOrder ? ` A instrução é “${current.controlOrder}”.` : '';
+      const uses = current.controlUses
+        ? ` Possui ${current.controlUses} Uso${String(current.controlUses) === '1' ? '' : 's'} para novas decisões controladas.`
+        : '';
       parts.push(`Controle: atua por ${authority}, através da Via ${way}.${order}${uses}`);
     }
 
@@ -116,16 +126,22 @@
     if (has('resources')) parts.push(`Recursos: utiliza ${current.resourceFunction || 'Transferência de Recurso'} com o Valor definido pela construção.`);
     if (has('traversal')) parts.push(`Travessia: utiliza ${current.traversalType || 'tipo ainda não definido'} entre a origem e o destino registrados.`);
     if (has('transformation')) parts.push(`Transformação: altera o alvo em extensão ${current.transformationScope || 'Superficial'}; capacidades novas dependem das funções compradas.`);
-    if (has('space')) parts.push('Espaço: o Movimento ou Deslocamento utiliza somente as distâncias e oportunidades compradas.');
+    if (has('space')) parts.push('Espaço: Movimento e Deslocamento utilizam somente as distâncias e oportunidades compradas.');
     if (has('combat') && current.combatProfile && current.combatProfile !== 'Nenhum') parts.push(`Combate: utiliza ${current.combatProfile}.`);
     if (has('costs') && current.costFunction && current.costFunction !== 'Nenhuma') parts.push(`Custo especial: utiliza ${current.costFunction}.`);
+
     if (has('creation')) {
       const summary = creationSummary();
-      parts.push(summary ? `Criação: ${summary}` : 'Criação: corpo, quantidade, vínculos e capacidades são definidos no Projeto da Criação.');
+      parts.push(summary
+        ? `Criação: ${summary}`
+        : 'Criação: corpo, quantidade, vínculos e capacidades são definidos no Projeto da Criação.');
     }
+
     if (has('propagation')) {
       const summary = propagationSummary();
-      parts.push(summary ? `Propagação: ${summary}` : 'Propagação: Fonte, Destino, Passos e recursos são definidos no bloco de Propagação.');
+      parts.push(summary
+        ? `Propagação: ${summary}`
+        : 'Propagação: Fonte, Destino, Passos e recursos são definidos no bloco de Propagação.');
     }
 
     return parts;
@@ -135,13 +151,16 @@
     const current = state();
     const savedDetail = detail();
     const paragraphs = [];
+
     const idea = sentence(current.idea);
     if (idea) paragraphs.push(idea);
 
-    const activation = `O usuário ativa o Milagre como ${current.activation || 'Ação'}, alcançando ${current.range || 'Pessoal ou Contato'} e afetando ${targetLabel(current)}.`;
-    paragraphs.push(activation);
+    paragraphs.push(
+      `O usuário ativa o Milagre como ${current.activation || 'Ação'}, alcançando ${current.range || 'Pessoal ou Contato'} e afetando ${targetLabel(current)}.`
+    );
 
     if (current.potency) paragraphs.push(`A intensidade numérica principal é ${potencyLabel(current)}.`);
+
     if (current.duration && current.duration !== 'Instantânea') {
       paragraphs.push(`A manifestação permanece por Duração ${current.duration}. Novas ativações seguem Cadência ${current.cadence || 'Comum'}.`);
     } else {
@@ -170,13 +189,24 @@
     ];
 
     if (current.functions?.includes('control')) {
-      checks.push({ ok: Boolean(current.controlAuthority && current.controlWay && current.controlOrder?.trim()), label: 'Controle possui Autoridade, Via e instrução' });
+      checks.push({
+        ok: Boolean(current.controlAuthority && current.controlWay && current.controlOrder?.trim()),
+        label: 'Controle possui Autoridade, Via e instrução'
+      });
     }
+
     if (current.functions?.includes('creation')) {
-      checks.push({ ok: Boolean(creation?.form && creation?.activeLimit && creation?.abilities?.length), label: 'Projeto da Criação possui forma, limite ativo e capacidade' });
+      checks.push({
+        ok: Boolean(creation?.form && creation?.activeLimit && creation?.abilities?.length),
+        label: 'Projeto da Criação possui forma, limite ativo e capacidade'
+      });
     }
+
     if (current.functions?.includes('propagation')) {
-      checks.push({ ok: Boolean(complex.propagation?.enabled && complex.propagation?.source && complex.propagation?.destination), label: 'Propagação possui Fonte, Destino e Passos' });
+      checks.push({
+        ok: Boolean(complex.propagation?.enabled && complex.propagation?.source && complex.propagation?.destination),
+        label: 'Propagação possui Fonte, Destino e Passos'
+      });
     }
 
     return checks;
@@ -186,6 +216,7 @@
     const savedDetail = detail();
     const checks = structuredChecks();
     const missing = checks.filter((item) => !item.ok).length;
+
     return `<section class="writing-workshop writing-workshop--lean final-function-workshop" data-final-workshop aria-labelledby="final-function-title">
       <header class="final-function-workshop__header">
         <span>Funcionamento automático</span>
@@ -241,35 +272,41 @@
   const applyEffect = () => {
     const text = generatedEffect();
     if (!text) return;
-    setMainField('effect', text);
 
-    // Campos antigos deixam de carregar redações genéricas. O único valor
-    // interno mantido é o necessário para a regra Persistente já escolhida.
+    setMainField('effect', text);
     setMainField('resistance', '');
     setMainField('success', '');
     setMainField('failure', '');
     setMainField('limits', '');
-    setMainField('endCondition', state().duration === 'Persistente'
-      ? 'Gerenciado pela Duração Persistente e pelo limite de manifestações.'
-      : '');
+    setMainField(
+      'endCondition',
+      state().duration === 'Persistente'
+        ? 'Gerenciado pela Duração Persistente e pelo limite de manifestações.'
+        : ''
+    );
 
     const button = host.querySelector('[data-final-build]');
     if (button) {
       const original = button.textContent;
       button.textContent = 'Funcionamento aplicado';
-      window.setTimeout(() => { button.textContent = original; }, 1500);
+      window.setTimeout(() => {
+        if (button.isConnected) button.textContent = original;
+      }, 1500);
     }
   };
 
   const refreshPreview = () => {
     const preview = host?.querySelector('[data-final-preview]');
-    if (preview) preview.textContent = generatedEffect();
+    if (!preview) return;
+    const next = generatedEffect();
+    if (preview.textContent !== next) preview.textContent = next;
   };
 
   const replaceWorkshop = () => {
     if (replacing || !host) return;
     const workshop = host.querySelector('.writing-workshop--lean:not([data-final-workshop])');
     if (!workshop) return;
+
     replacing = true;
     workshop.outerHTML = workshopMarkup();
     replacing = false;
@@ -305,6 +342,8 @@
       if (event.target.matches('[data-final-exception]')) saveDetailInput('exception', event.target.value);
       schedule();
     });
+
+    host.addEventListener('change', schedule);
 
     host.addEventListener('click', (event) => {
       if (event.target.closest('[data-final-build]')) applyEffect();
