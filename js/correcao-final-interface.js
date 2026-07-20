@@ -19,9 +19,12 @@
 
   const setInert = (element, value) => {
     if (!element) return;
-    if ('inert' in element) element.inert = value;
-    if (value) element.setAttribute('aria-hidden', 'true');
-    else element.removeAttribute('aria-hidden');
+    if ('inert' in element && element.inert !== value) element.inert = value;
+    if (value) {
+      if (element.getAttribute('aria-hidden') !== 'true') element.setAttribute('aria-hidden', 'true');
+    } else if (element.hasAttribute('aria-hidden')) {
+      element.removeAttribute('aria-hidden');
+    }
   };
 
   const syncBodyMode = () => {
@@ -38,17 +41,17 @@
 
     if (desktop) {
       body.classList.remove('menu-open', 'index-open');
-      menuButton?.setAttribute('aria-expanded', 'false');
-      indexButton?.setAttribute('aria-expanded', 'false');
+      if (menuButton?.getAttribute('aria-expanded') !== 'false') menuButton?.setAttribute('aria-expanded', 'false');
+      if (indexButton?.getAttribute('aria-expanded') !== 'false') indexButton?.setAttribute('aria-expanded', 'false');
       setInert(navigation, false);
       setInert(index, false);
     } else {
       if (!body.classList.contains('menu-open')) {
-        menuButton?.setAttribute('aria-expanded', 'false');
+        if (menuButton?.getAttribute('aria-expanded') !== 'false') menuButton?.setAttribute('aria-expanded', 'false');
         setInert(navigation, true);
       }
       if (!body.classList.contains('index-open')) {
-        indexButton?.setAttribute('aria-expanded', 'false');
+        if (indexButton?.getAttribute('aria-expanded') !== 'false') indexButton?.setAttribute('aria-expanded', 'false');
         setInert(index, true);
       }
     }
@@ -64,32 +67,43 @@
     if (!studio || !layout || !progress) return;
 
     if (isDesktop()) {
-      studio.dataset.desktopLayout = 'true';
+      if (studio.dataset.desktopLayout !== 'true') studio.dataset.desktopLayout = 'true';
       if (progress.parentElement !== layout) layout.insertBefore(progress, layout.firstChild);
       body.classList.remove('studio-summary-open');
     } else {
-      delete studio.dataset.desktopLayout;
+      if (studio.hasAttribute('data-desktop-layout')) delete studio.dataset.desktopLayout;
       if (progress.parentElement === layout) studio.insertBefore(progress, layout);
     }
   };
 
   const enhanceGuides = () => {
     document.querySelectorAll('.def-option-guide').forEach((guide) => {
-      if (guide.dataset.compactGuide === 'true') return;
       if (!guide.querySelector(':scope > div')) return;
+      const existing = guide.nextElementSibling?.classList.contains('audit-guide-toggle')
+        ? guide.nextElementSibling
+        : null;
+      if (guide.dataset.compactGuide === 'true' && existing) return;
+
       guide.dataset.compactGuide = 'true';
-      const button = document.createElement('button');
+      const button = existing || document.createElement('button');
       button.type = 'button';
       button.className = 'audit-guide-toggle';
       button.setAttribute('aria-expanded', 'false');
       button.textContent = 'Entender melhor';
-      button.addEventListener('click', () => {
-        const expanded = button.getAttribute('aria-expanded') === 'true';
-        button.setAttribute('aria-expanded', String(!expanded));
-        button.textContent = expanded ? 'Entender melhor' : 'Ocultar detalhes';
-        guide.classList.toggle('is-expanded', !expanded);
-      });
-      guide.insertAdjacentElement('afterend', button);
+      if (!existing) guide.insertAdjacentElement('afterend', button);
+      if (button.dataset.bound !== 'true') {
+        button.dataset.bound = 'true';
+        button.addEventListener('click', () => {
+          const expanded = button.getAttribute('aria-expanded') === 'true';
+          button.setAttribute('aria-expanded', String(!expanded));
+          button.textContent = expanded ? 'Entender melhor' : 'Ocultar detalhes';
+          guide.classList.toggle('is-expanded', !expanded);
+        });
+      }
+    });
+
+    document.querySelectorAll('.audit-guide-toggle').forEach((button) => {
+      if (!button.previousElementSibling?.classList.contains('def-option-guide')) button.remove();
     });
   };
 
@@ -103,7 +117,7 @@
         details.addEventListener('toggle', () => {
           if (!details.open) return;
           sections.forEach((other) => {
-            if (other !== details) other.open = false;
+            if (other !== details && other.open) other.open = false;
           });
         });
       });
@@ -148,7 +162,8 @@
       body.appendChild(toggle);
     }
     const cost = toggle.querySelector('strong');
-    if (cost) cost.textContent = summaryCost();
+    const nextCost = summaryCost();
+    if (cost && cost.textContent !== nextCost) cost.textContent = nextCost;
 
     if (!summary.querySelector('.studio-mobile-summary-close')) {
       const close = document.createElement('button');
@@ -165,11 +180,13 @@
     const body = document.body;
     if (!body || isDesktop()) return;
     if (!body.classList.contains('menu-open')) {
-      document.querySelector('.atlas-menu-toggle')?.setAttribute('aria-expanded', 'false');
+      const button = document.querySelector('.atlas-menu-toggle');
+      if (button?.getAttribute('aria-expanded') !== 'false') button?.setAttribute('aria-expanded', 'false');
       setInert(document.querySelector('.atlas-global-nav, .site-header__nav'), true);
     }
     if (!body.classList.contains('index-open')) {
-      document.querySelector('.atlas-index-toggle')?.setAttribute('aria-expanded', 'false');
+      const button = document.querySelector('.atlas-index-toggle');
+      if (button?.getAttribute('aria-expanded') !== 'false') button?.setAttribute('aria-expanded', 'false');
       setInert(document.querySelector('.content-index'), true);
     }
   };
