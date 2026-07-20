@@ -84,10 +84,12 @@
   const loadMiracleStudio = () => {
     if (currentPage() !== 'construcao-guiada.html') return Promise.resolve();
 
-    return loadScript('estudio-milagres-data.js', '20260720c')
-      .then(() => loadScript('estudio-milagres.js', '20260720c'))
-      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720c'))
-      .then(() => loadScript('estudio-desktop-layout.js', '20260720c'));
+    return loadScript('estudio-milagres-data.js', '20260720d')
+      .then(() => loadScript('estudio-definitivo-data.js', '20260720d'))
+      .then(() => loadScript('estudio-milagres.js', '20260720d'))
+      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720d'))
+      .then(() => loadScript('estudio-definitivo-ui.js', '20260720d'))
+      .then(() => loadScript('estudio-desktop-layout.js', '20260720d'));
   };
 
   const loadContextualSystemGuide = () => {
