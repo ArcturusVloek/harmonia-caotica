@@ -7,17 +7,26 @@
     ? new URL('.', currentScript.src)
     : new URL('./js/', document.baseURI);
 
+  const criticalStyles = [
+    ['final-responsive-fixes-style', '../css/correcao-final-responsiva.css?v=20260720o'],
+    ['final-touch-targets-style', '../css/alvos-toque-final.css?v=20260720o']
+  ];
+
   const ensureCriticalStyles = () => {
-    [
-      ['final-responsive-fixes-style', '../css/correcao-final-responsiva.css?v=20260720n'],
-      ['final-touch-targets-style', '../css/alvos-toque-final.css?v=20260720n']
-    ].forEach(([id, path]) => {
+    criticalStyles.forEach(([id, path]) => {
       if (document.getElementById(id)) return;
       const link = document.createElement('link');
       link.id = id;
       link.rel = 'stylesheet';
       link.href = new URL(path, scriptBaseUrl).href;
       document.head.appendChild(link);
+    });
+  };
+
+  const prioritizeCriticalStyles = () => {
+    criticalStyles.forEach(([id]) => {
+      const link = document.getElementById(id);
+      if (link && link.parentElement === document.head) document.head.appendChild(link);
     });
   };
 
@@ -102,38 +111,44 @@
 
   const currentPage = () => window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
 
-  const loadGlobalCorrections = () => loadScript('correcao-final-interface.js', '20260720n')
-    .then(() => loadScript('alvos-toque-final.js', '20260720n'));
+  const loadGlobalCorrections = () => loadScript('correcao-final-interface.js', '20260720o')
+    .then(() => loadScript('alvos-toque-final.js', '20260720o'));
 
   const loadMiracleStudio = () => {
     if (currentPage() !== 'construcao-guiada.html') return Promise.resolve();
 
-    return loadScript('estudio-milagres-data.js', '20260720n')
-      .then(() => loadScript('estudio-definitivo-data.js', '20260720n'))
-      .then(() => loadScript('estudio-milagres.js', '20260720n'))
-      .then(() => loadScript('estudio-desktop-layout.js', '20260720n'))
-      .then(() => loadScript('cadencia-reformulada.js', '20260720n'))
-      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720n'))
-      .then(() => loadScript('estudio-definitivo-ui.js', '20260720n'))
-      .then(() => loadScript('estudio-opcoes-style.js', '20260720n'))
-      .then(() => loadScript('estudio-definitivo-ajustes.js', '20260720n'))
-      .then(() => loadScript('estudio-complexidade.js', '20260720n'))
-      .then(() => loadScript('estudio-redacao-whatsapp.js', '20260720n'))
-      .then(() => loadScript('estudio-coexistencia.js', '20260720n'))
-      .then(() => loadScript('estudio-redacao-enxuta.js', '20260720n'))
-      .then(() => loadScript('estudio-fluxo-final.js', '20260720n'))
-      .then(loadGlobalCorrections);
+    return loadScript('estudio-milagres-data.js', '20260720o')
+      .then(() => loadScript('estudio-definitivo-data.js', '20260720o'))
+      .then(() => loadScript('estudio-milagres.js', '20260720o'))
+      .then(() => loadScript('estudio-desktop-layout.js', '20260720o'))
+      .then(loadGlobalCorrections)
+      .then(() => loadScript('cadencia-reformulada.js', '20260720o'))
+      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720o'))
+      .then(() => loadScript('estudio-definitivo-ui.js', '20260720o'))
+      .then(() => loadScript('estudio-opcoes-style.js', '20260720o'))
+      .then(() => loadScript('estudio-definitivo-ajustes.js', '20260720o'))
+      .then(() => loadScript('estudio-complexidade.js', '20260720o'))
+      .then(() => loadScript('estudio-redacao-whatsapp.js', '20260720o'))
+      .then(() => loadScript('estudio-coexistencia.js', '20260720o'))
+      .then(() => loadScript('estudio-redacao-enxuta.js', '20260720o'))
+      .then(() => loadScript('estudio-fluxo-final.js', '20260720o'))
+      .then(() => {
+        prioritizeCriticalStyles();
+        window.dispatchEvent(new Event('resize'));
+      });
   };
 
   const loadCadenceReference = () => {
     if (currentPage() === 'construcao-guiada.html') return Promise.resolve();
-    return loadScript('cadencia-reformulada.js', '20260720n');
+    return loadScript('cadencia-reformulada.js', '20260720o');
   };
 
   const loadContextualSystemGuide = () => {
     const systemsPage = document.body?.classList.contains('systems-page');
     if (!systemsPage) {
-      loadGlobalCorrections().catch((error) => console.error('Falha ao carregar correções responsivas.', error));
+      loadGlobalCorrections()
+        .then(prioritizeCriticalStyles)
+        .catch((error) => console.error('Falha ao carregar correções responsivas.', error));
       return;
     }
     if (root.dataset.systemGuideBoot === 'true') return;
@@ -145,6 +160,7 @@
       .then(loadCadenceReference)
       .then(loadMiracleStudio)
       .then(loadGlobalCorrections)
+      .then(prioritizeCriticalStyles)
       .catch((error) => {
         root.dataset.systemGuideBoot = 'error';
         console.error('Falha ao carregar a camada didática dos Sistemas.', error);
@@ -155,13 +171,12 @@
   window.addEventListener('orientationchange', schedule, { passive: true });
   window.visualViewport?.addEventListener('resize', schedule, { passive: true });
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      detect();
-      loadContextualSystemGuide();
-    }, { once: true });
-  } else {
+  const boot = () => {
+    prioritizeCriticalStyles();
     detect();
     loadContextualSystemGuide();
-  }
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
+  else boot();
 })();
