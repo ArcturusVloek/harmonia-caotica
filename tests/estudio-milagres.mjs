@@ -83,6 +83,7 @@ async function desktopTest() {
     for (const [answerPath, value] of Object.entries(writingAnswers)) {
       await page.locator(`[data-writing-path="${answerPath}"]`).fill(value);
     }
+    await page.waitForTimeout(300);
     mark('Perguntas obrigatórias da Oficina preenchidas.');
 
     await page.locator('[data-writing-build="all"]').click();
