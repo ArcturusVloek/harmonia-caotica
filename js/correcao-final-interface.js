@@ -11,7 +11,7 @@
     const link = document.createElement('link');
     link.id = 'final-responsive-fixes-style';
     link.rel = 'stylesheet';
-    link.href = new URL('../css/correcao-final-responsiva.css?v=20260720k', scriptBase).href;
+    link.href = new URL('../css/correcao-final-responsiva.css?v=20260720q', scriptBase).href;
     document.head.appendChild(link);
   };
 
@@ -25,6 +25,47 @@
     } else if (element.hasAttribute('aria-hidden')) {
       element.removeAttribute('aria-hidden');
     }
+  };
+
+  const forceSize = (element, width, height = width) => {
+    if (!element) return;
+    element.style.setProperty('width', width, 'important');
+    element.style.setProperty('height', height, 'important');
+    element.style.setProperty('min-width', width, 'important');
+    element.style.setProperty('min-height', height, 'important');
+    element.style.setProperty('box-sizing', 'border-box', 'important');
+  };
+
+  const enforceTouchTargets = () => {
+    const compact = !isDesktop();
+    const square = compact ? '60px' : '44px';
+
+    document.querySelectorAll('.atlas-menu-toggle, .atlas-index-close, .header-action, .studio-term, .studio-mobile-summary-close')
+      .forEach((element) => forceSize(element, square));
+
+    document.querySelectorAll('.atlas-menu-toggle, .header-action')
+      .forEach((element) => element.style.setProperty('flex-basis', square, 'important'));
+
+    document.querySelectorAll('.atlas-index-toggle').forEach((element) => {
+      if (compact) {
+        element.style.setProperty('width', '128px', 'important');
+        element.style.setProperty('min-width', '128px', 'important');
+        element.style.setProperty('height', '60px', 'important');
+        element.style.setProperty('min-height', '60px', 'important');
+        element.style.setProperty('padding-inline', '18px', 'important');
+      } else {
+        element.style.removeProperty('width');
+        element.style.removeProperty('height');
+        element.style.removeProperty('min-width');
+        element.style.removeProperty('min-height');
+        element.style.removeProperty('padding-inline');
+      }
+    });
+
+    document.querySelectorAll('.studio-mobile-summary-toggle').forEach((element) => {
+      element.style.setProperty('min-height', '60px', 'important');
+      element.style.setProperty('box-sizing', 'border-box', 'important');
+    });
   };
 
   const syncBodyMode = () => {
@@ -199,6 +240,7 @@
     enhanceCreationAccordion();
     enhanceHeritages();
     enhanceMobileSummary();
+    enforceTouchTargets();
     stabilizeCompactPanels();
   };
 
