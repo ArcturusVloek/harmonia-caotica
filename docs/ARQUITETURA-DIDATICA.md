@@ -17,6 +17,7 @@ A camada didática não substitui o conteúdo canônico. Ela reorganiza as infor
 7. **O manual completo é referência, não fluxo obrigatório.** Jogadores começam por perguntas simples e só abrem o texto canônico quando surge uma dúvida específica.
 8. **Toda opção visível precisa explicar a si mesma.** O Estúdio apresenta significado, uso adequado, limites e comparação com alternativas no próprio campo.
 9. **Heranças pertencem à Vertente.** Elas são propriedades passivas dos Milagres compatíveis, não capacidades ativadas ou compras opcionais.
+10. **O jogador responde fatos; a interface organiza a redação.** O Estúdio não deve depender da habilidade literária do usuário para produzir uma regra clara.
 
 ## Primeira implementação — Domínios e Vertentes
 
@@ -26,28 +27,9 @@ A camada inicial é aplicada às páginas de Domínios e Vertentes por meio dos 
 - `css/regra-guiada.css`
 - `js/dominios.js`
 
-A camada utiliza a estrutura já existente das páginas. Ela extrai:
+A camada utiliza a estrutura já existente das páginas. Ela extrai resumo, capacidades, limite conceitual, Vertentes, possibilidades, restrições e exemplos de Milagres.
 
-- resumo do Domínio;
-- capacidades apresentadas;
-- limite conceitual;
-- nomes e descrições das Vertentes;
-- definição, possibilidades e limites de cada Vertente;
-- exemplos de Milagres já publicados.
-
-Com essas informações, a interface cria três modos.
-
-### Entender
-
-Apresenta a definição curta, as principais capacidades, o limite decisivo e acesso direto às Vertentes.
-
-### Aplicar
-
-Conduz o leitor por uma sequência de decisões: resultado, princípio, destino, resolução e compras mecânicas.
-
-### Avaliar
-
-Apresenta uma lista comum de verificação para administradores, evitando que cada avaliação dependa apenas da memória ou interpretação individual.
+A interface cria os modos Entender, Aplicar e Avaliar.
 
 ## Segunda implementação — Capítulos de Sistemas
 
@@ -58,34 +40,11 @@ Os capítulos mecânicos recebem uma camada contextual comum por meio dos arquiv
 - `js/sistema-guiado-secoes.js`
 - `css/sistema-guiado.css`
 
-A interface apresenta quatro modos:
-
-### Entender
-
-Explica a pergunta central do capítulo, o princípio decisivo e as decisões que precisam ser tomadas.
-
-### Aplicar
-
-Transforma o conteúdo em uma sequência marcável. O progresso é salvo no navegador.
-
-### Avaliar
-
-Apresenta critérios administrativos e campos obrigatórios relacionados ao capítulo atual.
-
-### Termos
-
-Reúne definições curtas dos conceitos utilizados naquela página.
-
-Cada seção também recebe um quadro recolhível com:
-
-- finalidade do trecho;
-- perguntas que o leitor deve conseguir responder;
-- erro de interpretação mais provável;
-- termos relevantes.
+A interface apresenta os modos Entender, Aplicar, Avaliar e Termos. Cada seção também recebe finalidade, perguntas de compreensão, erro provável e conceitos relevantes.
 
 ## Terceira implementação — Estúdio de Milagres
 
-A página `sistemas/construcao-guiada.html` deixa de funcionar como uma lista de capítulos que o usuário precisa visitar e passa a receber uma área integrada de construção.
+A página `sistemas/construcao-guiada.html` recebe uma área integrada de construção.
 
 Arquivos centrais:
 
@@ -96,16 +55,19 @@ Arquivos centrais:
 - `js/estudio-definitivo-ui.js`
 - `js/estudio-definitivo-ajustes.js`
 - `js/estudio-complexidade.js`
+- `js/estudio-redacao-whatsapp.js`
+- `js/estudio-coexistencia.js`
 - `js/estudio-desktop-layout.js`
 - `css/estudio-milagres.css`
 - `css/estudio-definitivo.css`
 - `css/estudio-opcoes.css`
 - `css/estudio-complexidade.css`
+- `css/estudio-redacao-whatsapp.css`
 - `css/estudio-desktop.css`
 
 ### Fluxo único
 
-O Estúdio organiza a criação em seis etapas dentro da mesma página:
+O Estúdio organiza a criação em seis etapas:
 
 1. Ideia;
 2. Origem divina;
@@ -116,117 +78,94 @@ O Estúdio organiza a criação em seis etapas dentro da mesma página:
 
 ### Origem divina integrada
 
-Divindade, Domínio e Vertente são escolhidos em sequência. A explicação da escolha aparece imediatamente. A página canônica do Domínio é consultada internamente para localizar a Herança da Vertente escolhida.
+Divindade, Domínio e Vertente são escolhidos em sequência. A página canônica do Domínio é consultada internamente para localizar a Herança escolhida.
 
-A Herança é mostrada durante a construção, no resumo e na revisão. A ficha exportada registra nome, resumo, gatilho, efeito, limites e exemplo quando essas informações estiverem publicadas na página canônica.
+A Herança é mostrada durante a construção, no resumo e na revisão. A ficha exportada registra nome, resumo, gatilho, efeito, limites e exemplo quando publicados.
 
 ### Opções autodescritivas
 
-Cada campo apresenta:
-
-- significado da opção selecionada;
-- situação em que deve ser usada;
-- capacidades que não são concedidas;
-- custo, quando aplicável;
-- catálogo recolhível para comparar todas as alternativas.
-
-As funções também explicam a mudança mecânica que representam e aquilo que precisa ser comprado separadamente.
-
-### Sugestões pela ideia
-
-A frase inicial pode indicar possíveis funções, Domínios e Vertentes. As sugestões são pontos de partida e nunca substituem a verificação conceitual.
-
-### Funções condicionais
-
-O jogador marca aquilo que o poder realmente faz. Somente os módulos relacionados às funções selecionadas aparecem depois.
-
-Exemplos:
-
-- Controle abre Autoridade, Via, Usos e ordem;
-- Informação abre função e Profundidade;
-- Cura abre Cura, Tratamento, Regeneração, Preservação ou Retorno;
-- Criação abre um construtor próprio para a existência separada.
+Cada campo apresenta significado, uso adequado, capacidades não concedidas, custo e catálogo comparativo.
 
 ### Projeto da Criação
 
-Criações, Invocações e manifestações separadas possuem um bloco próprio. Ele registra:
+Criações, Invocações e manifestações separadas possuem um bloco próprio. Ele registra forma, natureza, posição, Resistência ou Âncora, Sustentação, encerramento, quantidade, Escala ou Área, Movimento, transporte, comunicação, Origem Vinculada e capacidades internas.
 
-- forma, natureza e posição;
-- Resistência ou dependência de uma Âncora;
-- Sustentação e encerramento;
-- limite de manifestações ativas;
-- Criação única, Coletiva, Fragmentada ou Completa;
-- Escala ou Área corporal;
-- Movimento próprio, Acompanha e transporte;
-- comunicação, percepção compartilhada e Origem Vinculada;
-- quantidade ilimitada de capacidades internas.
-
-Cada capacidade da Criação registra função, Potência principal ou própria, forma de atuação, Alcance, destinos, Área, Duração, Usos, resolução e custo. Isso permite construir criaturas, objetos, barreiras, campos, nuvens, enxames, plataformas e outras manifestações sem reduzir todas elas ao mesmo modelo.
+Cada capacidade registra função, Potência principal ou própria, atuação, Alcance, destinos, Área, Duração, Usos, resolução e custo.
 
 ### Arquitetura do Poder
 
-Poderes complexos podem utilizar:
-
-- funções simultâneas;
-- modos alternativos;
-- etapas sequenciais;
-- estruturas condicionadas;
-- combinações híbridas;
-- componentes com parâmetros compartilhados ou próprios.
-
-Cada componente declara sua relação com o poder, função, Potência, Alcance, destinos, Duração, gatilho, consumo, resolução e custo independente.
+Poderes complexos podem utilizar funções simultâneas, modos alternativos, etapas sequenciais, estruturas condicionadas, combinações híbridas e componentes com parâmetros compartilhados ou próprios.
 
 ### Propagação integrada
 
-O Estúdio representa Transferência, Reprodução e Crescimento. O bloco registra Passos Compartilhados ou Completos, Alcance entre Fonte e Destino, atuação, Fontes, Destinos, caminho, quantidade simultânea, recursos compartilhados, encerramento e proibição de cascata imediata.
+O Estúdio representa Transferência, Reprodução e Crescimento. O bloco registra Passos, Alcance entre Fonte e Destino, atuação, Fontes, Destinos, caminho, quantidade simultânea, recursos, encerramento e proibição de cascata imediata.
+
+### Oficina de Redação Mecânica
+
+A Etapa de Resolução possui uma oficina que transforma respostas factuais em texto técnico uniforme.
+
+O bloco fundamental pergunta:
+
+- como o Milagre se manifesta;
+- o que o usuário faz ao ativar;
+- onde começa e quem recebe a aplicação;
+- qual oposição é realizada;
+- resultado do sucesso;
+- consequência da falha;
+- recorrência durante a Duração;
+- contrajogo posterior;
+- manutenção;
+- encerramento;
+- exclusões necessárias.
+
+Cada função selecionada acrescenta perguntas próprias. Controle pergunta ordem exata, limites de decisão, consumo de Usos e quebra. Movimento pergunta existência deslocada, distância e caminho. Criação pergunta atuação ao surgir, capacidades compradas e destruição. Cura, Dano, Informação, Proteção, Transformação, Travessia, Recursos, Custos e Propagação recebem critérios equivalentes.
+
+Cada pergunta contém:
+
+- aquilo que precisa ser respondido;
+- campo factual curto;
+- exemplo completo;
+- exemplo de redação vaga que deve ser evitada.
+
+O indicador de qualidade identifica respostas ausentes, curtas ou imprecisas. Expressões como “o mestre decide”, “da melhor maneira”, “quando necessário”, “meios adequados” e “funciona normalmente” são marcadas para revisão.
+
+Os comandos **Preencher apenas lacunas** e **Reescrever texto técnico** produzem automaticamente Efeito, Resistência, Sucesso, Falha, Limites e Encerramento. O resultado permanece editável.
+
+### Exportação para WhatsApp
+
+A Revisão possui uma prévia inspirada na interface do WhatsApp e três formatos copiáveis:
+
+- Ficha completa;
+- Cartão de combate;
+- Somente custos.
+
+O texto utiliza os recursos nativos de formatação do aplicativo: `*negrito*`, `_itálico_`, citações, listas e divisores. A versão completa conserva todas as seções; o cartão de combate concentra parâmetros e resolução; a versão de custos apresenta somente a composição financeira do Milagre.
 
 ### Custos visíveis
 
-Rank, Potência, Ativação, Alcance, Alvos, Área, Duração, funções, capacidades de Criações, componentes e Propagação atualizam o custo em tempo real. O resumo compara o total com o orçamento do Rank.
-
-Compras avançadas são reunidas no campo adicional apenas para integração com o cálculo anterior. O detalhamento permanece registrado na ficha final.
-
-### Consulta sem sair da ficha
-
-As regras completas continuam canônicas, mas são carregadas dentro de um painel lateral no computador e de uma gaveta em tela cheia no celular.
-
-O usuário não precisa abrir essas páginas para compreender opções comuns. O painel existe para exceções, exemplos extensos e auditoria do texto canônico.
-
-### Validação
-
-O Estúdio detecta informações ausentes ou incompatíveis, como:
-
-- Área sem tamanho;
-- Duração Persistente sem limite ou encerramento;
-- Controle sem Autoridade, Via, ordem ou Usos;
-- Criação sem limite de manifestações;
-- custo acima do Rank;
-- ausência de resistência, sucesso, falha ou limites.
-
-Um teste funcional automatizado constrói uma Criação com duas capacidades, Propagação e Herança, verifica os custos e confirma a presença dessas seções na ficha exportada em computador e celular.
+Rank, Potência, Ativação, Alcance, Alvos, Área, Duração, funções, capacidades de Criações, componentes e Propagação atualizam o custo em tempo real.
 
 ### Persistência e exportação
 
-O rascunho principal, o Projeto da Criação e a Arquitetura do Poder são salvos no navegador. A etapa final produz uma ficha copiável com:
+O rascunho principal, o Projeto da Criação, a Arquitetura do Poder e as respostas da Oficina são salvos no navegador.
 
-- identidade e parâmetros;
-- Herança da Vertente;
-- Projeto da Criação;
-- Arquitetura do Poder;
-- Propagação;
-- regras específicas;
-- efeito, resistência, sucesso, falha, limites e encerramento;
-- composição completa dos custos.
+A ficha final pode conter identidade, parâmetros, Herança, Projeto da Criação, Arquitetura, Propagação, apresentação visual, resolução completa e custos.
 
-### Manual canônico
+## Validação
 
-O roteiro textual anterior permanece disponível em um bloco recolhível. Ele não é removido, mas deixa de ser o caminho obrigatório para construir um Milagre.
+O teste funcional automatizado:
 
-## Base estruturada
+1. cria uma Criação com duas capacidades;
+2. escolhe Vida e Sangue;
+3. carrega a Herança Corrente Partilhada;
+4. configura Reprodução por Propagação;
+5. responde todas as perguntas obrigatórias;
+6. gera a redação técnica;
+7. alcança 100% de detalhamento;
+8. verifica a ficha completa e o cartão de combate do WhatsApp;
+9. confirma ausência de overflow no Estúdio em computador e celular.
 
-A camada de Domínios ainda extrai informações do HTML existente. O Estúdio utiliza bases estruturadas para opções, custos, relações e projetos complexos. A evolução seguinte deve unificar essas fontes para que páginas, busca, Estúdio, consulta em combate e avaliação administrativa consultem os mesmos registros.
-
-A extração direta das Heranças já segue esse princípio: a página canônica permanece como fonte, e o Estúdio apenas reorganiza seu conteúdo.
+A auditoria global do site continua separada. Problemas históricos de navegação, altura de capturas e páginas extensas não invalidam o teste funcional específico do Estúdio.
 
 ## Critério de conclusão de uma regra
 
@@ -248,8 +187,7 @@ A ausência de uma resposta necessária deve gerar revisão editorial ou aviso c
 
 ## Próximas etapas
 
-1. Conferir cada custo da base integrada contra os capítulos canônicos durante a revisão administrativa.
-2. Representar integralmente Reservas, Recargas, Sacrifícios e relações de pagamento compostas.
-3. Produzir uma ficha de combate reduzida derivada do mesmo rascunho.
-4. Ampliar os testes para combinações extremas de Controle, Travessia, Transformação e Retorno.
-5. Unificar a base estruturada do Estúdio com todas as páginas canônicas.
+1. Conferir cada custo contra os capítulos canônicos durante a revisão administrativa.
+2. Representar integralmente Reservas, Recargas, Sacrifícios e pagamentos compostos.
+3. Ampliar testes para combinações extremas de Controle, Travessia, Transformação e Retorno.
+4. Unificar a base estruturada do Estúdio com todas as páginas canônicas.
