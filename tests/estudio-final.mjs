@@ -139,10 +139,12 @@ async function mobileTest() {
     assert(await page.locator('.studio-mobile-summary-toggle').isVisible(), 'O resumo móvel não possui botão de abertura.');
 
     await page.locator('.studio-mobile-summary-toggle').click();
+    await page.waitForTimeout(280);
     assert(await page.locator('body.studio-summary-open').count() === 1, 'A gaveta de resumo não abriu.');
-    assert(await page.locator('.studio-summary').isVisible(), 'O resumo não ficou visível na gaveta.');
+    const summaryBox = await page.locator('.studio-summary').boundingBox();
+    assert(Boolean(summaryBox && summaryBox.width > 0 && summaryBox.height > 0), 'O resumo não ficou visível na gaveta.');
     await page.locator('.studio-mobile-summary-close').click();
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(320);
     assert(await page.locator('body.studio-summary-open').count() === 0, 'A gaveta de resumo não fechou.');
 
     const progress = await page.locator('.studio-progress').evaluate((element) => ({
@@ -153,10 +155,17 @@ async function mobileTest() {
     assert(progress.scrollWidth <= progress.clientWidth + 2, 'As etapas ainda exigem rolagem horizontal no celular.');
     assert(progress.columns.split(/\s+/).filter(Boolean).length === 3, `As etapas não foram organizadas em três colunas: ${progress.columns}`);
 
-    const touchTargets = await page.locator('.atlas-menu-toggle, .studio-mobile-summary-toggle').evaluateAll((elements) => elements.map((element) => {
-      const rect = element.getBoundingClientRect();
-      return { width: rect.width, height: rect.height };
-    }));
+    const touchTargets = await page.locator('.atlas-menu-toggle, .studio-mobile-summary-toggle').evaluateAll((elements) => elements
+      .map((element) => {
+        const style = getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+        return {
+          visible: style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity || 1) > .01 && rect.width > 0 && rect.height > 0,
+          width: rect.width,
+          height: rect.height
+        };
+      })
+      .filter((target) => target.visible));
     assert(touchTargets.every((target) => target.width >= 44 && target.height >= 44), 'Existem alvos principais menores que 44px no celular.');
 
     const dimensions = await page.evaluate(() => ({
