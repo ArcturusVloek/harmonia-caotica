@@ -7,6 +7,15 @@
     ? new URL('.', currentScript.src)
     : new URL('./js/', document.baseURI);
 
+  const syncBodyClasses = (desktop, touch) => {
+    const body = document.body;
+    if (!body) return;
+    body.classList.toggle('ui-desktop', desktop);
+    body.classList.toggle('ui-compact', !desktop);
+    body.dataset.uiMode = desktop ? 'desktop' : 'compact';
+    body.dataset.touchDevice = String(touch);
+  };
+
   const detect = () => {
     const ua = navigator.userAgent || '';
     const platform = navigator.platform || '';
@@ -33,6 +42,7 @@
     root.dataset.uiMode = desktop ? 'desktop' : 'compact';
     root.dataset.touchDevice = String(touch);
     root.style.setProperty('--visual-viewport-height', `${window.visualViewport?.height || window.innerHeight}px`);
+    syncBodyClasses(desktop, touch);
 
     return desktop;
   };
@@ -76,31 +86,39 @@
 
   const currentPage = () => window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
 
+  const loadGlobalCorrections = () => loadScript('correcao-final-interface.js', '20260720k');
+
   const loadMiracleStudio = () => {
     if (currentPage() !== 'construcao-guiada.html') return Promise.resolve();
 
-    return loadScript('estudio-milagres-data.js', '20260720j')
-      .then(() => loadScript('estudio-definitivo-data.js', '20260720j'))
-      .then(() => loadScript('estudio-milagres.js', '20260720j'))
-      .then(() => loadScript('cadencia-reformulada.js', '20260720j'))
-      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720j'))
-      .then(() => loadScript('estudio-definitivo-ui.js', '20260720j'))
-      .then(() => loadScript('estudio-opcoes-style.js', '20260720j'))
-      .then(() => loadScript('estudio-definitivo-ajustes.js', '20260720j'))
-      .then(() => loadScript('estudio-complexidade.js', '20260720j'))
-      .then(() => loadScript('estudio-redacao-whatsapp.js', '20260720j'))
-      .then(() => loadScript('estudio-coexistencia.js', '20260720j'))
-      .then(() => loadScript('estudio-redacao-enxuta.js', '20260720j'))
-      .then(() => loadScript('estudio-desktop-layout.js', '20260720j'));
+    return loadScript('estudio-milagres-data.js', '20260720k')
+      .then(() => loadScript('estudio-definitivo-data.js', '20260720k'))
+      .then(() => loadScript('estudio-milagres.js', '20260720k'))
+      .then(() => loadScript('cadencia-reformulada.js', '20260720k'))
+      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720k'))
+      .then(() => loadScript('estudio-definitivo-ui.js', '20260720k'))
+      .then(() => loadScript('estudio-opcoes-style.js', '20260720k'))
+      .then(() => loadScript('estudio-definitivo-ajustes.js', '20260720k'))
+      .then(() => loadScript('estudio-complexidade.js', '20260720k'))
+      .then(() => loadScript('estudio-redacao-whatsapp.js', '20260720k'))
+      .then(() => loadScript('estudio-coexistencia.js', '20260720k'))
+      .then(() => loadScript('estudio-redacao-enxuta.js', '20260720k'))
+      .then(() => loadScript('estudio-desktop-layout.js', '20260720k'))
+      .then(() => loadScript('estudio-fluxo-final.js', '20260720k'))
+      .then(loadGlobalCorrections);
   };
 
   const loadCadenceReference = () => {
     if (currentPage() === 'construcao-guiada.html') return Promise.resolve();
-    return loadScript('cadencia-reformulada.js', '20260720j');
+    return loadScript('cadencia-reformulada.js', '20260720k');
   };
 
   const loadContextualSystemGuide = () => {
-    if (!document.body?.classList.contains('systems-page')) return;
+    const systemsPage = document.body?.classList.contains('systems-page');
+    if (!systemsPage) {
+      loadGlobalCorrections().catch((error) => console.error('Falha ao carregar correções responsivas.', error));
+      return;
+    }
     if (root.dataset.systemGuideBoot === 'true') return;
     root.dataset.systemGuideBoot = 'true';
 
@@ -109,6 +127,7 @@
       .then(() => loadScript('sistema-guiado-secoes.js', '20260720a'))
       .then(loadCadenceReference)
       .then(loadMiracleStudio)
+      .then(loadGlobalCorrections)
       .catch((error) => {
         root.dataset.systemGuideBoot = 'error';
         console.error('Falha ao carregar a camada didática dos Sistemas.', error);
@@ -120,8 +139,12 @@
   window.visualViewport?.addEventListener('resize', schedule, { passive: true });
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadContextualSystemGuide, { once: true });
+    document.addEventListener('DOMContentLoaded', () => {
+      detect();
+      loadContextualSystemGuide();
+    }, { once: true });
   } else {
+    detect();
     loadContextualSystemGuide();
   }
 })();
