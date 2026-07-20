@@ -33,12 +33,14 @@ jobs:
           node --check js/atlas-novo.js
           node --check js/estudio-milagres-data.js
           node --check js/estudio-milagres.js
+          node --check js/cadencia-reformulada.js
           node --check js/estudio-milagres-recomendador.js
           node --check js/estudio-definitivo-data.js
           node --check js/estudio-definitivo-ui.js
           node --check js/estudio-definitivo-ajustes.js
           node --check js/estudio-complexidade.js
           node --check js/estudio-redacao-whatsapp.js
+          node --check js/estudio-redacao-enxuta.js
           node --check js/estudio-coexistencia.js
           node --check js/estudio-desktop-layout.js
           node --check js/estudio-opcoes-style.js
