@@ -39,6 +39,7 @@ jobs:
           node --check js/estudio-definitivo-ajustes.js
           node --check js/estudio-complexidade.js
           node --check js/estudio-redacao-whatsapp.js
+          node --check js/estudio-coexistencia.js
           node --check js/estudio-desktop-layout.js
           node --check js/estudio-opcoes-style.js
           node --check tests/layout-audit.mjs
