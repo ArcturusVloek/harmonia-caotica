@@ -1,0 +1,28 @@
+@media (max-width: 1023px), (pointer: coarse) {
+  .atlas-menu-toggle,
+  .atlas-index-toggle,
+  .atlas-index-close,
+  .atlas-site .header-action,
+  .studio-term,
+  .audit-guide-toggle,
+  .studio-mobile-summary-close {
+    min-width: 48px !important;
+    min-height: 48px !important;
+  }
+
+  .atlas-menu-toggle {
+    width: 48px !important;
+    height: 48px !important;
+    flex: 0 0 48px !important;
+  }
+
+  .atlas-index-toggle {
+    min-width: 112px !important;
+    padding-inline: 16px !important;
+  }
+
+  .studio-mobile-summary-toggle {
+    min-width: calc(100vw - 28px) !important;
+    min-height: 52px !important;
+  }
+}
