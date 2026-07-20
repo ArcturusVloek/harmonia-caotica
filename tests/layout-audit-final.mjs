@@ -69,7 +69,24 @@ for (const profile of profiles) {
     try {
       const response = await page.goto(`${baseUrl}/${relativePath}`, { waitUntil: 'domcontentloaded', timeout: 30_000 });
       if (!response || response.status() >= 400) throw new Error(`HTTP ${response?.status() ?? 'sem resposta'}`);
-      await page.waitForTimeout(500);
+
+      await page.waitForFunction(
+        () => document.documentElement.dataset.interfaceCorrectionsReady === 'true',
+        null,
+        { timeout: 15_000 }
+      );
+
+      if (relativePath === 'sistemas/construcao-guiada.html') {
+        await page.waitForSelector('.miracle-studio', { timeout: 15_000 });
+        await page.waitForFunction(
+          () => document.documentElement.dataset.uiMode !== 'desktop'
+            || document.querySelector('.miracle-studio')?.dataset.desktopLayout === 'true',
+          null,
+          { timeout: 15_000 }
+        );
+      }
+
+      await page.waitForTimeout(120);
 
       const audit = await page.evaluate(({ expected }) => {
         const root = document.documentElement;
