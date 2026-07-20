@@ -20,21 +20,21 @@
       label: 'Recarga',
       bonus: 2,
       summary: 'Depois de ser ativado, fica indisponível durante o Turno seguinte do usuário e retorna no posterior.',
-      tradeoff: 'Concede 2 pontos adicionais ao orçamento deste Milagre.'
+      tradeoff: 'Concede +2 pontos adicionais ao orçamento deste Milagre.'
     },
     {
       value: 'Limitada',
       label: 'Limitada',
       bonus: 4,
       summary: 'Pode ser ativado apenas uma vez por Combate.',
-      tradeoff: 'Concede 4 pontos adicionais ao orçamento deste Milagre.'
+      tradeoff: 'Concede +4 pontos adicionais ao orçamento deste Milagre.'
     },
     {
       value: 'Ritual',
       label: 'Ritual',
       bonus: 6,
       summary: 'Exige pelo menos dez minutos de preparação e não pode ser iniciado durante um confronto.',
-      tradeoff: 'Concede 6 pontos adicionais ao orçamento deste Milagre e substitui sua Ativação comum.'
+      tradeoff: 'Concede +6 pontos adicionais ao orçamento deste Milagre e substitui sua Ativação comum.'
     }
   ];
 
@@ -133,6 +133,20 @@
     const state = readState();
     const selected = cadence(state.cadence);
     const budget = (BASE_BUDGETS[state.rank] || 0) + selected.bonus;
+
+    const budgetCard = host.querySelector('.studio-budget');
+    const budgetStrong = budgetCard?.querySelector('div > strong');
+    const cost = Number((budgetStrong?.textContent.match(/\d+/) || [0])[0]);
+    if (budgetStrong && budget) {
+      budgetStrong.textContent = `${cost} / ${budget}`;
+      const track = budgetCard.querySelector('.studio-budget__track span');
+      if (track) track.style.width = `${Math.min(100, (cost / budget) * 100)}%`;
+      const message = budgetCard.querySelector(':scope > p');
+      if (message) message.textContent = cost > budget
+        ? `Excede o Rank em ${cost - budget}.`
+        : `${budget - cost} ponto${budget - cost === 1 ? '' : 's'} disponível${budget - cost === 1 ? '' : 'is'}.`;
+      budgetCard.dataset.status = cost > budget ? 'over' : cost === budget ? 'full' : 'ok';
+    }
 
     const review = host.querySelector('.studio-cost-review');
     if (review) {
