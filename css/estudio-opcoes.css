@@ -1,0 +1,112 @@
+.def-option-catalog {
+  margin-top: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .065);
+  border-radius: 13px;
+  background: rgba(0, 0, 0, .12);
+}
+
+.def-option-catalog > summary {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  color: var(--studio-accent);
+  font: 700 10px/1.35 var(--ui, Inter, sans-serif);
+  cursor: pointer;
+  list-style: none;
+}
+
+.def-option-catalog > summary::-webkit-details-marker {
+  display: none;
+}
+
+.def-option-catalog > summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.def-option-catalog[open] > summary::after {
+  content: "−";
+}
+
+.def-option-catalog > div {
+  display: grid;
+  gap: 8px;
+  max-height: 420px;
+  overflow: auto;
+  padding: 0 10px 12px;
+  scrollbar-width: thin;
+}
+
+.def-option-catalog article {
+  padding: 11px 12px;
+  border: 1px solid rgba(255, 255, 255, .055);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, .022);
+}
+
+.def-option-catalog article header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: start;
+}
+
+.def-option-catalog article header strong {
+  color: var(--studio-text);
+  font: 700 11px/1.35 var(--ui, Inter, sans-serif);
+}
+
+.def-option-catalog article header span {
+  flex: 0 0 auto;
+  padding: 4px 6px;
+  border-radius: 999px;
+  background: var(--studio-accent-soft);
+  color: var(--studio-accent);
+  font: 800 8px/1 var(--ui, Inter, sans-serif);
+}
+
+.def-option-catalog article > p,
+.def-option-catalog article > small {
+  display: block;
+  margin: 6px 0 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+}
+
+.def-option-catalog article > small b {
+  color: var(--studio-text);
+}
+
+.def-creation-function-notice {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid rgba(184, 154, 231, .18);
+  border-left: 3px solid var(--studio-accent);
+  border-radius: 11px;
+  background: rgba(184, 154, 231, .045);
+}
+
+.def-creation-function-notice strong {
+  color: var(--studio-text);
+  font: 700 10px/1.4 var(--ui, Inter, sans-serif);
+}
+
+.def-creation-function-notice p {
+  margin: 5px 0 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 9px !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+}
+
+@media (min-width: 1180px) and (pointer: fine) {
+  body.miracle-studio-page.ui-desktop .def-option-catalog > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
