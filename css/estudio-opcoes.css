@@ -1,3 +1,7 @@
+body.miracle-studio-page .atlas-index-toggle {
+  display: none !important;
+}
+
 .def-option-catalog {
   margin-top: 2px;
   overflow: hidden;
