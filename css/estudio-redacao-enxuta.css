@@ -1,0 +1,81 @@
+.writing-workshop--lean {
+  border-color: rgba(126, 194, 220, .28);
+  background: linear-gradient(145deg, rgba(126, 194, 220, .055), transparent 40%), rgba(255, 255, 255, .018);
+}
+
+.writing-workshop--lean .writing-workshop__header > div > span,
+.writing-workshop--lean .writing-question header > div > span,
+.writing-workshop--lean .writing-function-group > header span {
+  color: #7ec2dc;
+}
+
+.writing-workshop--lean .writing-workshop__header p {
+  max-width: 760px;
+}
+
+.lean-quality header > div:first-child strong {
+  min-width: 76px;
+}
+
+.lean-writing-question {
+  min-height: 0;
+}
+
+.lean-writing-question > p {
+  min-height: 0 !important;
+}
+
+.lean-writing-question details > p {
+  margin: 0 !important;
+  padding: 11px 12px;
+  color: var(--studio-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.55 !important;
+  text-align: left !important;
+}
+
+.lean-system-field {
+  display: none !important;
+}
+
+.lean-effect-note {
+  display: grid;
+  gap: 5px;
+  margin-top: 3px;
+  padding: 13px 14px;
+  border: 1px solid rgba(126, 194, 220, .18);
+  border-left: 3px solid #7ec2dc;
+  border-radius: 12px;
+  background: rgba(126, 194, 220, .04);
+}
+
+.lean-effect-note strong {
+  color: var(--studio-text);
+  font: 700 11px/1.45 var(--ui, Inter, sans-serif);
+}
+
+.lean-effect-note p {
+  margin: 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.55 !important;
+  text-align: left !important;
+}
+
+.whatsapp-export--lean {
+  border-color: rgba(79, 189, 126, .25);
+}
+
+.whatsapp-export--lean .whatsapp-phone__bar {
+  background: linear-gradient(135deg, #123f32, #0e2f27);
+}
+
+.whatsapp-export--lean .whatsapp-bubble {
+  max-width: 92%;
+}
+
+@media (min-width: 1180px) and (pointer: fine) {
+  body.miracle-studio-page.ui-desktop .writing-workshop--lean .writing-question-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

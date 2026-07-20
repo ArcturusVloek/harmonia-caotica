@@ -1,0 +1,43 @@
+.atlas-site .header-action {
+  width: 52px !important;
+  height: 52px !important;
+  min-width: 52px !important;
+  min-height: 52px !important;
+  flex: 0 0 52px !important;
+}
+
+@media (max-width: 1023px), (pointer: coarse) {
+  .atlas-menu-toggle,
+  .atlas-index-toggle,
+  .atlas-index-close,
+  .atlas-site .header-action,
+  .studio-term,
+  .audit-guide-toggle,
+  .studio-mobile-summary-close {
+    min-width: 60px !important;
+    min-height: 60px !important;
+  }
+
+  .atlas-menu-toggle {
+    width: 60px !important;
+    height: 60px !important;
+    flex: 0 0 60px !important;
+  }
+
+  .atlas-index-toggle {
+    min-width: 128px !important;
+    min-height: 60px !important;
+    padding-inline: 18px !important;
+  }
+
+  .atlas-index-close,
+  .studio-mobile-summary-close {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .studio-mobile-summary-toggle {
+    min-width: calc(100vw - 28px) !important;
+    min-height: 60px !important;
+  }
+}

@@ -11,7 +11,7 @@ permissions:
 jobs:
   layout:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     steps:
       - name: Baixar o repositório
@@ -31,7 +31,23 @@ jobs:
         run: |
           node --check js/device-mode.js
           node --check js/atlas-novo.js
-          node --check tests/layout-audit.mjs
+          node --check js/correcao-final-interface.js
+          node --check js/estudio-fluxo-final.js
+          node --check js/estudio-milagres-data.js
+          node --check js/estudio-milagres.js
+          node --check js/cadencia-reformulada.js
+          node --check js/estudio-milagres-recomendador.js
+          node --check js/estudio-definitivo-data.js
+          node --check js/estudio-definitivo-ui.js
+          node --check js/estudio-definitivo-ajustes.js
+          node --check js/estudio-complexidade.js
+          node --check js/estudio-redacao-whatsapp.js
+          node --check js/estudio-redacao-enxuta.js
+          node --check js/estudio-coexistencia.js
+          node --check js/estudio-desktop-layout.js
+          node --check js/estudio-opcoes-style.js
+          node --check tests/estudio-final.mjs
+          node --check tests/layout-audit-final.mjs
           python3 - <<'PY'
           import ast
           from pathlib import Path
@@ -59,8 +75,11 @@ jobs:
           cat /tmp/harmonia-http.log
           exit 1
 
-      - name: Executar auditoria em desktop, laptop, Android, iPhone e iPad
-        run: node tests/layout-audit.mjs
+      - name: Testar o fluxo final do Estúdio
+        run: node tests/estudio-final.mjs
+
+      - name: Executar auditoria responsiva em desktop, laptop, Android, iPhone e iPad
+        run: node tests/layout-audit-final.mjs
 
       - name: Publicar relatório e capturas
         if: always()

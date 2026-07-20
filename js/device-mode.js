@@ -2,6 +2,44 @@
   'use strict';
 
   const root = document.documentElement;
+  const currentScript = document.currentScript;
+  const scriptBaseUrl = currentScript?.src
+    ? new URL('.', currentScript.src)
+    : new URL('./js/', document.baseURI);
+
+  const criticalStyles = [
+    ['final-responsive-fixes-style', '../css/correcao-final-responsiva.css?v=20260720o'],
+    ['final-touch-targets-style', '../css/alvos-toque-final.css?v=20260720o']
+  ];
+
+  const ensureCriticalStyles = () => {
+    criticalStyles.forEach(([id, path]) => {
+      if (document.getElementById(id)) return;
+      const link = document.createElement('link');
+      link.id = id;
+      link.rel = 'stylesheet';
+      link.href = new URL(path, scriptBaseUrl).href;
+      document.head.appendChild(link);
+    });
+  };
+
+  const prioritizeCriticalStyles = () => {
+    criticalStyles.forEach(([id]) => {
+      const link = document.getElementById(id);
+      if (link && link.parentElement === document.head) document.head.appendChild(link);
+    });
+  };
+
+  ensureCriticalStyles();
+
+  const syncBodyClasses = (desktop, touch) => {
+    const body = document.body;
+    if (!body) return;
+    body.classList.toggle('ui-desktop', desktop);
+    body.classList.toggle('ui-compact', !desktop);
+    body.dataset.uiMode = desktop ? 'desktop' : 'compact';
+    body.dataset.touchDevice = String(touch);
+  };
 
   const detect = () => {
     const ua = navigator.userAgent || '';
@@ -16,11 +54,6 @@
     const touch = maxTouchPoints > 0 || coarse;
     const width = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
-    /*
-     * O modo amplo só é liberado para uma janela larga com mouse ou touchpad.
-     * Android, iOS e tablets continuam compactos mesmo quando solicitam a
-     * versão para computador do navegador.
-     */
     const desktop = width >= 1024
       && fine
       && hover
@@ -34,6 +67,7 @@
     root.dataset.uiMode = desktop ? 'desktop' : 'compact';
     root.dataset.touchDevice = String(touch);
     root.style.setProperty('--visual-viewport-height', `${window.visualViewport?.height || window.innerHeight}px`);
+    syncBodyClasses(desktop, touch);
 
     return desktop;
   };
@@ -51,7 +85,98 @@
     });
   };
 
+  const loadScript = (name, version) => new Promise((resolve, reject) => {
+    const existing = [...document.scripts].find((script) => script.src.includes(`/${name}`));
+    if (existing) {
+      if (existing.dataset.loaded === 'true') resolve();
+      else {
+        existing.addEventListener('load', resolve, { once: true });
+        existing.addEventListener('error', reject, { once: true });
+      }
+      return;
+    }
+
+    const script = document.createElement('script');
+    const url = new URL(name, scriptBaseUrl);
+    url.searchParams.set('v', version);
+    script.src = url.href;
+    script.async = false;
+    script.addEventListener('load', () => {
+      script.dataset.loaded = 'true';
+      resolve();
+    }, { once: true });
+    script.addEventListener('error', reject, { once: true });
+    document.head.appendChild(script);
+  });
+
+  const currentPage = () => window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
+
+  const loadGlobalCorrections = () => loadScript('correcao-final-interface.js', '20260720o')
+    .then(() => loadScript('alvos-toque-final.js', '20260720o'));
+
+  const loadMiracleStudio = () => {
+    if (currentPage() !== 'construcao-guiada.html') return Promise.resolve();
+
+    return loadScript('estudio-milagres-data.js', '20260720o')
+      .then(() => loadScript('estudio-definitivo-data.js', '20260720o'))
+      .then(() => loadScript('estudio-milagres.js', '20260720o'))
+      .then(() => loadScript('estudio-desktop-layout.js', '20260720o'))
+      .then(loadGlobalCorrections)
+      .then(() => loadScript('cadencia-reformulada.js', '20260720o'))
+      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720o'))
+      .then(() => loadScript('estudio-definitivo-ui.js', '20260720o'))
+      .then(() => loadScript('estudio-opcoes-style.js', '20260720o'))
+      .then(() => loadScript('estudio-definitivo-ajustes.js', '20260720o'))
+      .then(() => loadScript('estudio-complexidade.js', '20260720o'))
+      .then(() => loadScript('estudio-redacao-whatsapp.js', '20260720o'))
+      .then(() => loadScript('estudio-coexistencia.js', '20260720o'))
+      .then(() => loadScript('estudio-redacao-enxuta.js', '20260720o'))
+      .then(() => loadScript('estudio-fluxo-final.js', '20260720o'))
+      .then(() => {
+        prioritizeCriticalStyles();
+        window.dispatchEvent(new Event('resize'));
+      });
+  };
+
+  const loadCadenceReference = () => {
+    if (currentPage() === 'construcao-guiada.html') return Promise.resolve();
+    return loadScript('cadencia-reformulada.js', '20260720o');
+  };
+
+  const loadContextualSystemGuide = () => {
+    const systemsPage = document.body?.classList.contains('systems-page');
+    if (!systemsPage) {
+      loadGlobalCorrections()
+        .then(prioritizeCriticalStyles)
+        .catch((error) => console.error('Falha ao carregar correções responsivas.', error));
+      return;
+    }
+    if (root.dataset.systemGuideBoot === 'true') return;
+    root.dataset.systemGuideBoot = 'true';
+
+    loadScript('base-regras-sistemas.js', '20260720a')
+      .then(() => loadScript('sistema-guiado-core.js', '20260720a'))
+      .then(() => loadScript('sistema-guiado-secoes.js', '20260720a'))
+      .then(loadCadenceReference)
+      .then(loadMiracleStudio)
+      .then(loadGlobalCorrections)
+      .then(prioritizeCriticalStyles)
+      .catch((error) => {
+        root.dataset.systemGuideBoot = 'error';
+        console.error('Falha ao carregar a camada didática dos Sistemas.', error);
+      });
+  };
+
   window.addEventListener('resize', schedule, { passive: true });
   window.addEventListener('orientationchange', schedule, { passive: true });
   window.visualViewport?.addEventListener('resize', schedule, { passive: true });
+
+  const boot = () => {
+    prioritizeCriticalStyles();
+    detect();
+    loadContextualSystemGuide();
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
+  else boot();
 })();

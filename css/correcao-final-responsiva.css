@@ -1,0 +1,581 @@
+/* ==========================================================
+   CORREÇÃO FINAL — RESPONSIVIDADE E DENSIDADE DIDÁTICA
+   ========================================================== */
+
+html,
+body {
+  max-width: 100%;
+}
+
+html.ui-compact,
+html.ui-compact body {
+  overflow-x: clip;
+}
+
+html.ui-compact body.atlas-site *,
+html.ui-compact body.atlas-site *::before,
+html.ui-compact body.atlas-site *::after {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+html.ui-compact body.atlas-site img,
+html.ui-compact body.atlas-site svg,
+html.ui-compact body.atlas-site video,
+html.ui-compact body.atlas-site canvas,
+html.ui-compact body.atlas-site iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+html.ui-compact body.atlas-site pre,
+html.ui-compact body.atlas-site code,
+html.ui-compact body.atlas-site td,
+html.ui-compact body.atlas-site th,
+html.ui-compact body.atlas-site h1,
+html.ui-compact body.atlas-site h2,
+html.ui-compact body.atlas-site h3,
+html.ui-compact body.atlas-site h4,
+html.ui-compact body.atlas-site p,
+html.ui-compact body.atlas-site li,
+html.ui-compact body.atlas-site dd {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+html.ui-compact body.atlas-site .mobile-container,
+html.ui-compact body.atlas-site .home-shell,
+html.ui-compact body.atlas-site .internal-page,
+html.ui-compact body.atlas-site .domain-article,
+html.ui-compact body.atlas-site .deity-article,
+html.ui-compact body.atlas-site main,
+html.ui-compact body.atlas-site section,
+html.ui-compact body.atlas-site article {
+  max-width: 100%;
+}
+
+/* Alvos de toque */
+.atlas-menu-toggle,
+.atlas-index-toggle,
+.atlas-index-close,
+.atlas-site .header-action,
+.studio-term,
+.audit-guide-toggle,
+.studio-mobile-summary-toggle,
+.studio-mobile-summary-close {
+  min-width: 44px !important;
+  min-height: 44px !important;
+}
+
+.atlas-menu-toggle {
+  width: 44px !important;
+  flex-basis: 44px !important;
+}
+
+/* Painéis compactos começam realmente fechados. */
+html.ui-compact body:not(.menu-open) .atlas-global-nav,
+html.ui-compact body:not(.menu-open) .site-header__nav,
+html.ui-compact body:not(.index-open) .content-index {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+html.ui-compact body.menu-open .atlas-global-nav,
+html.ui-compact body.menu-open .site-header__nav,
+html.ui-compact body.index-open .content-index {
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* O Estúdio possui navegação própria. */
+body.miracle-studio-page .atlas-index-toggle,
+body.miracle-studio-page .content-index,
+body.miracle-studio-page .internal-hero {
+  display: none !important;
+}
+
+body.miracle-studio-page .internal-page {
+  padding-top: calc(var(--atlas-header, 72px) + 18px) !important;
+}
+
+body.miracle-studio-page .miracle-studio-host {
+  margin-top: 0 !important;
+}
+
+/* Explicações: resumo sempre visível, aprofundamento sob demanda. */
+.def-option-guide {
+  min-height: 0 !important;
+  font-size: 12px;
+}
+
+.def-option-guide > p,
+.def-option-guide div p,
+.def-function-guide > p,
+.def-function-guide dd,
+.complex-guide p,
+.complex-guide small,
+.lean-effect-note p,
+.lean-writing-question > p,
+.lean-writing-question details > p {
+  font-size: 12px !important;
+  line-height: 1.55 !important;
+}
+
+.def-option-guide > div {
+  display: none;
+}
+
+.def-option-guide.is-expanded > div {
+  display: grid;
+}
+
+.audit-guide-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, .065);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .025);
+  color: var(--studio-accent, #b89ae7);
+  font: 700 11px/1.3 var(--ui, Inter, sans-serif);
+  cursor: pointer;
+}
+
+.audit-guide-toggle::after {
+  content: "+";
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.audit-guide-toggle[aria-expanded="true"]::after {
+  content: "−";
+}
+
+/* Herança resumida; a regra completa permanece acessível. */
+.def-heritage__details {
+  border-top: 1px solid rgba(231, 194, 116, .14);
+}
+
+.def-heritage__details > summary {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #e7c274;
+  font: 700 11px/1.35 var(--ui, Inter, sans-serif);
+  cursor: pointer;
+  list-style: none;
+}
+
+.def-heritage__details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.def-heritage__details > summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 17px;
+}
+
+.def-heritage__details[open] > summary::after {
+  content: "−";
+}
+
+/* Projeto da Criação funciona como acordeão. */
+.def-creation-builder > details > summary {
+  min-height: 64px;
+}
+
+.def-creation-builder > details:not([open]) .def-details-body {
+  display: none;
+}
+
+/* Oficina final, sem questionário repetitivo. */
+.final-function-workshop {
+  margin: 24px 0 30px;
+  overflow: hidden;
+  border: 1px solid rgba(126, 194, 220, .3);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(126, 194, 220, .065), transparent 40%), rgba(255, 255, 255, .018);
+}
+
+.final-function-workshop__header {
+  display: grid;
+  gap: 8px;
+  padding: clamp(20px, 4vw, 28px);
+  border-bottom: 1px solid var(--studio-border);
+}
+
+.final-function-workshop__header span {
+  color: #7ec2dc;
+  font: 700 9px/1.4 var(--ui, Inter, sans-serif);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.final-function-workshop__header h3 {
+  margin: 0 !important;
+  color: var(--studio-text);
+  font-family: var(--display, "Cormorant Garamond", serif);
+  font-size: clamp(30px, 6vw, 43px) !important;
+  line-height: 1 !important;
+}
+
+.final-function-workshop__header p,
+.final-function-workshop__note p,
+.final-function-preview p {
+  margin: 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  text-align: left !important;
+}
+
+.final-function-workshop__body {
+  display: grid;
+  gap: 18px;
+  padding: clamp(18px, 4vw, 28px);
+}
+
+.final-function-checklist {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.final-function-checklist li {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 9px;
+  align-items: start;
+  color: var(--studio-muted);
+  font: 600 12px/1.5 var(--ui, Inter, sans-serif);
+}
+
+.final-function-checklist li::before {
+  content: "✓";
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(116, 203, 152, .12);
+  color: #74cb98;
+  font-size: 11px;
+}
+
+.final-function-checklist li.is-missing::before {
+  content: "!";
+  background: rgba(231, 194, 116, .12);
+  color: #e7c274;
+}
+
+.final-function-workshop__fields {
+  display: grid;
+  gap: 14px;
+}
+
+.final-function-workshop label {
+  display: grid;
+  gap: 8px;
+}
+
+.final-function-workshop label > span {
+  color: var(--studio-muted);
+  font: 700 11px/1.4 var(--ui, Inter, sans-serif);
+}
+
+.final-function-workshop textarea {
+  width: 100%;
+  min-height: 100px;
+  resize: vertical;
+  padding: 13px 14px;
+  border: 1px solid var(--studio-border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .035);
+  color: var(--studio-text);
+  font: 500 14px/1.6 var(--ui, Inter, sans-serif);
+}
+
+.final-function-preview {
+  padding: 16px;
+  border: 1px solid rgba(126, 194, 220, .18);
+  border-left: 3px solid #7ec2dc;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, .16);
+}
+
+.final-function-preview strong,
+.final-function-workshop__note strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--studio-text);
+  font: 700 12px/1.4 var(--ui, Inter, sans-serif);
+}
+
+.final-function-preview pre {
+  max-height: 320px;
+  margin: 0;
+  overflow: auto;
+  white-space: pre-wrap;
+  color: var(--studio-muted);
+  font: 500 12px/1.6 var(--ui, Inter, sans-serif);
+}
+
+.final-function-workshop__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.final-function-workshop__actions button {
+  min-height: 44px;
+  padding: 11px 15px;
+  border: 1px solid rgba(126, 194, 220, .3);
+  border-radius: 13px;
+  background: rgba(126, 194, 220, .08);
+  color: var(--studio-text);
+  font: 700 11px/1 var(--ui, Inter, sans-serif);
+  cursor: pointer;
+}
+
+/* Resumo móvel em gaveta. */
+.studio-mobile-summary-toggle {
+  position: fixed;
+  left: 14px;
+  right: 14px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  z-index: 780;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 15px;
+  border: 1px solid rgba(184, 154, 231, .35);
+  border-radius: 15px;
+  background: rgba(14, 12, 18, .96);
+  color: var(--studio-text);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, .42);
+  backdrop-filter: blur(18px);
+  font: 700 12px/1.2 var(--ui, Inter, sans-serif);
+}
+
+.studio-mobile-summary-toggle strong {
+  color: var(--studio-accent);
+}
+
+.studio-mobile-summary-close {
+  display: none;
+  width: 44px;
+  padding: 0;
+  border: 1px solid var(--studio-border);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .04);
+  color: var(--studio-text);
+  font-size: 20px;
+}
+
+@media (max-width: 1023px), (pointer: coarse) {
+  body.miracle-studio-page {
+    padding-bottom: 78px !important;
+  }
+
+  body.miracle-studio-page .studio-mobile-summary-toggle {
+    display: flex;
+  }
+
+  body.miracle-studio-page .studio-progress {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    overflow: visible !important;
+    gap: 6px !important;
+    padding: 12px !important;
+  }
+
+  body.miracle-studio-page .studio-progress button {
+    min-width: 0 !important;
+    min-height: 46px;
+    grid-template-columns: 26px minmax(0, 1fr) !important;
+    gap: 6px;
+    padding: 7px 8px !important;
+  }
+
+  body.miracle-studio-page .studio-progress button span {
+    width: 26px;
+    height: 26px;
+  }
+
+  body.miracle-studio-page .studio-progress button small {
+    font-size: 9px !important;
+  }
+
+  body.miracle-studio-page .studio-summary {
+    position: fixed !important;
+    inset: auto 10px calc(10px + env(safe-area-inset-bottom));
+    z-index: 820;
+    max-height: min(78vh, 720px);
+    overflow: auto;
+    border: 1px solid var(--studio-border) !important;
+    border-radius: 20px;
+    background: rgba(8, 7, 11, .985) !important;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, .55);
+    transform: translateY(calc(100% + 40px));
+    visibility: hidden;
+    opacity: 0;
+    transition: transform .22s ease, opacity .22s ease, visibility .22s;
+  }
+
+  body.miracle-studio-page.studio-summary-open .studio-summary {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  body.miracle-studio-page.studio-summary-open .studio-mobile-summary-toggle {
+    display: none;
+  }
+
+  body.miracle-studio-page .studio-mobile-summary-close {
+    position: sticky;
+    top: 10px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    margin: 10px 12px 0 auto;
+  }
+
+  body.miracle-studio-page .miracle-studio__header {
+    gap: 14px;
+    padding: 20px 18px !important;
+  }
+
+  body.miracle-studio-page .miracle-studio__header h1 {
+    font-size: clamp(38px, 12vw, 56px) !important;
+  }
+
+  body.miracle-studio-page .miracle-studio__workspace {
+    padding: 24px 18px 30px !important;
+  }
+
+  body.miracle-studio-page .studio-step__lead,
+  body.miracle-studio-page .studio-inline-help p,
+  body.miracle-studio-page .studio-origin-card p,
+  body.miracle-studio-page .studio-validation p,
+  body.miracle-studio-page .studio-term-card p {
+    font-size: 13px !important;
+  }
+
+  .def-option-catalog > div {
+    max-height: 300px;
+  }
+}
+
+/* Composição confiável no computador. */
+@media (min-width: 1024px) and (pointer: fine) {
+  html.ui-desktop body.miracle-studio-page .internal-page {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 86px 0 0 !important;
+  }
+
+  html.ui-desktop body.miracle-studio-page .domain-article.mobile-container,
+  html.ui-desktop body.miracle-studio-page .domain-article {
+    display: block !important;
+    width: min(1680px, calc(100vw - 64px)) !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  html.ui-desktop body.miracle-studio-page .miracle-studio__layout {
+    display: grid !important;
+    grid-template-columns: 210px minmax(0, 1fr) 320px !important;
+    align-items: stretch;
+  }
+
+  html.ui-desktop body.miracle-studio-page .studio-progress {
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
+    overflow: visible;
+    padding: 24px 16px !important;
+    border-right: 1px solid var(--studio-border);
+    border-bottom: 0 !important;
+  }
+
+  html.ui-desktop body.miracle-studio-page .studio-progress::before {
+    content: "Etapas da construção";
+    margin: 0 8px 8px;
+    color: var(--studio-muted);
+    font: 700 9px/1.4 var(--ui, Inter, sans-serif);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  html.ui-desktop body.miracle-studio-page .studio-progress button {
+    width: 100%;
+    min-width: 0;
+    min-height: 54px;
+    grid-template-columns: 34px minmax(0, 1fr);
+  }
+
+  html.ui-desktop body.miracle-studio-page .miracle-studio__workspace {
+    min-width: 0;
+    padding: 34px clamp(30px, 3vw, 50px) 44px !important;
+  }
+
+  html.ui-desktop body.miracle-studio-page .studio-step {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  html.ui-desktop body.miracle-studio-page .studio-summary {
+    min-width: 0;
+    border-top: 0 !important;
+    border-left: 1px solid var(--studio-border);
+  }
+
+  html.ui-desktop body.miracle-studio-page .studio-summary__body {
+    position: sticky;
+    top: 78px;
+    max-height: calc(100vh - 102px);
+    overflow: auto;
+    padding: 26px 24px !important;
+  }
+
+  html.ui-desktop body.miracle-studio-page .studio-form-grid--three,
+  html.ui-desktop body.miracle-studio-page .def-grid--three,
+  html.ui-desktop body.miracle-studio-page .complex-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  html.ui-desktop body.miracle-studio-page .studio-function-grid,
+  html.ui-desktop body.miracle-studio-page .final-function-workshop__body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  html.ui-desktop body.miracle-studio-page .final-function-preview,
+  html.ui-desktop body.miracle-studio-page .final-function-workshop__actions,
+  html.ui-desktop body.miracle-studio-page .final-function-workshop__note {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) and (pointer: fine) {
+  html.ui-desktop body.miracle-studio-page .domain-article.mobile-container,
+  html.ui-desktop body.miracle-studio-page .domain-article {
+    width: calc(100vw - 36px) !important;
+  }
+
+  html.ui-desktop body.miracle-studio-page .miracle-studio__layout {
+    grid-template-columns: 170px minmax(0, 1fr) 270px !important;
+  }
+}

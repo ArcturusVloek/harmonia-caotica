@@ -1,0 +1,104 @@
+.cadence-choice-field {
+  position: relative;
+}
+
+.cadence-choice-guide {
+  display: grid;
+  gap: 6px;
+  margin-top: 2px;
+  padding: 13px 14px;
+  border: 1px solid rgba(231, 194, 116, .18);
+  border-left: 3px solid #e7c274;
+  border-radius: 13px;
+  background: rgba(231, 194, 116, .045);
+}
+
+.cadence-choice-guide strong {
+  color: var(--studio-text, #f4eff5);
+  font: 700 11px/1.5 var(--ui, Inter, sans-serif);
+}
+
+.cadence-choice-guide p,
+.cadence-choice-guide small {
+  margin: 0 !important;
+  color: var(--studio-muted, #aaa2ad) !important;
+  font: 500 10px/1.55 var(--ui, Inter, sans-serif) !important;
+  text-align: left !important;
+}
+
+.cadence-choice-guide small {
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, .055);
+}
+
+.cadence-budget-note {
+  margin: 14px 0 0 !important;
+  padding: 12px 14px;
+  border: 1px solid rgba(231, 194, 116, .16);
+  border-radius: 12px;
+  background: rgba(231, 194, 116, .04);
+  color: var(--studio-muted, #aaa2ad) !important;
+  font: 500 10px/1.55 var(--ui, Inter, sans-serif) !important;
+  text-align: left !important;
+}
+
+.cadence-budget-note strong {
+  color: #e7c274;
+}
+
+.cadence-rule-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 13px;
+  margin: 22px 0;
+}
+
+.cadence-rule-grid article {
+  padding: 16px;
+  border: 1px solid rgba(231, 194, 116, .16);
+  border-radius: 15px;
+  background: linear-gradient(145deg, rgba(231, 194, 116, .055), transparent 55%), rgba(255, 255, 255, .018);
+}
+
+.cadence-rule-grid article header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+}
+
+.cadence-rule-grid article header strong {
+  color: var(--text, #f4eff5);
+  font-family: var(--display, "Cormorant Garamond", serif);
+  font-size: 23px;
+}
+
+.cadence-rule-grid article header span {
+  flex: 0 0 auto;
+  padding: 6px 9px;
+  border: 1px solid rgba(231, 194, 116, .22);
+  border-radius: 999px;
+  color: #e7c274;
+  font: 800 9px/1 var(--ui, Inter, sans-serif);
+}
+
+.cadence-rule-grid article p,
+.cadence-rule-grid article small {
+  display: block;
+  margin: 9px 0 0 !important;
+  color: var(--muted, #aaa2ad) !important;
+  font: 500 11px/1.6 var(--ui, Inter, sans-serif) !important;
+  text-align: left !important;
+}
+
+.cadence-rule-grid article small {
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, .055);
+  color: #d7c18f !important;
+}
+
+@media (min-width: 760px) {
+  .cadence-rule-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

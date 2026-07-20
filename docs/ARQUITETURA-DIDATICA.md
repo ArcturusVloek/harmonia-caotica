@@ -13,90 +13,159 @@ A camada didática não substitui o conteúdo canônico. Ela reorganiza as infor
 3. **A aparência não define a classificação.** Domínio e Vertente são determinados pelo princípio sobrenatural responsável pelo efeito.
 4. **Toda regra precisa ser resolvível.** O texto deve informar aplicação, resistência, sucesso, falha, consumo e encerramento quando esses elementos forem necessários.
 5. **A ajuda deve existir no ponto da dúvida.** O leitor não deve abandonar a página para descobrir o significado de um termo ou o critério usado por um administrador.
+6. **Criar um Milagre não pode exigir navegação entre capítulos.** A Construção Guiada precisa reunir escolhas, explicações, custos, validação e ficha final em um único espaço.
+7. **O manual completo é referência, não fluxo obrigatório.** Jogadores começam por perguntas simples e só abrem o texto canônico quando surge uma dúvida específica.
+8. **Toda opção visível precisa explicar a si mesma.** O Estúdio apresenta significado, uso adequado, limites e comparação com alternativas no próprio campo.
+9. **Heranças pertencem à Vertente.** Elas são propriedades passivas dos Milagres compatíveis, não capacidades ativadas ou compras opcionais.
+10. **O jogador responde fatos; a interface organiza a redação.** O Estúdio não deve depender da habilidade literária do usuário para produzir uma regra clara.
 
-## Primeira implementação
+## Primeira implementação — Domínios e Vertentes
 
-A versão inicial é aplicada às páginas de Domínios e Vertentes por meio dos arquivos:
+A camada inicial é aplicada às páginas de Domínios e Vertentes por meio dos arquivos:
 
 - `js/regra-guiada.js`
 - `css/regra-guiada.css`
 - `js/dominios.js`
 
-A camada utiliza a estrutura já existente das páginas. Ela extrai:
+A camada utiliza a estrutura já existente das páginas. Ela extrai resumo, capacidades, limite conceitual, Vertentes, possibilidades, restrições e exemplos de Milagres.
 
-- resumo do Domínio;
-- capacidades apresentadas;
-- limite conceitual;
-- nomes e descrições das Vertentes;
-- definição, possibilidades e limites de cada Vertente;
-- exemplos de Milagres já publicados.
+A interface cria os modos Entender, Aplicar e Avaliar.
 
-Com essas informações, a interface cria três modos.
+## Segunda implementação — Capítulos de Sistemas
 
-### Entender
+Os capítulos mecânicos recebem uma camada contextual comum por meio dos arquivos:
 
-Apresenta a definição curta, as principais capacidades, o limite decisivo e acesso direto às Vertentes.
+- `js/base-regras-sistemas.js`
+- `js/sistema-guiado-core.js`
+- `js/sistema-guiado-secoes.js`
+- `css/sistema-guiado.css`
 
-### Aplicar
+A interface apresenta os modos Entender, Aplicar, Avaliar e Termos. Cada seção também recebe finalidade, perguntas de compreensão, erro provável e conceitos relevantes.
 
-Conduz o leitor por uma sequência de decisões: resultado, princípio, destino, resolução e compras mecânicas.
+## Terceira implementação — Estúdio de Milagres
 
-### Avaliar
+A página `sistemas/construcao-guiada.html` recebe uma área integrada de construção.
 
-Apresenta uma lista comum de verificação para administradores, evitando que cada avaliação dependa apenas da memória ou interpretação individual.
+Arquivos centrais:
 
-## Leitura rápida das Vertentes
+- `js/estudio-milagres-data.js`
+- `js/estudio-milagres.js`
+- `js/estudio-milagres-recomendador.js`
+- `js/estudio-definitivo-data.js`
+- `js/estudio-definitivo-ui.js`
+- `js/estudio-definitivo-ajustes.js`
+- `js/estudio-complexidade.js`
+- `js/estudio-redacao-whatsapp.js`
+- `js/estudio-coexistencia.js`
+- `js/estudio-desktop-layout.js`
+- `css/estudio-milagres.css`
+- `css/estudio-definitivo.css`
+- `css/estudio-opcoes.css`
+- `css/estudio-complexidade.css`
+- `css/estudio-redacao-whatsapp.css`
+- `css/estudio-desktop.css`
 
-Cada Vertente recebe um quadro gerado a partir do próprio conteúdo publicado:
+### Fluxo único
 
-- O princípio;
-- Pode produzir;
-- Limite decisivo;
-- Acesso ao modo de avaliação.
+O Estúdio organiza a criação em seis etapas:
 
-Essa leitura não cria uma regra nova. Ela resume os trechos canônicos que continuam disponíveis logo abaixo.
+1. Ideia;
+2. Origem divina;
+3. Funções;
+4. Escala;
+5. Resolução;
+6. Revisão.
 
-## Dicionário contextual
+### Origem divina integrada
 
-A primeira versão inclui definições breves para:
+Divindade, Domínio e Vertente são escolhidos em sequência. A página canônica do Domínio é consultada internamente para localizar a Herança escolhida.
 
-- Domínio;
-- Vertente;
-- Herança;
-- Potência;
-- Alcance;
-- Área;
-- Duração;
-- Persistente;
-- Uso;
-- Cadência.
+A Herança é mostrada durante a construção, no resumo e na revisão. A ficha exportada registra nome, resumo, gatilho, efeito, limites e exemplo quando publicados.
 
-O dicionário será ampliado conforme a camada alcançar os capítulos mecânicos.
+### Opções autodescritivas
 
-## Próximas etapas
+Cada campo apresenta significado, uso adequado, capacidades não concedidas, custo e catálogo comparativo.
 
-### Etapa 2 — Páginas do sistema
+### Projeto da Criação
 
-Aplicar a mesma arquitetura aos capítulos mecânicos, substituindo a extração genérica por blocos específicos de procedimento:
+Criações, Invocações e manifestações separadas possuem um bloco próprio. Ele registra forma, natureza, posição, Resistência ou Âncora, Sustentação, encerramento, quantidade, Escala ou Área, Movimento, transporte, comunicação, Origem Vinculada e capacidades internas.
 
-- Quando a regra é usada;
-- O que precisa ser definido;
-- Ordem de resolução;
-- Sucesso e falha;
-- Interações;
-- Erros comuns.
+Cada capacidade registra função, Potência principal ou própria, atuação, Alcance, destinos, Área, Duração, Usos, resolução e custo.
 
-### Etapa 3 — Base estruturada de regras
+### Arquitetura do Poder
 
-Mover definições, dependências, perguntas e critérios para uma fonte de dados comum. A página, a busca, o construtor e a avaliação administrativa deverão consultar a mesma informação.
+Poderes complexos podem utilizar funções simultâneas, modos alternativos, etapas sequenciais, estruturas condicionadas, combinações híbridas e componentes com parâmetros compartilhados ou próprios.
 
-### Etapa 4 — Construção guiada interativa
+### Propagação integrada
 
-Transformar o roteiro atual em uma ferramenta que mostre apenas as perguntas necessárias à ideia apresentada, calcule custos e detecte campos ausentes.
+O Estúdio representa Transferência, Reprodução e Crescimento. O bloco registra Passos, Alcance entre Fonte e Destino, atuação, Fontes, Destinos, caminho, quantidade simultânea, recursos, encerramento e proibição de cascata imediata.
 
-### Etapa 5 — Consulta de combate
+### Oficina de Redação Mecânica
 
-Gerar versões curtas das regras e dos Milagres com ordem de resolução, resistência e limites relevantes para a rodada atual.
+A Etapa de Resolução possui uma oficina que transforma respostas factuais em texto técnico uniforme.
+
+O bloco fundamental pergunta:
+
+- como o Milagre se manifesta;
+- o que o usuário faz ao ativar;
+- onde começa e quem recebe a aplicação;
+- qual oposição é realizada;
+- resultado do sucesso;
+- consequência da falha;
+- recorrência durante a Duração;
+- contrajogo posterior;
+- manutenção;
+- encerramento;
+- exclusões necessárias.
+
+Cada função selecionada acrescenta perguntas próprias. Controle pergunta ordem exata, limites de decisão, consumo de Usos e quebra. Movimento pergunta existência deslocada, distância e caminho. Criação pergunta atuação ao surgir, capacidades compradas e destruição. Cura, Dano, Informação, Proteção, Transformação, Travessia, Recursos, Custos e Propagação recebem critérios equivalentes.
+
+Cada pergunta contém:
+
+- aquilo que precisa ser respondido;
+- campo factual curto;
+- exemplo completo;
+- exemplo de redação vaga que deve ser evitada.
+
+O indicador de qualidade identifica respostas ausentes, curtas ou imprecisas. Expressões como “o mestre decide”, “da melhor maneira”, “quando necessário”, “meios adequados” e “funciona normalmente” são marcadas para revisão.
+
+Os comandos **Preencher apenas lacunas** e **Reescrever texto técnico** produzem automaticamente Efeito, Resistência, Sucesso, Falha, Limites e Encerramento. O resultado permanece editável.
+
+### Exportação para WhatsApp
+
+A Revisão possui uma prévia inspirada na interface do WhatsApp e três formatos copiáveis:
+
+- Ficha completa;
+- Cartão de combate;
+- Somente custos.
+
+O texto utiliza os recursos nativos de formatação do aplicativo: `*negrito*`, `_itálico_`, citações, listas e divisores. A versão completa conserva todas as seções; o cartão de combate concentra parâmetros e resolução; a versão de custos apresenta somente a composição financeira do Milagre.
+
+### Custos visíveis
+
+Rank, Potência, Ativação, Alcance, Alvos, Área, Duração, funções, capacidades de Criações, componentes e Propagação atualizam o custo em tempo real.
+
+### Persistência e exportação
+
+O rascunho principal, o Projeto da Criação, a Arquitetura do Poder e as respostas da Oficina são salvos no navegador.
+
+A ficha final pode conter identidade, parâmetros, Herança, Projeto da Criação, Arquitetura, Propagação, apresentação visual, resolução completa e custos.
+
+## Validação
+
+O teste funcional automatizado:
+
+1. cria uma Criação com duas capacidades;
+2. escolhe Vida e Sangue;
+3. carrega a Herança Corrente Partilhada;
+4. configura Reprodução por Propagação;
+5. responde todas as perguntas obrigatórias;
+6. gera a redação técnica;
+7. alcança 100% de detalhamento;
+8. verifica a ficha completa e o cartão de combate do WhatsApp;
+9. confirma ausência de overflow no Estúdio em computador e celular.
+
+A auditoria global do site continua separada. Problemas históricos de navegação, altura de capturas e páginas extensas não invalidam o teste funcional específico do Estúdio.
 
 ## Critério de conclusão de uma regra
 
@@ -115,3 +184,10 @@ Uma regra só está pronta quando responde, conforme sua natureza:
 11. Com quais regras interage?
 
 A ausência de uma resposta necessária deve gerar revisão editorial ou aviso contextual na interface.
+
+## Próximas etapas
+
+1. Conferir cada custo contra os capítulos canônicos durante a revisão administrativa.
+2. Representar integralmente Reservas, Recargas, Sacrifícios e pagamentos compostos.
+3. Ampliar testes para combinações extremas de Controle, Travessia, Transformação e Retorno.
+4. Unificar a base estruturada do Estúdio com todas as páginas canônicas.

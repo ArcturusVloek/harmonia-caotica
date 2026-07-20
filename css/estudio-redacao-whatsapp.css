@@ -1,0 +1,578 @@
+/* ==========================================================
+   OFICINA DE REDAÇÃO E EXPORTAÇÃO PARA WHATSAPP
+   ========================================================== */
+
+.writing-workshop {
+  margin: 24px 0 30px;
+  overflow: hidden;
+  border: 1px solid rgba(222, 163, 97, .28);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 90% 0, rgba(222, 163, 97, .09), transparent 30%),
+    rgba(255, 255, 255, .018);
+}
+
+.writing-workshop__header {
+  display: grid;
+  gap: 18px;
+  padding: clamp(20px, 4vw, 30px);
+  border-bottom: 1px solid var(--studio-border);
+}
+
+.writing-workshop__header > div > span,
+.writing-function-group > header span,
+.writing-question > header span,
+.whatsapp-export > header span {
+  color: #dea361;
+  font: 700 9px/1.4 var(--ui, Inter, sans-serif);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.writing-workshop__header h3,
+.whatsapp-export > header h3 {
+  margin: 4px 0 8px !important;
+  color: var(--studio-text);
+  font-family: var(--display, "Cormorant Garamond", serif);
+  font-size: clamp(31px, 7vw, 46px) !important;
+  line-height: .98 !important;
+}
+
+.writing-workshop__header p,
+.whatsapp-export > header p {
+  max-width: 760px;
+  margin: 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  text-align: left !important;
+}
+
+.writing-quality {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, .07);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, .16);
+}
+
+.writing-quality > header > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--studio-muted);
+  font: 700 10px/1.4 var(--ui, Inter, sans-serif);
+}
+
+.writing-quality > header strong {
+  color: #dea361;
+  font-size: 14px;
+}
+
+.writing-quality__track {
+  height: 6px;
+  margin-top: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .06);
+}
+
+.writing-quality__track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #dea361;
+  transition: width .25s ease;
+}
+
+.writing-quality[data-status="ready"] {
+  border-color: rgba(104, 190, 135, .3);
+}
+
+.writing-quality[data-status="ready"] .writing-quality__track span,
+.writing-quality[data-status="ready"] > header strong {
+  background: #68be87;
+  color: #68be87;
+}
+
+.writing-quality[data-status="ready"] > header strong {
+  background: transparent;
+}
+
+.writing-quality[data-status="weak"] {
+  border-color: rgba(221, 112, 112, .28);
+}
+
+.writing-quality[data-status="weak"] .writing-quality__track span,
+.writing-quality[data-status="weak"] > header strong {
+  background: #dd7070;
+  color: #dd7070;
+}
+
+.writing-quality[data-status="weak"] > header strong {
+  background: transparent;
+}
+
+.writing-quality > p,
+.writing-quality li {
+  margin: 10px 0 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+}
+
+.writing-quality details {
+  margin-top: 9px;
+  border-top: 1px solid rgba(255, 255, 255, .05);
+  padding-top: 8px;
+}
+
+.writing-quality summary {
+  color: var(--studio-text);
+  font: 700 9px/1.4 var(--ui, Inter, sans-serif);
+  cursor: pointer;
+}
+
+.writing-quality ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+.writing-workshop > details {
+  border-bottom: 1px solid var(--studio-border);
+}
+
+.writing-workshop > details > summary {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 13px;
+  align-items: center;
+  padding: 17px clamp(18px, 4vw, 28px);
+  cursor: pointer;
+  list-style: none;
+}
+
+.writing-workshop > details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.writing-workshop > details > summary > span {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(222, 163, 97, .32);
+  border-radius: 50%;
+  color: #dea361;
+  font: 800 10px/1 var(--ui, Inter, sans-serif);
+}
+
+.writing-workshop > details > summary strong {
+  display: block;
+  color: var(--studio-text);
+  font-family: var(--display, "Cormorant Garamond", serif);
+  font-size: 22px;
+  line-height: 1.05;
+}
+
+.writing-workshop > details > summary small {
+  display: block;
+  margin-top: 3px;
+  color: var(--studio-muted);
+  font: 500 10px/1.45 var(--ui, Inter, sans-serif);
+}
+
+.writing-details-body {
+  padding: 4px clamp(18px, 4vw, 28px) 26px;
+}
+
+.writing-question-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.writing-question {
+  overflow: hidden;
+  border: 1px solid var(--studio-border);
+  border-radius: 17px;
+  background: rgba(0, 0, 0, .14);
+  transition: border-color .2s ease, background .2s ease;
+}
+
+.writing-question.is-answered {
+  border-color: rgba(104, 190, 135, .18);
+}
+
+.writing-question.is-vague {
+  border-color: rgba(221, 112, 112, .3);
+  background: rgba(221, 112, 112, .035);
+}
+
+.writing-question > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+  padding: 15px 16px 10px;
+}
+
+.writing-question > header h4 {
+  margin: 3px 0 0 !important;
+  color: var(--studio-text);
+  font-family: var(--display, "Cormorant Garamond", serif);
+  font-size: 21px !important;
+  line-height: 1.05 !important;
+}
+
+.writing-question > header > strong {
+  flex: 0 0 auto;
+  padding: 5px 7px;
+  border: 1px solid rgba(222, 163, 97, .22);
+  border-radius: 999px;
+  color: #dea361;
+  font: 800 7px/1 var(--ui, Inter, sans-serif);
+  letter-spacing: .6px;
+  text-transform: uppercase;
+}
+
+.writing-question > p {
+  margin: 0 !important;
+  padding: 0 16px 12px;
+  color: var(--studio-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.55 !important;
+  text-align: left !important;
+}
+
+.writing-question > label {
+  display: grid;
+  gap: 7px;
+  padding: 0 16px 14px;
+}
+
+.writing-question > label > span {
+  color: var(--studio-muted);
+  font: 700 9px/1.4 var(--ui, Inter, sans-serif);
+}
+
+.writing-question textarea {
+  width: 100%;
+  min-height: 94px;
+  resize: vertical;
+  padding: 11px 12px;
+  border: 1px solid var(--studio-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .035);
+  color: var(--studio-text);
+  font: 500 12px/1.55 var(--ui, Inter, sans-serif);
+  outline: none;
+}
+
+.writing-question textarea:focus {
+  border-color: #dea361;
+  box-shadow: 0 0 0 3px rgba(222, 163, 97, .1);
+}
+
+.writing-question > details {
+  border-top: 1px solid var(--studio-border);
+}
+
+.writing-question > details > summary {
+  min-height: 38px;
+  padding: 10px 16px;
+  color: #dea361;
+  font: 700 9px/1.4 var(--ui, Inter, sans-serif);
+  cursor: pointer;
+}
+
+.writing-question > details > div {
+  display: grid;
+  gap: 8px;
+  padding: 0 16px 14px;
+}
+
+.writing-question > details p {
+  margin: 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+}
+
+.writing-question > details b {
+  color: var(--studio-text);
+}
+
+.writing-function-group + .writing-function-group {
+  margin-top: 20px;
+}
+
+.writing-function-group > header {
+  display: grid;
+  gap: 5px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--studio-border);
+}
+
+.writing-function-group > header h4 {
+  margin: 2px 0 0 !important;
+  color: var(--studio-text);
+  font-family: var(--display, "Cormorant Garamond", serif);
+  font-size: 25px !important;
+  line-height: 1 !important;
+}
+
+.writing-function-group > header p {
+  margin: 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.45 !important;
+  text-align: left !important;
+}
+
+.writing-actions {
+  display: grid;
+  gap: 15px;
+  padding: 18px clamp(18px, 4vw, 28px);
+  background: rgba(222, 163, 97, .045);
+}
+
+.writing-actions > div:first-child strong {
+  color: var(--studio-text);
+  font: 700 11px/1.4 var(--ui, Inter, sans-serif);
+}
+
+.writing-actions > div:first-child p {
+  margin: 4px 0 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+}
+
+.writing-actions > div:last-child {
+  display: grid;
+  gap: 9px;
+}
+
+.writing-actions button,
+.whatsapp-mode button,
+.whatsapp-export > footer button {
+  min-height: 43px;
+  padding: 10px 13px;
+  border: 1px solid rgba(222, 163, 97, .25);
+  border-radius: 12px;
+  background: rgba(222, 163, 97, .07);
+  color: #dea361;
+  font: 800 10px/1 var(--ui, Inter, sans-serif);
+  cursor: pointer;
+}
+
+.writing-actions button:last-child {
+  background: #dea361;
+  color: #201810;
+}
+
+.whatsapp-export {
+  margin: 24px 0 30px;
+  overflow: hidden;
+  border: 1px solid rgba(63, 180, 104, .28);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 90% 0, rgba(63, 180, 104, .08), transparent 30%),
+    rgba(255, 255, 255, .018);
+}
+
+.whatsapp-export > header {
+  display: grid;
+  gap: 16px;
+  padding: clamp(20px, 4vw, 30px);
+  border-bottom: 1px solid var(--studio-border);
+}
+
+.whatsapp-export > header span {
+  color: #3fb468;
+}
+
+.whatsapp-mode {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.whatsapp-mode button {
+  min-height: 38px;
+  border-color: rgba(63, 180, 104, .25);
+  background: rgba(63, 180, 104, .05);
+  color: #72d391;
+}
+
+.whatsapp-mode button[aria-pressed="true"] {
+  background: #3fb468;
+  color: #071d0f;
+}
+
+.whatsapp-layout {
+  display: grid;
+  gap: 20px;
+  padding: clamp(18px, 4vw, 28px);
+}
+
+.whatsapp-phone {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 24px;
+  background: #0b141a;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+}
+
+.whatsapp-phone__bar {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 17px;
+  background: #202c33;
+}
+
+.whatsapp-phone__bar span {
+  color: #f0f2f5;
+  font: 700 12px/1.3 var(--ui, Inter, sans-serif);
+}
+
+.whatsapp-phone__bar small {
+  color: #8696a0;
+  font: 500 9px/1.3 var(--ui, Inter, sans-serif);
+}
+
+.whatsapp-wall {
+  max-height: 620px;
+  overflow: auto;
+  padding: 18px 12px 24px;
+  background:
+    linear-gradient(rgba(11, 20, 26, .9), rgba(11, 20, 26, .9)),
+    radial-gradient(circle at 20px 20px, rgba(255, 255, 255, .035) 1px, transparent 1px);
+  background-size: auto, 34px 34px;
+}
+
+.whatsapp-bubble {
+  position: relative;
+  max-width: 92%;
+  margin-left: auto;
+  padding: 10px 12px 20px;
+  border-radius: 9px 0 9px 9px;
+  background: #005c4b;
+  color: #e9edef;
+  font: 500 11px/1.5 var(--ui, Inter, sans-serif);
+  overflow-wrap: anywhere;
+}
+
+.whatsapp-bubble strong {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.whatsapp-bubble em {
+  color: #d8e7df;
+}
+
+.whatsapp-bubble .wa-quote {
+  display: block;
+  margin: 2px 0;
+  padding-left: 8px;
+  border-left: 3px solid #53bdeb;
+  color: #d5e8ef;
+}
+
+.whatsapp-bubble time {
+  position: absolute;
+  right: 7px;
+  bottom: 5px;
+  color: #8ab4a9;
+  font: 500 8px/1 var(--ui, Inter, sans-serif);
+}
+
+.whatsapp-raw {
+  display: grid;
+  gap: 8px;
+}
+
+.whatsapp-raw > span {
+  color: var(--studio-muted);
+  font: 700 10px/1.4 var(--ui, Inter, sans-serif);
+}
+
+.whatsapp-raw textarea {
+  width: 100%;
+  min-height: 420px;
+  resize: vertical;
+  padding: 14px;
+  border: 1px solid var(--studio-border);
+  border-radius: 15px;
+  background: rgba(0, 0, 0, .18);
+  color: var(--studio-text);
+  font: 500 11px/1.55 ui-monospace, SFMono-Regular, Consolas, monospace;
+  outline: none;
+}
+
+.whatsapp-export > footer {
+  display: grid;
+  gap: 10px;
+  padding: 17px clamp(18px, 4vw, 28px);
+  border-top: 1px solid rgba(63, 180, 104, .16);
+  background: rgba(63, 180, 104, .045);
+}
+
+.whatsapp-export > footer button {
+  border-color: #3fb468;
+  background: #3fb468;
+  color: #071d0f;
+}
+
+.whatsapp-export > footer p {
+  margin: 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 9px !important;
+  line-height: 1.45 !important;
+  text-align: left !important;
+}
+
+@media (min-width: 680px) {
+  .writing-question-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .writing-actions {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .writing-actions > div:last-child {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media (min-width: 1040px) {
+  .writing-workshop__header {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    align-items: start;
+  }
+
+  .whatsapp-export > header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+  }
+
+  .whatsapp-layout {
+    grid-template-columns: minmax(320px, .8fr) minmax(0, 1.2fr);
+    align-items: start;
+  }
+}
+
+@media (min-width: 1450px) and (pointer: fine) {
+  body.miracle-studio-page.ui-desktop .writing-question-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
