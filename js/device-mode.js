@@ -79,17 +79,24 @@
   const loadMiracleStudio = () => {
     if (currentPage() !== 'construcao-guiada.html') return Promise.resolve();
 
-    return loadScript('estudio-milagres-data.js', '20260720i')
-      .then(() => loadScript('estudio-definitivo-data.js', '20260720i'))
-      .then(() => loadScript('estudio-milagres.js', '20260720i'))
-      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720i'))
-      .then(() => loadScript('estudio-definitivo-ui.js', '20260720i'))
-      .then(() => loadScript('estudio-opcoes-style.js', '20260720i'))
-      .then(() => loadScript('estudio-definitivo-ajustes.js', '20260720i'))
-      .then(() => loadScript('estudio-complexidade.js', '20260720i'))
-      .then(() => loadScript('estudio-redacao-whatsapp.js', '20260720i'))
-      .then(() => loadScript('estudio-coexistencia.js', '20260720i'))
-      .then(() => loadScript('estudio-desktop-layout.js', '20260720i'));
+    return loadScript('estudio-milagres-data.js', '20260720j')
+      .then(() => loadScript('estudio-definitivo-data.js', '20260720j'))
+      .then(() => loadScript('estudio-milagres.js', '20260720j'))
+      .then(() => loadScript('cadencia-reformulada.js', '20260720j'))
+      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720j'))
+      .then(() => loadScript('estudio-definitivo-ui.js', '20260720j'))
+      .then(() => loadScript('estudio-opcoes-style.js', '20260720j'))
+      .then(() => loadScript('estudio-definitivo-ajustes.js', '20260720j'))
+      .then(() => loadScript('estudio-complexidade.js', '20260720j'))
+      .then(() => loadScript('estudio-redacao-whatsapp.js', '20260720j'))
+      .then(() => loadScript('estudio-coexistencia.js', '20260720j'))
+      .then(() => loadScript('estudio-redacao-enxuta.js', '20260720j'))
+      .then(() => loadScript('estudio-desktop-layout.js', '20260720j'));
+  };
+
+  const loadCadenceReference = () => {
+    if (currentPage() === 'construcao-guiada.html') return Promise.resolve();
+    return loadScript('cadencia-reformulada.js', '20260720j');
   };
 
   const loadContextualSystemGuide = () => {
@@ -100,6 +107,7 @@
     loadScript('base-regras-sistemas.js', '20260720a')
       .then(() => loadScript('sistema-guiado-core.js', '20260720a'))
       .then(() => loadScript('sistema-guiado-secoes.js', '20260720a'))
+      .then(loadCadenceReference)
       .then(loadMiracleStudio)
       .catch((error) => {
         root.dataset.systemGuideBoot = 'error';
