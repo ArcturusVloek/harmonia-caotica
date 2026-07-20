@@ -7,7 +7,9 @@ const outputDir = path.join(process.cwd(), 'artifacts', 'layout-audit');
 await fs.mkdir(outputDir, { recursive: true });
 
 const failures = [];
+const checkpoints = [];
 const assert = (condition, message) => { if (!condition) failures.push(message); };
+const mark = (message) => checkpoints.push(message);
 
 async function buildUntilResolution(page) {
   await page.locator('[data-state="name"]').fill('Serpente da Corrente Rubra');
@@ -18,6 +20,9 @@ async function buildUntilResolution(page) {
   await page.locator('[data-state="domain"]').selectOption('Vida');
   await page.locator('[data-state="branch"]').selectOption('Sangue');
   await page.waitForSelector('.def-heritage h3');
+  await page.waitForTimeout(300);
+  assert(await page.locator('.def-heritage__details').count() >= 1, 'A Herança não recebeu uma regra completa recolhível na etapa de origem.');
+  mark('Origem divina e Herança compacta carregadas.');
   await page.locator('[data-next-step]').click();
 
   const showAll = page.locator('[data-show-all-functions]');
@@ -32,18 +37,20 @@ async function buildUntilResolution(page) {
   await page.locator('[data-state="cadence"]').selectOption('Recarga');
   await page.locator('[data-next-step]').click();
   await page.waitForSelector('[data-final-workshop]');
+  await page.waitForTimeout(500);
+  mark('Etapa de resolução e Oficina automática carregadas.');
 }
 
 async function desktopTest() {
-  const context = await chromium.launch({ headless: true }).then((browser) => ({ browser, context: browser.newContext({
+  const browser = await chromium.launch({ headless: true });
+  const context = await browser.newContext({
     viewport: { width: 1440, height: 900 },
     screen: { width: 1440, height: 900 },
     hasTouch: false,
     isMobile: false,
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/142 Safari/537.36'
-  }) }));
-  const browserContext = await context.context;
-  const page = await browserContext.newPage();
+  });
+  const page = await context.newPage();
   const errors = [];
   page.on('pageerror', (error) => errors.push(String(error)));
 
@@ -57,6 +64,7 @@ async function desktopTest() {
     assert(await page.locator('body.ui-desktop').count() === 1, 'O modo desktop não foi sincronizado no body.');
     assert(!(await page.locator('.internal-hero').isVisible()), 'O cabeçalho editorial redundante permanece visível no Estúdio.');
     assert(await page.locator('.miracle-studio__layout > .studio-progress').count() === 1, 'As etapas não foram movidas para a coluna esquerda.');
+    mark('Composição de desktop ativada.');
 
     await buildUntilResolution(page);
 
@@ -64,13 +72,15 @@ async function desktopTest() {
     assert(await page.locator('[data-lean-writing]').count() === 0, 'O questionário antigo e repetitivo ainda aparece.');
     assert(await page.locator('[data-final-workshop] textarea').count() === 2, 'A oficina final deve possuir somente apresentação e exceção opcionais.');
     assert(await page.locator('.audit-guide-toggle').count() > 0, 'As explicações profundas não foram recolhidas sob demanda.');
-    assert(await page.locator('.def-heritage__details').count() >= 1, 'A Herança não recebeu resumo recolhível.');
 
+    await page.waitForFunction(() => document.querySelectorAll('.def-creation-builder > details[open]').length === 1);
     const firstCreationDetails = page.locator('.def-creation-builder > details').first();
     assert(await firstCreationDetails.getAttribute('open') !== null, 'A primeira subetapa da Criação não começa aberta.');
     assert(await page.locator('.def-creation-builder > details[open]').count() === 1, 'O Projeto da Criação abre várias subetapas simultaneamente.');
+    mark('Projeto da Criação convertido em acordeão.');
 
     await page.locator('[data-propagation-toggle]').check();
+    await page.waitForSelector('[data-complex-path="propagation.source"]');
     await page.locator('[data-complex-path="propagation.source"]').fill('Uma serpente ou vínculo já ativo.');
     await page.locator('[data-complex-path="propagation.destination"]').fill('Uma criatura viva tocada pela Fonte.');
     await page.locator('[data-final-refresh]').click();
@@ -93,14 +103,15 @@ async function desktopTest() {
       scrollWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
       columns: getComputedStyle(document.querySelector('.miracle-studio__layout')).gridTemplateColumns
     }));
-    assert(dimensions.scrollWidth <= dimensions.width + 2, 'Existe overflow horizontal no desktop.');
-    assert(dimensions.columns.split(' ').length >= 3, `O layout não possui três colunas: ${dimensions.columns}`);
+    assert(dimensions.scrollWidth <= dimensions.width + 2, `Existe overflow horizontal no desktop: ${dimensions.scrollWidth - dimensions.width}px.`);
+    assert(dimensions.columns.split(/\s+/).filter(Boolean).length >= 3, `O layout não possui três colunas: ${dimensions.columns}`);
     assert(errors.length === 0, `Erros JavaScript no desktop: ${errors.join(' | ')}`);
+    mark('Funcionamento automático, Cadência e layout desktop validados.');
 
     await page.screenshot({ path: path.join(outputDir, 'estudio-final-desktop.png'), fullPage: false });
   } finally {
-    await browserContext.close();
-    await context.browser.close();
+    await context.close();
+    await browser.close();
   }
 }
 
@@ -131,6 +142,8 @@ async function mobileTest() {
     assert(await page.locator('body.studio-summary-open').count() === 1, 'A gaveta de resumo não abriu.');
     assert(await page.locator('.studio-summary').isVisible(), 'O resumo não ficou visível na gaveta.');
     await page.locator('.studio-mobile-summary-close').click();
+    await page.waitForTimeout(300);
+    assert(await page.locator('body.studio-summary-open').count() === 0, 'A gaveta de resumo não fechou.');
 
     const progress = await page.locator('.studio-progress').evaluate((element) => ({
       scrollWidth: element.scrollWidth,
@@ -138,7 +151,7 @@ async function mobileTest() {
       columns: getComputedStyle(element).gridTemplateColumns
     }));
     assert(progress.scrollWidth <= progress.clientWidth + 2, 'As etapas ainda exigem rolagem horizontal no celular.');
-    assert(progress.columns.split(' ').length === 3, `As etapas não foram organizadas em três colunas: ${progress.columns}`);
+    assert(progress.columns.split(/\s+/).filter(Boolean).length === 3, `As etapas não foram organizadas em três colunas: ${progress.columns}`);
 
     const touchTargets = await page.locator('.atlas-menu-toggle, .studio-mobile-summary-toggle').evaluateAll((elements) => elements.map((element) => {
       const rect = element.getBoundingClientRect();
@@ -150,8 +163,9 @@ async function mobileTest() {
       width: innerWidth,
       scrollWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth)
     }));
-    assert(dimensions.scrollWidth <= dimensions.width + 2, 'Existe overflow horizontal no celular.');
+    assert(dimensions.scrollWidth <= dimensions.width + 2, `Existe overflow horizontal no celular: ${dimensions.scrollWidth - dimensions.width}px.`);
     assert(errors.length === 0, `Erros JavaScript no celular: ${errors.join(' | ')}`);
+    mark('Gaveta, etapas, alvos de toque e overflow validados no iPhone.');
 
     await page.screenshot({ path: path.join(outputDir, 'estudio-final-mobile.png'), fullPage: false });
   } finally {
@@ -164,6 +178,17 @@ try { await desktopTest(); }
 catch (error) { failures.push(`Exceção no desktop: ${error?.stack || error}`); }
 try { await mobileTest(); }
 catch (error) { failures.push(`Exceção no celular: ${error?.stack || error}`); }
+
+const report = [
+  '# Diagnóstico do fluxo final',
+  '',
+  '## Checkpoints',
+  ...(checkpoints.length ? checkpoints.map((item) => `- ${item}`) : ['- Nenhum checkpoint alcançado.']),
+  '',
+  '## Falhas',
+  ...(failures.length ? failures.map((item) => `- ${item}`) : ['- Nenhuma falha.'])
+].join('\n');
+await fs.writeFile(path.join(outputDir, 'estudio-final-diagnostico.md'), report, 'utf8');
 
 if (failures.length) {
   failures.forEach((failure) => console.error(`- ${failure}`));
