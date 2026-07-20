@@ -1,0 +1,324 @@
+.complex-builder {
+  margin: 24px 0 30px;
+  overflow: hidden;
+  border: 1px solid rgba(126, 194, 220, .28);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(126, 194, 220, .065), transparent 38%), rgba(255, 255, 255, .018);
+}
+
+.complex-builder__header,
+.complex-components > header,
+.complex-propagation > header {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(20px, 4vw, 30px);
+  border-bottom: 1px solid var(--studio-border);
+}
+
+.complex-builder__header span,
+.complex-components > header span,
+.complex-propagation > header span,
+.complex-component > header span {
+  color: #7ec2dc;
+  font: 700 9px/1.4 var(--ui, Inter, sans-serif);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.complex-builder__header h3,
+.complex-components > header h4,
+.complex-propagation > header h4,
+.complex-component > header h4 {
+  margin: 4px 0 6px !important;
+  color: var(--studio-text);
+  font-family: var(--display, "Cormorant Garamond", serif);
+  line-height: .98;
+}
+
+.complex-builder__header h3 {
+  font-size: clamp(31px, 7vw, 46px) !important;
+}
+
+.complex-components > header h4,
+.complex-propagation > header h4,
+.complex-component > header h4 {
+  font-size: 25px !important;
+}
+
+.complex-builder__header p,
+.complex-components > header p,
+.complex-propagation > header p {
+  margin: 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 11px !important;
+  line-height: 1.55 !important;
+  text-align: left !important;
+}
+
+.complex-builder__header > strong {
+  align-self: flex-start;
+  padding: 8px 11px;
+  border: 1px solid rgba(126, 194, 220, .3);
+  border-radius: 999px;
+  color: #7ec2dc;
+  font: 800 10px/1 var(--ui, Inter, sans-serif);
+  white-space: nowrap;
+}
+
+.complex-builder__body {
+  padding: clamp(18px, 4vw, 28px);
+}
+
+.complex-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 15px;
+}
+
+.complex-field {
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.complex-field > span {
+  color: var(--studio-muted);
+  font: 700 10px/1.4 var(--ui, Inter, sans-serif);
+}
+
+.complex-field input,
+.complex-field select,
+.complex-field textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--studio-border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .035);
+  color: var(--studio-text);
+  font: 500 13px/1.55 var(--ui, Inter, sans-serif);
+  outline: none;
+}
+
+.complex-field input,
+.complex-field select {
+  min-height: 48px;
+  padding: 10px 12px;
+}
+
+.complex-field textarea {
+  resize: vertical;
+  padding: 12px 13px;
+}
+
+.complex-field input:focus,
+.complex-field select:focus,
+.complex-field textarea:focus {
+  border-color: #7ec2dc;
+  box-shadow: 0 0 0 3px rgba(126, 194, 220, .1);
+}
+
+.complex-field select option {
+  background: #121017;
+  color: #f4eff5;
+}
+
+.complex-guide {
+  display: grid;
+  gap: 5px;
+  padding: 11px 12px;
+  border: 1px solid rgba(255, 255, 255, .055);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, .12);
+}
+
+.complex-guide p,
+.complex-guide small {
+  margin: 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+}
+
+.complex-guide small b {
+  color: var(--studio-text);
+}
+
+.complex-components,
+.complex-propagation,
+.complex-manual-cost {
+  margin-top: 22px;
+  overflow: hidden;
+  border: 1px solid var(--studio-border);
+  border-radius: 18px;
+  background: rgba(0, 0, 0, .12);
+}
+
+.complex-components > header,
+.complex-propagation > header {
+  padding: 16px 18px;
+}
+
+.complex-components > header button,
+.complex-component > header button {
+  min-height: 38px;
+  padding: 8px 11px;
+  border: 1px solid rgba(126, 194, 220, .22);
+  border-radius: 11px;
+  background: rgba(126, 194, 220, .06);
+  color: #7ec2dc;
+  font: 700 10px/1 var(--ui, Inter, sans-serif);
+  cursor: pointer;
+}
+
+.complex-components > div {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+}
+
+.complex-component {
+  overflow: hidden;
+  border: 1px solid var(--studio-border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .018);
+}
+
+.complex-component > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 15px 17px;
+  border-bottom: 1px solid var(--studio-border);
+}
+
+.complex-component > .complex-grid {
+  padding: 17px;
+}
+
+.complex-component > footer {
+  display: grid;
+  gap: 4px;
+  padding: 12px 17px;
+  border-top: 1px solid var(--studio-border);
+  background: rgba(255, 255, 255, .015);
+}
+
+.complex-component > footer strong {
+  color: #7ec2dc;
+  font: 800 10px/1.4 var(--ui, Inter, sans-serif);
+}
+
+.complex-component > footer p,
+.complex-empty,
+.complex-rule p,
+.complex-manual-cost > p {
+  margin: 0 !important;
+  color: var(--studio-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+}
+
+.complex-empty {
+  padding: 16px;
+  border: 1px dashed var(--studio-border);
+  border-radius: 12px;
+}
+
+.complex-rule {
+  margin-top: 18px;
+  padding: 15px;
+  border-left: 3px solid #7ec2dc;
+  border-radius: 12px;
+  background: rgba(126, 194, 220, .045);
+}
+
+.complex-rule strong {
+  color: var(--studio-text);
+  font: 700 11px/1.4 var(--ui, Inter, sans-serif);
+}
+
+.complex-rule p {
+  margin-top: 5px !important;
+}
+
+.complex-propagation > header label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--studio-text);
+  font: 700 10px/1 var(--ui, Inter, sans-serif);
+}
+
+.complex-propagation > header input {
+  width: 18px;
+  height: 18px;
+  accent-color: #7ec2dc;
+}
+
+.complex-propagation > .complex-grid {
+  padding: 18px;
+}
+
+.complex-propagation > footer {
+  padding: 13px 18px;
+  border-top: 1px solid var(--studio-border);
+  color: #7ec2dc;
+  font: 800 10px/1.4 var(--ui, Inter, sans-serif);
+}
+
+.complex-manual-cost {
+  padding: 17px;
+}
+
+.complex-manual-cost > p {
+  margin-top: 10px !important;
+}
+
+.complex-total {
+  display: grid;
+  gap: 7px;
+  padding: 17px clamp(18px, 4vw, 28px);
+  border-top: 1px solid rgba(126, 194, 220, .2);
+  background: rgba(126, 194, 220, .045);
+}
+
+.complex-total > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--studio-muted);
+  font: 700 10px/1.4 var(--ui, Inter, sans-serif);
+}
+
+.complex-total > div strong {
+  color: #7ec2dc;
+}
+
+@media (min-width: 660px) {
+  .complex-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .complex-field--wide {
+    grid-column: 1 / -1;
+  }
+
+  .complex-builder__header,
+  .complex-components > header,
+  .complex-propagation > header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+  }
+}
+
+@media (min-width: 1180px) and (pointer: fine) {
+  body.miracle-studio-page.ui-desktop .complex-grid--three,
+  body.miracle-studio-page.ui-desktop .complex-component > .complex-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
