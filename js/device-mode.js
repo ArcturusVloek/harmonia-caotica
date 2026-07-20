@@ -86,31 +86,32 @@
 
   const currentPage = () => window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
 
-  const loadGlobalCorrections = () => loadScript('correcao-final-interface.js', '20260720k');
+  const loadGlobalCorrections = () => loadScript('correcao-final-interface.js', '20260720l')
+    .then(() => loadScript('alvos-toque-final.js', '20260720l'));
 
   const loadMiracleStudio = () => {
     if (currentPage() !== 'construcao-guiada.html') return Promise.resolve();
 
-    return loadScript('estudio-milagres-data.js', '20260720k')
-      .then(() => loadScript('estudio-definitivo-data.js', '20260720k'))
-      .then(() => loadScript('estudio-milagres.js', '20260720k'))
-      .then(() => loadScript('cadencia-reformulada.js', '20260720k'))
-      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720k'))
-      .then(() => loadScript('estudio-definitivo-ui.js', '20260720k'))
-      .then(() => loadScript('estudio-opcoes-style.js', '20260720k'))
-      .then(() => loadScript('estudio-definitivo-ajustes.js', '20260720k'))
-      .then(() => loadScript('estudio-complexidade.js', '20260720k'))
-      .then(() => loadScript('estudio-redacao-whatsapp.js', '20260720k'))
-      .then(() => loadScript('estudio-coexistencia.js', '20260720k'))
-      .then(() => loadScript('estudio-redacao-enxuta.js', '20260720k'))
-      .then(() => loadScript('estudio-desktop-layout.js', '20260720k'))
-      .then(() => loadScript('estudio-fluxo-final.js', '20260720k'))
+    return loadScript('estudio-milagres-data.js', '20260720l')
+      .then(() => loadScript('estudio-definitivo-data.js', '20260720l'))
+      .then(() => loadScript('estudio-milagres.js', '20260720l'))
+      .then(() => loadScript('cadencia-reformulada.js', '20260720l'))
+      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720l'))
+      .then(() => loadScript('estudio-definitivo-ui.js', '20260720l'))
+      .then(() => loadScript('estudio-opcoes-style.js', '20260720l'))
+      .then(() => loadScript('estudio-definitivo-ajustes.js', '20260720l'))
+      .then(() => loadScript('estudio-complexidade.js', '20260720l'))
+      .then(() => loadScript('estudio-redacao-whatsapp.js', '20260720l'))
+      .then(() => loadScript('estudio-coexistencia.js', '20260720l'))
+      .then(() => loadScript('estudio-redacao-enxuta.js', '20260720l'))
+      .then(() => loadScript('estudio-desktop-layout.js', '20260720l'))
+      .then(() => loadScript('estudio-fluxo-final.js', '20260720l'))
       .then(loadGlobalCorrections);
   };
 
   const loadCadenceReference = () => {
     if (currentPage() === 'construcao-guiada.html') return Promise.resolve();
-    return loadScript('cadencia-reformulada.js', '20260720k');
+    return loadScript('cadencia-reformulada.js', '20260720l');
   };
 
   const loadContextualSystemGuide = () => {
