@@ -79,17 +79,17 @@
   const loadMiracleStudio = () => {
     if (currentPage() !== 'construcao-guiada.html') return Promise.resolve();
 
-    return loadScript('estudio-milagres-data.js', '20260720h')
-      .then(() => loadScript('estudio-definitivo-data.js', '20260720h'))
-      .then(() => loadScript('estudio-milagres.js', '20260720h'))
-      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720h'))
-      .then(() => loadScript('estudio-definitivo-ui.js', '20260720h'))
-      .then(() => loadScript('estudio-opcoes-style.js', '20260720h'))
-      .then(() => loadScript('estudio-definitivo-ajustes.js', '20260720h'))
-      .then(() => loadScript('estudio-complexidade.js', '20260720h'))
-      .then(() => loadScript('estudio-redacao-whatsapp.js', '20260720h'))
-      .then(() => loadScript('estudio-coexistencia.js', '20260720h'))
-      .then(() => loadScript('estudio-desktop-layout.js', '20260720h'));
+    return loadScript('estudio-milagres-data.js', '20260720i')
+      .then(() => loadScript('estudio-definitivo-data.js', '20260720i'))
+      .then(() => loadScript('estudio-milagres.js', '20260720i'))
+      .then(() => loadScript('estudio-milagres-recomendador.js', '20260720i'))
+      .then(() => loadScript('estudio-definitivo-ui.js', '20260720i'))
+      .then(() => loadScript('estudio-opcoes-style.js', '20260720i'))
+      .then(() => loadScript('estudio-definitivo-ajustes.js', '20260720i'))
+      .then(() => loadScript('estudio-complexidade.js', '20260720i'))
+      .then(() => loadScript('estudio-redacao-whatsapp.js', '20260720i'))
+      .then(() => loadScript('estudio-coexistencia.js', '20260720i'))
+      .then(() => loadScript('estudio-desktop-layout.js', '20260720i'));
   };
 
   const loadContextualSystemGuide = () => {
