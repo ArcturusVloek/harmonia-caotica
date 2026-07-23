@@ -72,6 +72,111 @@
     });
   };
 
+  const repairHeaderControls = () => {
+    const body = document.body;
+    const menuButton = document.querySelector('.atlas-menu-toggle');
+    const indexButton = document.querySelector('.atlas-index-toggle');
+    const navigation = document.querySelector('.atlas-global-nav, .site-header__nav');
+    const index = document.querySelector('.content-index');
+    const indexClose = index?.querySelector('.atlas-index-close');
+    const scrim = document.querySelector('.atlas-scrim');
+
+    if (!body || (!menuButton && !indexButton)) return;
+
+    let desiredPanel = null;
+
+    const setInert = (element, value) => {
+      if (!element) return;
+      if ('inert' in element) element.inert = value;
+      if (value) element.setAttribute('aria-hidden', 'true');
+      else element.removeAttribute('aria-hidden');
+    };
+
+    const applyPanelState = () => {
+      const compact = root.classList.contains('ui-compact');
+      const menuOpen = compact && desiredPanel === 'menu' && Boolean(navigation);
+      const indexOpen = compact && desiredPanel === 'index' && Boolean(index);
+
+      body.classList.toggle('menu-open', menuOpen);
+      body.classList.toggle('index-open', indexOpen);
+
+      menuButton?.setAttribute('aria-expanded', String(menuOpen));
+      menuButton?.setAttribute('aria-label', menuOpen ? 'Fechar navegação' : 'Abrir navegação');
+      indexButton?.setAttribute('aria-expanded', String(indexOpen));
+      indexButton?.setAttribute('aria-label', indexOpen ? 'Fechar sumário' : 'Abrir sumário');
+
+      setInert(navigation, compact && !menuOpen);
+      setInert(index, compact && !indexOpen);
+    };
+
+    const togglePanel = (panel) => {
+      desiredPanel = desiredPanel === panel ? null : panel;
+      applyPanelState();
+    };
+
+    const closePanels = () => {
+      desiredPanel = null;
+      applyPanelState();
+    };
+
+    menuButton?.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      togglePanel('menu');
+    }, true);
+
+    indexButton?.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      togglePanel('index');
+    }, true);
+
+    indexClose?.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      closePanels();
+      indexButton?.focus({ preventScroll: true });
+    }, true);
+
+    scrim?.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      closePanels();
+    }, true);
+
+    navigation?.addEventListener('click', (event) => {
+      if (event.target.closest('a')) closePanels();
+    });
+
+    index?.addEventListener('click', (event) => {
+      if (event.target.closest('a')) closePanels();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && desiredPanel) closePanels();
+    });
+
+    const restoreAfterViewportChange = () => {
+      const wasDesktop = root.classList.contains('ui-desktop');
+      detect();
+      const isDesktop = root.classList.contains('ui-desktop');
+
+      if (isDesktop) desiredPanel = null;
+      else if (wasDesktop !== isDesktop) desiredPanel = null;
+
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(applyPanelState);
+      });
+    };
+
+    window.addEventListener('resize', restoreAfterViewportChange, { passive: true });
+    window.addEventListener('orientationchange', restoreAfterViewportChange, { passive: true });
+    window.addEventListener('pageshow', restoreAfterViewportChange);
+    window.visualViewport?.addEventListener('resize', restoreAfterViewportChange, { passive: true });
+
+    applyPanelState();
+  };
+
   window.HarmoniaDeviceMode = { detect };
   detect();
 
@@ -89,12 +194,15 @@
   window.addEventListener('orientationchange', schedule, { passive: true });
   window.visualViewport?.addEventListener('resize', schedule, { passive: true });
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      removeSystemsSurface();
-      window.setTimeout(removeSystemsSurface, 0);
-    }, { once: true });
-  } else {
+  const initialize = () => {
     removeSystemsSurface();
+    repairHeaderControls();
+    window.setTimeout(removeSystemsSurface, 0);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
   }
 })();
