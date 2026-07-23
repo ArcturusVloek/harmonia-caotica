@@ -38,6 +38,37 @@
     return desktop;
   };
 
+  const removeSystemsSurface = () => {
+    document.querySelector('#jogar')?.remove();
+
+    const heroPrimary = document.querySelector('.home-hero__actions .button--primary[href*="sistemas/"]');
+    if (heroPrimary) {
+      heroPrimary.href = 'mundo/origem.html';
+      heroPrimary.textContent = 'Conhecer a origem';
+    }
+
+    const scrollMark = document.querySelector('.home-hero .scroll-mark');
+    if (scrollMark?.getAttribute('href') === '#jogar') {
+      scrollMark.href = '#mundo';
+      scrollMark.setAttribute('aria-label', 'Ir para a origem de Vaelora');
+    }
+
+    document.querySelectorAll('a[href*="sistemas/"]').forEach((link) => {
+      const navigationItem = link.closest('nav li');
+      if (navigationItem) navigationItem.remove();
+      else link.remove();
+    });
+
+    document.querySelectorAll('.bottom-navigation-list').forEach((list) => {
+      const itemCount = list.querySelectorAll(':scope > li').length;
+      if (itemCount > 0) list.style.gridTemplateColumns = `repeat(${itemCount},1fr)`;
+    });
+
+    document.querySelectorAll('.archive-section__intro p').forEach((paragraph) => {
+      paragraph.textContent = paragraph.textContent.replace('mapas, criaturas e sistemas', 'mapas, criaturas e registros');
+    });
+  };
+
   window.HarmoniaDeviceMode = { detect };
   detect();
 
@@ -54,4 +85,13 @@
   window.addEventListener('resize', schedule, { passive: true });
   window.addEventListener('orientationchange', schedule, { passive: true });
   window.visualViewport?.addEventListener('resize', schedule, { passive: true });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      removeSystemsSurface();
+      window.setTimeout(removeSystemsSurface, 0);
+    }, { once: true });
+  } else {
+    removeSystemsSurface();
+  }
 })();
