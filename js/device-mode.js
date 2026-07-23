@@ -2,6 +2,11 @@
   'use strict';
 
   const root = document.documentElement;
+  const scriptUrl = document.currentScript?.src;
+  const siteRoot = scriptUrl
+    ? new URL('../', scriptUrl)
+    : new URL('/harmonia-caotica/', window.location.origin);
+
   const removedSystemsStyle = document.createElement('style');
   removedSystemsStyle.textContent = '#jogar,a[href*="sistemas/"]{display:none!important}';
   document.head.appendChild(removedSystemsStyle);
@@ -41,12 +46,36 @@
     return desktop;
   };
 
+  const normalizeMenuTargets = () => {
+    const destinations = new Map([
+      ['início', 'index.html'],
+      ['inicio', 'index.html'],
+      ['mundo', 'index.html#mundo'],
+      ['divindades', 'index.html#divindades'],
+      ['deuses', 'index.html#divindades'],
+      ['territórios', 'index.html#territorios'],
+      ['territorios', 'index.html#territorios'],
+      ['terras', 'index.html#territorios']
+    ]);
+
+    document.querySelectorAll('.atlas-global-nav a, .site-header__nav a').forEach((link) => {
+      const label = (link.textContent || '').trim().toLocaleLowerCase('pt-BR');
+      const destination = destinations.get(label);
+
+      if (destination) {
+        link.href = new URL(destination, siteRoot).href;
+      } else if (label === 'sistemas') {
+        link.remove();
+      }
+    });
+  };
+
   const removeSystemsSurface = () => {
     document.querySelector('#jogar')?.remove();
 
     const heroPrimary = document.querySelector('.home-hero__actions .button--primary[href*="sistemas/"]');
     if (heroPrimary) {
-      heroPrimary.href = 'mundo/origem.html';
+      heroPrimary.href = new URL('mundo/origem.html', siteRoot).href;
       heroPrimary.textContent = 'Conhecer a origem';
     }
 
@@ -70,6 +99,8 @@
     document.querySelectorAll('.archive-section__intro p').forEach((paragraph) => {
       paragraph.textContent = paragraph.textContent.replace('mapas, criaturas e sistemas', 'mapas, criaturas e registros');
     });
+
+    normalizeMenuTargets();
   };
 
   const repairHeaderControls = () => {
@@ -119,6 +150,20 @@
       applyPanelState();
     };
 
+    const followLink = (event, container) => {
+      const link = event.target.closest('a[href]');
+      if (!link || !container?.contains(link)) return;
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      const destination = link.href;
+      if (!destination) return;
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      closePanels();
+      window.location.assign(destination);
+    };
+
     menuButton?.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopImmediatePropagation();
@@ -144,13 +189,8 @@
       closePanels();
     }, true);
 
-    navigation?.addEventListener('click', (event) => {
-      if (event.target.closest('a')) closePanels();
-    });
-
-    index?.addEventListener('click', (event) => {
-      if (event.target.closest('a')) closePanels();
-    });
+    navigation?.addEventListener('click', (event) => followLink(event, navigation), true);
+    index?.addEventListener('click', (event) => followLink(event, index), true);
 
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && desiredPanel) closePanels();
@@ -196,8 +236,12 @@
 
   const initialize = () => {
     removeSystemsSurface();
+    normalizeMenuTargets();
     repairHeaderControls();
-    window.setTimeout(removeSystemsSurface, 0);
+    window.setTimeout(() => {
+      removeSystemsSurface();
+      normalizeMenuTargets();
+    }, 0);
   };
 
   if (document.readyState === 'loading') {
