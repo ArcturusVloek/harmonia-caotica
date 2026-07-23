@@ -13,7 +13,8 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - glossário inicial;
 - arquivo de estado do projeto;
 - roadmap de desenvolvimento;
-- rascunho do núcleo de resolução sem dados.
+- núcleo de resolução sem dados em versão de teste;
+- conceito inicial de Escalada para romper impasses e enfrentar Resistências superiores.
 
 ### Definido
 
@@ -24,7 +25,10 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - Vaelora como fundamento mecânico;
 - separação entre conceito divino, interpretação religiosa e julgamento ético;
 - Camada Didática antiga como conteúdo não canônico;
-- estados editoriais obrigatórios.
+- estados editoriais obrigatórios;
+- comparação fundamental entre Capacidade e Resistência;
+- equivalência híbrida: concessão contra Resistência passiva e impasse entre vontades ativas;
+- Escalada como mudança verificável que exige custo, risco ou vulnerabilidade.
 
 ### Removido — 23/07/2026
 
@@ -35,8 +39,7 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 
 ### Pendente
 
-- tratamento de equivalência entre Capacidade e Resistência;
-- escala universal;
+- escala universal de Capacidade e Resistência;
 - recursos e custos;
 - estrutura completa de conflitos;
 - catálogo de efeitos;
