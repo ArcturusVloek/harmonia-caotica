@@ -8,7 +8,25 @@
     : new URL('/harmonia-caotica/', window.location.origin);
 
   const hiddenSystemsStyle = document.createElement('style');
-  hiddenSystemsStyle.textContent = '#jogar,a[href*="sistemas/"]{display:none!important}';
+  hiddenSystemsStyle.textContent = `
+    #jogar,
+    a[href*="sistemas/"] {
+      display: none !important;
+    }
+
+    .atlas-site .site-header,
+    .atlas-site .mobile-header {
+      z-index: 620 !important;
+    }
+
+    .atlas-site .atlas-scrim {
+      z-index: 490 !important;
+    }
+
+    .atlas-site .content-index {
+      z-index: 630 !important;
+    }
+  `;
   document.head.appendChild(hiddenSystemsStyle);
 
   const detect = () => {
