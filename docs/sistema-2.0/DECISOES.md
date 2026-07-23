@@ -49,7 +49,7 @@ Ataques, resistências, disputas, exploração e uso de Milagres deverão ser re
 
 ## DEC-003 — Construção modular de Milagres
 
-**Status:** aprovada  
+**Status:** aprovada; ampliada pela DEC-009  
 **Data:** 23/07/2026
 
 ### Decisão
@@ -58,14 +58,14 @@ Os poderes serão construídos pela combinação de componentes mecânicos, em v
 
 ### Referência
 
-A modularidade de *Mutantes & Malfeitores: Poder Supremo* será estudada como fonte de engenharia de efeitos, modificadores, limitações, descritores e estruturas.
+A modularidade de *Mutantes & Malfeitores: Poder Supremo* fornece a engenharia de efeitos, modificadores, limitações, descritores e estruturas. A DEC-009 esclarece que M&M é a base mecânica do sistema, não apenas uma inspiração.
 
 ### Limites
 
 Não serão adotados automaticamente:
 
 - d20;
-- testes de ataque;
+- testes de ataque aleatórios;
 - salvamentos aleatórios;
 - estrutura temática de super-heróis;
 - dependência de mapas táticos;
@@ -73,7 +73,7 @@ Não serão adotados automaticamente:
 
 ### Consequências
 
-Todo componente adaptado precisará ser reconstruído para resolução textual, determinística e coerente com a cosmologia divina.
+Os componentes de M&M serão preservados sempre que não dependerem de dados, perícias ou atributos-base. As dependências removidas serão substituídas por procedimentos determinísticos compatíveis com o formato textual e com Vaelora.
 
 ---
 
@@ -194,7 +194,56 @@ O modelo híbrido mantém fluidez diante de obstáculos e fenômenos, mas preser
 
 ### Consequências
 
-As regras futuras de escala, vantagem, recursos, auxílio, sacrifício e conflito deverão indicar de forma objetiva como alteram Capacidade ou Resistência.
+As regras futuras de graduação, vantagem, recursos, auxílio, sacrifício e conflito deverão indicar de forma objetiva como alteram Capacidade ou Resistência.
+
+---
+
+## DEC-009 — M&M como base mecânica, não apenas inspiração
+
+**Status:** aprovada  
+**Data:** 23/07/2026
+
+### Decisão
+
+Harmonia Caótica será uma adaptação direta do sistema de poderes de *Mutantes & Malfeitores*, com foco nas ferramentas de *Poder Supremo*.
+
+O objetivo não é criar um sistema narrativo novo apenas inspirado por M&M. A base será preservada sempre que possível:
+
+- efeitos;
+- graduações;
+- custos por graduação;
+- modificadores;
+- extras e falhas;
+- feitos de poder;
+- desvantagens;
+- descritores;
+- estruturas normais, repertórios, recipientes e variáveis;
+- poderes alternativos;
+- construção por pontos.
+
+### Elementos removidos
+
+Harmonia Caótica não utilizará:
+
+- dados;
+- perícias;
+- atributos-base;
+- bônus derivados de atributos;
+- procedimentos que existam apenas para modificar uma rolagem.
+
+### Adaptação necessária
+
+Quando uma regra de poder depender de ataque, teste de poder, perícia, habilidade ou jogada de salvamento, sua função será convertida para resolução determinística sem alterar desnecessariamente a identidade ou o custo do efeito.
+
+Domínio, Vertente e Manifestação funcionarão como descritores e permissões ontológicas de Vaelora. Eles não substituirão o efeito mecânico comprado.
+
+### Consequências
+
+- não será criada uma escala genérica de 0 a 6 separada das graduações de M&M;
+- as graduações de efeito continuarão sendo a medida central de potência;
+- o catálogo de efeitos de M&M será auditado antes da criação de novos efeitos;
+- cada dependência de dados, perícias ou atributos será marcada como `preservada`, `convertida`, `substituída` ou `removida`;
+- a criatividade decorrerá da combinação livre de efeitos, modificadores, estruturas e descritores, limitada pelo orçamento de pontos e pela coerência com Vaelora.
 
 ---
 
@@ -202,10 +251,9 @@ As regras futuras de escala, vantagem, recursos, auxílio, sacrifício e conflit
 
 As seguintes questões permanecem abertas:
 
-1. escala universal de capacidades;
-2. recursos gastos para ampliar uma ação;
-3. estrutura temporal de conflitos assíncronos;
-4. forma final dos atributos de personagem;
-5. custo de construção dos Milagres;
-6. função mecânica definitiva das Vertentes e Heranças;
-7. progressão mortal, aproximação divina e Ascensão.
+1. conversão determinística de testes de ataque, testes de poder e jogadas de salvamento;
+2. quais custos e limites de nível de poder de M&M serão preservados sem alteração;
+3. tratamento de efeitos que aumentam, drenam ou imitam atributos e perícias removidos;
+4. estrutura temporal de conflitos assíncronos;
+5. função mecânica definitiva das Vertentes e Heranças;
+6. progressão mortal, aproximação divina e Ascensão.
