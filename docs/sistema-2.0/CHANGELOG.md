@@ -26,6 +26,13 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - Camada Didática antiga como conteúdo não canônico;
 - estados editoriais obrigatórios.
 
+### Removido — 23/07/2026
+
+- carregamento automático da Camada Didática em todas as páginas de Domínios;
+- script `js/regra-guiada.js`;
+- estilos `css/regra-guiada.css`;
+- documentação obsoleta `docs/ARQUITETURA-DIDATICA.md`.
+
 ### Pendente
 
 - tratamento de equivalência entre Capacidade e Resistência;
@@ -34,4 +41,4 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - estrutura completa de conflitos;
 - catálogo de efeitos;
 - reconstrução das Vertentes e Heranças;
-- migração das páginas do site.
+- migração das páginas do site para os novos sistemas.
