@@ -51,6 +51,8 @@ Foram removidos o carregamento automático, o script, os estilos e a documentaç
 7. Religiões interpretam os poderes, mas não estabelecem seus limites universais.
 8. A Camada Didática antiga é não canônica e não deve ser carregada nas páginas.
 9. Documentos utilizarão estados editoriais explícitos.
+10. A equivalência utilizará resolução híbrida: concessão contra Resistência passiva e impasse entre vontades ativas.
+11. Impasses serão rompidos apenas por mudança verificável da situação ou Escalada com custo, risco ou vulnerabilidade.
 
 ## Trabalho concluído nesta etapa
 
@@ -60,43 +62,58 @@ Foram removidos o carregamento automático, o script, os estilos e a documentaç
 - criado o registro inicial de decisões;
 - criado o glossário de termos;
 - estabelecida a separação entre documentação, regra canônica e apresentação do site;
-- iniciada a proposta de núcleo de resolução sem dados;
 - removido de `js/dominios.js` o carregamento da Camada Didática;
 - removidos `js/regra-guiada.js` e `css/regra-guiada.css`;
-- removido `docs/ARQUITETURA-DIDATICA.md`.
+- removido `docs/ARQUITETURA-DIDATICA.md`;
+- aprovada a comparação entre Capacidade e Resistência;
+- aprovada a regra híbrida de equivalência;
+- incorporado o conceito inicial de Escalada ao núcleo de resolução.
 
 ## Trabalho atual
 
 Desenvolver o núcleo de resolução determinística.
 
-A proposta inicial compara:
+A base aprovada compara:
 
-- intenção;
-- capacidade;
-- resistência;
-- consequência.
+- Intenção;
+- Capacidade;
+- Resistência;
+- Consequência.
 
-Ainda não está decidido como tratar capacidades equivalentes.
+### Resultados aprovados
 
-### Alternativas em avaliação
+**Capacidade superior:** a Intenção se realiza dentro dos limites declarados.
 
-**Sucesso com concessão:** o efeito ocorre de forma parcial ou mediante custo, exposição ou consequência.
+**Capacidade inferior:** a Intenção não consegue impor o resultado pretendido.
 
-**Impasse:** nenhuma força se impõe até que alguém obtenha vantagem, altere o objetivo ou aceite um custo para ampliar sua capacidade.
+**Equivalência contra Resistência passiva:** a Intenção se realiza mediante consequência, redução ou concessão.
 
-Também é possível adotar uma regra híbrida conforme a natureza da ação.
+**Equivalência entre vontades ativas:** ocorre impasse até que uma parte altere a situação.
+
+### Escalada
+
+Preparação, concessão, recurso, vínculo, auxílio e sacrifício são formas preliminares de Escalada. Sua magnitude ainda depende da definição da escala universal.
 
 ## Próxima decisão necessária
 
-Definir o tratamento de equivalência entre Capacidade e Resistência.
+Definir a escala universal de Capacidade e Resistência.
+
+A decisão deverá estabelecer:
+
+1. quantidade de níveis;
+2. significado de cada nível;
+3. diferença entre mortal, sobrenatural, divino e transcendente;
+4. modo de registrar especialização sem inflar números;
+5. efeito mecânico de uma diferença de um ou mais níveis;
+6. limite de Escalada temporária.
 
 Depois disso, deverão ser definidos:
 
-1. escala universal de capacidades;
-2. vantagens e desvantagens circunstanciais;
-3. custos para ampliar uma ação;
-4. estrutura de contestação entre personagens;
-5. encerramento de conflitos assíncronos.
+1. vantagens e desvantagens circunstanciais;
+2. recursos e custos para ampliar uma ação;
+3. estrutura temporal de conflitos assíncronos;
+4. auxílio coletivo;
+5. encerramento de conflitos.
 
 ## Arquivos que devem ser lidos antes de continuar
 
