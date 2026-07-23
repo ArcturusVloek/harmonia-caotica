@@ -2,6 +2,9 @@
   'use strict';
 
   const root = document.documentElement;
+  const removedSystemsStyle = document.createElement('style');
+  removedSystemsStyle.textContent = '#jogar,a[href*="sistemas/"]{display:none!important}';
+  document.head.appendChild(removedSystemsStyle);
 
   const detect = () => {
     const ua = navigator.userAgent || '';
