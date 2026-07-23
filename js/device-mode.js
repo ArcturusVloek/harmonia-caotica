@@ -7,9 +7,9 @@
     ? new URL('../', scriptUrl)
     : new URL('/harmonia-caotica/', window.location.origin);
 
-  const removedSystemsStyle = document.createElement('style');
-  removedSystemsStyle.textContent = '#jogar,a[href*="sistemas/"]{display:none!important}';
-  document.head.appendChild(removedSystemsStyle);
+  const hiddenSystemsStyle = document.createElement('style');
+  hiddenSystemsStyle.textContent = '#jogar,a[href*="sistemas/"]{display:none!important}';
+  document.head.appendChild(hiddenSystemsStyle);
 
   const detect = () => {
     const ua = navigator.userAgent || '';
@@ -24,11 +24,6 @@
     const touch = maxTouchPoints > 0 || coarse;
     const width = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
-    /*
-     * O modo amplo só é liberado para uma janela larga com mouse ou touchpad.
-     * Android, iOS e tablets continuam compactos mesmo quando solicitam a
-     * versão para computador do navegador.
-     */
     const desktop = width >= 1024
       && fine
       && hover
@@ -103,28 +98,38 @@
     normalizeMenuTargets();
   };
 
-  const repairHeaderControls = () => {
+  const initializeControls = () => {
     const body = document.body;
     const menuButton = document.querySelector('.atlas-menu-toggle');
     const indexButton = document.querySelector('.atlas-index-toggle');
     const navigation = document.querySelector('.atlas-global-nav, .site-header__nav');
     const index = document.querySelector('.content-index');
-    const indexClose = index?.querySelector('.atlas-index-close');
     const scrim = document.querySelector('.atlas-scrim');
 
     if (!body || (!menuButton && !indexButton)) return;
 
     let desiredPanel = null;
+    let applying = false;
 
-    const setInert = (element, value) => {
+    const makeUsable = (element, visible) => {
       if (!element) return;
-      if ('inert' in element) element.inert = value;
-      if (value) element.setAttribute('aria-hidden', 'true');
-      else element.removeAttribute('aria-hidden');
+
+      element.removeAttribute('inert');
+      try {
+        element.inert = false;
+      } catch (_) {}
+
+      if (visible) element.removeAttribute('aria-hidden');
+      else element.setAttribute('aria-hidden', 'true');
     };
 
     const applyPanelState = () => {
+      if (applying) return;
+      applying = true;
+
       const compact = root.classList.contains('ui-compact');
+      if (!compact) desiredPanel = null;
+
       const menuOpen = compact && desiredPanel === 'menu' && Boolean(navigation);
       const indexOpen = compact && desiredPanel === 'index' && Boolean(index);
 
@@ -136,13 +141,10 @@
       indexButton?.setAttribute('aria-expanded', String(indexOpen));
       indexButton?.setAttribute('aria-label', indexOpen ? 'Fechar sumário' : 'Abrir sumário');
 
-      setInert(navigation, compact && !menuOpen);
-      setInert(index, compact && !indexOpen);
-    };
+      makeUsable(navigation, menuOpen || !compact);
+      makeUsable(index, indexOpen || !compact);
 
-    const togglePanel = (panel) => {
-      desiredPanel = desiredPanel === panel ? null : panel;
-      applyPanelState();
+      applying = false;
     };
 
     const closePanels = () => {
@@ -150,69 +152,90 @@
       applyPanelState();
     };
 
-    const followLink = (event, container) => {
-      const link = event.target.closest('a[href]');
-      if (!link || !container?.contains(link)) return;
-      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-
-      const destination = link.href;
+    const goTo = (link) => {
+      const destination = link?.href;
       if (!destination) return;
 
-      event.preventDefault();
-      event.stopImmediatePropagation();
       closePanels();
       window.location.assign(destination);
     };
 
-    menuButton?.addEventListener('click', (event) => {
+    document.addEventListener('click', (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      if (!target) return;
+
+      if (menuButton && (target === menuButton || menuButton.contains(target))) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        desiredPanel = desiredPanel === 'menu' ? null : 'menu';
+        applyPanelState();
+        return;
+      }
+
+      if (indexButton && (target === indexButton || indexButton.contains(target))) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        desiredPanel = desiredPanel === 'index' ? null : 'index';
+        applyPanelState();
+        return;
+      }
+
+      const closeButton = target.closest('.atlas-index-close');
+      if (closeButton) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        closePanels();
+        indexButton?.focus({ preventScroll: true });
+        return;
+      }
+
+      if (scrim && (target === scrim || scrim.contains(target))) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        closePanels();
+        return;
+      }
+
+      const link = target.closest('a[href]');
+      if (!link) return;
+
+      const insideNavigation = navigation?.contains(link);
+      const insideIndex = index?.contains(link);
+      if (!insideNavigation && !insideIndex) return;
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
       event.preventDefault();
       event.stopImmediatePropagation();
-      togglePanel('menu');
+      goTo(link);
     }, true);
-
-    indexButton?.addEventListener('click', (event) => {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      togglePanel('index');
-    }, true);
-
-    indexClose?.addEventListener('click', (event) => {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      closePanels();
-      indexButton?.focus({ preventScroll: true });
-    }, true);
-
-    scrim?.addEventListener('click', (event) => {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      closePanels();
-    }, true);
-
-    navigation?.addEventListener('click', (event) => followLink(event, navigation), true);
-    index?.addEventListener('click', (event) => followLink(event, index), true);
 
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && desiredPanel) closePanels();
     });
 
-    const restoreAfterViewportChange = () => {
-      const wasDesktop = root.classList.contains('ui-desktop');
-      detect();
-      const isDesktop = root.classList.contains('ui-desktop');
-
-      if (isDesktop) desiredPanel = null;
-      else if (wasDesktop !== isDesktop) desiredPanel = null;
-
-      window.requestAnimationFrame(() => {
-        window.requestAnimationFrame(applyPanelState);
+    let observerFrame = 0;
+    const scheduleRepair = () => {
+      window.cancelAnimationFrame(observerFrame);
+      observerFrame = window.requestAnimationFrame(() => {
+        normalizeMenuTargets();
+        applyPanelState();
       });
     };
 
-    window.addEventListener('resize', restoreAfterViewportChange, { passive: true });
-    window.addEventListener('orientationchange', restoreAfterViewportChange, { passive: true });
-    window.addEventListener('pageshow', restoreAfterViewportChange);
-    window.visualViewport?.addEventListener('resize', restoreAfterViewportChange, { passive: true });
+    const observer = new MutationObserver(scheduleRepair);
+    observer.observe(body, { attributes: true, attributeFilter: ['class'] });
+    if (navigation) observer.observe(navigation, { attributes: true, childList: true, subtree: true });
+    if (index) observer.observe(index, { attributes: true, childList: true, subtree: true });
+
+    const handleViewportChange = () => {
+      detect();
+      scheduleRepair();
+    };
+
+    window.addEventListener('resize', handleViewportChange, { passive: true });
+    window.addEventListener('orientationchange', handleViewportChange, { passive: true });
+    window.addEventListener('pageshow', handleViewportChange);
+    window.visualViewport?.addEventListener('resize', handleViewportChange, { passive: true });
 
     applyPanelState();
   };
@@ -220,24 +243,11 @@
   window.HarmoniaDeviceMode = { detect };
   detect();
 
-  let scheduled = false;
-  const schedule = () => {
-    if (scheduled) return;
-    scheduled = true;
-    window.requestAnimationFrame(() => {
-      scheduled = false;
-      detect();
-    });
-  };
-
-  window.addEventListener('resize', schedule, { passive: true });
-  window.addEventListener('orientationchange', schedule, { passive: true });
-  window.visualViewport?.addEventListener('resize', schedule, { passive: true });
-
   const initialize = () => {
     removeSystemsSurface();
     normalizeMenuTargets();
-    repairHeaderControls();
+    initializeControls();
+
     window.setTimeout(() => {
       removeSystemsSurface();
       normalizeMenuTargets();
