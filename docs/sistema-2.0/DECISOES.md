@@ -45,8 +45,6 @@ O formato principal será assíncrono e baseado em textos longos no WhatsApp. A 
 
 Ataques, resistências, disputas, exploração e uso de Milagres deverão ser resolvidos por comparação de capacidades, condições, recursos, custos e consequências.
 
-A regra exata de comparação ainda não foi aprovada.
-
 ---
 
 ## DEC-003 — Construção modular de Milagres
@@ -109,13 +107,13 @@ As regras devem comportar:
 
 ### Decisão
 
-A Camada Didática atualmente aplicada às páginas de Domínios pertence ao sistema anterior e não deve ser utilizada como fonte mecânica para o Sistema 2.0.
+A Camada Didática aplicada às páginas de Domínios pertencia ao sistema anterior e não deve ser utilizada como fonte mecânica para o Sistema 2.0.
 
 Isso inclui seus fluxos de Entender, Aplicar e Avaliar, seus critérios de construção, cálculos e qualquer regra derivada do sistema descartado.
 
 ### Consequências
 
-Os arquivos antigos deverão ser inventariados, desativados e arquivados de forma controlada. A remoção definitiva somente ocorrerá depois da identificação de dependências técnicas e da implantação das novas páginas.
+O carregamento automático, o script, os estilos e a documentação específica da Camada Didática foram removidos na branch `sistema-2.0`. As páginas dos Domínios permanecem com seu conteúdo editorial enquanto aguardam a implantação dos novos sistemas.
 
 ---
 
@@ -149,15 +147,65 @@ Nenhuma proposta apresentada durante uma conversa será considerada oficial sem 
 
 ---
 
+## DEC-008 — Equivalência híbrida entre Capacidade e Resistência
+
+**Status:** aprovada  
+**Data:** 23/07/2026
+
+### Decisão
+
+A resolução compara uma **Capacidade** aplicada com uma **Resistência** pertinente.
+
+- Quando a Capacidade é superior, a intenção se realiza dentro dos limites declarados.
+- Quando a Capacidade é inferior, a intenção não consegue impor o resultado pretendido.
+- Quando existe equivalência contra uma resistência passiva, a intenção se realiza mediante consequência, redução ou concessão.
+- Quando existe equivalência entre vontades ativas que pretendem impor resultados incompatíveis, ocorre um impasse.
+
+### Resistência passiva
+
+É uma dificuldade sem intenção própria de vencer a disputa naquele momento, como ambiente, distância, ferimento, estrutura, barreira ou fenômeno não dirigido.
+
+A equivalência não paralisa a narrativa. O resultado pode ocorrer mediante redução de efeito, desgaste, perda de posição, exposição, consumo de recurso ou outra consequência proporcional.
+
+### Oposição ativa
+
+Existe quando criaturas conscientes, entidades dotadas de vontade ou forças dirigidas tentam impor resultados incompatíveis.
+
+Na equivalência, nenhuma das vontades obtém controle decisivo. O impasse permanece até que uma parte altere a situação.
+
+### Escalada
+
+Um impasse pode ser rompido por uma mudança verificável, como:
+
+- alterar a intenção;
+- obter preparação;
+- explorar uma condição ou fraqueza;
+- utilizar um vínculo pertinente;
+- receber auxílio;
+- consumir um recurso limitado;
+- aceitar uma consequência;
+- realizar um sacrifício proporcional.
+
+Escalada não é um bônus gratuito. Toda ampliação precisa existir na ficção, possuir efeito mecânico definido e produzir custo, risco ou vulnerabilidade verificável.
+
+### Motivo
+
+O modelo híbrido mantém fluidez diante de obstáculos e fenômenos, mas preserva a agência de participantes em conflitos diretos. Ele também evita que equivalências sejam decididas por rolagem ou escolha arbitrária do narrador.
+
+### Consequências
+
+As regras futuras de escala, vantagem, recursos, auxílio, sacrifício e conflito deverão indicar de forma objetiva como alteram Capacidade ou Resistência.
+
+---
+
 ## Questões ainda não decididas
 
 As seguintes questões permanecem abertas:
 
 1. escala universal de capacidades;
-2. tratamento de equivalência entre capacidade e resistência;
-3. recursos gastos para ampliar uma ação;
-4. estrutura temporal de conflitos assíncronos;
-5. forma final dos atributos de personagem;
-6. custo de construção dos Milagres;
-7. função mecânica definitiva das Vertentes e Heranças;
-8. progressão mortal, aproximação divina e Ascensão.
+2. recursos gastos para ampliar uma ação;
+3. estrutura temporal de conflitos assíncronos;
+4. forma final dos atributos de personagem;
+5. custo de construção dos Milagres;
+6. função mecânica definitiva das Vertentes e Heranças;
+7. progressão mortal, aproximação divina e Ascensão.
