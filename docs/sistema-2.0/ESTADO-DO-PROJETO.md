@@ -28,7 +28,7 @@ Permanecem como fundamentos do cenário:
 
 ## Conteúdo considerado obsoleto
 
-A Camada Didática aplicada às páginas de Domínios pertence ao sistema anterior.
+A Camada Didática aplicada às páginas de Domínios pertencia ao sistema anterior e foi removida do site na branch `sistema-2.0`.
 
 Não são canônicos para o Sistema 2.0:
 
@@ -38,7 +38,7 @@ Não são canônicos para o Sistema 2.0:
 - Ranks, custos, combate e critérios derivados do sistema descartado;
 - Heranças antigas como regras automaticamente preservadas.
 
-Esses elementos devem permanecer intactos até que suas dependências técnicas sejam inventariadas.
+Foram removidos o carregamento automático, o script, os estilos e a documentação específica dessa camada. As páginas de Domínios permanecem com seu conteúdo editorial próprio enquanto aguardam os novos sistemas.
 
 ## Decisões aprovadas
 
@@ -49,7 +49,7 @@ Esses elementos devem permanecer intactos até que suas dependências técnicas 
 5. Vaelora será o fundamento mecânico, não apenas uma camada estética.
 6. A aparência não define o Domínio; o princípio sobrenatural define.
 7. Religiões interpretam os poderes, mas não estabelecem seus limites universais.
-8. A Camada Didática antiga é não canônica.
+8. A Camada Didática antiga é não canônica e não deve ser carregada nas páginas.
 9. Documentos utilizarão estados editoriais explícitos.
 
 ## Trabalho concluído nesta etapa
@@ -60,7 +60,10 @@ Esses elementos devem permanecer intactos até que suas dependências técnicas 
 - criado o registro inicial de decisões;
 - criado o glossário de termos;
 - estabelecida a separação entre documentação, regra canônica e apresentação do site;
-- iniciada a proposta de núcleo de resolução sem dados.
+- iniciada a proposta de núcleo de resolução sem dados;
+- removido de `js/dominios.js` o carregamento da Camada Didática;
+- removidos `js/regra-guiada.js` e `css/regra-guiada.css`;
+- removido `docs/ARQUITETURA-DIDATICA.md`.
 
 ## Trabalho atual
 
