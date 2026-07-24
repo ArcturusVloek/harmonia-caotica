@@ -52,6 +52,11 @@ Harmonia Caótica utilizará diretamente a engenharia de poderes de *Mutantes & 
 14. O Nível 1 começa com 15 PM: 3 PM do Nível e 12 PM de Reserva Inicial.
 15. Os PM totais recebidos no Nível `N` são `12 + (3 × N)`.
 16. No Nível 100, o personagem terá recebido 312 PM.
+17. O personagem sobe de Rank a cada dez Níveis.
+18. Existem onze Ranks: Desperto, Adepto, Consagrado, Arauto, Exarca, Numinoso, Ascendente, Semidivino, Soberano, Pretendente e Apoteose.
+19. A Graduação máxima cresce de 5 no Rank Desperto até 25 em Apoteose.
+20. O limite de PM por Espaço equivale a quatro vezes a Graduação máxima do Rank.
+21. Subir de Rank amplia limites, mas não concede PM adicionais nem melhora Poderes automaticamente.
 
 ## Progressão aprovada
 
@@ -66,6 +71,22 @@ Harmonia Caótica utilizará diretamente a engenharia de poderes de *Mutantes & 
 
 A cada bloco de cinco Níveis, o personagem recebe 15 PM pela progressão normal e libera um Espaço de Poder. Liberar o Espaço não cria automaticamente um Poder nem concede PM adicionais.
 
+## Ranks aprovados
+
+| Rank | Níveis | Nome | Graduação máxima | PM máximos por Espaço |
+|---:|---:|---|---:|---:|
+| I | 1–9 | Desperto | 5 | 20 |
+| II | 10–19 | Adepto | 7 | 28 |
+| III | 20–29 | Consagrado | 9 | 36 |
+| IV | 30–39 | Arauto | 11 | 44 |
+| V | 40–49 | Exarca | 13 | 52 |
+| VI | 50–59 | Numinoso | 15 | 60 |
+| VII | 60–69 | Ascendente | 17 | 68 |
+| VIII | 70–79 | Semidivino | 19 | 76 |
+| IX | 80–89 | Soberano | 21 | 84 |
+| X | 90–99 | Pretendente | 23 | 92 |
+| XI | 100 | Apoteose | 25 | 100 |
+
 ## Trabalho concluído
 
 - criada a branch `sistema-2.0`;
@@ -78,24 +99,26 @@ A cada bloco de cinco Níveis, o personagem recebe 15 PM pela progressão normal
 - separadas as funções de PM e Espaços de Poder;
 - definido o orçamento inicial de 15 PM;
 - definida a progressão de 3 PM por Nível;
-- consolidada a fórmula de PM totais e a progressão de Espaços.
+- consolidada a fórmula de PM totais e a progressão de Espaços;
+- definidos os onze Ranks;
+- definidas a Graduação máxima e o limite de PM por Espaço de cada Rank.
 
 ## Trabalho atual
 
-Definir os Ranks e seus limites mecânicos.
+Definir quais estruturas avançadas de M&M são liberadas ou limitadas por Rank.
 
-Cada Rank deverá estabelecer, no mínimo:
+A próxima etapa deverá estabelecer:
 
-- intervalo de Níveis;
-- nome e significado narrativo;
-- Graduação máxima dos Efeitos;
-- limite de PM por construção;
-- acesso a Repertórios, Recipientes e Efeitos Variáveis;
-- permissões relacionadas à proximidade divina.
+- acesso a Poderes Alternativos e Repertórios;
+- acesso a Recipientes;
+- acesso a Efeitos Variáveis;
+- limites de Invocações complexas;
+- reconstrução e redistribuição de PM;
+- exceções justificadas ao limite de PM por Espaço.
 
 ## Trabalho posterior
 
-Depois dos Ranks, deverá ser concluída a conversão determinística de:
+Depois das estruturas por Rank, deverá ser concluída a conversão determinística de:
 
 1. testes de ataque;
 2. testes opostos de poder;
@@ -111,9 +134,10 @@ Depois dos Ranks, deverá ser concluída a conversão determinística de:
 3. `docs/sistema-2.0/decisoes/DEC-010-progressao-em-100-niveis.md`;
 4. `docs/sistema-2.0/decisoes/DEC-011-pontos-de-poder-e-espacos-de-poder.md`;
 5. `docs/sistema-2.0/decisoes/DEC-012-orcamento-inicial-e-pm-por-nivel.md`;
-6. `docs/sistema-2.0/nucleos/progressao.md`;
-7. `docs/sistema-2.0/nucleos/resolucao.md`;
-8. *Mutantes & Malfeitores: Poder Supremo*.
+6. `docs/sistema-2.0/decisoes/DEC-013-ranks-e-limites-de-construcao.md`;
+7. `docs/sistema-2.0/nucleos/progressao.md`;
+8. `docs/sistema-2.0/nucleos/resolucao.md`;
+9. *Mutantes & Malfeitores: Poder Supremo*.
 
 ## Regra de encerramento de sessão
 
