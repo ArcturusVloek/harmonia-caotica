@@ -11,10 +11,12 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - decisão DEC-012 sobre orçamento inicial e progressão regular de PM;
 - decisão DEC-013 sobre Ranks e limites de construção;
 - decisão DEC-014 sobre Custo de Ficha e Capacidade Operacional;
+- decisão DEC-015 sobre documentação canônica e texto final para jogadores;
 - núcleo de progressão consolidado;
 - Reserva Inicial de 12 PM na criação do personagem;
 - onze Ranks entre Desperto e Apoteose;
 - explicação obrigatória para jogadores da diferença entre valor pago e efeitos simultâneos;
+- fluxo editorial separado entre aprovação mecânica e aprovação da redação pública;
 - auditoria em rascunho das estruturas avançadas;
 - portal público `sistemas/index.html` para o Sistema 2.0;
 - página de Primeiros Passos;
@@ -48,6 +50,11 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - Custo de Ficha e Capacidade Operacional submetidos ao teto de PM por Espaço;
 - pontos internos de estruturas não são pagos duas vezes;
 - Falhas e descontos não ampliam a Capacidade Operacional permitida;
+- GitHub como registro contínuo e fonte de continuidade entre conversas;
+- aprovação mecânica e aprovação editorial como etapas distintas;
+- documentos técnicos canônicos como fonte precisa, mas não automaticamente como texto final para jogadores;
+- páginas e ferramentas atuais da branch como protótipos ou implementações parciais;
+- redação pública futura obrigada a preservar integralmente custos, limites, Graduações e exceções;
 - páginas públicas distinguem regras aprovadas, conteúdo em teste e auditorias em rascunho.
 
 ### Corrigido — 24/07/2026
@@ -60,7 +67,8 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - os Ranks calculados são exibidos com numeração romana consistente com a documentação;
 - campos numéricos podem ser editados sem serem forçados ao valor mínimo enquanto o usuário ainda digita;
 - estados editoriais do Arquivo de Vaelora passam a refletir regra aprovada, conteúdo em teste ou auditoria em rascunho;
-- tabelas largas do Sistema 2.0 recebem navegação por teclado, função de região e rótulo acessível.
+- tabelas largas do Sistema 2.0 recebem navegação por teclado, função de região e rótulo acessível;
+- o estado do projeto agora informa expressamente que nenhuma página atual constitui a versão final destinada aos jogadores.
 
 ### Adicionado — 23/07/2026
 
@@ -120,4 +128,5 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - catálogo público dos Efeitos adaptados;
 - tratamento de Efeitos ligados a atributos e perícias removidos;
 - reconstrução das Vertentes e Heranças;
+- redação final e aprovação editorial de todo o material destinado aos jogadores;
 - expansão do site com ficha completa e construtor integral de Poderes.
