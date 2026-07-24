@@ -10,9 +10,11 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - decisão DEC-011 sobre PM por Nível e Espaços de Poder;
 - decisão DEC-012 sobre orçamento inicial e progressão regular de PM;
 - decisão DEC-013 sobre Ranks e limites de construção;
+- decisão DEC-014 sobre Custo de Ficha e Capacidade Operacional;
 - núcleo de progressão consolidado;
 - Reserva Inicial de 12 PM na criação do personagem;
 - onze Ranks entre Desperto e Apoteose;
+- explicação obrigatória para jogadores da diferença entre valor pago e efeitos simultâneos;
 - auditoria em rascunho das estruturas avançadas;
 - portal público `sistemas/index.html` para o Sistema 2.0;
 - página de Primeiros Passos;
@@ -41,6 +43,11 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - Graduação máxima de 5 no Rank Desperto até 25 em Apoteose;
 - limite de PM por Espaço igual a quatro vezes a Graduação máxima;
 - subir de Rank amplia limites, mas não concede PM nem melhorias automáticas;
+- Custo de Ficha como quantidade de PM efetivamente paga;
+- Capacidade Operacional como quantidade de PM de efeitos que podem funcionar simultaneamente;
+- Custo de Ficha e Capacidade Operacional submetidos ao teto de PM por Espaço;
+- pontos internos de estruturas não são pagos duas vezes;
+- Falhas e descontos não ampliam a Capacidade Operacional permitida;
 - páginas públicas distinguem regras aprovadas, conteúdo em teste e auditorias em rascunho.
 
 ### Corrigido — 24/07/2026
@@ -100,8 +107,11 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 
 ### Pendente
 
-- aprovação ou revisão da auditoria de estruturas avançadas por Rank;
-- limites canônicos de Repertórios, Recipientes, Efeitos Variáveis e Invocações;
+- liberação e limites canônicos de Repertórios;
+- liberação e limites canônicos de Recipientes;
+- acesso e amplitude de Efeitos Variáveis;
+- conversão de Invocar, orçamento de criaturas e Grupos de Comando;
+- limites de aninhamento entre estruturas;
 - reconstrução e redistribuição de PM;
 - conversão determinística de testes de ataque;
 - conversão de testes opostos de poder;
