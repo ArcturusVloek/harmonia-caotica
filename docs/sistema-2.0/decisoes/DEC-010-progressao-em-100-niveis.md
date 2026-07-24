@@ -1,24 +1,27 @@
 # DEC-010 — Progressão em 100 níveis e Apoteose
 
-**Status:** aprovada  
+**Status:** aprovada; detalhada pelas DEC-011 e DEC-012  
 **Data:** 23/07/2026
 
 ## Decisão
 
 Harmonia Caótica possuirá **100 Níveis** de progressão.
 
-- Todo personagem começa no **Nível 1** com um Poder.
-- O personagem recebe um novo Poder a cada cinco Níveis, nos Níveis 5, 10, 15 e assim sucessivamente até o Nível 100.
+- Todo personagem começa no **Nível 1** com um Espaço de Poder.
+- Um novo Espaço de Poder é liberado a cada cinco Níveis, nos Níveis 5, 10, 15 e assim sucessivamente até o Nível 100.
+- O personagem recebe PM em todos os Níveis, conforme definido pela DEC-012.
 - O personagem sobe de Rank em intervalos regulares ainda não definidos.
 - No Nível 100, o personagem alcança o Rank **Apoteose**.
 
-Pela aplicação literal da cadência aprovada, o personagem possui 21 marcos de aquisição ao chegar ao Nível 100: um Poder inicial e vinte Poderes obtidos nos múltiplos de cinco.
+Ao chegar ao Nível 100, o personagem terá 21 Espaços de Poder disponíveis: um Espaço inicial e vinte Espaços liberados nos múltiplos de cinco.
+
+Liberar um Espaço não cria automaticamente um Poder. A construção depende dos PM disponíveis, dos limites de Rank e da aprovação mecânica.
 
 ## Relação com M&M
 
-Cada Poder recebido pela progressão será construído com a engenharia de *Mutantes & Malfeitores*: efeitos, graduações, modificadores, estruturas, descritores e pontos de poder.
+Cada Poder será construído com a engenharia de *Mutantes & Malfeitores*: efeitos, graduações, modificadores, estruturas, descritores e pontos de poder.
 
-O Nível do personagem não substitui a Graduação de M&M. Nível mede progressão geral; Graduação mede a intensidade de um efeito específico; Rank mede um estágio amplo de poder e proximidade divina.
+O Nível do personagem não substitui a Graduação de M&M. Nível mede progressão geral; PM medem orçamento; Espaços medem diversidade; Graduação mede a intensidade de um efeito específico; Rank mede um estágio amplo de poder e proximidade divina.
 
 Como Harmonia Caótica não possui perícias ou atributos-base, subir de Nível não concede aumentos nesses elementos.
 
@@ -39,13 +42,14 @@ As regras futuras deverão definir:
 
 - quantidade e nomes dos Ranks;
 - intervalo de Níveis entre Ranks;
-- orçamento em pontos de poder de cada aquisição;
-- possibilidade de ampliar um Poder existente em vez de criar outro;
 - Graduação máxima por Rank;
+- limite de PM por construção;
 - estruturas de M&M liberadas por Rank;
 - conversão dos limites de Nível de Poder de M&M;
 - procedimento completo de Vacância, disputa divina e Ascensão.
 
-## Documento relacionado
+## Documentos relacionados
 
-A implementação inicial está em `docs/sistema-2.0/nucleos/progressao.md`.
+- `docs/sistema-2.0/decisoes/DEC-011-pontos-de-poder-e-espacos-de-poder.md`;
+- `docs/sistema-2.0/decisoes/DEC-012-orcamento-inicial-e-pm-por-nivel.md`;
+- `docs/sistema-2.0/nucleos/progressao.md`.
