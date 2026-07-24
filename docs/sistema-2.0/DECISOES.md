@@ -247,7 +247,7 @@ Domínio, Vertente e Manifestação funcionarão como descritores e permissões 
 
 ---
 
-## Decisões de progressão e construção
+## Decisões de progressão, construção e documentação
 
 ### DEC-010 — Progressão em 100 Níveis e Apoteose
 
@@ -279,6 +279,12 @@ Todo Espaço é verificado por dois valores: Custo de Ficha, que representa os P
 
 Documento detalhado: `decisoes/DEC-014-custo-de-ficha-e-capacidade-operacional.md`.
 
+### DEC-015 — Documentação canônica e texto final para jogadores
+
+O GitHub continuará registrando com precisão todo o desenvolvimento. A aprovação mecânica torna a regra canônica, mas não aprova automaticamente sua redação pública. Páginas, ferramentas e documentos técnicos da branch permanecem não finais para jogadores até uma aprovação editorial explícita.
+
+Documento detalhado: `decisoes/DEC-015-documentacao-canonica-e-texto-para-jogadores.md`.
+
 ---
 
 ## Questões ainda não decididas
@@ -295,4 +301,5 @@ As seguintes questões permanecem abertas:
 8. tratamento de Efeitos que aumentam, drenam ou imitam atributos e perícias removidos;
 9. estrutura temporal de conflitos assíncronos;
 10. função mecânica definitiva das Vertentes e Heranças;
-11. processo completo de Vacância, Ascensão e conquista de uma posição divina.
+11. processo completo de Vacância, Ascensão e conquista de uma posição divina;
+12. redação final e aprovação editorial do material destinado aos jogadores.
