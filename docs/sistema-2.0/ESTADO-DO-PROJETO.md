@@ -107,6 +107,11 @@ A cada bloco de cinco Níveis, o personagem recebe 15 PM pela progressão normal
 - criadas páginas de Primeiros Passos, Progressão e Ranks, Estruturas de Poder e Consulta Rápida;
 - criada calculadora de progressão por Nível;
 - criado validador inicial de custo e Graduação para construções;
+- corrigido o validador para também respeitar o total de PM recebido no Nível atual;
+- estados editoriais públicos alinhados a regra aprovada, conteúdo em teste e auditoria em rascunho;
+- tabelas largas tornadas regiões navegáveis por teclado;
+- criada auditoria funcional automatizada para progressão, validação, acessibilidade e estados editoriais;
+- integrada a auditoria funcional ao fluxo de CI multiplataforma;
 - restaurados destinos funcionais para os links de Sistemas da página inicial na branch.
 
 ## Implementação pública atual
@@ -116,11 +121,13 @@ A branch `sistema-2.0` possui uma primeira camada funcional do site:
 - `sistemas/index.html`: portal do Sistema 2.0;
 - `sistemas/primeiros-passos.html`: introdução para jogadores;
 - `sistemas/progressao-e-ranks.html`: regras canônicas e calculadora;
-- `sistemas/construcao-guiada.html`: validador parcial de limites;
+- `sistemas/construcao-guiada.html`: validador parcial de orçamento total, PM por Espaço e Graduação;
 - `sistemas/estruturas-de-poder.html`: explicação das arquiteturas de M&M, com limites por Rank identificados como não canônicos;
 - `sistemas/consulta-rapida.html`: fórmulas e tabelas aprovadas;
 - `css/sistema-2.css`: apresentação própria;
-- `js/sistema-2.js`: calculadora e validação.
+- `js/sistema-2.js`: dados de Rank, calculadora, validação e melhorias de acessibilidade;
+- `tests/sistema-2.mjs`: auditoria funcional da implementação;
+- `.github/workflows/layout-audit-tests.yml`: execução automática das auditorias funcional e visual.
 
 Essas páginas existem apenas na branch e no PR nº 4. Não estão publicadas na versão `main` enquanto o PR não for mesclado.
 
