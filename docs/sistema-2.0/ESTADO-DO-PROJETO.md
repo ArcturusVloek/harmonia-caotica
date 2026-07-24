@@ -112,6 +112,7 @@ A cada bloco de cinco Níveis, o personagem recebe 15 PM pela progressão normal
 - tabelas largas tornadas regiões navegáveis por teclado;
 - criada auditoria funcional automatizada para progressão, validação, acessibilidade e estados editoriais;
 - integrada a auditoria funcional ao fluxo de CI multiplataforma;
+- registrada a auditoria técnica da primeira implementação pública;
 - restaurados destinos funcionais para os links de Sistemas da página inicial na branch.
 
 ## Implementação pública atual
@@ -127,6 +128,7 @@ A branch `sistema-2.0` possui uma primeira camada funcional do site:
 - `css/sistema-2.css`: apresentação própria;
 - `js/sistema-2.js`: dados de Rank, calculadora, validação e melhorias de acessibilidade;
 - `tests/sistema-2.mjs`: auditoria funcional da implementação;
+- `docs/sistema-2.0/auditorias/site-sistema-2.md`: registro técnico da auditoria;
 - `.github/workflows/layout-audit-tests.yml`: execução automática das auditorias funcional e visual.
 
 Essas páginas existem apenas na branch e no PR nº 4. Não estão publicadas na versão `main` enquanto o PR não for mesclado.
@@ -174,9 +176,10 @@ Em paralelo, o site deverá receber:
 5. `docs/sistema-2.0/decisoes/DEC-012-orcamento-inicial-e-pm-por-nivel.md`;
 6. `docs/sistema-2.0/decisoes/DEC-013-ranks-e-limites-de-construcao.md`;
 7. `docs/sistema-2.0/auditorias/estruturas-avancadas.md`;
-8. `docs/sistema-2.0/nucleos/progressao.md`;
-9. `docs/sistema-2.0/nucleos/resolucao.md`;
-10. *Mutantes & Malfeitores: Poder Supremo*.
+8. `docs/sistema-2.0/auditorias/site-sistema-2.md`;
+9. `docs/sistema-2.0/nucleos/progressao.md`;
+10. `docs/sistema-2.0/nucleos/resolucao.md`;
+11. *Mutantes & Malfeitores: Poder Supremo*.
 
 ## Regra de encerramento de sessão
 
