@@ -1,12 +1,14 @@
 # Auditoria técnica — Primeira implementação do Sistema 2.0
 
-**Status:** em teste  
+**Status:** concluída  
 **Data:** 24/07/2026  
 **Escopo:** páginas públicas, calculadora de progressão, validador inicial, estados editoriais, tabelas e integração contínua.
 
-## Objetivo
+## Resultado
 
-Verificar se a primeira implementação pública apresenta somente regras aprovadas como canônicas, mantém propostas em auditoria claramente identificadas e aplica corretamente as fórmulas de progressão já registradas.
+A primeira implementação passou pela auditoria funcional do Sistema 2.0 e pela auditoria visual multiplataforma em desktop, laptop, Android, iPhone e iPad.
+
+O fluxo validado corresponde ao commit `df8b37335d0cb5e1359131899118f67370d39997` da branch `sistema-2.0`.
 
 ## Verificações realizadas
 
@@ -38,7 +40,7 @@ Estruturas avançadas continuam produzindo aviso neutro, e não aprovação, enq
 
 ### Estados editoriais
 
-O Arquivo de Vaelora passa a distinguir:
+O Arquivo de Vaelora distingue:
 
 - **Regra aprovada:** página composta por decisões canônicas;
 - **Conteúdo parcial em teste:** página que contém ferramenta ou procedimento incompleto;
@@ -55,9 +57,23 @@ Contêineres de tabelas largas recebem:
 
 Isso permite alcançar e rolar tabelas horizontais por teclado em telas estreitas.
 
+### Auditoria visual
+
+A auditoria percorre todas as páginas em desktop, Android e iPhone, além de páginas representativas em laptop e iPad. Ela verifica:
+
+- modo de interface correto;
+- títulos e cartões dentro da largura disponível;
+- tabelas com rolagem horizontal quando necessário;
+- funcionamento dos menus e sumários compactos;
+- dimensões mínimas dos controles principais;
+- ausência de rolagem horizontal efetiva;
+- ausência de erros JavaScript.
+
 ## Automação
 
-O arquivo `tests/sistema-2.mjs` executa a auditoria funcional em Chromium. O fluxo `.github/workflows/layout-audit-tests.yml` executa:
+O arquivo `tests/sistema-2.mjs` executa a auditoria funcional em Chromium. O arquivo `tests/layout-audit-v2.mjs` executa a auditoria visual em Chromium e WebKit.
+
+O fluxo `.github/workflows/layout-audit-tests.yml` executa:
 
 1. validação sintática dos scripts;
 2. normalização das páginas;
