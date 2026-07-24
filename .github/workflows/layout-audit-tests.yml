@@ -31,7 +31,9 @@ jobs:
         run: |
           node --check js/device-mode.js
           node --check js/atlas-novo.js
+          node --check js/sistema-2.js
           node --check tests/layout-audit.mjs
+          node --check tests/sistema-2.mjs
           python3 - <<'PY'
           import ast
           from pathlib import Path
@@ -58,6 +60,9 @@ jobs:
           done
           cat /tmp/harmonia-http.log
           exit 1
+
+      - name: Executar auditoria funcional do Sistema 2.0
+        run: node tests/sistema-2.mjs
 
       - name: Executar auditoria em desktop, laptop, Android, iPhone e iPad
         run: node tests/layout-audit.mjs
