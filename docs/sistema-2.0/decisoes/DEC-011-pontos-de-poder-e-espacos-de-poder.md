@@ -1,21 +1,21 @@
 # DEC-011 — Pontos de Poder por Nível e Espaços de Poder
 
-**Status:** aprovada  
+**Status:** aprovada; valores definidos pela DEC-012  
 **Data:** 24/07/2026
 
 ## Decisão
 
 A progressão de Harmonia Caótica separará **crescimento mecânico** de **diversidade de Poderes**.
 
-- A cada Nível, o personagem recebe **X Pontos de Poder (PM)**.
-- O valor de **X** ainda será definido após a auditoria dos custos de *Mutantes & Malfeitores: Poder Supremo*.
+- A cada Nível, o personagem recebe Pontos de Poder (PM).
+- A DEC-012 define a progressão regular como **3 PM por Nível** e a Reserva Inicial como **12 PM**.
 - No Nível 1, o personagem possui um Espaço de Poder inicial.
 - Um novo Espaço de Poder é liberado em cada múltiplo de cinco: 5, 10, 15 e assim sucessivamente até 100.
 - Ao alcançar o Nível 100, o personagem terá 21 Espaços de Poder disponíveis.
 
 Para um personagem de Nível `N`, entre 1 e 100:
 
-`PM totais recebidos = N × X`
+`PM totais recebidos = 12 + (3 × N)`
 
 `Espaços de Poder = 1 + piso(N ÷ 5)`
 
@@ -56,8 +56,6 @@ Assim, PM controlam a profundidade das construções, enquanto Espaços controla
 
 Ainda deverão ser definidos:
 
-- o valor de X;
-- se o Nível 1 recebe apenas X PM ou uma reserva inicial adicional;
 - o que conta como uma única construção em casos excepcionais;
 - limites de PM e Graduação por Rank;
 - regras para reconstrução e redistribuição de PM;
