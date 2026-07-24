@@ -12,12 +12,14 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - decisão DEC-013 sobre Ranks e limites de construção;
 - decisão DEC-014 sobre Custo de Ficha e Capacidade Operacional;
 - decisão DEC-015 sobre documentação canônica e texto final para jogadores;
+- decisão DEC-016 sobre Repertórios e Poderes Alternativos;
 - núcleo de progressão consolidado;
 - Reserva Inicial de 12 PM na criação do personagem;
 - onze Ranks entre Desperto e Apoteose;
 - explicação obrigatória para jogadores da diferença entre valor pago e efeitos simultâneos;
 - fluxo editorial separado entre aprovação mecânica e aprovação da redação pública;
-- auditoria em rascunho das estruturas avançadas;
+- regras canônicas para Repertórios comuns e Dinâmicos;
+- auditoria em rascunho das demais estruturas avançadas;
 - portal público `sistemas/index.html` para o Sistema 2.0;
 - página de Primeiros Passos;
 - página canônica de Progressão e Ranks com calculadora por Nível;
@@ -55,6 +57,18 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - documentos técnicos canônicos como fonte precisa, mas não automaticamente como texto final para jogadores;
 - páginas e ferramentas atuais da branch como protótipos ou implementações parciais;
 - redação pública futura obrigada a preservar integralmente custos, limites, Graduações e exceções;
+- Repertório básico liberado desde o Rank I;
+- primeiro Poder Alternativo transformando o Espaço em Repertório;
+- custo de Repertório em 2 PM por Graduação estrutural, com reserva de 2 PM por Graduação;
+- custo de 1 PM por Poder Alternativo adicional;
+- Graduação estrutural do Repertório separada da Graduação efetiva dos Efeitos;
+- Poderes Alternativos máximos iguais ao número ordinal do Rank;
+- Dinâmico liberado no Rank III;
+- limite de duas a cinco configurações Dinâmicas conforme o Rank;
+- reserva Dinâmica dividida, nunca multiplicada;
+- unidade causal, exclusividade justificável e vulnerabilidade compartilhada como requisitos de Repertório;
+- uma troca de configuração por declaração principal até a aprovação do sistema temporal completo;
+- alternativas improvisadas indisponíveis até a conversão de recursos equivalentes;
 - páginas públicas distinguem regras aprovadas, conteúdo em teste e auditorias em rascunho.
 
 ### Corrigido — 24/07/2026
@@ -115,7 +129,6 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 
 ### Pendente
 
-- liberação e limites canônicos de Repertórios;
 - liberação e limites canônicos de Recipientes;
 - acesso e amplitude de Efeitos Variáveis;
 - conversão de Invocar, orçamento de criaturas e Grupos de Comando;
