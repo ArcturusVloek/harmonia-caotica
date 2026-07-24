@@ -22,7 +22,8 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - Consulta Rápida das regras aprovadas;
 - estilos e scripts próprios da primeira implementação pública;
 - auditoria funcional automatizada das calculadoras, estados editoriais e tabelas navegáveis;
-- execução da auditoria funcional do Sistema 2.0 no fluxo de integração contínua.
+- execução da auditoria funcional do Sistema 2.0 no fluxo de integração contínua;
+- registro técnico da primeira implementação em `auditorias/site-sistema-2.md`.
 
 ### Definido — 24/07/2026
 
