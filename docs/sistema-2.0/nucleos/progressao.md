@@ -1,10 +1,10 @@
 # Progressão em 100 Níveis
 
 **Status:** em teste  
-**Versão:** 0.2  
+**Versão:** 0.3  
 **Última revisão:** 24/07/2026
 
-Este documento estabelece a progressão geral de Harmonia Caótica. As decisões fixas estão registradas nas DEC-010, DEC-011 e DEC-012. Os nomes, intervalos e limites mecânicos dos Ranks permanecem em desenvolvimento.
+Este documento estabelece a progressão geral de Harmonia Caótica. As decisões fixas estão registradas nas DEC-010, DEC-011, DEC-012 e DEC-013.
 
 ## Cinco medidas diferentes
 
@@ -32,9 +32,7 @@ O Nível do personagem não substitui a Graduação de seus Efeitos.
 
 ### Rank
 
-O **Rank** representa um estágio amplo de poder e proximidade com o divino.
-
-O intervalo entre Ranks, seus nomes e seus limites mecânicos ainda precisam ser definidos. O Rank final é **Apoteose**, alcançado no Nível 100.
+O **Rank** representa um estágio amplo de poder e proximidade com o divino. Ele determina a Graduação máxima e o limite de PM por Espaço.
 
 ## Orçamento inicial e progressão de PM
 
@@ -80,6 +78,51 @@ Liberar um Espaço não cria automaticamente um Poder e não concede PM adiciona
 
 A cada bloco de cinco Níveis, o personagem recebe 15 PM pela progressão normal e libera um novo Espaço. Isso produz uma média aproximada de 15 PM por Espaço ao longo da progressão, sem exigir distribuição igual.
 
+## Ranks
+
+O personagem sobe de Rank a cada dez Níveis. O Nível 100 é reservado à Apoteose.
+
+| Rank | Níveis | Nome | Graduação máxima | PM máximos por Espaço |
+|---:|---:|---|---:|---:|
+| I | 1–9 | Desperto | 5 | 20 |
+| II | 10–19 | Adepto | 7 | 28 |
+| III | 20–29 | Consagrado | 9 | 36 |
+| IV | 30–39 | Arauto | 11 | 44 |
+| V | 40–49 | Exarca | 13 | 52 |
+| VI | 50–59 | Numinoso | 15 | 60 |
+| VII | 60–69 | Ascendente | 17 | 68 |
+| VIII | 70–79 | Semidivino | 19 | 76 |
+| IX | 80–89 | Soberano | 21 | 84 |
+| X | 90–99 | Pretendente | 23 | 92 |
+| XI | 100 | Apoteose | 25 | 100 |
+
+Para os Ranks I a X:
+
+`Graduação máxima = 5 + 2 × (Rank − 1)`
+
+O limite total de cada construção é:
+
+`PM máximos por Espaço = Graduação máxima × 4`
+
+Subir de Rank amplia os limites, mas não concede PM adicionais nem melhora automaticamente Poderes existentes. O jogador precisa investir PM para aproveitar o novo teto.
+
+## Aplicação dos limites de Rank
+
+A Graduação máxima se aplica à intensidade efetiva de Efeitos, resistências e capacidades medidas por Graduação.
+
+O limite de PM por Espaço inclui:
+
+- Efeito principal;
+- Efeitos Ligados;
+- Extras, Falhas, Feitos e Desvantagens;
+- Poderes Alternativos;
+- Repertórios;
+- Recipientes;
+- Efeitos Variáveis;
+- demais componentes da construção.
+
+Falhas reduzem o custo normalmente, mas não permitem ultrapassar a Graduação máxima do Rank.
+
 ## Uso dos PM
 
 PM podem ser usados, respeitando os limites de Rank, para:
@@ -110,6 +153,16 @@ Um Poder capaz de funcionar de forma independente e simultânea ocupa outro Espa
 
 Repertórios extensos, Recipientes e Efeitos Variáveis dependerão de limites específicos de Rank para impedir que uma única construção ignore o propósito dos Espaços.
 
+## Função narrativa dos Ranks
+
+- **Desperto a Consagrado:** mortal portador de poder divino;
+- **Arauto a Numinoso:** agente sobrenatural reconhecido pelo Domínio;
+- **Ascendente a Semidivino:** existência parcialmente reconstruída pelo conceito;
+- **Soberano a Pretendente:** potência capaz de disputar autoridade na Guerra Divina;
+- **Apoteose:** candidato apto a ocupar uma posição divina.
+
+Rank não concede autoridade automática sobre um Domínio.
+
 ## Apoteose
 
 No **Nível 100**, o personagem alcança o Rank **Apoteose**.
@@ -123,13 +176,13 @@ Para tornar-se uma Divindade, o personagem deverá:
 
 O resultado deverá ser compatível com o Domínio disputado. Ao ocupar a posição, o personagem passa a ser transformado, limitado e responsabilizado pelo conceito na Guerra Divina.
 
-## Questão seguinte
+## Próxima decisão
 
-Definir a estrutura dos Ranks:
+Definir a liberação de estruturas avançadas por Rank:
 
-1. intervalo de Níveis entre cada Rank;
-2. quantidade total e nomes dos Ranks;
-3. Graduação máxima por Rank;
-4. limite de PM por construção;
-5. estruturas de M&M liberadas em cada estágio;
-6. regras de reconstrução e redistribuição de PM.
+1. Poderes Alternativos e Repertórios;
+2. Recipientes;
+3. Efeitos Variáveis;
+4. Invocações complexas;
+5. reconstrução e redistribuição de PM;
+6. exceções ao limite de PM por Espaço.
