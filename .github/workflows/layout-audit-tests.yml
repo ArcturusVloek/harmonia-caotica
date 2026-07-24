@@ -32,7 +32,7 @@ jobs:
           node --check js/device-mode.js
           node --check js/atlas-novo.js
           node --check js/sistema-2.js
-          node --check tests/layout-audit.mjs
+          node --check tests/layout-audit-v2.mjs
           node --check tests/sistema-2.mjs
           python3 - <<'PY'
           import ast
@@ -65,7 +65,7 @@ jobs:
         run: node tests/sistema-2.mjs
 
       - name: Executar auditoria em desktop, laptop, Android, iPhone e iPad
-        run: node tests/layout-audit.mjs
+        run: node tests/layout-audit-v2.mjs
 
       - name: Publicar relatório e capturas
         if: always()
