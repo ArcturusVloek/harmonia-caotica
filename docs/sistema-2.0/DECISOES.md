@@ -1,7 +1,7 @@
 # Registro de Decisões
 
 **Status:** canônico  
-**Última revisão:** 23/07/2026
+**Última revisão:** 24/07/2026
 
 Este documento registra decisões estruturais do Sistema 2.0. Uma decisão permanece válida até ser explicitamente substituída por outra entrada.
 
@@ -247,13 +247,42 @@ Domínio, Vertente e Manifestação funcionarão como descritores e permissões 
 
 ---
 
+## Decisões de progressão
+
+### DEC-010 — Progressão em 100 Níveis e Apoteose
+
+Harmonia Caótica possui 100 Níveis. O Nível 100 concede o Rank Apoteose, condição necessária para disputar uma posição divina, mas não divindade automática.
+
+Documento detalhado: `decisoes/DEC-010-progressao-em-100-niveis.md`.
+
+### DEC-011 — Pontos de Poder por Nível e Espaços de Poder
+
+PM controlam a profundidade das construções. Espaços de Poder controlam quantas construções independentes podem existir. O personagem começa com um Espaço e libera outro em cada múltiplo de cinco.
+
+Documento detalhado: `decisoes/DEC-011-pontos-de-poder-e-espacos-de-poder.md`.
+
+### DEC-012 — Orçamento inicial e PM por Nível
+
+O personagem começa no Nível 1 com 15 PM, formados por 3 PM do Nível e 12 PM de Reserva Inicial. Cada Nível concede 3 PM. O total recebido no Nível `N` é `12 + (3 × N)`.
+
+Documento detalhado: `decisoes/DEC-012-orcamento-inicial-e-pm-por-nivel.md`.
+
+### DEC-013 — Ranks e limites de construção
+
+O personagem sobe de Rank a cada dez Níveis. Existem onze Ranks, de Desperto a Apoteose. A Graduação máxima cresce de 5 a 25, e o limite de PM por Espaço equivale a quatro vezes a Graduação máxima.
+
+Documento detalhado: `decisoes/DEC-013-ranks-e-limites-de-construcao.md`.
+
+---
+
 ## Questões ainda não decididas
 
 As seguintes questões permanecem abertas:
 
-1. conversão determinística de testes de ataque, testes de poder e jogadas de salvamento;
-2. quais custos e limites de nível de poder de M&M serão preservados sem alteração;
-3. tratamento de efeitos que aumentam, drenam ou imitam atributos e perícias removidos;
-4. estrutura temporal de conflitos assíncronos;
-5. função mecânica definitiva das Vertentes e Heranças;
-6. progressão mortal, aproximação divina e Ascensão.
+1. liberação de Repertórios, Recipientes, Efeitos Variáveis e estruturas avançadas por Rank;
+2. reconstrução e redistribuição de PM;
+3. conversão determinística de testes de ataque, testes de poder e jogadas de salvamento;
+4. tratamento de Efeitos que aumentam, drenam ou imitam atributos e perícias removidos;
+5. estrutura temporal de conflitos assíncronos;
+6. função mecânica definitiva das Vertentes e Heranças;
+7. processo completo de Vacância, Ascensão e conquista de uma posição divina.
