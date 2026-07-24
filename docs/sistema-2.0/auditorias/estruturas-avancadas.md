@@ -1,12 +1,32 @@
 # Auditoria — Estruturas avançadas de Poder
 
-**Status:** rascunho  
+**Status:** parcialmente resolvida; propostas restantes em rascunho  
 **Data:** 24/07/2026  
-**Escopo:** Poderes Alternativos, Repertórios, Recipientes, Estruturas Variáveis e Invocar.
+**Escopo:** Repertórios, Recipientes, Estruturas Variáveis, Invocar e aninhamento.
 
-Esta auditoria aplica a engenharia de *Mutantes & Malfeitores: Poder Supremo* à progressão aprovada de Harmonia Caótica. Nenhuma proposta deste arquivo é canônica antes de aprovação e registro como decisão.
+Esta auditoria aplica a engenharia de *Mutantes & Malfeitores: Poder Supremo* à progressão aprovada de Harmonia Caótica.
 
-## 1. Problema de projeto
+As partes já aprovadas foram transferidas para decisões canônicas. As demais continuam como propostas e não podem ser tratadas como regras oficiais.
+
+## 1. Estado das decisões
+
+### Aprovado
+
+- **Custo de Ficha e Capacidade Operacional:** DEC-014;
+- **Repertórios e Poderes Alternativos:** DEC-016.
+
+### Ainda em rascunho
+
+- Recipientes;
+- Estruturas Variáveis;
+- Invocar;
+- orçamento e quantidade de Invocados;
+- Grupos de Comando;
+- aninhamento entre estruturas.
+
+Em caso de divergência entre esta auditoria e uma decisão aprovada, a decisão canônica prevalece.
+
+## 2. Problema de projeto
 
 As estruturas avançadas aumentam tipos diferentes de liberdade:
 
@@ -23,101 +43,41 @@ O acesso por Rank deve preservar essa liberdade sem permitir que uma estrutura i
 4. a economia de ações do formato assíncrono;
 5. os limites ontológicos de Domínio, Vertente e Manifestação.
 
-## 2. Correção necessária: dois limites por Espaço
+## 3. Limites já aprovados
 
-Estruturas como Recipiente e Variável possuem um custo pago e também concedem um conjunto interno de pontos. Esses valores não devem ser somados como se fossem duas compras, mas nenhum deles pode ultrapassar o teto do Rank.
+Todo Espaço obedece à DEC-014:
 
-Cada Espaço deverá obedecer simultaneamente a:
+```text
+Custo de Ficha <= PM disponíveis do personagem
+Custo de Ficha <= PM máximos por Espaço
+Capacidade Operacional <= PM máximos por Espaço
+```
 
-### Custo de Ficha
+Pontos internos de estruturas não são pagos duas vezes. Falhas e descontos podem reduzir o Custo de Ficha, mas não permitem ultrapassar a Capacidade Operacional do Espaço.
 
-É a quantidade real de PM gasta na estrutura, incluindo:
+Repertórios obedecem integralmente à DEC-016. Esta auditoria não deve ser usada para reinterpretar seus custos, limites, troca de configuração, Dinâmico, unidade causal ou desabilitação compartilhada.
 
-- custo por Graduação;
-- Extras e Falhas aplicados à estrutura;
-- Feitos externos;
-- Poderes Alternativos;
-- Desvantagens.
+## 4. Resultado resumido por Rank
 
-`Custo de Ficha <= PM máximos por Espaço`
+Na tabela abaixo, Repertório é canônico. As demais colunas permanecem propostas.
 
-### Capacidade Operacional
-
-É o maior valor nominal que pode estar ativo em uma configuração, conjunto interno ou entidade produzida.
-
-`Capacidade Operacional <= PM máximos por Espaço`
-
-Consequências:
-
-- um Recipiente com Falha global pode custar menos que sua capacidade, mas sua capacidade interna não pode exceder o teto do Espaço;
-- uma Estrutura Variável de 4 PM por Graduação pode conceder 5 PM por Graduação, mas a configuração ativa continua limitada pelo teto do Espaço;
-- cada configuração de Repertório precisa respeitar o teto, além do custo total da estrutura;
-- pontos internos não são pagos duas vezes.
-
-## 3. Resultado resumido por Rank
-
-| Rank | Repertório | Recipiente | Variável | Invocar |
+| Rank | Repertório — canônico | Recipiente — proposta | Variável — proposta | Invocar — proposta |
 |---:|---|---|---|---|
 | I — Desperto | básico; 1 Alternativo | ativo | não | não |
 | II — Adepto | 2 Alternativos | passivo | não | um capanga fixo |
 | III — Consagrado | 3 Alternativos; Dinâmico | Falha global limitada | não | Tipo geral; até 2 capangas |
 | IV — Arauto | 4 Alternativos | igual | não | Horda; até 5 capangas |
 | V — Exarca | 5 Alternativos | pode conter um Repertório | Variável 4/Grad. | Tipo amplo; até 10 capangas |
-| VI — Numinoso | 6 Alternativos; 3 Dinâmicos | desconto global ampliado | Variável 5/Grad. | Heroísmo para uma entidade; até 25 capangas comuns |
-| VII — Ascendente | 7 Alternativos | igual | Variável 6/Grad. | até 50 capangas comuns |
-| VIII — Semidivino | 8 Alternativos | igual | Variável 6/Grad. | até 100 capangas comuns |
-| IX — Soberano | 9 Alternativos; 4 Dinâmicos | uma camada de aninhamento | Variável 7/Grad. | até 250 comuns ou 2 Heroicos |
-| X — Pretendente | 10 Alternativos | igual | Variável 7/Grad. | até 500 capangas comuns |
-| XI — Apoteose | 11 Alternativos; 5 Dinâmicos | igual | Variável 8/Grad. | até 1.000 comuns ou 2 Heroicos |
+| VI — Numinoso | 6 Alternativos; até 3 Dinâmicos | desconto global ampliado | Variável 5/Grad. | Heroísmo para uma entidade; até 25 comuns |
+| VII — Ascendente | 7 Alternativos | igual | Variável 6/Grad. | até 50 comuns |
+| VIII — Semidivino | 8 Alternativos | igual | Variável 6/Grad. | até 100 comuns |
+| IX — Soberano | 9 Alternativos; até 4 Dinâmicos | uma camada de aninhamento | Variável 7/Grad. | até 250 comuns ou 2 Heroicos |
+| X — Pretendente | 10 Alternativos | igual | Variável 7/Grad. | até 500 comuns |
+| XI — Apoteose | 11 Alternativos; até 5 Dinâmicos | igual | Variável 8/Grad. | até 1.000 comuns ou 2 Heroicos |
 
-Os números de capangas representam corpos narrativos. A quantidade de resoluções mecânicas permanece limitada por Grupos de Comando.
+Os números de capangas representam corpos narrativos. A quantidade de resoluções mecânicas permanece limitada pela proposta de Grupos de Comando.
 
-## 4. Repertório e Poderes Alternativos
-
-### Diagnóstico
-
-Repertório é a estrutura avançada de menor risco. Ela oferece várias configurações por custo reduzido, mas normalmente somente uma configuração funciona de cada vez. Seu principal risco é permitir que um único Espaço substitua muitos Espaços independentes.
-
-### Liberação
-
-Repertório básico é permitido desde o Rank I.
-
-O Poder padrão não conta como Alternativo. O limite de Poderes Alternativos é igual ao número ordinal do Rank:
-
-`Alternativos máximos = Rank`
-
-Assim:
-
-- Rank I: 1 Alternativo, totalizando 2 configurações;
-- Rank V: 5 Alternativos, totalizando 6 configurações;
-- Apoteose: 11 Alternativos, totalizando 12 configurações.
-
-Cada Alternativo mantém seu custo normal de Feito de Poder.
-
-### Regras obrigatórias
-
-- somente uma configuração não Dinâmica pode estar ativa;
-- todas as configurações devem compartilhar uma fonte e relação causal verificáveis;
-- cada configuração respeita a Graduação máxima;
-- o Custo de Ficha e a Capacidade Operacional respeitam o teto do Espaço;
-- a configuração pode mudar no máximo uma vez por declaração de ação;
-- desabilitar a estrutura torna todas as configurações indisponíveis;
-- um Repertório não pode servir como lista irrestrita de todos os efeitos de um Domínio.
-
-### Dinâmico
-
-Poderes Alternativos Dinâmicos são liberados no Rank III.
-
-| Ranks | Configurações Dinâmicas simultâneas |
-|---|---:|
-| III–V | 2 |
-| VI–VIII | 3 |
-| IX–X | 4 |
-| XI | 5 |
-
-Os pontos podem ser divididos apenas entre configurações marcadas como Dinâmicas. A soma dos pontos ativos não pode exceder o conjunto do Repertório.
-
-## 5. Recipiente
+## 5. Recipientes — proposta pendente
 
 ### Diagnóstico
 
@@ -125,7 +85,7 @@ Recipiente não concede desconto básico. Seu custo normal equivale à capacidad
 
 O risco surge quando uma Falha aplicada à estrutura reduz simultaneamente o custo de muitos Efeitos que continuam disponíveis juntos.
 
-### Liberação
+### Liberação proposta
 
 - Rank I: Recipiente ativo;
 - Rank II: Recipiente passivo;
@@ -133,49 +93,47 @@ O risco surge quando uma Falha aplicada à estrutura reduz simultaneamente o cus
 - Rank V: um Repertório pode existir dentro de um Recipiente;
 - Rank IX: uma camada de aninhamento entre Recipiente e Repertório.
 
-### Regras obrigatórias
+### Regras propostas
 
-- todos os Efeitos internos devem pertencer à mesma meta-característica;
+- todos os Efeitos internos pertencem à mesma meta-característica;
 - ativar o Recipiente não reduz a ação própria de seus Efeitos;
-- os Efeitos podem funcionar simultaneamente, desde que suas ações e condições sejam cumpridas;
+- os Efeitos podem funcionar simultaneamente quando suas ações e condições forem cumpridas;
 - desativar um Recipiente ativo remove conjuntamente o acesso aos Efeitos internos;
-- modificadores aplicados à estrutura precisam afetar ativação, acesso ou manutenção do conjunto;
-- modificadores que afetam somente um Efeito devem ser comprados nesse Efeito;
-- o conjunto interno não é somado novamente ao custo pago, mas respeita a Capacidade Operacional do Espaço.
+- modificadores aplicados à estrutura afetam ativação, acesso ou manutenção do conjunto;
+- modificadores que afetam somente um Efeito são comprados nesse Efeito;
+- o conjunto interno não é pago novamente, mas respeita a Capacidade Operacional do Espaço.
 
-### Limite de redução global
+### Redução global proposta
 
 | Ranks | Redução máxima aplicada à estrutura |
 |---|---:|
 | I–II | nenhuma |
-| III–V | -1 PM por Graduação |
-| VI–XI | -2 PM por Graduação |
+| III–V | −1 PM por Graduação |
+| VI–XI | −2 PM por Graduação |
 
-O custo final de um Recipiente nunca pode ser inferior a 3 PM por Graduação. A Falha deve representar uma limitação real de ativação ou manutenção e não apenas uma limitação estética.
+O custo final proposto nunca pode ser inferior a 3 PM por Graduação. A Falha deve representar uma limitação real de ativação ou manutenção, não uma limitação estética.
 
-## 6. Estrutura Variável
+## 6. Estrutura Variável — proposta pendente
 
 ### Diagnóstico
 
 Variável é a estrutura de maior flexibilidade e maior risco de abuso. Ela pode otimizar o personagem para cada situação, reduzir a necessidade de cooperação e tornar desafios difíceis de preparar. Não deve representar “qualquer efeito desejado”.
 
-Toda Estrutura Variável exige:
+Toda Estrutura Variável exigiria:
 
-- um descritor causal preciso;
-- um conjunto explícito de permissões;
-- uma lista explícita de proibições;
+- descritor causal preciso;
+- conjunto explícito de permissões;
+- lista explícita de proibições;
 - validação antes de produzir resultado;
 - uma única reconfiguração por declaração de ação;
 - respeito à Graduação da estrutura e ao Rank;
-- respeito ao teto de Capacidade Operacional.
+- respeito à Capacidade Operacional.
 
-### Liberação por amplitude
+### Liberação proposta por amplitude
 
 #### Rank V — 4 PM por Graduação
 
-Uma característica ou Efeito de um tipo e descritor específicos, um de cada vez.
-
-Exemplo: uma adaptação defensiva biológica da Vertente Simbiose.
+Uma característica ou Efeito de tipo e descritor específicos, um de cada vez.
 
 #### Rank VI — 5 PM por Graduação
 
@@ -193,63 +151,65 @@ Vários Efeitos simultâneos permitidos por uma Vertente inteira.
 
 Qualquer combinação de Efeitos permitida por um único Domínio ao qual o personagem possua acesso legítimo.
 
-Mesmo em Apoteose, Variável não concede acesso a outros Domínios, não ignora limites ontológicos e não permite efeitos sem relação causal com o descritor.
+Mesmo em Apoteose, Variável não concederia acesso a outros Domínios nem permitiria Efeitos sem relação causal com o descritor.
 
-### Configurações
+### Configurações propostas
 
 - Ranks V–VIII: somente configurações previamente aprovadas;
-- Ranks IX–X: novas configurações podem ser propostas durante uma cena, mas não funcionam antes da validação;
-- Apoteose: configuração em cena permanece permitida apenas com declaração mecânica completa e validação.
+- Ranks IX–X: novas configurações podem ser propostas durante a cena, mas não funcionam antes da validação;
+- Apoteose: configuração em cena exige declaração mecânica completa e validação.
 
-A reconfiguração consome a ação principal do uso até que o sistema temporal seja convertido. Reconfiguração como reação fica proibida para personagens jogadores.
+A reconfiguração consumiria a ação principal até a conversão do sistema temporal. Reconfiguração como reação ficaria proibida para personagens jogadores.
 
-### Proibições
+### Proibições propostas
 
 - Variável dentro de Variável;
 - Variável dentro de Repertório;
 - Repertório criado por Variável;
 - Invocar criado por Variável;
 - descritores vagos como “magia”, “energia”, “poder divino” ou “qualquer Milagre” sem parâmetros adicionais;
-- utilização para reproduzir atributos ou perícias enquanto esses elementos não tiverem conversão aprovada.
+- reprodução de atributos ou perícias antes da conversão desses elementos.
 
-## 7. Invocar
+## 7. Invocar — proposta pendente
 
 ### Diagnóstico
 
 Invocar é perigoso não apenas pelo orçamento da criatura, mas por conceder ações, posições, alvos e decisões adicionais. O formato assíncrono exige limitar a quantidade de agentes mecânicos, ainda que a narrativa comporte hordas.
 
-A fórmula original de 15 pontos por Graduação não pode ser preservada diretamente. Ela pressupõe personagens completos de M&M, com atributos, perícias, feitos e defesas. Harmonia Caótica remove esses elementos e concede 3 PM por Nível.
+A fórmula original de 15 pontos por Graduação não pode ser preservada diretamente sem auditoria, pois pressupõe personagens completos de M&M com atributos, perícias, feitos e defesas.
 
 ### Conversão proposta
 
-`PM do Invocado = 3 × Graduação de Invocar`
+```text
+PM do Invocado = 3 × Graduação de Invocar
+```
 
-Invocados não recebem a Reserva Inicial de 12 PM, pois não são protagonistas.
+Invocados não receberiam a Reserva Inicial de 12 PM.
 
-Limites adicionais:
+Limites adicionais propostos:
 
-- Graduação de Invocar comum <= Graduação máxima do Rank - 2;
-- Graduação de Invocar Heroico <= Graduação máxima do Rank - 4;
-- nenhuma Graduação de Efeito do Invocado pode superar a Graduação de Invocar;
-- Invocados não podem possuir Invocar nem Estrutura Variável;
-- o bloco da criatura é fixo e aprovado antes do uso, salvo acesso a Tipo.
+- Invocar comum até Graduação máxima do Rank − 2;
+- Invocar Heroico até Graduação máxima do Rank − 4;
+- nenhuma Graduação de Efeito do Invocado acima da Graduação de Invocar;
+- Invocados sem Invocar ou Estrutura Variável;
+- bloco da criatura fixo e aprovado antes do uso, salvo acesso a Tipo.
 
-### Liberação de recursos
+### Liberação proposta
 
 - Rank II: um capanga fixo;
-- Rank III: modificador Tipo geral e uma aplicação de Progressão;
+- Rank III: Tipo geral e uma aplicação de Progressão;
 - Rank IV: Horda e duas aplicações de Progressão;
 - Rank V: Tipo amplo e três aplicações de Progressão;
-- Rank VI: Heroísmo para uma entidade; quatro aplicações de Progressão para capangas comuns;
-- cada Rank posterior aumenta em uma a Progressão máxima dos capangas comuns;
+- Rank VI: Heroísmo para uma entidade e quatro aplicações de Progressão para comuns;
+- cada Rank posterior aumenta em uma a Progressão máxima dos comuns;
 - Rank IX: até duas entidades Heroicas;
 - Apoteose: mantém o limite de duas entidades Heroicas.
 
-A fórmula para capangas comuns é:
+```text
+Aplicações máximas de Progressão = Rank − 2
+```
 
-`Aplicações máximas de Progressão = Rank - 2`
-
-| Rank | Aplicações | Corpos máximos pela progressão de M&M |
+| Rank | Aplicações | Corpos máximos propostos |
 |---:|---:|---:|
 | II | 0 | 1 |
 | III | 1 | 2 |
@@ -262,20 +222,20 @@ A fórmula para capangas comuns é:
 | X | 8 | 500 |
 | XI | 9 | 1.000 |
 
-### Grupos de Comando
+### Grupos de Comando propostos
 
-Corpos iguais que recebem a mesma ordem formam um Grupo de Comando e produzem uma única resolução mecânica coletiva.
+Corpos iguais sob a mesma ordem formariam um Grupo de Comando e produziriam uma única resolução mecânica coletiva.
 
-| Ranks | Grupos de Comando máximos |
+| Ranks | Grupos de Comando máximos propostos |
 |---|---:|
 | II–IV | 1 |
 | V–VII | 2 |
 | VIII–X | 3 |
 | XI | 4 |
 
-Uma entidade Heroica ocupa um Grupo de Comando inteiro e funciona como agente independente. Hordas Heroicas são proibidas para personagens jogadores.
+Uma entidade Heroica ocuparia um Grupo de Comando inteiro. Hordas Heroicas seriam proibidas para personagens jogadores.
 
-O número de corpos aumenta presença, cobertura, capacidade de ocupar posições e resistência narrativa do grupo. Ele não concede automaticamente um ataque separado para cada criatura.
+O número de corpos aumentaria presença, cobertura, ocupação de posições e resistência narrativa. Não concederia automaticamente um ataque separado para cada criatura.
 
 ### Descritor ou criatura real
 
@@ -287,43 +247,38 @@ Invocar só deve ser usado quando a entidade:
 - pode executar tarefas diferentes;
 - permanece como agente identificável na cena.
 
-Uma entidade que apenas personifica Dano, Sufocar, Armadilha ou outro Efeito continua sendo um descritor desse Efeito.
+Uma entidade que apenas personifica Dano, Sufocar, Armadilha ou outro Efeito continua sendo descritor desse Efeito.
 
-### Elementos pendentes
+### Elementos ainda pendentes
 
-- o Feito Sacrifício depende da futura substituição de pontos heroicos;
-- ordens, autonomia e duração precisam ser ajustadas ao sistema temporal assíncrono;
-- a construção completa dos blocos de Invocados precisa ser testada com a conversão de resistências.
+- Sacrifício depende da futura substituição de pontos heroicos;
+- ordens, autonomia e duração dependem do sistema temporal assíncrono;
+- blocos de Invocados dependem da conversão de resistências.
 
-## 8. Aninhamento de estruturas
+## 8. Aninhamento — proposta pendente
 
-Para evitar multiplicação recursiva de flexibilidade:
+Para evitar multiplicação recursiva de flexibilidade, propõe-se:
 
-- Ranks I–IV: nenhuma estrutura dentro de outra estrutura;
+- Ranks I–IV: nenhuma estrutura dentro de outra;
 - Ranks V–VIII: um Repertório pode existir dentro de um Recipiente;
-- Ranks IX–XI: uma única camada de aninhamento entre Recipiente e Repertório;
+- Ranks IX–XI: uma única camada entre Recipiente e Repertório;
 - Variável não pode ser aninhada;
-- Invocar não pode ser usado para criar entidades que possuam Variável ou Invocar;
+- Invocar não cria entidades com Variável ou Invocar;
 - uma estrutura aninhada continua usando o mesmo Espaço e os mesmos dois tetos.
 
-## 9. Resultado da auditoria
+## 9. Ordem de risco
 
-A ordem de risco mecânico é:
+1. Repertório — flexibilidade com exclusividade; **resolvido pela DEC-016**.
+2. Recipiente — simultaneidade paga integralmente; **próxima decisão**.
+3. Invocar — multiplicação de agentes e ações; pendente.
+4. Variável — improvisação e otimização durante o jogo; pendente.
 
-1. Repertório — flexibilidade com exclusividade;
-2. Recipiente — simultaneidade paga integralmente;
-3. Invocar — multiplicação de agentes e ações;
-4. Variável — improvisação e otimização durante o jogo.
+## 10. Decisões restantes
 
-A progressão proposta libera cedo as arquiteturas essenciais para criatividade, mas reserva improvisação ampla, entidades Heroicas e exércitos para Ranks compatíveis com sua complexidade e impacto.
-
-## 10. Decisões que exigem aprovação
-
-1. adoção do limite duplo de Custo de Ficha e Capacidade Operacional;
-2. Repertório básico no Rank I e Dinâmico no Rank III;
-3. Recipiente ativo no Rank I e passivo no Rank II;
-4. Estrutura Variável iniciando no Rank V e ampliada até Apoteose;
-5. Invocar iniciando no Rank II;
-6. conversão do orçamento de Invocados para `3 × Graduação`;
-7. Grupos de Comando como limite de ações de hordas;
-8. limites de aninhamento entre estruturas.
+1. Recipiente ativo no Rank I e passivo no Rank II;
+2. Falhas globais e custo mínimo de Recipientes;
+3. Estrutura Variável iniciando no Rank V e ampliada até Apoteose;
+4. Invocar iniciando no Rank II;
+5. conversão do orçamento de Invocados para `3 × Graduação`;
+6. Grupos de Comando como limite de ações de hordas;
+7. limites de aninhamento entre estruturas.
