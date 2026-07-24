@@ -13,12 +13,14 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - decisão DEC-014 sobre Custo de Ficha e Capacidade Operacional;
 - decisão DEC-015 sobre documentação canônica e texto final para jogadores;
 - decisão DEC-016 sobre Repertórios e Poderes Alternativos;
+- decisão DEC-017 sobre Recipientes;
 - núcleo de progressão consolidado;
 - Reserva Inicial de 12 PM na criação do personagem;
 - onze Ranks entre Desperto e Apoteose;
 - explicação obrigatória para jogadores da diferença entre valor pago e efeitos simultâneos;
 - fluxo editorial separado entre aprovação mecânica e aprovação da redação pública;
 - regras canônicas para Repertórios comuns e Dinâmicos;
+- regras canônicas para Recipientes ativos e passivos;
 - auditoria em rascunho das demais estruturas avançadas;
 - portal público `sistemas/index.html` para o Sistema 2.0;
 - página de Primeiros Passos;
@@ -69,6 +71,18 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - unidade causal, exclusividade justificável e vulnerabilidade compartilhada como requisitos de Repertório;
 - uma troca de configuração por declaração principal até a aprovação do sistema temporal completo;
 - alternativas improvisadas indisponíveis até a conversão de recursos equivalentes;
+- Recipiente ativo liberado desde o Rank I;
+- Recipiente passivo liberado desde o Rank II;
+- custo e capacidade interna de Recipiente em 5 PM por Graduação estrutural;
+- Graduação estrutural do Recipiente separada da Graduação efetiva dos Efeitos;
+- Capacidade Operacional de Recipiente igual à capacidade interna máxima;
+- componentes internos fixos, simultaneamente acessíveis e pertencentes à mesma meta-característica;
+- ausência de limite numérico adicional para Efeitos internos;
+- Falhas globais em Recipientes liberadas desde o Rank III;
+- redução global máxima de −1 PM por Graduação nos Ranks III–V e −2 PM por Graduação nos Ranks VI–XI;
+- piso estrutural de 4 PM por Graduação nos Ranks III–V e 3 PM por Graduação nos Ranks VI–XI;
+- modificadores dependentes de rolagem indisponíveis até conversão;
+- aninhamento envolvendo Recipientes mantido como questão separada e ainda não aprovado;
 - páginas públicas distinguem regras aprovadas, conteúdo em teste e auditorias em rascunho.
 
 ### Corrigido — 24/07/2026
@@ -129,7 +143,6 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 
 ### Pendente
 
-- liberação e limites canônicos de Recipientes;
 - acesso e amplitude de Efeitos Variáveis;
 - conversão de Invocar, orçamento de criaturas e Grupos de Comando;
 - limites de aninhamento entre estruturas;
