@@ -1,7 +1,7 @@
 # Princípios do Sistema 2.0
 
 **Status:** canônico  
-**Última revisão:** 23/07/2026
+**Última revisão:** 24/07/2026
 
 Estes princípios orientam todas as regras futuras. Uma proposta que os contradiga precisa ser rejeitada ou registrada como revisão formal deste documento.
 
@@ -115,3 +115,11 @@ Todo documento mecânico relevante deve ser identificado como:
 - **em teste:** regra adotada provisoriamente para validação;
 - **canônico:** regra oficial vigente;
 - **descartado:** conteúdo substituído ou rejeitado.
+
+## 18. Regra canônica e texto final são etapas diferentes
+
+A aprovação mecânica fixa o funcionamento da regra, mas não aprova automaticamente sua redação pública.
+
+Os documentos de desenvolvimento devem priorizar precisão, integridade e rastreabilidade. A versão destinada aos jogadores será escrita depois da consolidação dos blocos mecânicos, usando linguagem progressiva, exemplos e referências rápidas sem alterar o conteúdo canônico.
+
+Nenhuma página, ferramenta ou texto da branch de desenvolvimento será considerado material final para jogadores sem aprovação editorial explícita.
