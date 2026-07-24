@@ -72,7 +72,18 @@ Harmonia Caótica utiliza diretamente a engenharia de poderes de *Mutantes & Mal
 34. O número máximo de Poderes Alternativos é igual ao número ordinal do Rank.
 35. Dinâmico é liberado no Rank III.
 36. Repertórios exigem fonte imediata, exclusividade justificável e vulnerabilidade compartilhada.
-37. Alternativas improvisadas permanecem indisponíveis até a conversão de recursos equivalentes a esforço extra e pontos heroicos.
+37. Alternativas improvisadas permanecem indisponíveis até a conversão dos recursos correspondentes.
+38. Recipiente ativo é permitido desde o Rank I.
+39. Recipiente passivo é permitido desde o Rank II.
+40. Cada Graduação estrutural de Recipiente custa 5 PM e concede 5 PM internos.
+41. A Graduação estrutural do Recipiente não é Graduação efetiva de Efeito.
+42. A Capacidade Operacional do Recipiente equivale à sua capacidade interna máxima.
+43. Não existe limite numérico adicional de Efeitos internos, desde que todos pertençam à mesma meta-característica e caibam na capacidade.
+44. Falhas globais em Recipientes começam no Rank III.
+45. A redução global máxima é de −1 PM por Graduação nos Ranks III–V e −2 PM por Graduação nos Ranks VI–XI.
+46. O custo estrutural mínimo do Recipiente é de 4 PM por Graduação nos Ranks III–V e 3 PM por Graduação nos Ranks VI–XI.
+47. Modificadores dependentes de rolagem permanecem indisponíveis até conversão.
+48. Aninhamento envolvendo Recipientes permanece não aprovado.
 
 ## Progressão aprovada
 
@@ -117,49 +128,39 @@ Falhas e descontos podem reduzir o Custo de Ficha, mas não permitem ultrapassar
 
 ## Repertórios aprovados
 
-### Estrutura básica
-
 ```text
 Repertório: 2 PM por Graduação estrutural
 Reserva: 2 PM por Graduação estrutural
 Poder Alternativo adicional: 1 PM
+Poderes Alternativos máximos: número do Rank
 ```
 
-Todo o Repertório ocupa um único Espaço de Poder.
+- todo o Repertório ocupa um único Espaço;
+- a reserva é compartilhada e não se multiplica;
+- somente uma configuração comum utiliza a reserva por vez;
+- a configuração pode mudar uma vez por declaração principal até a aprovação do sistema temporal completo;
+- cada Efeito interno respeita a Graduação máxima do Rank;
+- pertencer ao mesmo Domínio não basta para justificar um Repertório;
+- Dinâmico começa no Rank III e divide a reserva entre duas a cinco configurações conforme o Rank.
 
-A configuração padrão está incluída no custo da estrutura. A reserva é compartilhada e não se multiplica pelo número de alternativas.
-
-### Alternativos por Rank
+## Recipientes aprovados
 
 ```text
-Poderes Alternativos máximos = número do Rank
+Recipiente: 5 PM por Graduação estrutural
+Capacidade interna: 5 PM por Graduação estrutural
+Capacidade Operacional: capacidade interna máxima
 ```
 
-A configuração padrão não conta nesse limite. Portanto, o total de configurações cresce de 2 no Rank I para 12 em Apoteose.
-
-### Funcionamento
-
-- somente uma configuração comum utiliza a reserva por vez;
-- a configuração pode mudar uma vez por declaração principal de ação até a aprovação do sistema temporal completo;
-- a troca não ativa gratuitamente os Efeitos da nova configuração;
-- Efeitos que exigem manutenção deixam de ser mantidos quando perdem a reserva;
-- uma configuração pode reunir vários Efeitos, desde que sua soma caiba na reserva;
-- cada Efeito interno respeita a Graduação máxima do Rank;
-- todas as configurações compartilham fonte, exclusividade e vulnerabilidade verificáveis;
-- pertencer ao mesmo Domínio não basta para justificar um Repertório;
-- desabilitar a estrutura torna todas as configurações indisponíveis.
-
-### Dinâmico
-
-| Ranks | Configurações Dinâmicas máximas |
-|---|---:|
-| I–II | nenhuma |
-| III–V | 2 |
-| VI–VIII | 3 |
-| IX–X | 4 |
-| XI | 5 |
-
-Cada configuração Dinâmica custa 1 PM adicional. Os PM são divididos entre as configurações Dinâmicas e nunca multiplicados.
+- Recipiente ativo desde o Rank I;
+- Recipiente passivo desde o Rank II;
+- componentes internos fixos, simultaneamente acessíveis e pertencentes à mesma meta-característica;
+- nenhum limite numérico adicional de Efeitos internos;
+- modificadores internos afetam apenas o Efeito correspondente;
+- modificadores globais precisam afetar ativação, acesso ou manutenção do conjunto inteiro;
+- nenhuma redução global nos Ranks I–II;
+- redução máxima de −1 PM por Graduação nos Ranks III–V, com piso de 4 PM por Graduação;
+- redução máxima de −2 PM por Graduação nos Ranks VI–XI, com piso de 3 PM por Graduação;
+- nenhuma estrutura dentro de outra até decisão específica de aninhamento.
 
 ## Política de preservação e publicação
 
@@ -183,6 +184,7 @@ A versão final será escrita depois da consolidação dos blocos mecânicos, co
 - aprovados Custo de Ficha e Capacidade Operacional;
 - separadas aprovação mecânica e aprovação editorial;
 - aprovados Repertórios e Poderes Alternativos por Rank;
+- aprovados Recipientes ativos, passivos e seus limites por Rank;
 - criado o portal técnico inicial do Sistema 2.0;
 - criadas calculadoras e validadores parciais;
 - criada auditoria funcional e visual automatizada.
@@ -193,34 +195,24 @@ A branch `sistema-2.0` possui páginas e ferramentas experimentais, incluindo po
 
 Essas páginas existem apenas na branch e no PR nº 4. Não estão publicadas na `main`.
 
-Nenhuma delas constitui texto final para jogadores. A DEC-014 e a DEC-016 ainda não foram integralmente aplicadas ao site ou ao validador.
+Nenhuma delas constitui texto final para jogadores. As DEC-014, DEC-016 e DEC-017 ainda não foram integralmente aplicadas ao site ou ao validador.
 
 ## Trabalho atual
 
-Definir a liberação e os limites dos **Recipientes por Rank**.
+Definir a liberação e a amplitude das **Estruturas Variáveis**.
 
-A auditoria de estruturas avançadas ainda precisa aprovar, rejeitar ou ajustar:
+Permanecem pendentes:
 
-- Recipiente ativo e passivo;
-- Falhas aplicadas ao Recipiente inteiro;
 - acesso e amplitude de Efeitos Variáveis;
-- conversão do orçamento e quantidade de Invocados;
-- Grupos de Comando para hordas;
+- conversão de Invocar, orçamento de criaturas e Grupos de Comando;
 - limites de aninhamento entre estruturas;
-- reconstrução e redistribuição de PM.
-
-## Trabalho posterior
-
-Depois das estruturas avançadas, concluir a conversão determinística de:
-
-1. testes de ataque;
-2. testes opostos de poder;
-3. jogadas de salvamento contra Efeitos;
-4. limites de Nível de Poder de M&M;
-5. ações e duração no formato assíncrono;
-6. Efeitos ligados a atributos e perícias removidos.
-
-Somente depois da consolidação mecânica será iniciada a redação final para jogadores, seguida pela revisão editorial e pela implementação pública definitiva.
+- reconstrução e redistribuição de PM;
+- conversão determinística de ataques, testes opostos e salvamentos;
+- tratamento de Efeitos ligados a atributos e perícias removidos;
+- estrutura temporal de conflitos assíncronos;
+- função definitiva das Vertentes e Heranças;
+- Vacância, Ascensão e conquista de posição divina;
+- redação final e aprovação editorial do material para jogadores.
 
 ## Arquivos que devem ser lidos antes de continuar
 
@@ -233,11 +225,13 @@ Somente depois da consolidação mecânica será iniciada a redação final para
 7. `docs/sistema-2.0/decisoes/DEC-014-custo-de-ficha-e-capacidade-operacional.md`;
 8. `docs/sistema-2.0/decisoes/DEC-015-documentacao-canonica-e-texto-para-jogadores.md`;
 9. `docs/sistema-2.0/decisoes/DEC-016-repertorios-e-poderes-alternativos.md`;
-10. `docs/sistema-2.0/auditorias/estruturas-avancadas.md`;
-11. `docs/sistema-2.0/auditorias/site-sistema-2.md`;
-12. `docs/sistema-2.0/nucleos/progressao.md`;
-13. `docs/sistema-2.0/nucleos/resolucao.md`;
-14. *Mutantes & Malfeitores: Poder Supremo*.
+10. `docs/sistema-2.0/decisoes/DEC-017-recipientes.md`;
+11. `docs/sistema-2.0/auditorias/estruturas-avancadas.md`;
+12. `docs/sistema-2.0/auditorias/recipientes-por-rank.md`;
+13. `docs/sistema-2.0/auditorias/site-sistema-2.md`;
+14. `docs/sistema-2.0/nucleos/progressao.md`;
+15. `docs/sistema-2.0/nucleos/resolucao.md`;
+16. *Mutantes & Malfeitores: Poder Supremo*.
 
 ## Regra de encerramento de sessão
 
