@@ -11,9 +11,9 @@ Harmonia Caótica será um RPG sem dados, desenvolvido para textos longos e ass�
 
 O cenário é Vaelora, uma ambientação de dark/high fantasy centrada em Divindades, Domínios, Vertentes, Bênçãos, Milagres, Guerra Divina, Vacância e Ascensão.
 
-Harmonia Caótica utilizará diretamente a engenharia de poderes de *Mutantes & Malfeitores*, com foco em *Poder Supremo*. Efeitos, Graduações, custos, modificadores, estruturas, descritores e construção por pontos serão preservados sempre que não dependerem de dados, perícias ou atributos-base.
+Harmonia Caótica utiliza diretamente a engenharia de poderes de *Mutantes & Malfeitores*, com foco em *Poder Supremo*. Efeitos, Graduações, custos, modificadores, estruturas, descritores e construção por pontos são preservados sempre que não dependem de dados, perícias ou atributos-base.
 
-## Fundamentos mecânicos preservados de M&M
+## Fundamentos mecânicos preservados
 
 - Efeitos e Graduações;
 - custos por Graduação;
@@ -36,7 +36,7 @@ Harmonia Caótica utilizará diretamente a engenharia de poderes de *Mutantes & 
 
 ## Decisões aprovadas
 
-1. GitHub é a fonte canônica.
+1. GitHub é a fonte canônica do desenvolvimento.
 2. O sistema não depende de dados.
 3. O formato principal é textual e assíncrono.
 4. M&M é a base mecânica direta da construção de poderes.
@@ -53,19 +53,26 @@ Harmonia Caótica utilizará diretamente a engenharia de poderes de *Mutantes & 
 15. Os PM totais recebidos no Nível `N` são `12 + (3 × N)`.
 16. No Nível 100, o personagem terá recebido 312 PM.
 17. O personagem sobe de Rank a cada dez Níveis.
-18. Existem onze Ranks: Desperto, Adepto, Consagrado, Arauto, Exarca, Numinoso, Ascendente, Semidivino, Soberano, Pretendente e Apoteose.
-19. A Graduação máxima cresce de 5 no Rank Desperto até 25 em Apoteose.
-20. O limite de PM por Espaço equivale a quatro vezes a Graduação máxima do Rank.
+18. Existem onze Ranks, de Desperto a Apoteose.
+19. A Graduação máxima cresce de 5 a 25.
+20. O limite de PM por Espaço equivale a quatro vezes a Graduação máxima.
 21. Subir de Rank amplia limites, mas não concede PM adicionais nem melhora Poderes automaticamente.
 22. Todo Espaço é verificado por Custo de Ficha e Capacidade Operacional.
 23. Custo de Ficha é o valor realmente pago; Capacidade Operacional é o valor de efeitos que podem funcionar simultaneamente.
-24. Os dois valores respeitam o teto de PM por Espaço, e o Custo de Ficha também respeita os PM disponíveis do personagem.
+24. Os dois valores respeitam o teto de PM por Espaço; o Custo de Ficha também respeita os PM disponíveis.
 25. Pontos internos de estruturas não são pagos duas vezes.
-26. O GitHub continuará sendo atualizado durante todo o desenvolvimento do núcleo mecânico.
-27. Aprovação mecânica e aprovação editorial são marcos diferentes.
-28. Documentos técnicos canônicos não são automaticamente textos finais para jogadores.
-29. Páginas e ferramentas da branch `sistema-2.0` permanecem protótipos ou implementações parciais até aprovação editorial explícita.
-30. A redação final para jogadores será produzida depois da consolidação dos blocos mecânicos e deverá preservar integralmente as regras canônicas.
+26. Aprovação mecânica e aprovação editorial são marcos diferentes.
+27. Documentos técnicos canônicos não são automaticamente textos finais para jogadores.
+28. Páginas e ferramentas atuais permanecem protótipos ou implementações parciais até aprovação editorial explícita.
+29. Repertórios básicos são permitidos desde o Rank I.
+30. O primeiro Poder Alternativo transforma mecanicamente o Espaço em um Repertório.
+31. Cada Graduação estrutural de Repertório custa 2 PM e fornece uma reserva de 2 PM.
+32. Cada Poder Alternativo adicional custa 1 PM.
+33. A Graduação estrutural do Repertório não é Graduação efetiva de Efeito.
+34. O número máximo de Poderes Alternativos é igual ao número ordinal do Rank.
+35. Dinâmico é liberado no Rank III.
+36. Repertórios exigem fonte imediata, exclusividade justificável e vulnerabilidade compartilhada.
+37. Alternativas improvisadas permanecem indisponíveis até a conversão de recursos equivalentes a esforço extra e pontos heroicos.
 
 ## Progressão aprovada
 
@@ -106,89 +113,96 @@ Custo de Ficha <= PM máximos por Espaço
 Capacidade Operacional <= PM máximos por Espaço
 ```
 
-**Custo de Ficha** é quanto o personagem realmente paga.  
-**Capacidade Operacional** é quanto do Poder pode funcionar simultaneamente.
-
 Falhas e descontos podem reduzir o Custo de Ficha, mas não permitem ultrapassar a Capacidade Operacional do Rank.
+
+## Repertórios aprovados
+
+### Estrutura básica
+
+```text
+Repertório: 2 PM por Graduação estrutural
+Reserva: 2 PM por Graduação estrutural
+Poder Alternativo adicional: 1 PM
+```
+
+Todo o Repertório ocupa um único Espaço de Poder.
+
+A configuração padrão está incluída no custo da estrutura. A reserva é compartilhada e não se multiplica pelo número de alternativas.
+
+### Alternativos por Rank
+
+```text
+Poderes Alternativos máximos = número do Rank
+```
+
+A configuração padrão não conta nesse limite. Portanto, o total de configurações cresce de 2 no Rank I para 12 em Apoteose.
+
+### Funcionamento
+
+- somente uma configuração comum utiliza a reserva por vez;
+- a configuração pode mudar uma vez por declaração principal de ação até a aprovação do sistema temporal completo;
+- a troca não ativa gratuitamente os Efeitos da nova configuração;
+- Efeitos que exigem manutenção deixam de ser mantidos quando perdem a reserva;
+- uma configuração pode reunir vários Efeitos, desde que sua soma caiba na reserva;
+- cada Efeito interno respeita a Graduação máxima do Rank;
+- todas as configurações compartilham fonte, exclusividade e vulnerabilidade verificáveis;
+- pertencer ao mesmo Domínio não basta para justificar um Repertório;
+- desabilitar a estrutura torna todas as configurações indisponíveis.
+
+### Dinâmico
+
+| Ranks | Configurações Dinâmicas máximas |
+|---|---:|
+| I–II | nenhuma |
+| III–V | 2 |
+| VI–VIII | 3 |
+| IX–X | 4 |
+| XI | 5 |
+
+Cada configuração Dinâmica custa 1 PM adicional. Os PM são divididos entre as configurações Dinâmicas e nunca multiplicados.
 
 ## Política de preservação e publicação
 
-O GitHub deve registrar de forma contínua e precisa:
+O GitHub registra continuamente decisões, propostas em auditoria, fórmulas, limites, exceções, dependências e questões abertas.
 
-- decisões aprovadas;
-- propostas em auditoria;
-- fórmulas e limites;
-- exceções;
-- dependências entre regras;
-- questões ainda abertas;
-- próxima decisão exata.
+A documentação canônica prioriza precisão e continuidade. Ela não é, por si só, o texto final mostrado aos jogadores.
 
-A documentação canônica de desenvolvimento prioriza precisão e continuidade. Ela não é, por si só, o texto final que será mostrado aos jogadores.
-
-A versão final para jogadores será escrita em etapa posterior, com definições simples, procedimentos passo a passo, exemplos válidos e inválidos, casos especiais e consulta rápida. Essa reescrita não poderá alterar a mecânica aprovada.
+A versão final será escrita depois da consolidação dos blocos mecânicos, com definições simples, procedimentos passo a passo, exemplos válidos e inválidos, casos especiais e consulta rápida. Essa reescrita não poderá alterar a mecânica aprovada.
 
 ## Trabalho concluído
 
 - criada a branch `sistema-2.0`;
 - criada a documentação canônica do novo sistema;
-- removida a Camada Didática antiga das páginas de Domínios;
+- removida a Camada Didática antiga;
 - definida a resolução determinística inicial;
 - definido M&M como base mecânica direta;
-- descartada a escala genérica de 0 a 6;
 - definida a progressão em 100 Níveis;
-- separadas as funções de PM e Espaços de Poder;
-- definido o orçamento inicial de 15 PM;
-- definida a progressão de 3 PM por Nível;
-- consolidada a fórmula de PM totais e a progressão de Espaços;
-- definidos os onze Ranks;
-- definidas a Graduação máxima e o limite de PM por Espaço de cada Rank;
-- aprovados Custo de Ficha e Capacidade Operacional como limites simultâneos;
-- registrada uma explicação obrigatória para jogadores com linguagem simples, checklist e exemplos;
-- aprovada a separação entre documentação canônica e redação final para jogadores;
-- definido que páginas e ferramentas atuais não constituem versão final pública;
-- concluída uma auditoria em rascunho das estruturas avançadas;
-- criado o portal público inicial do Sistema 2.0;
-- criadas páginas de Primeiros Passos, Progressão e Ranks, Estruturas de Poder e Consulta Rápida;
-- criada calculadora de progressão por Nível;
-- criado validador inicial de custo e Graduação para construções;
-- corrigido o validador para também respeitar o total de PM recebido no Nível atual;
-- estados editoriais públicos alinhados a regra aprovada, conteúdo em teste e auditoria em rascunho;
-- tabelas largas tornadas regiões navegáveis por teclado;
-- criada auditoria funcional automatizada para progressão, validação, acessibilidade e estados editoriais;
-- integrada a auditoria funcional ao fluxo de CI multiplataforma;
-- registrada a auditoria técnica da primeira implementação pública;
-- restaurados destinos funcionais para os links de Sistemas da página inicial na branch.
+- separados PM e Espaços de Poder;
+- definido o orçamento inicial e a progressão regular de PM;
+- definidos os onze Ranks e seus limites;
+- aprovados Custo de Ficha e Capacidade Operacional;
+- separadas aprovação mecânica e aprovação editorial;
+- aprovados Repertórios e Poderes Alternativos por Rank;
+- criado o portal técnico inicial do Sistema 2.0;
+- criadas calculadoras e validadores parciais;
+- criada auditoria funcional e visual automatizada.
 
-## Implementação pública atual
+## Implementação técnica atual
 
-A branch `sistema-2.0` possui uma primeira camada funcional do site:
+A branch `sistema-2.0` possui páginas e ferramentas experimentais, incluindo portal, Primeiros Passos, Progressão e Ranks, Construção Guiada, Estruturas de Poder e Consulta Rápida.
 
-- `sistemas/index.html`: portal do Sistema 2.0;
-- `sistemas/primeiros-passos.html`: introdução para jogadores;
-- `sistemas/progressao-e-ranks.html`: regras canônicas e calculadora;
-- `sistemas/construcao-guiada.html`: validador parcial de orçamento total, PM por Espaço e Graduação;
-- `sistemas/estruturas-de-poder.html`: explicação das arquiteturas de M&M, com limites por Rank identificados como não canônicos;
-- `sistemas/consulta-rapida.html`: fórmulas e tabelas aprovadas;
-- `css/sistema-2.css`: apresentação própria;
-- `js/sistema-2.js`: dados de Rank, calculadora, validação e melhorias de acessibilidade;
-- `tests/sistema-2.mjs`: auditoria funcional da implementação;
-- `docs/sistema-2.0/auditorias/site-sistema-2.md`: registro técnico da auditoria;
-- `.github/workflows/layout-audit-tests.yml`: execução automática das auditorias funcional e visual.
+Essas páginas existem apenas na branch e no PR nº 4. Não estão publicadas na `main`.
 
-Essas páginas existem apenas na branch e no PR nº 4. Não estão publicadas na versão `main` enquanto o PR não for mesclado.
-
-Mesmo dentro da branch, nenhuma dessas páginas é considerada texto final para jogadores. Elas são protótipos, provas de conceito ou implementações parciais que deverão ser reescritas e revalidadas depois da consolidação mecânica.
-
-A DEC-014 ainda não foi aplicada ao site ou ao validador. A próxima alteração técnica deverá ocorrer somente após pedido explícito e depois da consolidação das estruturas avançadas.
+Nenhuma delas constitui texto final para jogadores. A DEC-014 e a DEC-016 ainda não foram integralmente aplicadas ao site ou ao validador.
 
 ## Trabalho atual
 
-Definir a liberação e os limites dos Repertórios por Rank.
+Definir a liberação e os limites dos **Recipientes por Rank**.
 
 A auditoria de estruturas avançadas ainda precisa aprovar, rejeitar ou ajustar:
 
-- acesso a Poderes Alternativos e Repertórios;
-- acesso a Recipientes;
+- Recipiente ativo e passivo;
+- Falhas aplicadas ao Recipiente inteiro;
 - acesso e amplitude de Efeitos Variáveis;
 - conversão do orçamento e quantidade de Invocados;
 - Grupos de Comando para hordas;
@@ -197,7 +211,7 @@ A auditoria de estruturas avançadas ainda precisa aprovar, rejeitar ou ajustar:
 
 ## Trabalho posterior
 
-Depois das estruturas por Rank, deverá ser concluída a conversão determinística de:
+Depois das estruturas avançadas, concluir a conversão determinística de:
 
 1. testes de ataque;
 2. testes opostos de poder;
@@ -206,15 +220,7 @@ Depois das estruturas por Rank, deverá ser concluída a conversão determiníst
 5. ações e duração no formato assíncrono;
 6. Efeitos ligados a atributos e perícias removidos.
 
-Somente depois da consolidação dos blocos mecânicos será iniciada a redação final para jogadores, seguida pela revisão editorial e pela implementação pública definitiva.
-
-O site poderá receber, mediante solicitação explícita e mantendo seu estado não final:
-
-1. catálogo navegável dos Efeitos adaptados;
-2. construtor completo de Poderes;
-3. ficha de personagem com controle de PM gastos e disponíveis;
-4. exportação para WhatsApp;
-5. validação de Domínio, Vertente e descritores.
+Somente depois da consolidação mecânica será iniciada a redação final para jogadores, seguida pela revisão editorial e pela implementação pública definitiva.
 
 ## Arquivos que devem ser lidos antes de continuar
 
@@ -226,11 +232,12 @@ O site poderá receber, mediante solicitação explícita e mantendo seu estado 
 6. `docs/sistema-2.0/decisoes/DEC-013-ranks-e-limites-de-construcao.md`;
 7. `docs/sistema-2.0/decisoes/DEC-014-custo-de-ficha-e-capacidade-operacional.md`;
 8. `docs/sistema-2.0/decisoes/DEC-015-documentacao-canonica-e-texto-para-jogadores.md`;
-9. `docs/sistema-2.0/auditorias/estruturas-avancadas.md`;
-10. `docs/sistema-2.0/auditorias/site-sistema-2.md`;
-11. `docs/sistema-2.0/nucleos/progressao.md`;
-12. `docs/sistema-2.0/nucleos/resolucao.md`;
-13. *Mutantes & Malfeitores: Poder Supremo*.
+9. `docs/sistema-2.0/decisoes/DEC-016-repertorios-e-poderes-alternativos.md`;
+10. `docs/sistema-2.0/auditorias/estruturas-avancadas.md`;
+11. `docs/sistema-2.0/auditorias/site-sistema-2.md`;
+12. `docs/sistema-2.0/nucleos/progressao.md`;
+13. `docs/sistema-2.0/nucleos/resolucao.md`;
+14. *Mutantes & Malfeitores: Poder Supremo*.
 
 ## Regra de encerramento de sessão
 
