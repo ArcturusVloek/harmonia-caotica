@@ -24,7 +24,7 @@
         <p class="internal-kicker">Ferramenta em expansão</p>
         <h1 id="titulo-construcao" class="internal-title">Construção Guiada</h1>
         <div class="domain-badge">Validação canônica de limites</div>
-        <p class="internal-summary">Esta primeira implementação não substitui o catálogo de Efeitos. Ela verifica se o custo e a Graduação declarados cabem no Rank atual.</p>
+        <p class="internal-summary">Esta primeira implementação não substitui o catálogo de Efeitos. Ela verifica orçamento total disponível, custo do Espaço e Graduação contra o Rank atual.</p>
       </div>
     </section>
     <aside class="archive-record" data-auto-record></aside>
@@ -44,8 +44,8 @@
           </div>
           <div class="system2-result" aria-live="polite">
             <h3>Resultado</h3>
-            <p><strong data-build-rank>Desperto — Graduação 5, 20 PM por Espaço</strong></p>
-            <p class="system2-validation" data-build-validation data-state="valid">A construção respeita os limites canônicos.</p>
+            <p><strong data-build-rank>Desperto — 15 PM totais, Graduação 5, 20 PM por Espaço</strong></p>
+            <p class="system2-validation" data-build-validation data-state="valid">A construção respeita os limites canônicos de orçamento total, Graduação e PM por Espaço.</p>
           </div>
         </div>
       </section>
@@ -54,6 +54,7 @@
         <p class="section-kicker">Procedimento</p>
         <h2 id="como-usar">Como preparar a validação</h2>
         <div class="system2-mini-flow">
+          <div><strong>Verifique o orçamento total.</strong> O custo do Espaço não pode superar os PM recebidos pelo personagem nem os PM ainda disponíveis depois de outros gastos.</div>
           <div><strong>Some o custo pago.</strong> Inclua Efeito principal, modificadores, Efeitos Ligados, Poderes Alternativos e estruturas pertencentes ao mesmo Espaço.</div>
           <div><strong>Encontre a maior Graduação.</strong> Falhas podem reduzir custo, mas não autorizam ultrapassar o teto do Rank.</div>
           <div><strong>Escolha a arquitetura.</strong> Poder normal é canônico; limites de estruturas avançadas ainda estão em auditoria.</div>
@@ -76,13 +77,13 @@
       <section class="domain-section" aria-labelledby="exemplo-validacao">
         <p class="section-kicker">Exemplo</p>
         <h2 id="exemplo-validacao">Personagem de Nível 18</h2>
-        <p>No Nível 18, a personagem está no Rank II — Adepto, possui Graduação máxima 7 e pode manter até 28 PM em cada Espaço. Uma construção de 26 PM com maior Graduação 7 é válida. Uma construção de 24 PM com Graduação 8 é inválida, mesmo custando menos que o teto.</p>
+        <p>No Nível 18, a personagem recebeu 66 PM, está no Rank II — Adepto, possui Graduação máxima 7 e pode manter até 28 PM em cada Espaço. Uma construção de 26 PM com maior Graduação 7 é válida quando ainda existem 26 PM disponíveis. Uma construção de 24 PM com Graduação 8 é inválida, mesmo custando menos que o teto.</p>
       </section>
 
       <section class="domain-section" aria-labelledby="limites-ferramenta">
         <p class="section-kicker">O que ainda falta</p>
         <h2 id="limites-ferramenta">Esta ferramenta não aprova sozinha um Poder</h2>
-        <div class="system2-warning"><strong>Validação parcial</strong><p>O resultado confirma apenas PM por Espaço e Graduação máxima. A escolha correta dos Efeitos, o custo de cada componente, os limites de estruturas avançadas e a coerência com Vaelora ainda precisam ser revisados.</p></div>
+        <div class="system2-warning"><strong>Validação parcial</strong><p>O resultado usa o total recebido antes de outros gastos. A ficha ainda precisa descontar PM já investidos, além de revisar Efeitos, custos de componentes, estruturas avançadas e coerência com Vaelora.</p></div>
       </section>
 
       <nav class="article-navigation"><a href="progressao-e-ranks.html">Consultar Ranks</a><a href="estruturas-de-poder.html">Entender estruturas</a></nav>
@@ -90,6 +91,6 @@
   </main>
   <footer class="mobile-footer"><div class="mobile-container">Harmonia Caótica · Sistema 2.0</div></footer>
   <script src="../js/site-systems.js?v=20260718b" defer></script>
-  <script src="../js/sistema-2.js?v=20260724a" defer></script>
+  <script src="../js/sistema-2.js?v=20260724b" defer></script>
 </body>
 </html>
