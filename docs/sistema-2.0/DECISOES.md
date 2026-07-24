@@ -247,7 +247,7 @@ Domínio, Vertente e Manifestação funcionarão como descritores e permissões 
 
 ---
 
-## Decisões de progressão
+## Decisões de progressão e construção
 
 ### DEC-010 — Progressão em 100 Níveis e Apoteose
 
@@ -273,16 +273,26 @@ O personagem sobe de Rank a cada dez Níveis. Existem onze Ranks, de Desperto a 
 
 Documento detalhado: `decisoes/DEC-013-ranks-e-limites-de-construcao.md`.
 
+### DEC-014 — Custo de Ficha e Capacidade Operacional
+
+Todo Espaço é verificado por dois valores: Custo de Ficha, que representa os PM realmente pagos, e Capacidade Operacional, que representa os PM de efeitos que podem funcionar simultaneamente. Ambos respeitam o teto de PM por Espaço, e o Custo de Ficha também respeita os PM disponíveis do personagem.
+
+Documento detalhado: `decisoes/DEC-014-custo-de-ficha-e-capacidade-operacional.md`.
+
 ---
 
 ## Questões ainda não decididas
 
 As seguintes questões permanecem abertas:
 
-1. liberação de Repertórios, Recipientes, Efeitos Variáveis e estruturas avançadas por Rank;
-2. reconstrução e redistribuição de PM;
-3. conversão determinística de testes de ataque, testes de poder e jogadas de salvamento;
-4. tratamento de Efeitos que aumentam, drenam ou imitam atributos e perícias removidos;
-5. estrutura temporal de conflitos assíncronos;
-6. função mecânica definitiva das Vertentes e Heranças;
-7. processo completo de Vacância, Ascensão e conquista de uma posição divina.
+1. liberação e limites de Repertórios por Rank;
+2. liberação e limites de Recipientes por Rank;
+3. acesso e amplitude de Efeitos Variáveis;
+4. conversão de Invocar, orçamento de criaturas e Grupos de Comando;
+5. limites de aninhamento entre estruturas;
+6. reconstrução e redistribuição de PM;
+7. conversão determinística de testes de ataque, testes de poder e jogadas de salvamento;
+8. tratamento de Efeitos que aumentam, drenam ou imitam atributos e perícias removidos;
+9. estrutura temporal de conflitos assíncronos;
+10. função mecânica definitiva das Vertentes e Heranças;
+11. processo completo de Vacância, Ascensão e conquista de uma posição divina.
