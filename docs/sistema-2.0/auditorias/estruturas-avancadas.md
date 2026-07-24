@@ -13,11 +13,11 @@ As partes já aprovadas foram transferidas para decisões canônicas. As demais 
 ### Aprovado
 
 - **Custo de Ficha e Capacidade Operacional:** DEC-014;
-- **Repertórios e Poderes Alternativos:** DEC-016.
+- **Repertórios e Poderes Alternativos:** DEC-016;
+- **Recipientes:** DEC-017.
 
 ### Ainda em rascunho
 
-- Recipientes;
 - Estruturas Variáveis;
 - Invocar;
 - orçamento e quantidade de Invocados;
@@ -55,63 +55,45 @@ Capacidade Operacional <= PM máximos por Espaço
 
 Pontos internos de estruturas não são pagos duas vezes. Falhas e descontos podem reduzir o Custo de Ficha, mas não permitem ultrapassar a Capacidade Operacional do Espaço.
 
-Repertórios obedecem integralmente à DEC-016. Esta auditoria não deve ser usada para reinterpretar seus custos, limites, troca de configuração, Dinâmico, unidade causal ou desabilitação compartilhada.
+Repertórios obedecem integralmente à DEC-016. Recipientes obedecem integralmente à DEC-017. Esta auditoria não deve ser usada para reinterpretar custos, limites, condições ou exceções dessas decisões.
 
 ## 4. Resultado resumido por Rank
 
-Na tabela abaixo, Repertório é canônico. As demais colunas permanecem propostas.
+Na tabela abaixo, Repertório e Recipiente são canônicos. Variável e Invocar permanecem propostas.
 
-| Rank | Repertório — canônico | Recipiente — proposta | Variável — proposta | Invocar — proposta |
+| Rank | Repertório — canônico | Recipiente — canônico | Variável — proposta | Invocar — proposta |
 |---:|---|---|---|---|
 | I — Desperto | básico; 1 Alternativo | ativo | não | não |
 | II — Adepto | 2 Alternativos | passivo | não | um capanga fixo |
-| III — Consagrado | 3 Alternativos; Dinâmico | Falha global limitada | não | Tipo geral; até 2 capangas |
+| III — Consagrado | 3 Alternativos; Dinâmico | Falha global até −1/Grad. | não | Tipo geral; até 2 capangas |
 | IV — Arauto | 4 Alternativos | igual | não | Horda; até 5 capangas |
-| V — Exarca | 5 Alternativos | pode conter um Repertório | Variável 4/Grad. | Tipo amplo; até 10 capangas |
-| VI — Numinoso | 6 Alternativos; até 3 Dinâmicos | desconto global ampliado | Variável 5/Grad. | Heroísmo para uma entidade; até 25 comuns |
+| V — Exarca | 5 Alternativos | igual; aninhamento ainda proibido | Variável 4/Grad. | Tipo amplo; até 10 capangas |
+| VI — Numinoso | 6 Alternativos; até 3 Dinâmicos | Falha global até −2/Grad. | Variável 5/Grad. | Heroísmo para uma entidade; até 25 comuns |
 | VII — Ascendente | 7 Alternativos | igual | Variável 6/Grad. | até 50 comuns |
 | VIII — Semidivino | 8 Alternativos | igual | Variável 6/Grad. | até 100 comuns |
-| IX — Soberano | 9 Alternativos; até 4 Dinâmicos | uma camada de aninhamento | Variável 7/Grad. | até 250 comuns ou 2 Heroicos |
+| IX — Soberano | 9 Alternativos; até 4 Dinâmicos | igual; aninhamento ainda proibido | Variável 7/Grad. | até 250 comuns ou 2 Heroicos |
 | X — Pretendente | 10 Alternativos | igual | Variável 7/Grad. | até 500 comuns |
 | XI — Apoteose | 11 Alternativos; até 5 Dinâmicos | igual | Variável 8/Grad. | até 1.000 comuns ou 2 Heroicos |
 
 Os números de capangas representam corpos narrativos. A quantidade de resoluções mecânicas permanece limitada pela proposta de Grupos de Comando.
 
-## 5. Recipientes — proposta pendente
+## 5. Recipientes — resolvido pela DEC-017
 
-### Diagnóstico
+A auditoria detalhada `auditorias/recipientes-por-rank.md` foi incorporada pela DEC-017.
 
-Recipiente não concede desconto básico. Seu custo normal equivale à capacidade interna que fornece. Sua vantagem é reunir vários Efeitos em uma mesma forma, estado, corpo, artefato ou manifestação e permitir que condições de ativação e manutenção afetem o conjunto.
+Ficaram aprovados:
 
-O risco surge quando uma Falha aplicada à estrutura reduz simultaneamente o custo de muitos Efeitos que continuam disponíveis juntos.
-
-### Liberação proposta
-
-- Rank I: Recipiente ativo;
-- Rank II: Recipiente passivo;
-- Rank III: Falhas aplicadas à estrutura inteira;
-- Rank V: um Repertório pode existir dentro de um Recipiente;
-- Rank IX: uma camada de aninhamento entre Recipiente e Repertório.
-
-### Regras propostas
-
-- todos os Efeitos internos pertencem à mesma meta-característica;
-- ativar o Recipiente não reduz a ação própria de seus Efeitos;
-- os Efeitos podem funcionar simultaneamente quando suas ações e condições forem cumpridas;
-- desativar um Recipiente ativo remove conjuntamente o acesso aos Efeitos internos;
-- modificadores aplicados à estrutura afetam ativação, acesso ou manutenção do conjunto;
-- modificadores que afetam somente um Efeito são comprados nesse Efeito;
-- o conjunto interno não é pago novamente, mas respeita a Capacidade Operacional do Espaço.
-
-### Redução global proposta
-
-| Ranks | Redução máxima aplicada à estrutura |
-|---|---:|
-| I–II | nenhuma |
-| III–V | −1 PM por Graduação |
-| VI–XI | −2 PM por Graduação |
-
-O custo final proposto nunca pode ser inferior a 3 PM por Graduação. A Falha deve representar uma limitação real de ativação ou manutenção, não uma limitação estética.
+- Recipiente ativo desde o Rank I;
+- Recipiente passivo desde o Rank II;
+- custo e capacidade interna de 5 PM por Graduação estrutural;
+- Capacidade Operacional igual à capacidade interna máxima;
+- componentes fixos e pertencentes à mesma meta-característica;
+- nenhum limite numérico adicional de Efeitos internos;
+- Falhas globais desde o Rank III;
+- redução máxima de −1 PM por Graduação nos Ranks III–V e −2 PM por Graduação nos Ranks VI–XI;
+- pisos estruturais de 4 PM por Graduação nos Ranks III–V e 3 PM por Graduação nos Ranks VI–XI;
+- modificadores dependentes de rolagem indisponíveis até conversão;
+- aninhamento mantido como decisão separada e ainda não aprovado.
 
 ## 6. Estrutura Variável — proposta pendente
 
@@ -237,17 +219,7 @@ Uma entidade Heroica ocuparia um Grupo de Comando inteiro. Hordas Heroicas seria
 
 O número de corpos aumentaria presença, cobertura, ocupação de posições e resistência narrativa. Não concederia automaticamente um ataque separado para cada criatura.
 
-### Descritor ou criatura real
-
-Invocar só deve ser usado quando a entidade:
-
-- possui posição própria;
-- pode ser atingida;
-- possui bloco mecânico;
-- pode executar tarefas diferentes;
-- permanece como agente identificável na cena.
-
-Uma entidade que apenas personifica Dano, Sufocar, Armadilha ou outro Efeito continua sendo descritor desse Efeito.
+Invocar só deve ser usado quando a entidade possui posição própria, pode ser atingida, possui bloco mecânico, executa tarefas diferentes e permanece como agente identificável. Uma entidade que apenas personifica outro Efeito continua sendo descritor desse Efeito.
 
 ### Elementos ainda pendentes
 
@@ -257,28 +229,30 @@ Uma entidade que apenas personifica Dano, Sufocar, Armadilha ou outro Efeito con
 
 ## 8. Aninhamento — proposta pendente
 
-Para evitar multiplicação recursiva de flexibilidade, propõe-se:
+Até decisão específica, nenhuma estrutura pode existir dentro de outra.
+
+A proposta original para futura análise é:
 
 - Ranks I–IV: nenhuma estrutura dentro de outra;
-- Ranks V–VIII: um Repertório pode existir dentro de um Recipiente;
+- Ranks V–VIII: um Repertório poderia existir dentro de um Recipiente;
 - Ranks IX–XI: uma única camada entre Recipiente e Repertório;
-- Variável não pode ser aninhada;
-- Invocar não cria entidades com Variável ou Invocar;
-- uma estrutura aninhada continua usando o mesmo Espaço e os mesmos dois tetos.
+- Variável não poderia ser aninhada;
+- Invocar não criaria entidades com Variável ou Invocar;
+- uma estrutura aninhada continuaria usando o mesmo Espaço e os mesmos dois tetos.
+
+Nada desta seção está aprovado.
 
 ## 9. Ordem de risco
 
 1. Repertório — flexibilidade com exclusividade; **resolvido pela DEC-016**.
-2. Recipiente — simultaneidade paga integralmente; **próxima decisão**.
+2. Recipiente — simultaneidade paga integralmente; **resolvido pela DEC-017**.
 3. Invocar — multiplicação de agentes e ações; pendente.
-4. Variável — improvisação e otimização durante o jogo; pendente.
+4. Variável — improvisação e otimização durante o jogo; **próxima decisão**.
 
 ## 10. Decisões restantes
 
-1. Recipiente ativo no Rank I e passivo no Rank II;
-2. Falhas globais e custo mínimo de Recipientes;
-3. Estrutura Variável iniciando no Rank V e ampliada até Apoteose;
-4. Invocar iniciando no Rank II;
-5. conversão do orçamento de Invocados para `3 × Graduação`;
-6. Grupos de Comando como limite de ações de hordas;
-7. limites de aninhamento entre estruturas.
+1. Estrutura Variável iniciando no Rank V e ampliada até Apoteose;
+2. Invocar iniciando no Rank II;
+3. conversão do orçamento de Invocados para `3 × Graduação`;
+4. Grupos de Comando como limite de ações de hordas;
+5. limites de aninhamento entre estruturas.
