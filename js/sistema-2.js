@@ -129,7 +129,15 @@
     render();
   };
 
-  applyEditorialStatus();
-  document.querySelectorAll('[data-progression-calculator]').forEach(initProgressionCalculator);
-  document.querySelectorAll('[data-build-validator]').forEach(initBuildValidator);
+  const start = () => {
+    applyEditorialStatus();
+    document.querySelectorAll('[data-progression-calculator]').forEach(initProgressionCalculator);
+    document.querySelectorAll('[data-build-validator]').forEach(initBuildValidator);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else {
+    start();
+  }
 })();
