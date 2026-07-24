@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-editorial-system="vaelora">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <script src="../js/device-mode.js?v=20260723f"></script>
+  <meta name="theme-color" content="#08100f">
+  <meta name="description" content="Progressão canônica de Harmonia Caótica: PM, Espaços de Poder, Ranks, Graduação máxima e Apoteose.">
+  <title>Progressão e Ranks — Harmonia Caótica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="../css/site-core-systems.css?v=20260718b">
+  <link rel="stylesheet" href="../css/dominios.css">
+  <link rel="stylesheet" href="../css/site-final-systems.css?v=20260718b">
+  <link rel="stylesheet" href="../css/sistema-2.css?v=20260724a">
+</head>
+<body id="topo" class="systems-page atlas-site" style="--domain-accent:#8f72ba;--domain-accent-soft:rgba(143,114,186,.17);--domain-accent-border:rgba(143,114,186,.42);">
+  <div class="reading-progress" aria-hidden="true"></div>
+  <header class="mobile-header"><div class="mobile-header-inner mobile-container"><a class="mobile-logo" href="index.html">Sistema 2.0</a><a class="header-action" href="index.html" aria-label="Voltar ao portal">‹</a></div></header>
+  <main class="internal-page">
+    <section class="internal-hero" aria-labelledby="titulo-progressao" style="--internal-image:radial-gradient(circle at 50% 22%,#59446c,#211827 52%,#09080d 100%);">
+      <div class="mobile-container internal-hero-content">
+        <p class="internal-kicker">Regra canônica</p>
+        <h1 id="titulo-progressao" class="internal-title">Progressão e Ranks</h1>
+        <div class="domain-badge">100 Níveis · 312 PM · 21 Espaços</div>
+        <p class="internal-summary">Nível mede o avanço geral; PM compram capacidades; Espaços controlam diversidade; Graduação mede intensidade; Rank estabelece os tetos.</p>
+      </div>
+    </section>
+    <aside class="archive-record" data-auto-record></aside>
+    <nav id="indice-da-pagina" class="content-index" data-auto-index></nav>
+    <article class="mobile-article mobile-container domain-article">
+      <div class="system2-status system2-status--approved"><strong>Aprovado</strong><p>Esta página reúne as decisões DEC-010, DEC-011, DEC-012 e DEC-013.</p></div>
+
+      <section class="domain-section" aria-labelledby="calculadora-progressao">
+        <p class="section-kicker">Ferramenta</p>
+        <h2 id="calculadora-progressao">Calcule qualquer Nível</h2>
+        <div class="system2-calculator" data-progression-calculator>
+          <div class="system2-fields">
+            <div class="system2-field">
+              <label for="nivel-personagem">Nível do personagem</label>
+              <input id="nivel-personagem" data-level-input type="number" min="1" max="100" value="1" inputmode="numeric">
+            </div>
+            <div class="system2-hero-note"><p>O cálculo mostra o total recebido pela progressão. PM já gastos precisam ser descontados na ficha.</p></div>
+          </div>
+          <div class="system2-result" aria-live="polite">
+            <h3>Limites atuais</h3>
+            <div class="system2-stat-grid">
+              <div class="system2-stat"><span class="system2-stat__label">PM totais</span><strong data-total-pm>15</strong></div>
+              <div class="system2-stat"><span class="system2-stat__label">Espaços</span><strong data-spaces>1</strong></div>
+              <div class="system2-stat"><span class="system2-stat__label">Graduação máxima</span><strong data-max-graduation>5</strong></div>
+              <div class="system2-stat"><span class="system2-stat__label">PM por Espaço</span><strong data-max-space-pm>20</strong></div>
+            </div>
+            <p><strong data-rank>Rank 1 — Desperto</strong></p>
+            <p>Próximo Espaço: <span data-next-space>Nível 5</span>. Próximo Rank: <span data-next-rank>Nível 10: Adepto</span>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="domain-section" aria-labelledby="cinco-medidas">
+        <p class="section-kicker">Vocabulário</p>
+        <h2 id="cinco-medidas">Cinco medidas diferentes</h2>
+        <div class="system2-grid">
+          <div class="system2-card"><p class="system2-card__eyebrow">Nível</p><h3>Progresso geral</h3><p>Vai de 1 a 100. Concede PM, libera Espaços e determina o Rank.</p></div>
+          <div class="system2-card"><p class="system2-card__eyebrow">Pontos de Poder</p><h3>Orçamento</h3><p>São gastos em Efeitos, Graduações, modificadores, Poderes Alternativos e estruturas.</p></div>
+          <div class="system2-card"><p class="system2-card__eyebrow">Espaço de Poder</p><h3>Diversidade</h3><p>Registra uma construção principal independente. Liberar um Espaço não concede PM.</p></div>
+          <div class="system2-card"><p class="system2-card__eyebrow">Graduação</p><h3>Intensidade</h3><p>Mede a potência de um Efeito, resistência ou capacidade específica.</p></div>
+          <div class="system2-card"><p class="system2-card__eyebrow">Rank</p><h3>Teto e proximidade divina</h3><p>Limita Graduação e PM por Espaço, além de representar a transformação do personagem.</p></div>
+        </div>
+      </section>
+
+      <section class="domain-section" aria-labelledby="formulas-progressao">
+        <p class="section-kicker">Cálculo</p>
+        <h2 id="formulas-progressao">Fórmulas oficiais</h2>
+        <div class="system2-formula">PM totais = 12 + (3 × Nível)</div>
+        <div class="system2-formula">Espaços de Poder = 1 + piso(Nível ÷ 5)</div>
+        <div class="system2-formula">Graduação máxima = 5 + 2 × (Rank − 1)</div>
+        <div class="system2-formula">PM máximos por Espaço = Graduação máxima × 4</div>
+        <p>No Nível 1, os 15 PM são formados por 3 PM do Nível e 12 PM de Reserva Inicial. Do Nível 2 ao 100, cada avanço concede mais 3 PM.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="tabela-ranks">
+        <p class="section-kicker">Onze estágios</p>
+        <h2 id="tabela-ranks">Tabela de Ranks</h2>
+        <div class="system2-table-wrap">
+          <table class="system2-table">
+            <thead><tr><th>Rank</th><th>Níveis</th><th>Nome</th><th>Graduação máxima</th><th>PM por Espaço</th></tr></thead>
+            <tbody>
+              <tr><td>I</td><td>1–9</td><td>Desperto</td><td>5</td><td>20</td></tr>
+              <tr><td>II</td><td>10–19</td><td>Adepto</td><td>7</td><td>28</td></tr>
+              <tr><td>III</td><td>20–29</td><td>Consagrado</td><td>9</td><td>36</td></tr>
+              <tr><td>IV</td><td>30–39</td><td>Arauto</td><td>11</td><td>44</td></tr>
+              <tr><td>V</td><td>40–49</td><td>Exarca</td><td>13</td><td>52</td></tr>
+              <tr><td>VI</td><td>50–59</td><td>Numinoso</td><td>15</td><td>60</td></tr>
+              <tr><td>VII</td><td>60–69</td><td>Ascendente</td><td>17</td><td>68</td></tr>
+              <tr><td>VIII</td><td>70–79</td><td>Semidivino</td><td>19</td><td>76</td></tr>
+              <tr><td>IX</td><td>80–89</td><td>Soberano</td><td>21</td><td>84</td></tr>
+              <tr><td>X</td><td>90–99</td><td>Pretendente</td><td>23</td><td>92</td></tr>
+              <tr><td>XI</td><td>100</td><td>Apoteose</td><td>25</td><td>100</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="domain-section" aria-labelledby="subir-rank">
+        <p class="section-kicker">Limite, não recompensa automática</p>
+        <h2 id="subir-rank">O que acontece ao subir de Rank</h2>
+        <ul class="system2-list">
+          <li>A Graduação máxima aumenta.</li>
+          <li>O teto de PM por Espaço aumenta.</li>
+          <li>O personagem se aproxima ontologicamente do divino.</li>
+          <li>Não recebe PM além dos 3 PM normais do Nível.</li>
+          <li>Seus Poderes não melhoram sozinhos; é necessário investir PM.</li>
+        </ul>
+      </section>
+
+      <section class="domain-section" aria-labelledby="apoteose">
+        <p class="section-kicker">Nível 100</p>
+        <h2 id="apoteose">Apoteose não é divindade automática</h2>
+        <p>Apoteose torna o personagem apto a disputar uma posição divina. Para tornar-se uma Divindade, ele ainda precisa conquistar uma Vacância ou vencer, destituir ou usurpar uma Divindade e ocupar seu lugar de forma compatível com o Domínio.</p>
+      </section>
+
+      <nav class="article-navigation"><a href="index.html">Portal dos Sistemas</a><a href="construcao-guiada.html">Validar uma construção</a></nav>
+    </article>
+  </main>
+  <footer class="mobile-footer"><div class="mobile-container">Harmonia Caótica · Sistema 2.0</div></footer>
+  <script src="../js/site-systems.js?v=20260718b" defer></script>
+  <script src="../js/sistema-2.js?v=20260724a" defer></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-editorial-system="vaelora">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <script src="../js/device-mode.js?v=20260723f"></script>
+  <meta name="theme-color" content="#08100f">
+  <meta name="description" content="Validador inicial de construções do Sistema 2.0 de Harmonia Caótica.">
+  <title>Construção Guiada — Harmonia Caótica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="../css/site-core-systems.css?v=20260718b">
+  <link rel="stylesheet" href="../css/dominios.css">
+  <link rel="stylesheet" href="../css/site-final-systems.css?v=20260718b">
+  <link rel="stylesheet" href="../css/sistema-2.css?v=20260724a">
+</head>
+<body id="topo" class="systems-page atlas-site" style="--domain-accent:#8f72ba;--domain-accent-soft:rgba(143,114,186,.17);--domain-accent-border:rgba(143,114,186,.42);">
+  <div class="reading-progress" aria-hidden="true"></div>
+  <header class="mobile-header"><div class="mobile-header-inner mobile-container"><a class="mobile-logo" href="index.html">Sistema 2.0</a><a class="header-action" href="index.html" aria-label="Voltar ao portal">‹</a></div></header>
+  <main class="internal-page">
+    <section class="internal-hero" aria-labelledby="titulo-construcao" style="--internal-image:radial-gradient(circle at 50% 22%,#6a4d68,#2c1d2d 52%,#09080d 100%);">
+      <div class="mobile-container internal-hero-content">
+        <p class="internal-kicker">Ferramenta em expansão</p>
+        <h1 id="titulo-construcao" class="internal-title">Construção Guiada</h1>
+        <div class="domain-badge">Validação canônica de limites</div>
+        <p class="internal-summary">Esta primeira implementação não substitui o catálogo de Efeitos. Ela verifica orçamento total disponível, custo do Espaço e Graduação contra o Rank atual.</p>
+      </div>
+    </section>
+    <aside class="archive-record" data-auto-record></aside>
+    <nav id="indice-da-pagina" class="content-index" data-auto-index></nav>
+    <article class="mobile-article mobile-container domain-article">
+      <div class="system2-status system2-status--testing"><strong>Versão inicial</strong><p>O construtor completo será adicionado depois da auditoria do catálogo de Efeitos e da conversão de ataques e resistências.</p></div>
+
+      <section class="domain-section" aria-labelledby="validador-limites">
+        <p class="section-kicker">Verificação automática</p>
+        <h2 id="validador-limites">Valide uma construção</h2>
+        <div class="system2-calculator" data-build-validator>
+          <div class="system2-fields">
+            <div class="system2-field"><label for="build-level">Nível do personagem</label><input id="build-level" data-build-level type="number" min="1" max="100" value="1" inputmode="numeric"></div>
+            <div class="system2-field"><label for="build-cost">Custo total do Espaço em PM</label><input id="build-cost" data-build-cost type="number" min="0" value="15" inputmode="numeric"></div>
+            <div class="system2-field"><label for="build-graduation">Maior Graduação efetiva da construção</label><input id="build-graduation" data-build-graduation type="number" min="0" value="5" inputmode="numeric"></div>
+            <div class="system2-field"><label for="build-structure">Arquitetura principal</label><select id="build-structure" data-build-structure><option value="normal">Poder normal</option><option value="repertorio">Repertório</option><option value="recipiente">Recipiente</option><option value="variavel">Variável</option><option value="invocar">Invocar</option></select></div>
+          </div>
+          <div class="system2-result" aria-live="polite">
+            <h3>Resultado</h3>
+            <p><strong data-build-rank>Desperto — 15 PM totais, Graduação 5, 20 PM por Espaço</strong></p>
+            <p class="system2-validation" data-build-validation data-state="valid">A construção respeita os limites canônicos de orçamento total, Graduação e PM por Espaço.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="domain-section" aria-labelledby="como-usar">
+        <p class="section-kicker">Procedimento</p>
+        <h2 id="como-usar">Como preparar a validação</h2>
+        <div class="system2-mini-flow">
+          <div><strong>Verifique o orçamento total.</strong> O custo do Espaço não pode superar os PM recebidos pelo personagem nem os PM ainda disponíveis depois de outros gastos.</div>
+          <div><strong>Some o custo pago.</strong> Inclua Efeito principal, modificadores, Efeitos Ligados, Poderes Alternativos e estruturas pertencentes ao mesmo Espaço.</div>
+          <div><strong>Encontre a maior Graduação.</strong> Falhas podem reduzir custo, mas não autorizam ultrapassar o teto do Rank.</div>
+          <div><strong>Escolha a arquitetura.</strong> Poder normal é canônico; limites de estruturas avançadas ainda estão em auditoria.</div>
+          <div><strong>Verifique a coerência ontológica.</strong> A construção precisa ser compatível com o Domínio, a Vertente e a Manifestação.</div>
+        </div>
+      </section>
+
+      <section class="domain-section" aria-labelledby="o-que-e-espaco">
+        <p class="section-kicker">Limite estrutural</p>
+        <h2 id="o-que-e-espaco">O que pertence ao mesmo Espaço</h2>
+        <ul class="system2-list">
+          <li>Efeito principal e seus modificadores.</li>
+          <li>Efeitos Ligados pertencentes à mesma construção.</li>
+          <li>Poderes Alternativos reunidos no mesmo Repertório.</li>
+          <li>Conteúdo interno de um Recipiente ou de uma Estrutura Variável.</li>
+        </ul>
+        <p>Um Poder que funciona de forma independente e simultânea ocupa outro Espaço. O limite de PM por Espaço não é uma reserva separada: ele é apenas o teto máximo que uma construção pode alcançar.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="exemplo-validacao">
+        <p class="section-kicker">Exemplo</p>
+        <h2 id="exemplo-validacao">Personagem de Nível 18</h2>
+        <p>No Nível 18, a personagem recebeu 66 PM, está no Rank II — Adepto, possui Graduação máxima 7 e pode manter até 28 PM em cada Espaço. Uma construção de 26 PM com maior Graduação 7 é válida quando ainda existem 26 PM disponíveis. Uma construção de 24 PM com Graduação 8 é inválida, mesmo custando menos que o teto.</p>
+      </section>
+
+      <section class="domain-section" aria-labelledby="limites-ferramenta">
+        <p class="section-kicker">O que ainda falta</p>
+        <h2 id="limites-ferramenta">Esta ferramenta não aprova sozinha um Poder</h2>
+        <div class="system2-warning"><strong>Validação parcial</strong><p>O resultado usa o total recebido antes de outros gastos. A ficha ainda precisa descontar PM já investidos, além de revisar Efeitos, custos de componentes, estruturas avançadas e coerência com Vaelora.</p></div>
+      </section>
+
+      <nav class="article-navigation"><a href="progressao-e-ranks.html">Consultar Ranks</a><a href="estruturas-de-poder.html">Entender estruturas</a></nav>
+    </article>
+  </main>
+  <footer class="mobile-footer"><div class="mobile-container">Harmonia Caótica · Sistema 2.0</div></footer>
+  <script src="../js/site-systems.js?v=20260718b" defer></script>
+  <script src="../js/sistema-2.js?v=20260724b" defer></script>
+</body>
+</html>

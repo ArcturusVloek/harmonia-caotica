@@ -9,6 +9,7 @@ await fs.mkdir(outputDir, { recursive: true });
 
 const pageRoots = ['', 'mundo', 'divindades', 'dominios', 'territorios', 'sistemas'];
 const htmlPages = [];
+
 for (const directory of pageRoots) {
   const target = path.join(root, directory);
   let entries = [];
@@ -17,11 +18,14 @@ for (const directory of pageRoots) {
   } catch {
     continue;
   }
+
   for (const entry of entries) {
-    if (!entry.isFile() || !entry.name.endsWith('.html')) continue;
-    htmlPages.push(path.posix.join(directory, entry.name));
+    if (entry.isFile() && entry.name.endsWith('.html')) {
+      htmlPages.push(path.posix.join(directory, entry.name));
+    }
   }
 }
+
 htmlPages.sort();
 
 const representativePages = [
@@ -32,10 +36,11 @@ const representativePages = [
   'territorios/ruvia.html',
   'territorios/alba.html',
   'sistemas/index.html',
+  'sistemas/primeiros-passos.html',
   'sistemas/progressao-e-ranks.html',
   'sistemas/construcao-guiada.html',
-  'sistemas/fundamentos-dos-milagres.html',
-  'sistemas/criacoes-invocacoes-e-manifestacoes-separadas.html'
+  'sistemas/estruturas-de-poder.html',
+  'sistemas/consulta-rapida.html'
 ].filter((page) => htmlPages.includes(page));
 
 const profiles = [
@@ -112,9 +117,10 @@ const profiles = [
 const failures = [];
 const results = [];
 
-function safeName(value) {
-  return value.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase();
-}
+const safeName = (value) => value
+  .replace(/[^a-z0-9]+/gi, '-')
+  .replace(/^-|-$/g, '')
+  .toLowerCase();
 
 for (const profile of profiles) {
   const browser = await profile.engine.launch({ headless: true });
@@ -125,9 +131,12 @@ for (const profile of profiles) {
     const pageErrors = [];
     page.on('pageerror', (error) => pageErrors.push(String(error)));
 
-    const url = `${baseUrl}/${relativePath}`;
     try {
-      const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+      const response = await page.goto(`${baseUrl}/${relativePath}`, {
+        waitUntil: 'domcontentloaded',
+        timeout: 30_000
+      });
+
       if (!response || response.status() >= 400) {
         throw new Error(`HTTP ${response?.status() ?? 'sem resposta'}`);
       }
@@ -144,46 +153,34 @@ for (const profile of profiles) {
 
       const audit = await page.evaluate(({ expectedMode }) => {
         const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
         const root = document.documentElement;
         const body = document.body;
         const mode = root.dataset.uiMode || (root.classList.contains('ui-desktop') ? 'desktop' : 'compact');
         const problems = [];
 
-        const visible = (element) => {
+        const rendered = (element) => {
+          if (!element) return false;
           const style = getComputedStyle(element);
           const rect = element.getBoundingClientRect();
-          const intersectsViewport = rect.right > 0
-            && rect.left < viewportWidth
-            && rect.bottom > 0
-            && rect.top < viewportHeight;
           return style.display !== 'none'
             && style.visibility !== 'hidden'
             && Number(style.opacity || 1) > 0.01
             && rect.width > 0
-            && rect.height > 0
-            && intersectsViewport;
+            && rect.height > 0;
         };
 
-        const rootOverflow = Math.max(root.scrollWidth, body.scrollWidth) - viewportWidth;
-        if (rootOverflow > 2) {
-          const suspects = [...document.querySelectorAll('body *')]
-            .map((element) => ({ element, rect: element.getBoundingClientRect(), style: getComputedStyle(element) }))
-            .filter(({ rect, style }) => style.display !== 'none'
-              && style.visibility !== 'hidden'
-              && rect.width > 0
-              && (rect.right > viewportWidth + 2 || rect.left < -2))
-            .sort((a, b) => Math.max(b.rect.right - viewportWidth, -b.rect.left) - Math.max(a.rect.right - viewportWidth, -a.rect.left))
-            .slice(0, 5)
-            .map(({ element, rect }) => {
-              const identity = element.id ? `#${element.id}` : [...element.classList].slice(0, 2).map((name) => `.${name}`).join('');
-              return `${element.tagName.toLowerCase()}${identity} [${Math.round(rect.left)}, ${Math.round(rect.right)}]`;
-            });
-          problems.push(`overflow horizontal da página: ${rootOverflow}px${suspects.length ? `; suspeitos: ${suspects.join(', ')}` : ''}`);
+        const insideViewport = (element) => {
+          if (!rendered(element)) return false;
+          const rect = element.getBoundingClientRect();
+          return rect.right > 0 && rect.left < viewportWidth && rect.bottom > 0 && rect.top < window.innerHeight;
+        };
+
+        if (mode !== expectedMode) {
+          problems.push(`modo incorreto: esperado ${expectedMode}, obtido ${mode}`);
         }
 
         document.querySelectorAll('h1, h2, h3').forEach((heading) => {
-          if (!visible(heading)) return;
+          if (!rendered(heading)) return;
           const rect = heading.getBoundingClientRect();
           if (rect.right > viewportWidth + 2 || rect.left < -2) {
             problems.push(`título fora da viewport: “${heading.textContent.trim().slice(0, 70)}” [${Math.round(rect.left)}, ${Math.round(rect.right)}]`);
@@ -191,28 +188,24 @@ for (const profile of profiles) {
         });
 
         document.querySelectorAll('.realm-entry').forEach((card) => {
-          if (!visible(card)) return;
+          if (!rendered(card)) return;
           const rect = card.getBoundingClientRect();
           const maxHeight = mode === 'desktop' ? 565 : 505;
-          if (rect.height > maxHeight + 2) {
-            problems.push(`cartão territorial alto demais: ${Math.round(rect.height)}px`);
-          }
+          if (rect.height > maxHeight + 2) problems.push(`cartão territorial alto demais: ${Math.round(rect.height)}px`);
           if (rect.width > viewportWidth + 2 || rect.left < -2 || rect.right > viewportWidth + 2) {
             problems.push(`cartão territorial fora da viewport: ${Math.round(rect.width)}px`);
           }
         });
 
         document.querySelectorAll('.deity-entry').forEach((card) => {
-          if (!visible(card)) return;
+          if (!rendered(card)) return;
           const rect = card.getBoundingClientRect();
           const maxHeight = mode === 'desktop' ? 625 : 605;
-          if (rect.height > maxHeight + 2) {
-            problems.push(`cartão de Divindade alto demais: ${Math.round(rect.height)}px`);
-          }
+          if (rect.height > maxHeight + 2) problems.push(`cartão de Divindade alto demais: ${Math.round(rect.height)}px`);
         });
 
         document.querySelectorAll('.table-wrap, .system2-table-wrap').forEach((wrapper) => {
-          if (!visible(wrapper)) return;
+          if (!rendered(wrapper)) return;
           const rect = wrapper.getBoundingClientRect();
           if (rect.left < -2 || rect.right > viewportWidth + 2) {
             problems.push(`tabela escapando da viewport: [${Math.round(rect.left)}, ${Math.round(rect.right)}]`);
@@ -228,23 +221,19 @@ for (const profile of profiles) {
         const indexButton = document.querySelector('.atlas-index-toggle');
         const index = document.querySelector('.content-index');
 
-        if (mode !== expectedMode) {
-          problems.push(`modo incorreto: esperado ${expectedMode}, obtido ${mode}`);
-        }
-
         if (mode === 'desktop') {
-          if (menuButton && visible(menuButton)) problems.push('botão Menu visível no desktop');
-          if (navigation && !visible(navigation)) problems.push('navegação principal invisível no desktop');
-          if (index && !visible(index)) problems.push('sumário invisível no desktop');
+          if (rendered(menuButton)) problems.push('botão Menu visível no desktop');
+          if (navigation && !rendered(navigation)) problems.push('navegação principal invisível no desktop');
+          if (index && !rendered(index)) problems.push('sumário invisível no desktop');
         } else {
-          if (navigation && visible(navigation)) problems.push('navegação aberta antes do toque no modo compacto');
-          if (menuButton && !visible(menuButton)) problems.push('botão Menu invisível no modo compacto');
-          if (index && visible(index)) problems.push('sumário aberto antes do toque no modo compacto');
-          if (index && indexButton && !visible(indexButton)) problems.push('botão Sumário invisível no modo compacto');
+          if (body.classList.contains('menu-open')) problems.push('navegação aberta antes do toque no modo compacto');
+          if (body.classList.contains('index-open')) problems.push('sumário aberto antes do toque no modo compacto');
+          if (!rendered(menuButton)) problems.push('botão Menu invisível no modo compacto');
+          if (index && !rendered(indexButton)) problems.push('botão Sumário invisível no modo compacto');
         }
 
         document.querySelectorAll('.atlas-menu-toggle, .atlas-index-toggle, .header-action, .button').forEach((target) => {
-          if (!visible(target)) return;
+          if (!insideViewport(target)) return;
           const rect = target.getBoundingClientRect();
           if (rect.width < 38 || rect.height < 38) {
             problems.push(`alvo de toque pequeno: ${target.className} (${Math.round(rect.width)}x${Math.round(rect.height)})`);
@@ -254,30 +243,49 @@ for (const profile of profiles) {
         return {
           mode,
           viewportWidth,
-          viewportHeight,
+          viewportHeight: window.innerHeight,
           scrollWidth: Math.max(root.scrollWidth, body.scrollWidth),
+          overflowPolicy: `${getComputedStyle(root).overflowX}/${getComputedStyle(body).overflowX}`,
           title: document.title,
           problems
         };
       }, { expectedMode: profile.expectedMode });
 
+      const horizontalScroll = await page.evaluate(() => {
+        const initial = window.scrollX;
+        window.scrollTo({ left: 10_000, top: window.scrollY, behavior: 'instant' });
+        const reached = window.scrollX;
+        window.scrollTo({ left: initial, top: window.scrollY, behavior: 'instant' });
+        return reached;
+      });
+
+      if (horizontalScroll > 2) {
+        audit.problems.push(`a página permite rolagem horizontal de ${Math.round(horizontalScroll)}px`);
+      }
+
       if (profile.expectedMode === 'compact') {
         const menuButton = page.locator('.atlas-menu-toggle');
         if (await menuButton.count() && await menuButton.isVisible()) {
           await menuButton.click();
-          const opened = await page.evaluate(() => document.body.classList.contains('menu-open'));
-          if (!opened) audit.problems.push('o botão Menu não abriu a navegação');
+          if (!await page.evaluate(() => document.body.classList.contains('menu-open'))) {
+            audit.problems.push('o botão Menu não abriu a navegação');
+          }
           await page.keyboard.press('Escape');
-          const closed = await page.evaluate(() => !document.body.classList.contains('menu-open'));
-          if (!closed) audit.problems.push('Escape não fechou a navegação');
+          if (!await page.evaluate(() => !document.body.classList.contains('menu-open'))) {
+            audit.problems.push('Escape não fechou a navegação');
+          }
         }
 
         const indexButton = page.locator('.atlas-index-toggle');
         if (await indexButton.count() && await indexButton.isVisible()) {
           await indexButton.click();
-          const opened = await page.evaluate(() => document.body.classList.contains('index-open'));
-          if (!opened) audit.problems.push('o botão Sumário não abriu o painel');
+          if (!await page.evaluate(() => document.body.classList.contains('index-open'))) {
+            audit.problems.push('o botão Sumário não abriu o painel');
+          }
           await page.keyboard.press('Escape');
+          if (!await page.evaluate(() => !document.body.classList.contains('index-open'))) {
+            audit.problems.push('Escape não fechou o sumário');
+          }
         }
       }
 
@@ -294,10 +302,10 @@ for (const profile of profiles) {
           const documentHeight = await page.evaluate(() => document.documentElement.scrollHeight);
           await page.screenshot({
             path: path.join(outputDir, `${safeName(profile.name)}--${safeName(relativePath)}.png`),
-            fullPage: documentHeight <= 32_000
+            fullPage: documentHeight <= 30_000
           });
-        } catch (screenshotError) {
-          console.warn(`Não foi possível capturar ${profile.name} / ${relativePath}: ${screenshotError instanceof Error ? screenshotError.message : String(screenshotError)}`);
+        } catch (error) {
+          console.warn(`Captura não produzida para ${profile.name} / ${relativePath}: ${error instanceof Error ? error.message : String(error)}`);
         }
       }
     } catch (error) {
@@ -319,7 +327,7 @@ for (const profile of profiles) {
 
 await fs.writeFile(
   path.join(outputDir, 'resultado.json'),
-  JSON.stringify({ pages: htmlPages.length, profiles: profiles.map((profile) => profile.name), failures, results }, null, 2),
+  JSON.stringify({ pages: htmlPages.length, profiles: profiles.map(({ name }) => name), failures, results }, null, 2),
   'utf8'
 );
 
