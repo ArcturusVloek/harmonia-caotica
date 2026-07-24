@@ -12,7 +12,15 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - decisão DEC-013 sobre Ranks e limites de construção;
 - núcleo de progressão consolidado;
 - Reserva Inicial de 12 PM na criação do personagem;
-- onze Ranks entre Desperto e Apoteose.
+- onze Ranks entre Desperto e Apoteose;
+- auditoria em rascunho das estruturas avançadas;
+- portal público `sistemas/index.html` para o Sistema 2.0;
+- página de Primeiros Passos;
+- página canônica de Progressão e Ranks com calculadora por Nível;
+- validador inicial de custo e Graduação na Construção Guiada;
+- guia comparativo de Poder normal, Repertório, Recipiente, Variável e Invocar;
+- Consulta Rápida das regras aprovadas;
+- estilos e scripts próprios da primeira implementação pública.
 
 ### Definido — 24/07/2026
 
@@ -29,13 +37,15 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - avanço de Rank a cada dez Níveis;
 - Graduação máxima de 5 no Rank Desperto até 25 em Apoteose;
 - limite de PM por Espaço igual a quatro vezes a Graduação máxima;
-- subir de Rank amplia limites, mas não concede PM nem melhorias automáticas.
+- subir de Rank amplia limites, mas não concede PM nem melhorias automáticas;
+- páginas públicas distinguem regras aprovadas, conteúdo em teste e auditorias em rascunho.
 
 ### Corrigido — 24/07/2026
 
 - a progressão deixou de conceder automaticamente um Poder a cada cinco Níveis e passou a liberar um Espaço de Poder;
 - substituída a variável `X` da DEC-011 pelo valor aprovado de 3 PM;
-- substituída a reserva inicial indefinida pelo valor aprovado de 12 PM.
+- substituída a reserva inicial indefinida pelo valor aprovado de 12 PM;
+- links da página inicial para Sistemas, Primeiros Passos, Construção Guiada e Consulta Rápida passam a possuir destinos na branch `sistema-2.0`.
 
 ### Adicionado — 23/07/2026
 
@@ -82,13 +92,14 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 
 ### Pendente
 
-- liberação de estruturas avançadas por Rank;
-- limites de Repertórios, Recipientes e Efeitos Variáveis;
+- aprovação ou revisão da auditoria de estruturas avançadas por Rank;
+- limites canônicos de Repertórios, Recipientes, Efeitos Variáveis e Invocações;
 - reconstrução e redistribuição de PM;
 - conversão determinística de testes de ataque;
 - conversão de testes opostos de poder;
 - conversão de jogadas de salvamento;
 - estrutura completa de conflitos;
+- catálogo público dos Efeitos adaptados;
 - tratamento de Efeitos ligados a atributos e perícias removidos;
 - reconstrução das Vertentes e Heranças;
-- migração das páginas do site para os novos sistemas.
+- expansão do site com ficha completa e construtor integral de Poderes.
