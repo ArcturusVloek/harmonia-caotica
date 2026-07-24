@@ -20,7 +20,9 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - validador inicial de custo e Graduação na Construção Guiada;
 - guia comparativo de Poder normal, Repertório, Recipiente, Variável e Invocar;
 - Consulta Rápida das regras aprovadas;
-- estilos e scripts próprios da primeira implementação pública.
+- estilos e scripts próprios da primeira implementação pública;
+- auditoria funcional automatizada das calculadoras, estados editoriais e tabelas navegáveis;
+- execução da auditoria funcional do Sistema 2.0 no fluxo de integração contínua.
 
 ### Definido — 24/07/2026
 
@@ -45,7 +47,12 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - a progressão deixou de conceder automaticamente um Poder a cada cinco Níveis e passou a liberar um Espaço de Poder;
 - substituída a variável `X` da DEC-011 pelo valor aprovado de 3 PM;
 - substituída a reserva inicial indefinida pelo valor aprovado de 12 PM;
-- links da página inicial para Sistemas, Primeiros Passos, Construção Guiada e Consulta Rápida passam a possuir destinos na branch `sistema-2.0`.
+- links da página inicial para Sistemas, Primeiros Passos, Construção Guiada e Consulta Rápida passam a possuir destinos na branch `sistema-2.0`;
+- o validador de construção agora impede que um único Espaço custe mais PM do que o personagem recebeu no Nível atual, mesmo quando o teto do Rank é maior;
+- os Ranks calculados são exibidos com numeração romana consistente com a documentação;
+- campos numéricos podem ser editados sem serem forçados ao valor mínimo enquanto o usuário ainda digita;
+- estados editoriais do Arquivo de Vaelora passam a refletir regra aprovada, conteúdo em teste ou auditoria em rascunho;
+- tabelas largas do Sistema 2.0 recebem navegação por teclado, função de região e rótulo acessível.
 
 ### Adicionado — 23/07/2026
 
