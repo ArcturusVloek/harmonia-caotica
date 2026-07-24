@@ -42,6 +42,21 @@
     if (node) node.textContent = value;
   };
 
+  const applyEditorialStatus = () => {
+    const file = window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
+    const statusByFile = {
+      'index.html': 'Implementação em teste',
+      'primeiros-passos.html': 'Regra canônica',
+      'progressao-e-ranks.html': 'Regra canônica',
+      'consulta-rapida.html': 'Regra canônica',
+      'construcao-guiada.html': 'Ferramenta em teste',
+      'estruturas-de-poder.html': 'Auditoria em rascunho'
+    };
+    const status = statusByFile[file];
+    const target = document.querySelector('.archive-record__meta span:first-child');
+    if (status && target) target.textContent = status;
+  };
+
   const initProgressionCalculator = (root) => {
     const input = root.querySelector('[data-level-input]');
     if (!input) return;
@@ -114,6 +129,7 @@
     render();
   };
 
+  applyEditorialStatus();
   document.querySelectorAll('[data-progression-calculator]').forEach(initProgressionCalculator);
   document.querySelectorAll('[data-build-validator]').forEach(initBuildValidator);
 })();
