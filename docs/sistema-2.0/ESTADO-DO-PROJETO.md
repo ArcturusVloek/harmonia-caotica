@@ -61,6 +61,11 @@ Harmonia Caótica utilizará diretamente a engenharia de poderes de *Mutantes & 
 23. Custo de Ficha é o valor realmente pago; Capacidade Operacional é o valor de efeitos que podem funcionar simultaneamente.
 24. Os dois valores respeitam o teto de PM por Espaço, e o Custo de Ficha também respeita os PM disponíveis do personagem.
 25. Pontos internos de estruturas não são pagos duas vezes.
+26. O GitHub continuará sendo atualizado durante todo o desenvolvimento do núcleo mecânico.
+27. Aprovação mecânica e aprovação editorial são marcos diferentes.
+28. Documentos técnicos canônicos não são automaticamente textos finais para jogadores.
+29. Páginas e ferramentas da branch `sistema-2.0` permanecem protótipos ou implementações parciais até aprovação editorial explícita.
+30. A redação final para jogadores será produzida depois da consolidação dos blocos mecânicos e deverá preservar integralmente as regras canônicas.
 
 ## Progressão aprovada
 
@@ -106,6 +111,22 @@ Capacidade Operacional <= PM máximos por Espaço
 
 Falhas e descontos podem reduzir o Custo de Ficha, mas não permitem ultrapassar a Capacidade Operacional do Rank.
 
+## Política de preservação e publicação
+
+O GitHub deve registrar de forma contínua e precisa:
+
+- decisões aprovadas;
+- propostas em auditoria;
+- fórmulas e limites;
+- exceções;
+- dependências entre regras;
+- questões ainda abertas;
+- próxima decisão exata.
+
+A documentação canônica de desenvolvimento prioriza precisão e continuidade. Ela não é, por si só, o texto final que será mostrado aos jogadores.
+
+A versão final para jogadores será escrita em etapa posterior, com definições simples, procedimentos passo a passo, exemplos válidos e inválidos, casos especiais e consulta rápida. Essa reescrita não poderá alterar a mecânica aprovada.
+
 ## Trabalho concluído
 
 - criada a branch `sistema-2.0`;
@@ -123,6 +144,8 @@ Falhas e descontos podem reduzir o Custo de Ficha, mas não permitem ultrapassar
 - definidas a Graduação máxima e o limite de PM por Espaço de cada Rank;
 - aprovados Custo de Ficha e Capacidade Operacional como limites simultâneos;
 - registrada uma explicação obrigatória para jogadores com linguagem simples, checklist e exemplos;
+- aprovada a separação entre documentação canônica e redação final para jogadores;
+- definido que páginas e ferramentas atuais não constituem versão final pública;
 - concluída uma auditoria em rascunho das estruturas avançadas;
 - criado o portal público inicial do Sistema 2.0;
 - criadas páginas de Primeiros Passos, Progressão e Ranks, Estruturas de Poder e Consulta Rápida;
@@ -154,6 +177,8 @@ A branch `sistema-2.0` possui uma primeira camada funcional do site:
 
 Essas páginas existem apenas na branch e no PR nº 4. Não estão publicadas na versão `main` enquanto o PR não for mesclado.
 
+Mesmo dentro da branch, nenhuma dessas páginas é considerada texto final para jogadores. Elas são protótipos, provas de conceito ou implementações parciais que deverão ser reescritas e revalidadas depois da consolidação mecânica.
+
 A DEC-014 ainda não foi aplicada ao site ou ao validador. A próxima alteração técnica deverá ocorrer somente após pedido explícito e depois da consolidação das estruturas avançadas.
 
 ## Trabalho atual
@@ -181,7 +206,9 @@ Depois das estruturas por Rank, deverá ser concluída a conversão determiníst
 5. ações e duração no formato assíncrono;
 6. Efeitos ligados a atributos e perícias removidos.
 
-Em paralelo, o site deverá receber, somente mediante solicitação explícita:
+Somente depois da consolidação dos blocos mecânicos será iniciada a redação final para jogadores, seguida pela revisão editorial e pela implementação pública definitiva.
+
+O site poderá receber, mediante solicitação explícita e mantendo seu estado não final:
 
 1. catálogo navegável dos Efeitos adaptados;
 2. construtor completo de Poderes;
@@ -198,11 +225,12 @@ Em paralelo, o site deverá receber, somente mediante solicitação explícita:
 5. `docs/sistema-2.0/decisoes/DEC-012-orcamento-inicial-e-pm-por-nivel.md`;
 6. `docs/sistema-2.0/decisoes/DEC-013-ranks-e-limites-de-construcao.md`;
 7. `docs/sistema-2.0/decisoes/DEC-014-custo-de-ficha-e-capacidade-operacional.md`;
-8. `docs/sistema-2.0/auditorias/estruturas-avancadas.md`;
-9. `docs/sistema-2.0/auditorias/site-sistema-2.md`;
-10. `docs/sistema-2.0/nucleos/progressao.md`;
-11. `docs/sistema-2.0/nucleos/resolucao.md`;
-12. *Mutantes & Malfeitores: Poder Supremo*.
+8. `docs/sistema-2.0/decisoes/DEC-015-documentacao-canonica-e-texto-para-jogadores.md`;
+9. `docs/sistema-2.0/auditorias/estruturas-avancadas.md`;
+10. `docs/sistema-2.0/auditorias/site-sistema-2.md`;
+11. `docs/sistema-2.0/nucleos/progressao.md`;
+12. `docs/sistema-2.0/nucleos/resolucao.md`;
+13. *Mutantes & Malfeitores: Poder Supremo*.
 
 ## Regra de encerramento de sessão
 
@@ -212,4 +240,5 @@ Antes de terminar uma sessão:
 - marcar propostas não aprovadas como rascunho;
 - atualizar este arquivo;
 - atualizar o changelog;
-- indicar a próxima decisão exata.
+- indicar a próxima decisão exata;
+- confirmar que nenhuma redação técnica foi apresentada como texto final para jogadores sem aprovação editorial.
