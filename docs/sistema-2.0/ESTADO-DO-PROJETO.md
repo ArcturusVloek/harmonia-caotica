@@ -57,6 +57,10 @@ Harmonia Caótica utilizará diretamente a engenharia de poderes de *Mutantes & 
 19. A Graduação máxima cresce de 5 no Rank Desperto até 25 em Apoteose.
 20. O limite de PM por Espaço equivale a quatro vezes a Graduação máxima do Rank.
 21. Subir de Rank amplia limites, mas não concede PM adicionais nem melhora Poderes automaticamente.
+22. Todo Espaço é verificado por Custo de Ficha e Capacidade Operacional.
+23. Custo de Ficha é o valor realmente pago; Capacidade Operacional é o valor de efeitos que podem funcionar simultaneamente.
+24. Os dois valores respeitam o teto de PM por Espaço, e o Custo de Ficha também respeita os PM disponíveis do personagem.
+25. Pontos internos de estruturas não são pagos duas vezes.
 
 ## Progressão aprovada
 
@@ -87,6 +91,21 @@ A cada bloco de cinco Níveis, o personagem recebe 15 PM pela progressão normal
 | X | 90–99 | Pretendente | 23 | 92 |
 | XI | 100 | Apoteose | 25 | 100 |
 
+## Limites aprovados por Espaço
+
+Todo Espaço deve respeitar simultaneamente:
+
+```text
+Custo de Ficha <= PM disponíveis do personagem
+Custo de Ficha <= PM máximos por Espaço
+Capacidade Operacional <= PM máximos por Espaço
+```
+
+**Custo de Ficha** é quanto o personagem realmente paga.  
+**Capacidade Operacional** é quanto do Poder pode funcionar simultaneamente.
+
+Falhas e descontos podem reduzir o Custo de Ficha, mas não permitem ultrapassar a Capacidade Operacional do Rank.
+
 ## Trabalho concluído
 
 - criada a branch `sistema-2.0`;
@@ -102,6 +121,8 @@ A cada bloco de cinco Níveis, o personagem recebe 15 PM pela progressão normal
 - consolidada a fórmula de PM totais e a progressão de Espaços;
 - definidos os onze Ranks;
 - definidas a Graduação máxima e o limite de PM por Espaço de cada Rank;
+- aprovados Custo de Ficha e Capacidade Operacional como limites simultâneos;
+- registrada uma explicação obrigatória para jogadores com linguagem simples, checklist e exemplos;
 - concluída uma auditoria em rascunho das estruturas avançadas;
 - criado o portal público inicial do Sistema 2.0;
 - criadas páginas de Primeiros Passos, Progressão e Ranks, Estruturas de Poder e Consulta Rápida;
@@ -133,13 +154,14 @@ A branch `sistema-2.0` possui uma primeira camada funcional do site:
 
 Essas páginas existem apenas na branch e no PR nº 4. Não estão publicadas na versão `main` enquanto o PR não for mesclado.
 
+A DEC-014 ainda não foi aplicada ao site ou ao validador. A próxima alteração técnica deverá ocorrer somente após pedido explícito e depois da consolidação das estruturas avançadas.
+
 ## Trabalho atual
 
-Revisar e decidir a auditoria de estruturas avançadas de M&M.
+Definir a liberação e os limites dos Repertórios por Rank.
 
-A próxima decisão deverá aprovar, rejeitar ou ajustar:
+A auditoria de estruturas avançadas ainda precisa aprovar, rejeitar ou ajustar:
 
-- limite duplo de Custo de Ficha e Capacidade Operacional;
 - acesso a Poderes Alternativos e Repertórios;
 - acesso a Recipientes;
 - acesso e amplitude de Efeitos Variáveis;
@@ -159,7 +181,7 @@ Depois das estruturas por Rank, deverá ser concluída a conversão determiníst
 5. ações e duração no formato assíncrono;
 6. Efeitos ligados a atributos e perícias removidos.
 
-Em paralelo, o site deverá receber:
+Em paralelo, o site deverá receber, somente mediante solicitação explícita:
 
 1. catálogo navegável dos Efeitos adaptados;
 2. construtor completo de Poderes;
@@ -175,11 +197,12 @@ Em paralelo, o site deverá receber:
 4. `docs/sistema-2.0/decisoes/DEC-011-pontos-de-poder-e-espacos-de-poder.md`;
 5. `docs/sistema-2.0/decisoes/DEC-012-orcamento-inicial-e-pm-por-nivel.md`;
 6. `docs/sistema-2.0/decisoes/DEC-013-ranks-e-limites-de-construcao.md`;
-7. `docs/sistema-2.0/auditorias/estruturas-avancadas.md`;
-8. `docs/sistema-2.0/auditorias/site-sistema-2.md`;
-9. `docs/sistema-2.0/nucleos/progressao.md`;
-10. `docs/sistema-2.0/nucleos/resolucao.md`;
-11. *Mutantes & Malfeitores: Poder Supremo*.
+7. `docs/sistema-2.0/decisoes/DEC-014-custo-de-ficha-e-capacidade-operacional.md`;
+8. `docs/sistema-2.0/auditorias/estruturas-avancadas.md`;
+9. `docs/sistema-2.0/auditorias/site-sistema-2.md`;
+10. `docs/sistema-2.0/nucleos/progressao.md`;
+11. `docs/sistema-2.0/nucleos/resolucao.md`;
+12. *Mutantes & Malfeitores: Poder Supremo*.
 
 ## Regra de encerramento de sessão
 
