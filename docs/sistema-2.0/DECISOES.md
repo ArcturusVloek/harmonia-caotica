@@ -291,20 +291,25 @@ Repertórios básicos são permitidos desde o Rank I. Cada Graduação estrutura
 
 Documento detalhado: `decisoes/DEC-016-repertorios-e-poderes-alternativos.md`.
 
+### DEC-017 — Recipientes
+
+Recipiente ativo é permitido desde o Rank I e Recipiente passivo desde o Rank II. Cada Graduação estrutural custa 5 PM e fornece 5 PM internos. A Capacidade Operacional equivale à capacidade interna máxima. Falhas globais começam no Rank III, com redução máxima de −1 PM por Graduação nos Ranks III–V e −2 PM por Graduação nos Ranks VI–XI, respeitando pisos estruturais de 4 e 3 PM por Graduação.
+
+Documento detalhado: `decisoes/DEC-017-recipientes.md`.
+
 ---
 
 ## Questões ainda não decididas
 
 As seguintes questões permanecem abertas:
 
-1. liberação e limites de Recipientes por Rank;
-2. acesso e amplitude de Efeitos Variáveis;
-3. conversão de Invocar, orçamento de criaturas e Grupos de Comando;
-4. limites de aninhamento entre estruturas;
-5. reconstrução e redistribuição de PM;
-6. conversão determinística de testes de ataque, testes de poder e jogadas de salvamento;
-7. tratamento de Efeitos que aumentam, drenam ou imitam atributos e perícias removidos;
-8. estrutura temporal de conflitos assíncronos;
-9. função mecânica definitiva das Vertentes e Heranças;
-10. processo completo de Vacância, Ascensão e conquista de uma posição divina;
-11. redação final e aprovação editorial do material destinado aos jogadores.
+1. acesso e amplitude de Efeitos Variáveis;
+2. conversão de Invocar, orçamento de criaturas e Grupos de Comando;
+3. limites de aninhamento entre estruturas;
+4. reconstrução e redistribuição de PM;
+5. conversão determinística de testes de ataque, testes de poder e jogadas de salvamento;
+6. tratamento de Efeitos que aumentam, drenam ou imitam atributos e perícias removidos;
+7. estrutura temporal de conflitos assíncronos;
+8. função mecânica definitiva das Vertentes e Heranças;
+9. processo completo de Vacância, Ascensão e conquista de uma posição divina;
+10. redação final e aprovação editorial do material destinado aos jogadores.
