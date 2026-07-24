@@ -101,20 +101,43 @@ A cada bloco de cinco Níveis, o personagem recebe 15 PM pela progressão normal
 - definida a progressão de 3 PM por Nível;
 - consolidada a fórmula de PM totais e a progressão de Espaços;
 - definidos os onze Ranks;
-- definidas a Graduação máxima e o limite de PM por Espaço de cada Rank.
+- definidas a Graduação máxima e o limite de PM por Espaço de cada Rank;
+- concluída uma auditoria em rascunho das estruturas avançadas;
+- criado o portal público inicial do Sistema 2.0;
+- criadas páginas de Primeiros Passos, Progressão e Ranks, Estruturas de Poder e Consulta Rápida;
+- criada calculadora de progressão por Nível;
+- criado validador inicial de custo e Graduação para construções;
+- restaurados destinos funcionais para os links de Sistemas da página inicial na branch.
+
+## Implementação pública atual
+
+A branch `sistema-2.0` possui uma primeira camada funcional do site:
+
+- `sistemas/index.html`: portal do Sistema 2.0;
+- `sistemas/primeiros-passos.html`: introdução para jogadores;
+- `sistemas/progressao-e-ranks.html`: regras canônicas e calculadora;
+- `sistemas/construcao-guiada.html`: validador parcial de limites;
+- `sistemas/estruturas-de-poder.html`: explicação das arquiteturas de M&M, com limites por Rank identificados como não canônicos;
+- `sistemas/consulta-rapida.html`: fórmulas e tabelas aprovadas;
+- `css/sistema-2.css`: apresentação própria;
+- `js/sistema-2.js`: calculadora e validação.
+
+Essas páginas existem apenas na branch e no PR nº 4. Não estão publicadas na versão `main` enquanto o PR não for mesclado.
 
 ## Trabalho atual
 
-Definir quais estruturas avançadas de M&M são liberadas ou limitadas por Rank.
+Revisar e decidir a auditoria de estruturas avançadas de M&M.
 
-A próxima etapa deverá estabelecer:
+A próxima decisão deverá aprovar, rejeitar ou ajustar:
 
+- limite duplo de Custo de Ficha e Capacidade Operacional;
 - acesso a Poderes Alternativos e Repertórios;
 - acesso a Recipientes;
-- acesso a Efeitos Variáveis;
-- limites de Invocações complexas;
-- reconstrução e redistribuição de PM;
-- exceções justificadas ao limite de PM por Espaço.
+- acesso e amplitude de Efeitos Variáveis;
+- conversão do orçamento e quantidade de Invocados;
+- Grupos de Comando para hordas;
+- limites de aninhamento entre estruturas;
+- reconstrução e redistribuição de PM.
 
 ## Trabalho posterior
 
@@ -127,6 +150,14 @@ Depois das estruturas por Rank, deverá ser concluída a conversão determiníst
 5. ações e duração no formato assíncrono;
 6. Efeitos ligados a atributos e perícias removidos.
 
+Em paralelo, o site deverá receber:
+
+1. catálogo navegável dos Efeitos adaptados;
+2. construtor completo de Poderes;
+3. ficha de personagem com controle de PM gastos e disponíveis;
+4. exportação para WhatsApp;
+5. validação de Domínio, Vertente e descritores.
+
 ## Arquivos que devem ser lidos antes de continuar
 
 1. `docs/sistema-2.0/PRINCIPIOS.md`;
@@ -135,9 +166,10 @@ Depois das estruturas por Rank, deverá ser concluída a conversão determiníst
 4. `docs/sistema-2.0/decisoes/DEC-011-pontos-de-poder-e-espacos-de-poder.md`;
 5. `docs/sistema-2.0/decisoes/DEC-012-orcamento-inicial-e-pm-por-nivel.md`;
 6. `docs/sistema-2.0/decisoes/DEC-013-ranks-e-limites-de-construcao.md`;
-7. `docs/sistema-2.0/nucleos/progressao.md`;
-8. `docs/sistema-2.0/nucleos/resolucao.md`;
-9. *Mutantes & Malfeitores: Poder Supremo*.
+7. `docs/sistema-2.0/auditorias/estruturas-avancadas.md`;
+8. `docs/sistema-2.0/nucleos/progressao.md`;
+9. `docs/sistema-2.0/nucleos/resolucao.md`;
+10. *Mutantes & Malfeitores: Poder Supremo*.
 
 ## Regra de encerramento de sessão
 
