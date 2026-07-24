@@ -9,8 +9,10 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - decisão DEC-010 sobre progressão em 100 Níveis e Apoteose;
 - decisão DEC-011 sobre PM por Nível e Espaços de Poder;
 - decisão DEC-012 sobre orçamento inicial e progressão regular de PM;
+- decisão DEC-013 sobre Ranks e limites de construção;
 - núcleo de progressão consolidado;
-- Reserva Inicial de 12 PM na criação do personagem.
+- Reserva Inicial de 12 PM na criação do personagem;
+- onze Ranks entre Desperto e Apoteose.
 
 ### Definido — 24/07/2026
 
@@ -23,7 +25,11 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - PM como medida de profundidade das construções;
 - Espaços de Poder como medida de diversidade;
 - liberação de Espaço sem concessão de PM adicionais;
-- PM não gastos podem ser acumulados.
+- PM não gastos podem ser acumulados;
+- avanço de Rank a cada dez Níveis;
+- Graduação máxima de 5 no Rank Desperto até 25 em Apoteose;
+- limite de PM por Espaço igual a quatro vezes a Graduação máxima;
+- subir de Rank amplia limites, mas não concede PM nem melhorias automáticas.
 
 ### Corrigido — 24/07/2026
 
@@ -76,9 +82,9 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 
 ### Pendente
 
-- estrutura e nomes dos Ranks;
-- Graduação máxima por Rank;
-- limite de PM por construção;
+- liberação de estruturas avançadas por Rank;
+- limites de Repertórios, Recipientes e Efeitos Variáveis;
+- reconstrução e redistribuição de PM;
 - conversão determinística de testes de ataque;
 - conversão de testes opostos de poder;
 - conversão de jogadas de salvamento;
