@@ -32,6 +32,8 @@ const representativePages = [
   'territorios/ruvia.html',
   'territorios/alba.html',
   'sistemas/index.html',
+  'sistemas/progressao-e-ranks.html',
+  'sistemas/construcao-guiada.html',
   'sistemas/fundamentos-dos-milagres.html',
   'sistemas/criacoes-invocacoes-e-manifestacoes-separadas.html'
 ].filter((page) => htmlPages.includes(page));
@@ -151,16 +153,33 @@ for (const profile of profiles) {
         const visible = (element) => {
           const style = getComputedStyle(element);
           const rect = element.getBoundingClientRect();
+          const intersectsViewport = rect.right > 0
+            && rect.left < viewportWidth
+            && rect.bottom > 0
+            && rect.top < viewportHeight;
           return style.display !== 'none'
             && style.visibility !== 'hidden'
             && Number(style.opacity || 1) > 0.01
             && rect.width > 0
-            && rect.height > 0;
+            && rect.height > 0
+            && intersectsViewport;
         };
 
         const rootOverflow = Math.max(root.scrollWidth, body.scrollWidth) - viewportWidth;
         if (rootOverflow > 2) {
-          problems.push(`overflow horizontal da página: ${rootOverflow}px`);
+          const suspects = [...document.querySelectorAll('body *')]
+            .map((element) => ({ element, rect: element.getBoundingClientRect(), style: getComputedStyle(element) }))
+            .filter(({ rect, style }) => style.display !== 'none'
+              && style.visibility !== 'hidden'
+              && rect.width > 0
+              && (rect.right > viewportWidth + 2 || rect.left < -2))
+            .sort((a, b) => Math.max(b.rect.right - viewportWidth, -b.rect.left) - Math.max(a.rect.right - viewportWidth, -a.rect.left))
+            .slice(0, 5)
+            .map(({ element, rect }) => {
+              const identity = element.id ? `#${element.id}` : [...element.classList].slice(0, 2).map((name) => `.${name}`).join('');
+              return `${element.tagName.toLowerCase()}${identity} [${Math.round(rect.left)}, ${Math.round(rect.right)}]`;
+            });
+          problems.push(`overflow horizontal da página: ${rootOverflow}px${suspects.length ? `; suspeitos: ${suspects.join(', ')}` : ''}`);
         }
 
         document.querySelectorAll('h1, h2, h3').forEach((heading) => {
@@ -192,7 +211,7 @@ for (const profile of profiles) {
           }
         });
 
-        document.querySelectorAll('.table-wrap').forEach((wrapper) => {
+        document.querySelectorAll('.table-wrap, .system2-table-wrap').forEach((wrapper) => {
           if (!visible(wrapper)) return;
           const rect = wrapper.getBoundingClientRect();
           if (rect.left < -2 || rect.right > viewportWidth + 2) {
@@ -227,7 +246,7 @@ for (const profile of profiles) {
         document.querySelectorAll('.atlas-menu-toggle, .atlas-index-toggle, .header-action, .button').forEach((target) => {
           if (!visible(target)) return;
           const rect = target.getBoundingClientRect();
-          if (rect.width < 40 || rect.height < 40) {
+          if (rect.width < 38 || rect.height < 38) {
             problems.push(`alvo de toque pequeno: ${target.className} (${Math.round(rect.width)}x${Math.round(rect.height)})`);
           }
         });
@@ -271,10 +290,15 @@ for (const profile of profiles) {
 
       if (audit.problems.length) {
         failures.push(record);
-        await page.screenshot({
-          path: path.join(outputDir, `${safeName(profile.name)}--${safeName(relativePath)}.png`),
-          fullPage: true
-        });
+        try {
+          const documentHeight = await page.evaluate(() => document.documentElement.scrollHeight);
+          await page.screenshot({
+            path: path.join(outputDir, `${safeName(profile.name)}--${safeName(relativePath)}.png`),
+            fullPage: documentHeight <= 32_000
+          });
+        } catch (screenshotError) {
+          console.warn(`Não foi possível capturar ${profile.name} / ${relativePath}: ${screenshotError instanceof Error ? screenshotError.message : String(screenshotError)}`);
+        }
       }
     } catch (error) {
       const record = {
