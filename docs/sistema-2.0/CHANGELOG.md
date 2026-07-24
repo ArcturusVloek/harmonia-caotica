@@ -4,6 +4,33 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 
 ## [Não lançado]
 
+### Adicionado — 24/07/2026
+
+- decisão DEC-010 sobre progressão em 100 Níveis e Apoteose;
+- decisão DEC-011 sobre PM por Nível e Espaços de Poder;
+- decisão DEC-012 sobre orçamento inicial e progressão regular de PM;
+- núcleo de progressão consolidado;
+- Reserva Inicial de 12 PM na criação do personagem.
+
+### Definido — 24/07/2026
+
+- 15 PM totais no Nível 1;
+- 3 PM recebidos por Nível;
+- fórmula de PM totais: `12 + (3 × Nível)`;
+- um Espaço de Poder inicial;
+- um novo Espaço de Poder em cada múltiplo de cinco;
+- 21 Espaços de Poder e 312 PM totais no Nível 100;
+- PM como medida de profundidade das construções;
+- Espaços de Poder como medida de diversidade;
+- liberação de Espaço sem concessão de PM adicionais;
+- PM não gastos podem ser acumulados.
+
+### Corrigido — 24/07/2026
+
+- a progressão deixou de conceder automaticamente um Poder a cada cinco Níveis e passou a liberar um Espaço de Poder;
+- substituída a variável `X` da DEC-011 pelo valor aprovado de 3 PM;
+- substituída a reserva inicial indefinida pelo valor aprovado de 12 PM.
+
 ### Adicionado — 23/07/2026
 
 - branch `sistema-2.0`;
@@ -17,7 +44,7 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 - conceito inicial de Escalada para romper impasses e enfrentar Resistências superiores;
 - classificação futura de componentes de M&M como preservados, convertidos, substituídos ou removidos.
 
-### Definido
+### Definido — 23/07/2026
 
 - GitHub como fonte canônica do sistema;
 - resolução sem dependência de dados;
@@ -49,11 +76,13 @@ Todas as alterações relevantes da documentação canônica serão registradas 
 
 ### Pendente
 
+- estrutura e nomes dos Ranks;
+- Graduação máxima por Rank;
+- limite de PM por construção;
 - conversão determinística de testes de ataque;
 - conversão de testes opostos de poder;
 - conversão de jogadas de salvamento;
-- limites de nível de poder;
 - estrutura completa de conflitos;
-- tratamento de efeitos ligados a atributos e perícias removidos;
+- tratamento de Efeitos ligados a atributos e perícias removidos;
 - reconstrução das Vertentes e Heranças;
 - migração das páginas do site para os novos sistemas.
