@@ -285,21 +285,26 @@ O GitHub continuará registrando com precisão todo o desenvolvimento. A aprova�
 
 Documento detalhado: `decisoes/DEC-015-documentacao-canonica-e-texto-para-jogadores.md`.
 
+### DEC-016 — Repertórios e Poderes Alternativos
+
+Repertórios básicos são permitidos desde o Rank I. Cada Graduação estrutural custa 2 PM e fornece uma reserva de 2 PM; cada Poder Alternativo custa 1 PM. O número máximo de Alternativos é igual ao número do Rank. Dinâmico começa no Rank III, e todas as configurações precisam compartilhar fonte, exclusividade e vulnerabilidade verificáveis.
+
+Documento detalhado: `decisoes/DEC-016-repertorios-e-poderes-alternativos.md`.
+
 ---
 
 ## Questões ainda não decididas
 
 As seguintes questões permanecem abertas:
 
-1. liberação e limites de Repertórios por Rank;
-2. liberação e limites de Recipientes por Rank;
-3. acesso e amplitude de Efeitos Variáveis;
-4. conversão de Invocar, orçamento de criaturas e Grupos de Comando;
-5. limites de aninhamento entre estruturas;
-6. reconstrução e redistribuição de PM;
-7. conversão determinística de testes de ataque, testes de poder e jogadas de salvamento;
-8. tratamento de Efeitos que aumentam, drenam ou imitam atributos e perícias removidos;
-9. estrutura temporal de conflitos assíncronos;
-10. função mecânica definitiva das Vertentes e Heranças;
-11. processo completo de Vacância, Ascensão e conquista de uma posição divina;
-12. redação final e aprovação editorial do material destinado aos jogadores.
+1. liberação e limites de Recipientes por Rank;
+2. acesso e amplitude de Efeitos Variáveis;
+3. conversão de Invocar, orçamento de criaturas e Grupos de Comando;
+4. limites de aninhamento entre estruturas;
+5. reconstrução e redistribuição de PM;
+6. conversão determinística de testes de ataque, testes de poder e jogadas de salvamento;
+7. tratamento de Efeitos que aumentam, drenam ou imitam atributos e perícias removidos;
+8. estrutura temporal de conflitos assíncronos;
+9. função mecânica definitiva das Vertentes e Heranças;
+10. processo completo de Vacância, Ascensão e conquista de uma posição divina;
+11. redação final e aprovação editorial do material destinado aos jogadores.
